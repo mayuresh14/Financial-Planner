@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">वित्त नियोजक</string>
+
+    <string name="calc_sip">SIP कॅल्क्युलेटर</string>
+    <string name="calc_lumpsum">लंपसम कॅल्क्युलेटर</string>
+    <string name="calc_sip_vs_lumpsum">SIP विरुद्ध लंपसम</string>
+    <string name="calc_goal_based_sip">उद्दिष्ट-आधारित SIP</string>
+    <string name="calc_tenure">कालावधी कॅल्क्युलेटर</string>
+    <string name="calc_ppf">PPF कॅल्क्युलेटर</string>
+    <string name="calc_epf">EPF कॅल्क्युलेटर</string>
+    <string name="calc_ssy">सुकन्या समृद्धी योजना</string>
+    <string name="calc_nps">NPS कॅल्क्युलेटर</string>
+    <string name="calc_emi">EMI कॅल्क्युलेटर</string>
+    <string name="calc_stp">STP कॅल्क्युलेटर</string>
+    <string name="calc_swp">SWP कॅल्क्युलेटर</string>
+    <string name="calc_inflation_goal">महागाई-समायोजित उद्दिष्ट</string>
+    <string name="calc_fire">FIRE कॅल्क्युलेटर</string>
+
+    <string name="coming_soon_title">लवकरच येत आहे</string>
+    <string name="coming_soon_message">या वैशिष्ट्यासाठी खाते आवश्यक आहे, जे भविष्यातील अपडेटमध्ये उपलब्ध होईल.</string>
+    <string name="calc_not_available_yet">हे कॅल्क्युलेटर अद्याप तयार नाही — लवकरच पुन्हा तपासा.</string>
+    <string name="disclaimer_text">निकाल तुम्ही प्रविष्ट केलेल्या गृहितकांवर आधारित अंदाज आहेत आणि ती गुंतवणूक सल्ला नाही.</string>
+    <string name="settings_icon_description">सेटिंग्ज</string>
+
+    <string name="sip_label_monthly_amount">मासिक गुंतवणूक (₹)</string>
+    <string name="sip_label_expected_return">अपेक्षित वार्षिक परतावा (%)</string>
+    <string name="sip_label_duration">कालावधी (वर्षे)</string>
+    <string name="sip_label_step_up">स्टेप-अप % (ऐच्छिक)</string>
+    <string name="sip_label_inflation">महागाई % (ऐच्छिक)</string>
+    <string name="sip_button_calculate">गणना करा</string>
+    <string name="sip_result_maturity_value">परिपक्वता रक्कम</string>
+    <string name="sip_result_total_invested">एकूण गुंतवणूक</string>
+    <string name="sip_result_wealth_gained">मिळवलेली संपत्ती</string>
+    <string name="sip_result_inflation_adjusted">महागाई-समायोजित मूल्य (आजचे मूल्य)</string>
+    <string name="sip_error_invalid_input">कृपया वैध मासिक रक्कम, परतावा दर आणि कालावधी प्रविष्ट करा.</string>
+    <string name="lumpsum_label_principal">गुंतवणूक रक्कम (₹)</string>
+    <string name="lumpsum_result_principal">मुद्दल</string>
+
+    <string name="tenure_label_target_amount">लक्ष्य रक्कम (₹)</string>
+    <string name="tenure_result_years">आवश्यक कालावधी</string>
+    <string name="tenure_result_years_value">%1$.1f वर्षे</string>
+    <string name="tenure_error_unreachable">या दराने 100 वर्षांत लक्ष्य गाठता येणार नाही — जास्त मासिक रक्कम किंवा परतावा दर वापरून पहा.</string>
+
+    <string name="inflation_goal_label_current_cost">सध्याची किंमत (₹)</string>
+    <string name="inflation_goal_label_inflation">महागाई दर (%)</string>
+    <string name="inflation_goal_label_years">वर्षे</string>
+    <string name="inflation_goal_result_future_cost">भविष्यातील किंमत</string>
+    <string name="inflation_goal_result_increase">वाढ रक्कम</string>
+
+    <string name="goal_sip_label_target">उद्दिष्ट रक्कम (₹)</string>
+    <string name="goal_sip_result_required_sip">आवश्यक मासिक SIP</string>
+    <string name="goal_sip_result_inflation_target">महागाई-समायोजित उद्दिष्ट</string>
+
+    <string name="sip_vs_lumpsum_label_sip_amount">मासिक SIP रक्कम (₹)</string>
+    <string name="sip_vs_lumpsum_label_lumpsum_amount">लंपसम रक्कम (₹)</string>
+    <string name="sip_vs_lumpsum_column_sip">SIP</string>
+    <string name="sip_vs_lumpsum_column_lumpsum">लंपसम</string>
+
+    <string name="ppf_label_yearly_contribution">वार्षिक योगदान (₹, कमाल ₹1,50,000)</string>
+    <string name="ppf_label_duration">कालावधी (वर्षे, किमान 15)</string>
+    <string name="ppf_label_rate">PPF व्याज दर (%)</string>
+    <string name="ppf_result_total_contributed">एकूण योगदान</string>
+    <string name="ppf_result_interest_earned">मिळवलेले व्याज</string>
+
+    <string name="epf_label_salary">मूळ मासिक पगार (₹)</string>
+    <string name="epf_label_employee_pct">कर्मचारी योगदान (%)</string>
+    <string name="epf_label_employer_pct">नियोक्ता योगदान (%)</string>
+    <string name="epf_label_duration">कालावधी (वर्षे)</string>
+    <string name="epf_label_rate">अपेक्षित EPF दर (%)</string>
+    <string name="epf_result_total_contributed">एकूण योगदान</string>
+    <string name="epf_result_interest_earned">मिळवलेले व्याज</string>
+
+    <string name="ssy_label_age">खाते उघडताना मुलीचे वय (10 वर्षांपेक्षा कमी असणे आवश्यक)</string>
+    <string name="ssy_label_deposit">वार्षिक ठेव (₹, कमाल ₹1,50,000)</string>
+    <string name="ssy_label_rate">SSY व्याज दर (%)</string>
+    <string name="ssy_result_total_deposited">एकूण ठेव</string>
+    <string name="ssy_result_interest_earned">मिळवलेले व्याज</string>
+    <string name="ssy_result_maturity_age">मुलगी %1$d वर्षांची झाल्यावर परिपक्व होते</string>
+
+    <string name="nps_label_contribution">मासिक योगदान (₹)</string>
+    <string name="nps_label_age">सध्याचे वय</string>
+    <string name="nps_label_return">अपेक्षित वार्षिक परतावा (%)</string>
+    <string name="nps_label_annuity">वार्षिकी वाटप (%, किमान 40)</string>
+    <string name="nps_result_corpus">वयाच्या 60 व्या वर्षी कोष</string>
+    <string name="nps_result_lumpsum">एकरकमी पैसे काढणे</string>
+    <string name="nps_result_annuity_corpus">वार्षिकी कोष</string>
+    <string name="nps_result_pension">अंदाजित मासिक पेन्शन</string>
+
+    <string name="emi_label_loan_amount">कर्ज रक्कम (₹)</string>
+    <string name="emi_label_rate">व्याज दर (%)</string>
+    <string name="emi_label_tenure">कालावधी (महिने)</string>
+    <string name="emi_toggle_prepayment">प्रीपेमेंट जोडा</string>
+    <string name="emi_label_prepayment_amount">प्रीपेमेंट रक्कम (₹)</string>
+    <string name="emi_label_prepayment_month">महिना # नंतर लागू करा</string>
+    <string name="emi_strategy_reduce_tenure">कालावधी कमी करा</string>
+    <string name="emi_strategy_reduce_emi">EMI कमी करा</string>
+    <string name="emi_result_emi">मासिक EMI</string>
+    <string name="emi_result_total_interest">एकूण व्याज (प्रीपेमेंटशिवाय)</string>
+    <string name="emi_result_interest_saved">वाचवलेले व्याज</string>
+    <string name="emi_result_months_saved">कालावधी %1$d महिन्यांनी कमी झाला</string>
+    <string name="emi_result_new_emi">प्रीपेमेंटनंतरचा नवा EMI</string>
+
+    <string name="stp_label_source">स्रोत लंपसम (₹)</string>
+    <string name="stp_label_transfer">मासिक हस्तांतरण रक्कम (₹)</string>
+    <string name="stp_label_duration">कालावधी (महिने)</string>
+    <string name="stp_label_source_return">स्रोत फंड परतावा (%)</string>
+    <string name="stp_label_target_return">लक्ष्य फंड परतावा (%)</string>
+    <string name="stp_result_source_remaining">स्रोत फंडमध्ये शिल्लक</string>
+    <string name="stp_result_target_value">लक्ष्य फंडमधील मूल्य</string>
+
+    <string name="swp_label_corpus">प्रारंभिक कोष (₹)</string>
+    <string name="swp_label_withdrawal">मासिक पैसे काढणे (₹)</string>
+    <string name="swp_label_years">इतक्या वर्षांसाठी सिम्युलेट करा</string>
+    <string name="swp_result_depletion">कोष संपेल</string>
+    <string name="swp_result_depletion_value">%1$d महिन्यांनंतर</string>
+    <string name="swp_result_no_depletion">कोष सिम्युलेटेड कालावधीपेक्षा जास्त टिकेल</string>
+    <string name="swp_result_total_withdrawn">एकूण काढलेली रक्कम</string>
+    <string name="swp_result_final_balance">अंतिम शिल्लक</string>
+
+    <string name="fire_variant_traditional">पारंपरिक FIRE</string>
+    <string name="fire_variant_lean">लीन FIRE</string>
+    <string name="fire_variant_fat">फॅट FIRE</string>
+    <string name="fire_variant_coast">कोस्ट FIRE</string>
+    <string name="fire_explainer_traditional">क्लासिक FIRE लक्ष्य: तुमच्या वार्षिक खर्चाच्या 25 पट, 4% सुरक्षित पैसे काढण्याच्या दरावर आधारित.</string>
+    <string name="fire_explainer_lean">FIRE ची किफायतशीर, किमान-खर्चाची आवृत्ती — साध्या जीवनशैलीसाठी लहान कोष.</string>
+    <string name="fire_explainer_fat">FIRE ची आरामदायक, अधिक खर्चाची आवृत्ती — अधिक लवचिक जीवनशैलीसाठी मोठा कोष.</string>
+    <string name="fire_explainer_coast">तुमची सध्याची बचत, कोणत्याही अतिरिक्त योगदानाशिवाय, तुमच्या लक्ष्य वयापर्यंत मानक निवृत्ती कोषापर्यंत पोहोचेल का हे तपासते.</string>
+    <string name="fire_label_current_age">सध्याचे वय</string>
+    <string name="fire_label_retirement_age">लक्ष्य निवृत्ती वय</string>
+    <string name="fire_label_expenses">सध्याचा वार्षिक खर्च (₹)</string>
+    <string name="fire_label_inflation">महागाई दर (%)</string>
+    <string name="fire_label_return">निवृत्तीपूर्व अपेक्षित परतावा (%)</string>
+    <string name="fire_label_existing_corpus">विद्यमान कोष (₹, ऐच्छिक)</string>
+    <string name="fire_result_required_corpus">निवृत्तीच्या वेळी आवश्यक कोष</string>
+    <string name="fire_result_required_sip">आवश्यक मासिक SIP</string>
+    <string name="fire_result_coast_achieved">कोस्ट FIRE साध्य — तुमची विद्यमान बचत स्वतःहून लक्ष्यापर्यंत पोहोचण्याचा अंदाज आहे.</string>
+    <string name="fire_result_coast_not_achieved">अद्याप कोस्ट FIRE नाही — वरील SIP अजून काय आवश्यक आहे ते दाखवते.</string>
+
+    <string name="goal_planning_title">उद्दिष्ट नियोजन</string>
+    <string name="goal_planning_label_name">उद्दिष्टाचे नाव</string>
+    <string name="goal_planning_label_type">उद्दिष्ट प्रकार</string>
+    <string name="goal_type_retirement">निवृत्ती</string>
+    <string name="goal_type_house">घर</string>
+    <string name="goal_type_education">शिक्षण</string>
+    <string name="goal_type_car">कार</string>
+    <string name="goal_type_custom">कस्टम</string>
+    <string name="goal_planning_button_save">उद्दिष्ट जतन करा आणि ट्रॅक करा</string>
+    <string name="goal_planning_home_card_title">एक उद्दिष्ट नियोजित करा</string>
+    <string name="goal_planning_home_card_subtitle">एक लक्ष्य ठरवा आणि तिथे पोहोचण्यासाठी काय लागते ते पहा</string>
+
+    <string name="coming_soon_dismiss">समजले</string>
+
+    <string name="disclaimer_banner">फक्त अंदाज — ही गुंतवणूक सल्ला नाही.</string>
+
+    <string name="tour_step_calculators_title">14 कॅल्क्युलेटर, वापरण्यास तयार</string>
+    <string name="tour_step_calculators_body">गणना सुरू करण्यासाठी कोणत्याही कार्डवर टॅप करा — खाते आवश्यक नाही.</string>
+    <string name="tour_step_goals_title">तुमची उद्दिष्टे नियोजित करा</string>
+    <string name="tour_step_goals_body">एक लक्ष्य ठरवा आणि तिथे पोहोचण्यासाठी आवश्यक SIP पहा.</string>
+    <string name="tour_step_settings_title">हे तुमचे बनवा</string>
+    <string name="tour_step_settings_body">थीम, रंग किंवा भाषा बदलण्यासाठी कोणत्याही स्क्रीनवर सेटिंग्ज आयकनवर टॅप करा.</string>
+    <string name="tour_button_next">पुढे</string>
+    <string name="tour_button_done">सुरू करा</string>
+    <string name="tour_button_skip">वगळा</string>
+
+    <string name="settings_theme_mode">थीम मोड</string>
+    <string name="settings_theme_color">थीम रंग</string>
+    <string name="settings_randomize_theme">यादृच्छिक</string>
+    <string name="settings_language">भाषा</string>
+    <string name="theme_mode_light">लाइट</string>
+    <string name="theme_mode_dark">डार्क</string>
+    <string name="theme_mode_system">सिस्टम</string>
+    <string name="theme_preset_emerald">एमराल्ड</string>
+    <string name="theme_preset_ocean">ओशन</string>
+    <string name="theme_preset_sunset">सनसेट</string>
+    <string name="theme_preset_orchid">ऑर्किड</string>
+    <string name="theme_preset_slate">स्लेट</string>
+
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_marathi">मराठी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="language_telugu">తెలుగు</string>
+</resources>

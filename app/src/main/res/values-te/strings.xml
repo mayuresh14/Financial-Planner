@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ఫైనాన్స్ ప్లానర్</string>
+
+    <string name="calc_sip">SIP కాలిక్యులేటర్</string>
+    <string name="calc_lumpsum">లంప్‌సమ్ కాలిక్యులేటర్</string>
+    <string name="calc_sip_vs_lumpsum">SIP vs లంప్‌సమ్</string>
+    <string name="calc_goal_based_sip">లక్ష్యం ఆధారిత SIP</string>
+    <string name="calc_tenure">కాలవ్యవధి కాలిక్యులేటర్</string>
+    <string name="calc_ppf">PPF కాలిక్యులేటర్</string>
+    <string name="calc_epf">EPF కాలిక్యులేటర్</string>
+    <string name="calc_ssy">సుకన్య సమృద్ధి యోజన</string>
+    <string name="calc_nps">NPS కాలిక్యులేటర్</string>
+    <string name="calc_emi">EMI కాలిక్యులేటర్</string>
+    <string name="calc_stp">STP కాలిక్యులేటర్</string>
+    <string name="calc_swp">SWP కాలిక్యులేటర్</string>
+    <string name="calc_inflation_goal">ద్రవ్యోల్బణ-సర్దుబాటు లక్ష్యం</string>
+    <string name="calc_fire">FIRE కాలిక్యులేటర్</string>
+
+    <string name="coming_soon_title">త్వరలో వస్తుంది</string>
+    <string name="coming_soon_message">ఈ ఫీచర్‌కు ఖాతా అవసరం, ఇది భవిష్యత్తు అప్‌డేట్‌లో అందుబాటులో ఉంటుంది.</string>
+    <string name="calc_not_available_yet">ఈ కాలిక్యులేటర్ ఇంకా సిద్ధంగా లేదు — త్వరలో మళ్ళీ చూడండి.</string>
+    <string name="disclaimer_text">ఫలితాలు మీరు నమోదు చేసిన ఊహలపై ఆధారపడిన అంచనాలు మరియు ఇది పెట్టుబడి సలహా కాదు.</string>
+    <string name="settings_icon_description">సెట్టింగ్‌లు</string>
+
+    <string name="sip_label_monthly_amount">నెలవారీ పెట్టుబడి (₹)</string>
+    <string name="sip_label_expected_return">ఆశించిన వార్షిక రాబడి (%)</string>
+    <string name="sip_label_duration">కాలవ్యవధి (సంవత్సరాలు)</string>
+    <string name="sip_label_step_up">స్టెప్-అప్ % (ఐచ్ఛికం)</string>
+    <string name="sip_label_inflation">ద్రవ్యోల్బణం % (ఐచ్ఛికం)</string>
+    <string name="sip_button_calculate">లెక్కించు</string>
+    <string name="sip_result_maturity_value">మెచ్యూరిటీ విలువ</string>
+    <string name="sip_result_total_invested">మొత్తం పెట్టుబడి</string>
+    <string name="sip_result_wealth_gained">ఆర్జించిన సంపద</string>
+    <string name="sip_result_inflation_adjusted">ద్రవ్యోల్బణ-సర్దుబాటు విలువ (నేటి విలువ)</string>
+    <string name="sip_error_invalid_input">దయచేసి సరైన నెలవారీ మొత్తం, రాబడి రేటు మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="lumpsum_label_principal">పెట్టుబడి మొత్తం (₹)</string>
+    <string name="lumpsum_result_principal">అసలు మొత్తం</string>
+
+    <string name="tenure_label_target_amount">లక్ష్య మొత్తం (₹)</string>
+    <string name="tenure_result_years">అవసరమైన సమయం</string>
+    <string name="tenure_result_years_value">%1$.1f సంవత్సరాలు</string>
+    <string name="tenure_error_unreachable">ఈ రేటుతో 100 సంవత్సరాల్లో లక్ష్యాన్ని చేరుకోలేరు — ఎక్కువ నెలవారీ మొత్తం లేదా రాబడి రేటును ప్రయత్నించండి.</string>
+
+    <string name="inflation_goal_label_current_cost">ప్రస్తుత ఖర్చు (₹)</string>
+    <string name="inflation_goal_label_inflation">ద్రవ్యోల్బణ రేటు (%)</string>
+    <string name="inflation_goal_label_years">సంవత్సరాలు</string>
+    <string name="inflation_goal_result_future_cost">భవిష్యత్తు ఖర్చు</string>
+    <string name="inflation_goal_result_increase">పెరుగుదల మొత్తం</string>
+
+    <string name="goal_sip_label_target">లక్ష్య మొత్తం (₹)</string>
+    <string name="goal_sip_result_required_sip">అవసరమైన నెలవారీ SIP</string>
+    <string name="goal_sip_result_inflation_target">ద్రవ్యోల్బణ-సర్దుబాటు లక్ష్యం</string>
+
+    <string name="sip_vs_lumpsum_label_sip_amount">నెలవారీ SIP మొత్తం (₹)</string>
+    <string name="sip_vs_lumpsum_label_lumpsum_amount">లంప్‌సమ్ మొత్తం (₹)</string>
+    <string name="sip_vs_lumpsum_column_sip">SIP</string>
+    <string name="sip_vs_lumpsum_column_lumpsum">లంప్‌సమ్</string>
+
+    <string name="ppf_label_yearly_contribution">వార్షిక సహకారం (₹, గరిష్టం ₹1,50,000)</string>
+    <string name="ppf_label_duration">కాలవ్యవధి (సంవత్సరాలు, కనిష్టం 15)</string>
+    <string name="ppf_label_rate">PPF వడ్డీ రేటు (%)</string>
+    <string name="ppf_result_total_contributed">మొత్తం సహకారం</string>
+    <string name="ppf_result_interest_earned">ఆర్జించిన వడ్డీ</string>
+
+    <string name="epf_label_salary">ప్రాథమిక నెలవారీ జీతం (₹)</string>
+    <string name="epf_label_employee_pct">ఉద్యోగి సహకారం (%)</string>
+    <string name="epf_label_employer_pct">యజమాని సహకారం (%)</string>
+    <string name="epf_label_duration">కాలవ్యవధి (సంవత్సరాలు)</string>
+    <string name="epf_label_rate">ఆశించిన EPF రేటు (%)</string>
+    <string name="epf_result_total_contributed">మొత్తం సహకారం</string>
+    <string name="epf_result_interest_earned">ఆర్జించిన వడ్డీ</string>
+
+    <string name="ssy_label_age">ఖాతా తెరిచేటప్పుడు అమ్మాయి వయస్సు (10 ఏళ్ళ లోపు ఉండాలి)</string>
+    <string name="ssy_label_deposit">వార్షిక డిపాజిట్ (₹, గరిష్టం ₹1,50,000)</string>
+    <string name="ssy_label_rate">SSY వడ్డీ రేటు (%)</string>
+    <string name="ssy_result_total_deposited">మొత్తం డిపాజిట్</string>
+    <string name="ssy_result_interest_earned">ఆర్జించిన వడ్డీ</string>
+    <string name="ssy_result_maturity_age">అమ్మాయికి %1$d సంవత్సరాలు వచ్చినప్పుడు మెచ్యూర్ అవుతుంది</string>
+
+    <string name="nps_label_contribution">నెలవారీ సహకారం (₹)</string>
+    <string name="nps_label_age">ప్రస్తుత వయస్సు</string>
+    <string name="nps_label_return">ఆశించిన వార్షిక రాబడి (%)</string>
+    <string name="nps_label_annuity">యాన్యుటీ కేటాయింపు (%, కనిష్టం 40)</string>
+    <string name="nps_result_corpus">60 సంవత్సరాల వయస్సులో నిధి</string>
+    <string name="nps_result_lumpsum">లంప్‌సమ్ ఉపసంహరణ</string>
+    <string name="nps_result_annuity_corpus">యాన్యుటీ నిధి</string>
+    <string name="nps_result_pension">అంచనా నెలవారీ పింఛను</string>
+
+    <string name="emi_label_loan_amount">రుణ మొత్తం (₹)</string>
+    <string name="emi_label_rate">వడ్డీ రేటు (%)</string>
+    <string name="emi_label_tenure">కాలవ్యవధి (నెలలు)</string>
+    <string name="emi_toggle_prepayment">ప్రీపేమెంట్ జోడించండి</string>
+    <string name="emi_label_prepayment_amount">ప్రీపేమెంట్ మొత్తం (₹)</string>
+    <string name="emi_label_prepayment_month">నెల # తర్వాత వర్తింపజేయండి</string>
+    <string name="emi_strategy_reduce_tenure">కాలవ్యవధి తగ్గించండి</string>
+    <string name="emi_strategy_reduce_emi">EMI తగ్గించండి</string>
+    <string name="emi_result_emi">నెలవారీ EMI</string>
+    <string name="emi_result_total_interest">మొత్తం వడ్డీ (ప్రీపేమెంట్ లేకుండా)</string>
+    <string name="emi_result_interest_saved">ఆదా చేసిన వడ్డీ</string>
+    <string name="emi_result_months_saved">కాలవ్యవధి %1$d నెలలు తగ్గింది</string>
+    <string name="emi_result_new_emi">ప్రీపేమెంట్ తర్వాత కొత్త EMI</string>
+
+    <string name="stp_label_source">మూల మొత్తం (₹)</string>
+    <string name="stp_label_transfer">నెలవారీ బదిలీ మొత్తం (₹)</string>
+    <string name="stp_label_duration">కాలవ్యవధి (నెలలు)</string>
+    <string name="stp_label_source_return">మూల నిధి రాబడి (%)</string>
+    <string name="stp_label_target_return">లక్ష్య నిధి రాబడి (%)</string>
+    <string name="stp_result_source_remaining">మూల నిధిలో మిగిలింది</string>
+    <string name="stp_result_target_value">లక్ష్య నిధిలో విలువ</string>
+
+    <string name="swp_label_corpus">ప్రారంభ నిధి (₹)</string>
+    <string name="swp_label_withdrawal">నెలవారీ ఉపసంహరణ (₹)</string>
+    <string name="swp_label_years">ఇన్ని సంవత్సరాలు అనుకరించండి</string>
+    <string name="swp_result_depletion">నిధి అయిపోతుంది</string>
+    <string name="swp_result_depletion_value">%1$d నెలల తర్వాత</string>
+    <string name="swp_result_no_depletion">నిధి అనుకరించిన కాలానికి మించి ఉంటుంది</string>
+    <string name="swp_result_total_withdrawn">మొత్తం ఉపసంహరించినది</string>
+    <string name="swp_result_final_balance">తుది నిల్వ</string>
+
+    <string name="fire_variant_traditional">సాంప్రదాయ FIRE</string>
+    <string name="fire_variant_lean">లీన్ FIRE</string>
+    <string name="fire_variant_fat">ఫ్యాట్ FIRE</string>
+    <string name="fire_variant_coast">కోస్ట్ FIRE</string>
+    <string name="fire_explainer_traditional">సాంప్రదాయ FIRE లక్ష్యం: మీ వార్షిక ఖర్చుల 25 రెట్లు, 4% సురక్షిత ఉపసంహరణ రేటు ఆధారంగా.</string>
+    <string name="fire_explainer_lean">FIRE యొక్క పొదుపు, కనిష్ట-ఖర్చు వెర్షన్ — సరళమైన జీవనశైలి కోసం చిన్న నిధి.</string>
+    <string name="fire_explainer_fat">FIRE యొక్క సౌకర్యవంతమైన, అధిక-ఖర్చు వెర్షన్ — మరింత సౌకర్యవంతమైన జీవనశైలి కోసం పెద్ద నిధి.</string>
+    <string name="fire_explainer_coast">అదనపు సహకారాలు లేకుండా, మీ ప్రస్తుత పొదుపు మాత్రమే మీ లక్ష్య వయస్సు నాటికి ప్రామాణిక పదవీ విరమణ నిధిని చేరుకుంటుందా అని తనిఖీ చేస్తుంది.</string>
+    <string name="fire_label_current_age">ప్రస్తుత వయస్సు</string>
+    <string name="fire_label_retirement_age">లక్ష్య పదవీ విరమణ వయస్సు</string>
+    <string name="fire_label_expenses">ప్రస్తుత వార్షిక ఖర్చులు (₹)</string>
+    <string name="fire_label_inflation">ద్రవ్యోల్బణ రేటు (%)</string>
+    <string name="fire_label_return">పదవీ విరమణకు ముందు ఆశించిన రాబడి (%)</string>
+    <string name="fire_label_existing_corpus">ఇప్పటికే ఉన్న నిధి (₹, ఐచ్ఛికం)</string>
+    <string name="fire_result_required_corpus">పదవీ విరమణలో అవసరమైన నిధి</string>
+    <string name="fire_result_required_sip">అవసరమైన నెలవారీ SIP</string>
+    <string name="fire_result_coast_achieved">కోస్ట్ FIRE సాధించారు — మీ ప్రస్తుత పొదుపులు స్వయంగా లక్ష్యాన్ని చేరుకుంటాయని అంచనా.</string>
+    <string name="fire_result_coast_not_achieved">ఇంకా కోస్ట్ FIRE చేరలేదు — పైన ఉన్న SIP ఇంకా ఏమి అవసరమో చూపిస్తుంది.</string>
+
+    <string name="goal_planning_title">లక్ష్య ప్రణాళిక</string>
+    <string name="goal_planning_label_name">లక్ష్యం పేరు</string>
+    <string name="goal_planning_label_type">లక్ష్యం రకం</string>
+    <string name="goal_type_retirement">పదవీ విరమణ</string>
+    <string name="goal_type_house">ఇల్లు</string>
+    <string name="goal_type_education">విద్య</string>
+    <string name="goal_type_car">కారు</string>
+    <string name="goal_type_custom">అనుకూలం</string>
+    <string name="goal_planning_button_save">లక్ష్యాన్ని సేవ్ చేసి ట్రాక్ చేయండి</string>
+    <string name="goal_planning_home_card_title">ఒక లక్ష్యాన్ని ప్రణాళిక చేయండి</string>
+    <string name="goal_planning_home_card_subtitle">ఒక లక్ష్యాన్ని నిర్ణయించి దానిని చేరుకోవడానికి ఏమి కావాలో చూడండి</string>
+
+    <string name="coming_soon_dismiss">అర్థమైంది</string>
+
+    <string name="disclaimer_banner">అంచనాలు మాత్రమే — ఇది పెట్టుబడి సలహా కాదు.</string>
+
+    <string name="tour_step_calculators_title">14 కాలిక్యులేటర్లు, ఉపయోగించడానికి సిద్ధంగా ఉన్నాయి</string>
+    <string name="tour_step_calculators_body">లెక్కించడం ప్రారంభించడానికి ఏదైనా కార్డ్‌ను నొక్కండి — ఖాతా అవసరం లేదు.</string>
+    <string name="tour_step_goals_title">మీ లక్ష్యాలను ప్రణాళిక చేయండి</string>
+    <string name="tour_step_goals_body">ఒక లక్ష్యాన్ని నిర్ణయించి దానిని చేరుకోవడానికి అవసరమైన SIP ని చూడండి.</string>
+    <string name="tour_step_settings_title">దీన్ని మీదిగా చేసుకోండి</string>
+    <string name="tour_step_settings_body">థీమ్, రంగు లేదా భాషను మార్చడానికి ఏదైనా స్క్రీన్‌లో సెట్టింగ్‌ల ఐకాన్‌ను నొక్కండి.</string>
+    <string name="tour_button_next">తదుపరి</string>
+    <string name="tour_button_done">ప్రారంభించండి</string>
+    <string name="tour_button_skip">దాటవేయి</string>
+
+    <string name="settings_theme_mode">థీమ్ మోడ్</string>
+    <string name="settings_theme_color">థీమ్ రంగు</string>
+    <string name="settings_randomize_theme">యాదృచ్ఛికం</string>
+    <string name="settings_language">భాష</string>
+    <string name="theme_mode_light">లైట్</string>
+    <string name="theme_mode_dark">డార్క్</string>
+    <string name="theme_mode_system">సిస్టమ్</string>
+    <string name="theme_preset_emerald">ఎమరాల్డ్</string>
+    <string name="theme_preset_ocean">ఓషన్</string>
+    <string name="theme_preset_sunset">సన్‌సెట్</string>
+    <string name="theme_preset_orchid">ఆర్కిడ్</string>
+    <string name="theme_preset_slate">స్లేట్</string>
+
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_marathi">मराठी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="language_telugu">తెలుగు</string>
+</resources>

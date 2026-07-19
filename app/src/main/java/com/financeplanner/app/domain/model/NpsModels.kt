@@ -1,0 +1,22 @@
+package com.financeplanner.app.domain.model
+
+data class NpsInput(
+    val monthlyContribution: Double,
+    val currentAge: Int,
+    val expectedReturnPercent: Double,
+    val annuityPercent: Double = 40.0 // % of corpus used to buy annuity; configurable, not hardcoded — PFRDA rules shift over time
+) {
+    init {
+        require(monthlyContribution > 0) { "Monthly contribution must be positive" }
+        require(currentAge in 18..59) { "NPS is open to subscribers aged 18-59" }
+        require(expectedReturnPercent >= 0) { "Expected return cannot be negative" }
+        require(annuityPercent in 40.0..100.0) { "Minimum 40% of NPS corpus must go towards annuity per current rules" }
+    }
+}
+
+data class NpsResult(
+    val corpusAtSixty: Double,
+    val lumpsumWithdrawal: Double,
+    val annuityCorpus: Double,
+    val estimatedMonthlyPension: Double
+)

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme — Compose (ui/theme/) owns the real Material 3 color schemes,
+         typography, and the curated theme presets. This just sets the window
+         background/splash to avoid a white flash before Compose takes over. -->
+    <style name="Theme.FinancePlanner" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

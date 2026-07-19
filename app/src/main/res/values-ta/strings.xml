@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">நிதி திட்டமிடுபவர்</string>
+
+    <string name="calc_sip">SIP கால்குலேட்டர்</string>
+    <string name="calc_lumpsum">லம்ப்சம் கால்குலேட்டர்</string>
+    <string name="calc_sip_vs_lumpsum">SIP vs லம்ப்சம்</string>
+    <string name="calc_goal_based_sip">இலக்கு அடிப்படையிலான SIP</string>
+    <string name="calc_tenure">கால அளவு கால்குலேட்டர்</string>
+    <string name="calc_ppf">PPF கால்குலேட்டர்</string>
+    <string name="calc_epf">EPF கால்குலேட்டர்</string>
+    <string name="calc_ssy">சுகன்யா சம்ரிதி யோஜனா</string>
+    <string name="calc_nps">NPS கால்குலேட்டர்</string>
+    <string name="calc_emi">EMI கால்குலேட்டர்</string>
+    <string name="calc_stp">STP கால்குலேட்டர்</string>
+    <string name="calc_swp">SWP கால்குலேட்டர்</string>
+    <string name="calc_inflation_goal">பணவீக்க-சரிசெய்யப்பட்ட இலக்கு</string>
+    <string name="calc_fire">FIRE கால்குலேட்டர்</string>
+
+    <string name="coming_soon_title">விரைவில் வரும்</string>
+    <string name="coming_soon_message">இந்த அம்சத்திற்கு கணக்கு தேவை, இது எதிர்கால புதுப்பிப்பில் கிடைக்கும்.</string>
+    <string name="calc_not_available_yet">இந்த கால்குலேட்டர் இன்னும் தயாராகவில்லை — விரைவில் மீண்டும் பாருங்கள்.</string>
+    <string name="disclaimer_text">முடிவுகள் நீங்கள் உள்ளிட்ட அனுமானங்களின் அடிப்படையிலான மதிப்பீடுகள் மற்றும் இது முதலீட்டு ஆலோசனை அல்ல.</string>
+    <string name="settings_icon_description">அமைப்புகள்</string>
+
+    <string name="sip_label_monthly_amount">மாதாந்திர முதலீடு (₹)</string>
+    <string name="sip_label_expected_return">எதிர்பார்க்கப்படும் ஆண்டு வருமானம் (%)</string>
+    <string name="sip_label_duration">காலம் (ஆண்டுகள்)</string>
+    <string name="sip_label_step_up">ஸ்டெப்-அப் % (விருப்பத்தேர்வு)</string>
+    <string name="sip_label_inflation">பணவீக்கம் % (விருப்பத்தேர்வு)</string>
+    <string name="sip_button_calculate">கணக்கிடு</string>
+    <string name="sip_result_maturity_value">முதிர்வு மதிப்பு</string>
+    <string name="sip_result_total_invested">மொத்த முதலீடு</string>
+    <string name="sip_result_wealth_gained">ஈட்டிய செல்வம்</string>
+    <string name="sip_result_inflation_adjusted">பணவீக்க-சரிசெய்யப்பட்ட மதிப்பு (இன்றைய மதிப்பு)</string>
+    <string name="sip_error_invalid_input">சரியான மாதாந்திர தொகை, வருமான விகிதம் மற்றும் காலத்தை உள்ளிடவும்.</string>
+    <string name="lumpsum_label_principal">முதலீட்டுத் தொகை (₹)</string>
+    <string name="lumpsum_result_principal">அசல் தொகை</string>
+
+    <string name="tenure_label_target_amount">இலக்குத் தொகை (₹)</string>
+    <string name="tenure_result_years">தேவையான காலம்</string>
+    <string name="tenure_result_years_value">%1$.1f ஆண்டுகள்</string>
+    <string name="tenure_error_unreachable">இந்த விகிதத்தில் 100 ஆண்டுகளில் இலக்கை அடைய முடியாது — அதிக மாதாந்திர தொகை அல்லது வருமான விகிதத்தை முயற்சிக்கவும்.</string>
+
+    <string name="inflation_goal_label_current_cost">தற்போதைய செலவு (₹)</string>
+    <string name="inflation_goal_label_inflation">பணவீக்க விகிதம் (%)</string>
+    <string name="inflation_goal_label_years">ஆண்டுகள்</string>
+    <string name="inflation_goal_result_future_cost">எதிர்கால செலவு</string>
+    <string name="inflation_goal_result_increase">அதிகரிப்பு தொகை</string>
+
+    <string name="goal_sip_label_target">இலக்குத் தொகை (₹)</string>
+    <string name="goal_sip_result_required_sip">தேவையான மாதாந்திர SIP</string>
+    <string name="goal_sip_result_inflation_target">பணவீக்க-சரிசெய்யப்பட்ட இலக்கு</string>
+
+    <string name="sip_vs_lumpsum_label_sip_amount">மாதாந்திர SIP தொகை (₹)</string>
+    <string name="sip_vs_lumpsum_label_lumpsum_amount">லம்ப்சம் தொகை (₹)</string>
+    <string name="sip_vs_lumpsum_column_sip">SIP</string>
+    <string name="sip_vs_lumpsum_column_lumpsum">லம்ப்சம்</string>
+
+    <string name="ppf_label_yearly_contribution">ஆண்டு பங்களிப்பு (₹, அதிகபட்சம் ₹1,50,000)</string>
+    <string name="ppf_label_duration">காலம் (ஆண்டுகள், குறைந்தது 15)</string>
+    <string name="ppf_label_rate">PPF வட்டி விகிதம் (%)</string>
+    <string name="ppf_result_total_contributed">மொத்த பங்களிப்பு</string>
+    <string name="ppf_result_interest_earned">ஈட்டிய வட்டி</string>
+
+    <string name="epf_label_salary">அடிப்படை மாதாந்திர சம்பளம் (₹)</string>
+    <string name="epf_label_employee_pct">பணியாளர் பங்களிப்பு (%)</string>
+    <string name="epf_label_employer_pct">முதலாளி பங்களிப்பு (%)</string>
+    <string name="epf_label_duration">காலம் (ஆண்டுகள்)</string>
+    <string name="epf_label_rate">எதிர்பார்க்கப்படும் EPF விகிதம் (%)</string>
+    <string name="epf_result_total_contributed">மொத்த பங்களிப்பு</string>
+    <string name="epf_result_interest_earned">ஈட்டிய வட்டி</string>
+
+    <string name="ssy_label_age">கணக்கு தொடங்கும்போது பெண் குழந்தையின் வயது (10 வயதுக்கு கீழ் இருக்க வேண்டும்)</string>
+    <string name="ssy_label_deposit">ஆண்டு வைப்பு (₹, அதிகபட்சம் ₹1,50,000)</string>
+    <string name="ssy_label_rate">SSY வட்டி விகிதம் (%)</string>
+    <string name="ssy_result_total_deposited">மொத்த வைப்பு</string>
+    <string name="ssy_result_interest_earned">ஈட்டிய வட்டி</string>
+    <string name="ssy_result_maturity_age">பெண் குழந்தைக்கு %1$d வயதாகும்போது முதிர்வடையும்</string>
+
+    <string name="nps_label_contribution">மாதாந்திர பங்களிப்பு (₹)</string>
+    <string name="nps_label_age">தற்போதைய வயது</string>
+    <string name="nps_label_return">எதிர்பார்க்கப்படும் ஆண்டு வருமானம் (%)</string>
+    <string name="nps_label_annuity">அன்யூட்டி ஒதுக்கீடு (%, குறைந்தது 40)</string>
+    <string name="nps_result_corpus">60 வயதில் மொத்த நிதி</string>
+    <string name="nps_result_lumpsum">முழுத்தொகை திரும்பப்பெறல்</string>
+    <string name="nps_result_annuity_corpus">அன்யூட்டி நிதி</string>
+    <string name="nps_result_pension">மதிப்பிடப்பட்ட மாதாந்திர ஓய்வூதியம்</string>
+
+    <string name="emi_label_loan_amount">கடன் தொகை (₹)</string>
+    <string name="emi_label_rate">வட்டி விகிதம் (%)</string>
+    <string name="emi_label_tenure">காலம் (மாதங்கள்)</string>
+    <string name="emi_toggle_prepayment">முன்கூட்டிய கட்டணம் சேர்க்கவும்</string>
+    <string name="emi_label_prepayment_amount">முன்கூட்டிய கட்டணத் தொகை (₹)</string>
+    <string name="emi_label_prepayment_month">மாதம் # க்குப் பிறகு பயன்படுத்தவும்</string>
+    <string name="emi_strategy_reduce_tenure">காலத்தை குறைக்கவும்</string>
+    <string name="emi_strategy_reduce_emi">EMI ஐ குறைக்கவும்</string>
+    <string name="emi_result_emi">மாதாந்திர EMI</string>
+    <string name="emi_result_total_interest">மொத்த வட்டி (முன்கூட்டிய கட்டணம் இல்லாமல்)</string>
+    <string name="emi_result_interest_saved">சேமிக்கப்பட்ட வட்டி</string>
+    <string name="emi_result_months_saved">காலம் %1$d மாதங்கள் குறைந்தது</string>
+    <string name="emi_result_new_emi">முன்கூட்டிய கட்டணத்திற்குப் பின் புதிய EMI</string>
+
+    <string name="stp_label_source">மூல தொகை (₹)</string>
+    <string name="stp_label_transfer">மாதாந்திர பரிமாற்றத் தொகை (₹)</string>
+    <string name="stp_label_duration">காலம் (மாதங்கள்)</string>
+    <string name="stp_label_source_return">மூல நிதி வருமானம் (%)</string>
+    <string name="stp_label_target_return">இலக்கு நிதி வருமானம் (%)</string>
+    <string name="stp_result_source_remaining">மூல நிதியில் மீதம்</string>
+    <string name="stp_result_target_value">இலக்கு நிதியில் மதிப்பு</string>
+
+    <string name="swp_label_corpus">தொடக்க நிதி (₹)</string>
+    <string name="swp_label_withdrawal">மாதாந்திர திரும்பப்பெறல் (₹)</string>
+    <string name="swp_label_years">இத்தனை ஆண்டுகளுக்கு உருவகப்படுத்தவும்</string>
+    <string name="swp_result_depletion">நிதி தீரும்</string>
+    <string name="swp_result_depletion_value">%1$d மாதங்களுக்குப் பிறகு</string>
+    <string name="swp_result_no_depletion">நிதி உருவகப்படுத்தப்பட்ட காலத்தை விட நீடிக்கும்</string>
+    <string name="swp_result_total_withdrawn">மொத்தம் திரும்பப்பெறப்பட்டது</string>
+    <string name="swp_result_final_balance">இறுதி இருப்பு</string>
+
+    <string name="fire_variant_traditional">பாரம்பரிய FIRE</string>
+    <string name="fire_variant_lean">லீன் FIRE</string>
+    <string name="fire_variant_fat">ஃபேட் FIRE</string>
+    <string name="fire_variant_coast">கோஸ்ட் FIRE</string>
+    <string name="fire_explainer_traditional">பாரம்பரிய FIRE இலக்கு: உங்கள் ஆண்டு செலவினங்களின் 25 மடங்கு, 4% பாதுகாப்பான திரும்பப்பெறல் விகிதத்தை அடிப்படையாகக் கொண்டது.</string>
+    <string name="fire_explainer_lean">FIRE இன் சிக்கனமான, குறைந்தபட்ச-செலவு பதிப்பு — எளிய வாழ்க்கை முறைக்கான சிறிய நிதி.</string>
+    <string name="fire_explainer_fat">FIRE இன் வசதியான, அதிக-செலவு பதிப்பு — நெகிழ்வான வாழ்க்கை முறைக்கான பெரிய நிதி.</string>
+    <string name="fire_explainer_coast">கூடுதல் பங்களிப்புகள் இல்லாமல், உங்கள் தற்போதைய சேமிப்பு மட்டும் உங்கள் இலக்கு வயதில் ஒரு நிலையான ஓய்வூதிய நிதியை அடையுமா என்பதைச் சரிபார்க்கிறது.</string>
+    <string name="fire_label_current_age">தற்போதைய வயது</string>
+    <string name="fire_label_retirement_age">இலக்கு ஓய்வு வயது</string>
+    <string name="fire_label_expenses">தற்போதைய ஆண்டு செலவுகள் (₹)</string>
+    <string name="fire_label_inflation">பணவீக்க விகிதம் (%)</string>
+    <string name="fire_label_return">ஓய்வுக்கு முந்தைய எதிர்பார்க்கப்படும் வருமானம் (%)</string>
+    <string name="fire_label_existing_corpus">தற்போதுள்ள நிதி (₹, விருப்பத்தேர்வு)</string>
+    <string name="fire_result_required_corpus">ஓய்வு பெறும்போது தேவையான நிதி</string>
+    <string name="fire_result_required_sip">தேவையான மாதாந்திர SIP</string>
+    <string name="fire_result_coast_achieved">கோஸ்ட் FIRE அடையப்பட்டது — உங்கள் தற்போதைய சேமிப்பு தானாகவே இலக்கை அடையும் என்று மதிப்பிடப்படுகிறது.</string>
+    <string name="fire_result_coast_not_achieved">இன்னும் கோஸ்ட் FIRE இல்லை — மேலே உள்ள SIP இன்னும் என்ன தேவை என்பதைக் காட்டுகிறது.</string>
+
+    <string name="goal_planning_title">இலக்கு திட்டமிடல்</string>
+    <string name="goal_planning_label_name">இலக்கின் பெயர்</string>
+    <string name="goal_planning_label_type">இலக்கு வகை</string>
+    <string name="goal_type_retirement">ஓய்வூதியம்</string>
+    <string name="goal_type_house">வீடு</string>
+    <string name="goal_type_education">கல்வி</string>
+    <string name="goal_type_car">கார்</string>
+    <string name="goal_type_custom">தனிப்பயன்</string>
+    <string name="goal_planning_button_save">இலக்கை சேமித்து கண்காணிக்கவும்</string>
+    <string name="goal_planning_home_card_title">ஒரு இலக்கைத் திட்டமிடுங்கள்</string>
+    <string name="goal_planning_home_card_subtitle">ஒரு இலக்கை நிர்ணயித்து அதை அடைய என்ன தேவை என்பதைப் பாருங்கள்</string>
+
+    <string name="coming_soon_dismiss">சரி</string>
+
+    <string name="disclaimer_banner">மதிப்பீடுகள் மட்டுமே — இது முதலீட்டு ஆலோசனை அல்ல.</string>
+
+    <string name="tour_step_calculators_title">14 கால்குலேட்டர்கள், பயன்படுத்தத் தயார்</string>
+    <string name="tour_step_calculators_body">கணக்கிடத் தொடங்க எந்த அட்டையையும் தட்டவும் — கணக்கு தேவையில்லை.</string>
+    <string name="tour_step_goals_title">உங்கள் இலக்குகளைத் திட்டமிடுங்கள்</string>
+    <string name="tour_step_goals_body">ஒரு இலக்கை நிர்ணயித்து அதை அடைய தேவையான SIP ஐப் பாருங்கள்.</string>
+    <string name="tour_step_settings_title">இதை உங்களுடையதாக்குங்கள்</string>
+    <string name="tour_step_settings_body">தீம், நிறம் அல்லது மொழியை மாற்ற எந்த திரையிலும் அமைப்புகள் ஐகானைத் தட்டவும்.</string>
+    <string name="tour_button_next">அடுத்து</string>
+    <string name="tour_button_done">தொடங்குங்கள்</string>
+    <string name="tour_button_skip">தவிர்</string>
+
+    <string name="settings_theme_mode">தீம் முறை</string>
+    <string name="settings_theme_color">தீம் நிறம்</string>
+    <string name="settings_randomize_theme">சீரற்றது</string>
+    <string name="settings_language">மொழி</string>
+    <string name="theme_mode_light">லைட்</string>
+    <string name="theme_mode_dark">டார்க்</string>
+    <string name="theme_mode_system">சிஸ்டம்</string>
+    <string name="theme_preset_emerald">எமரால்ட்</string>
+    <string name="theme_preset_ocean">ஓஷன்</string>
+    <string name="theme_preset_sunset">சன்செட்</string>
+    <string name="theme_preset_orchid">ஆர்க்கிட்</string>
+    <string name="theme_preset_slate">ஸ்லேட்</string>
+
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_marathi">मराठी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="language_telugu">తెలుగు</string>
+</resources>

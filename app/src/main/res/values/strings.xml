@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Finance Planner</string>
+
+    <!-- Calculator names — will be referenced across nav, cards, and screen titles -->
+    <string name="calc_sip">SIP Calculator</string>
+    <string name="calc_lumpsum">Lumpsum Calculator</string>
+    <string name="calc_sip_vs_lumpsum">SIP vs Lumpsum</string>
+    <string name="calc_goal_based_sip">Goal-based SIP</string>
+    <string name="calc_tenure">Tenure Calculator</string>
+    <string name="calc_ppf">PPF Calculator</string>
+    <string name="calc_epf">EPF Calculator</string>
+    <string name="calc_ssy">Sukanya Samriddhi Yojana</string>
+    <string name="calc_nps">NPS Calculator</string>
+    <string name="calc_emi">EMI Calculator</string>
+    <string name="calc_stp">STP Calculator</string>
+    <string name="calc_swp">SWP Calculator</string>
+    <string name="calc_inflation_goal">Inflation-adjusted Goal</string>
+    <string name="calc_fire">FIRE Calculator</string>
+
+    <!-- Common -->
+    <string name="coming_soon_title">Coming soon</string>
+    <string name="coming_soon_message">This feature needs an account, which is coming in a future update.</string>
+    <string name="calc_not_available_yet">This calculator isn\'t built yet — check back soon.</string>
+    <string name="disclaimer_text">Results are projections based on the assumptions you enter and are not investment advice.</string>
+    <string name="settings_icon_description">Settings</string>
+
+    <!-- SIP screen -->
+    <string name="sip_label_monthly_amount">Monthly investment (₹)</string>
+    <string name="sip_label_expected_return">Expected annual return (%)</string>
+    <string name="sip_label_duration">Duration (years)</string>
+    <string name="sip_label_step_up">Step-up % (optional)</string>
+    <string name="sip_label_inflation">Inflation % (optional)</string>
+    <string name="sip_button_calculate">Calculate</string>
+    <string name="sip_result_maturity_value">Maturity Value</string>
+    <string name="sip_result_total_invested">Total Invested</string>
+    <string name="sip_result_wealth_gained">Wealth Gained</string>
+    <string name="sip_result_inflation_adjusted">Inflation-Adjusted Value (today\'s value)</string>
+    <string name="sip_error_invalid_input">Please enter a valid monthly amount, return rate, and duration.</string>
+
+    <!-- Lumpsum screen -->
+    <string name="lumpsum_label_principal">Investment amount (₹)</string>
+    <string name="lumpsum_result_principal">Principal</string>
+
+    <!-- Tenure screen -->
+    <string name="tenure_label_target_amount">Target amount (₹)</string>
+    <string name="tenure_result_years">Time Required</string>
+    <string name="tenure_result_years_value">%1$.1f years</string>
+    <string name="tenure_error_unreachable">Target not reachable within 100 years at this rate — try a higher monthly amount or return rate.</string>
+
+    <!-- Inflation-adjusted Goal screen -->
+    <string name="inflation_goal_label_current_cost">Current cost (₹)</string>
+    <string name="inflation_goal_label_inflation">Inflation rate (%)</string>
+    <string name="inflation_goal_label_years">Years</string>
+    <string name="inflation_goal_result_future_cost">Future Cost</string>
+    <string name="inflation_goal_result_increase">Increase Amount</string>
+
+    <!-- Goal-based SIP screen -->
+    <string name="goal_sip_label_target">Goal amount (₹)</string>
+    <string name="goal_sip_result_required_sip">Required Monthly SIP</string>
+    <string name="goal_sip_result_inflation_target">Inflation-Adjusted Target</string>
+
+    <!-- SIP vs Lumpsum screen -->
+    <string name="sip_vs_lumpsum_label_sip_amount">Monthly SIP amount (₹)</string>
+    <string name="sip_vs_lumpsum_label_lumpsum_amount">Lumpsum amount (₹)</string>
+    <string name="sip_vs_lumpsum_column_sip">SIP</string>
+    <string name="sip_vs_lumpsum_column_lumpsum">Lumpsum</string>
+
+    <!-- PPF screen -->
+    <string name="ppf_label_yearly_contribution">Yearly contribution (₹, max ₹1,50,000)</string>
+    <string name="ppf_label_duration">Duration (years, min 15)</string>
+    <string name="ppf_label_rate">PPF interest rate (%)</string>
+    <string name="ppf_result_total_contributed">Total Contributed</string>
+    <string name="ppf_result_interest_earned">Interest Earned</string>
+
+    <!-- EPF screen -->
+    <string name="epf_label_salary">Basic monthly salary (₹)</string>
+    <string name="epf_label_employee_pct">Employee contribution (%)</string>
+    <string name="epf_label_employer_pct">Employer contribution (%)</string>
+    <string name="epf_label_duration">Duration (years)</string>
+    <string name="epf_label_rate">Expected EPF rate (%)</string>
+    <string name="epf_result_total_contributed">Total Contributed</string>
+    <string name="epf_result_interest_earned">Interest Earned</string>
+
+    <!-- SSY screen -->
+    <string name="ssy_label_age">Girl\'s age at account opening (must be under 10)</string>
+    <string name="ssy_label_deposit">Yearly deposit (₹, max ₹1,50,000)</string>
+    <string name="ssy_label_rate">SSY interest rate (%)</string>
+    <string name="ssy_result_total_deposited">Total Deposited</string>
+    <string name="ssy_result_interest_earned">Interest Earned</string>
+    <string name="ssy_result_maturity_age">Matures when girl turns %1$d</string>
+
+    <!-- NPS screen -->
+    <string name="nps_label_contribution">Monthly contribution (₹)</string>
+    <string name="nps_label_age">Current age</string>
+    <string name="nps_label_return">Expected annual return (%)</string>
+    <string name="nps_label_annuity">Annuity allocation (%, min 40)</string>
+    <string name="nps_result_corpus">Corpus at Age 60</string>
+    <string name="nps_result_lumpsum">Lump-sum Withdrawal</string>
+    <string name="nps_result_annuity_corpus">Annuity Corpus</string>
+    <string name="nps_result_pension">Estimated Monthly Pension</string>
+
+    <!-- EMI screen -->
+    <string name="emi_label_loan_amount">Loan amount (₹)</string>
+    <string name="emi_label_rate">Interest rate (%)</string>
+    <string name="emi_label_tenure">Tenure (months)</string>
+    <string name="emi_toggle_prepayment">Add a prepayment</string>
+    <string name="emi_label_prepayment_amount">Prepayment amount (₹)</string>
+    <string name="emi_label_prepayment_month">Apply after month #</string>
+    <string name="emi_strategy_reduce_tenure">Reduce tenure</string>
+    <string name="emi_strategy_reduce_emi">Reduce EMI</string>
+    <string name="emi_result_emi">Monthly EMI</string>
+    <string name="emi_result_total_interest">Total Interest (no prepayment)</string>
+    <string name="emi_result_interest_saved">Interest Saved</string>
+    <string name="emi_result_months_saved">Tenure Reduced By %1$d months</string>
+    <string name="emi_result_new_emi">New EMI After Prepayment</string>
+
+    <!-- STP screen -->
+    <string name="stp_label_source">Source lumpsum (₹)</string>
+    <string name="stp_label_transfer">Monthly transfer amount (₹)</string>
+    <string name="stp_label_duration">Duration (months)</string>
+    <string name="stp_label_source_return">Source fund return (%)</string>
+    <string name="stp_label_target_return">Target fund return (%)</string>
+    <string name="stp_result_source_remaining">Remaining in Source Fund</string>
+    <string name="stp_result_target_value">Value in Target Fund</string>
+
+    <!-- SWP screen -->
+    <string name="swp_label_corpus">Initial corpus (₹)</string>
+    <string name="swp_label_withdrawal">Monthly withdrawal (₹)</string>
+    <string name="swp_label_years">Simulate for (years)</string>
+    <string name="swp_result_depletion">Corpus Depletes After</string>
+    <string name="swp_result_depletion_value">%1$d months</string>
+    <string name="swp_result_no_depletion">Corpus outlasts the simulated period</string>
+    <string name="swp_result_total_withdrawn">Total Withdrawn</string>
+    <string name="swp_result_final_balance">Final Balance</string>
+
+    <!-- FIRE screen -->
+    <string name="fire_variant_traditional">Traditional FIRE</string>
+    <string name="fire_variant_lean">Lean FIRE</string>
+    <string name="fire_variant_fat">Fat FIRE</string>
+    <string name="fire_variant_coast">Coast FIRE</string>
+    <string name="fire_explainer_traditional">The classic FIRE target: 25x your annual expenses, based on a 4% safe withdrawal rate.</string>
+    <string name="fire_explainer_lean">A frugal, bare-minimum-expenses version of FIRE — a smaller corpus for a simpler lifestyle.</string>
+    <string name="fire_explainer_fat">A comfortable, higher-spending version of FIRE — a larger corpus for a more flexible lifestyle.</string>
+    <string name="fire_explainer_coast">Checks whether your current savings alone, left to grow, will reach a standard retirement corpus by your target age — without any further contributions.</string>
+    <string name="fire_label_current_age">Current age</string>
+    <string name="fire_label_retirement_age">Target retirement age</string>
+    <string name="fire_label_expenses">Current annual expenses (₹)</string>
+    <string name="fire_label_inflation">Inflation rate (%)</string>
+    <string name="fire_label_return">Pre-retirement expected return (%)</string>
+    <string name="fire_label_existing_corpus">Existing corpus (₹, optional)</string>
+    <string name="fire_result_required_corpus">Required Corpus at Retirement</string>
+    <string name="fire_result_required_sip">Required Monthly SIP</string>
+    <string name="fire_result_coast_achieved">Coast FIRE achieved — your existing savings are projected to reach the target on their own.</string>
+    <string name="fire_result_coast_not_achieved">Not yet at Coast FIRE — the SIP above shows what\'s still needed.</string>
+
+    <!-- Goal Planning screen -->
+    <string name="goal_planning_title">Goal Planning</string>
+    <string name="goal_planning_label_name">Goal name</string>
+    <string name="goal_planning_label_type">Goal type</string>
+    <string name="goal_type_retirement">Retirement</string>
+    <string name="goal_type_house">House</string>
+    <string name="goal_type_education">Education</string>
+    <string name="goal_type_car">Car</string>
+    <string name="goal_type_custom">Custom</string>
+    <string name="goal_planning_button_save">Save &amp; Track Goal</string>
+    <string name="goal_planning_home_card_title">Plan a Goal</string>
+    <string name="goal_planning_home_card_subtitle">Set a target and see what it takes to get there</string>
+
+    <!-- Coming Soon sheet -->
+    <string name="coming_soon_dismiss">Got it</string>
+
+    <!-- Disclaimer -->
+    <string name="disclaimer_banner">Projections only — not investment advice.</string>
+
+    <!-- App tour -->
+    <string name="tour_step_calculators_title">14 Calculators, Ready to Go</string>
+    <string name="tour_step_calculators_body">Tap any card to start calculating — no account needed.</string>
+    <string name="tour_step_goals_title">Plan Your Goals</string>
+    <string name="tour_step_goals_body">Set a target and see the SIP needed to reach it.</string>
+    <string name="tour_step_settings_title">Make It Yours</string>
+    <string name="tour_step_settings_body">Tap the settings icon on any screen to change theme, color, or language.</string>
+    <string name="tour_button_next">Next</string>
+    <string name="tour_button_done">Get Started</string>
+    <string name="tour_button_skip">Skip</string>
+
+    <!-- Settings sheet: theme -->
+    <string name="settings_theme_mode">Theme Mode</string>
+    <string name="settings_theme_color">Theme Color</string>
+    <string name="settings_randomize_theme">Randomize</string>
+    <string name="settings_language">Language</string>
+    <string name="theme_mode_light">Light</string>
+    <string name="theme_mode_dark">Dark</string>
+    <string name="theme_mode_system">System</string>
+    <string name="theme_preset_emerald">Emerald</string>
+    <string name="theme_preset_ocean">Ocean</string>
+    <string name="theme_preset_sunset">Sunset</string>
+    <string name="theme_preset_orchid">Orchid</string>
+    <string name="theme_preset_slate">Slate</string>
+
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_marathi">मराठी</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="language_telugu">తెలుగు</string>
+</resources>
