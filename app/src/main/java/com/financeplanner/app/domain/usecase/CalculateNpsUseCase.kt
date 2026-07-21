@@ -19,12 +19,20 @@ class CalculateNpsUseCase @Inject constructor() {
         val annuityCorpus = corpus * (input.annuityPercent / 100.0)
         val lumpsum = corpus - annuityCorpus
         val monthlyPension = annuityCorpus * (ASSUMED_ANNUITY_RATE_PERCENT / 100.0) / 12.0
+        val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
+            FinanceMath.inflationAdjustedValue(
+                futureValue = corpus,
+                annualInflationPercent = inflation,
+                years = (NPS_RETIREMENT_AGE - input.currentAge).toDouble()
+            )
+        }
 
         return NpsResult(
             corpusAtSixty = corpus,
             lumpsumWithdrawal = lumpsum,
             annuityCorpus = annuityCorpus,
-            estimatedMonthlyPension = monthlyPension
+            estimatedMonthlyPension = monthlyPension,
+            inflationAdjustedValue = inflationAdjustedValue
         )
     }
 }

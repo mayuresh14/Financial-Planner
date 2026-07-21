@@ -1,16 +1,13 @@
 package com.financeplanner.app.ui.calculators.goalbasedsip
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -20,10 +17,15 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -33,6 +35,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -41,8 +44,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.GoalBasedSipResult
+import com.financeplanner.app.domain.model.GoalType
+import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
+import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.FieldHelpIcon
+import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
+import com.financeplanner.app.ui.common.formatAmountWithWords
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -56,6 +66,14 @@ fun GoalBasedSipScreen(
     val state by viewModel.uiState.collectAsState()
     val preferences by settingsViewModel.preferences.collectAsState()
     var showSettingsSheet by remember { mutableStateOf(false) }
+    val resultSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val coroutineScope = rememberCoroutineScope()
+
+    fun dismissResultSheet() {
+        coroutineScope.launch { resultSheetState.hide() }.invokeOnCompletion {
+            if (!resultSheetState.isVisible) viewModel.onResultDismissed()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -74,10 +92,33 @@ fun GoalBasedSipScreen(
             modifier = Modifier.padding(padding).padding(16.dp).verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            Text(
+                text = stringResource(R.string.goal_sip_screen_description),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
             OutlinedTextField(
+                value = state.goalName, onValueChange = viewModel::onNameChange,
+                label = { Text(stringResource(R.string.goal_planning_label_name)) },
+                modifier = Modifier.fillMaxWidth(), singleLine = true
+            )
+
+            Text(stringResource(R.string.goal_planning_label_type), style = MaterialTheme.typography.labelLarge)
+            LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                items(GoalType.entries) { type ->
+                    FilterChip(
+                        selected = state.goalType == type,
+                        onClick = { viewModel.onTypeChange(type) },
+                        label = { Text(goalTypeLabel(type)) }
+                    )
+                }
+            }
+
+            AmountOutlinedTextField(
                 value = state.targetAmount, onValueChange = viewModel::onTargetAmountChange,
                 label = { Text(stringResource(R.string.goal_sip_label_target)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true
+                modifier = Modifier.fillMaxWidth()
             )
             OutlinedTextField(
                 value = state.expectedReturnPercent, onValueChange = viewModel::onExpectedReturnChange,
@@ -93,7 +134,8 @@ fun GoalBasedSipScreen(
                 OutlinedTextField(
                     value = state.inflationPercent, onValueChange = viewModel::onInflationChange,
                     label = { Text(stringResource(R.string.sip_label_inflation)) },
-                    modifier = Modifier.width(160.dp), singleLine = true
+                    modifier = Modifier.width(160.dp), singleLine = true,
+                    trailingIcon = { FieldHelpIcon(stringResource(R.string.help_inflation_rate)) }
                 )
             }
 
@@ -108,12 +150,22 @@ fun GoalBasedSipScreen(
             Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.sip_button_calculate))
             }
+        }
+    }
 
-            AnimatedVisibility(
-                visible = state.result != null,
-                enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()
+    if (state.result != null) {
+        ModalBottomSheet(
+            onDismissRequest = ::dismissResultSheet,
+            sheetState = resultSheetState
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                state.result?.let { GoalBasedSipResultCard(it) }
+                state.result?.let { GoalBasedSipResultCard(it, state) }
+                OutlinedButton(onClick = viewModel::onSaveGoalClicked, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.goal_planning_button_save))
+                }
             }
         }
     }
@@ -125,35 +177,80 @@ fun GoalBasedSipScreen(
             onThemePresetChange = settingsViewModel::setThemePreset,
             onRandomizeTheme = settingsViewModel::randomizeTheme,
             onLanguageChange = settingsViewModel::setLanguage,
+            onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
+            onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
             onDismiss = { showSettingsSheet = false }
         )
+    }
+
+    if (state.showComingSoonSheet) {
+        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
     }
 }
 
 @Composable
-private fun GoalBasedSipResultCard(result: GoalBasedSipResult) {
-    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")) }
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = MaterialTheme.shapes.large
-    ) {
-        Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(text = stringResource(R.string.goal_sip_result_required_sip), style = MaterialTheme.typography.labelLarge)
-            Text(
-                text = currencyFormat.format(result.requiredMonthlySip),
-                style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
+private fun goalTypeLabel(type: GoalType): String = when (type) {
+    GoalType.RETIREMENT -> stringResource(R.string.goal_type_retirement)
+    GoalType.HOUSE -> stringResource(R.string.goal_type_house)
+    GoalType.EDUCATION -> stringResource(R.string.goal_type_education)
+    GoalType.CAR -> stringResource(R.string.goal_type_car)
+    GoalType.CUSTOM -> stringResource(R.string.goal_type_custom)
+}
+
+@Composable
+private fun GoalBasedSipResultCard(result: GoalBasedSipResult, state: GoalBasedSipUiState) {
+    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")).apply { maximumFractionDigits = 0 } }
+
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        val narrative = buildString {
+            append(
+                stringResource(
+                    R.string.goal_sip_result_narrative,
+                    formatAmountWithWords(state.targetAmount.toDoubleOrNull() ?: 0.0, currencyFormat),
+                    state.durationYears,
+                    state.expectedReturnPercent,
+                    formatAmountWithWords(result.requiredMonthlySip, currencyFormat)
+                )
             )
-            result.inflationAdjustedTarget?.let { target ->
-                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = stringResource(R.string.goal_sip_result_inflation_target), style = MaterialTheme.typography.bodyMedium)
-                    Text(
-                        text = currencyFormat.format(target),
-                        style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold
+            result.inflationAdjustedTarget?.let {
+                append(
+                    stringResource(
+                        R.string.goal_sip_result_narrative_inflation_addendum,
+                        state.inflationPercent,
+                        formatAmountWithWords(it, currencyFormat)
                     )
+                )
+            }
+        }
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            shape = MaterialTheme.shapes.large
+        ) {
+            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = stringResource(R.string.goal_sip_result_required_sip), style = MaterialTheme.typography.labelLarge)
+                Text(
+                    text = currencyFormat.format(result.requiredMonthlySip),
+                    style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
+                )
+                result.inflationAdjustedTarget?.let { target ->
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = stringResource(R.string.goal_sip_result_inflation_target),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = LocalContentColor.current.copy(alpha = 0.75f)
+                        )
+                        Text(
+                            text = currencyFormat.format(target),
+                            style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold
+                        )
+                    }
                 }
             }
         }
+
+        NarrativeResultCard(narrative)
     }
 }

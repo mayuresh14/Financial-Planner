@@ -37,5 +37,8 @@ data class AppDisplayPreferences(
     val themeMode: ThemeMode = ThemeMode.SYSTEM_DEFAULT,
     val themePreset: ThemePreset = ThemePreset.EMERALD,
     val language: AppLanguage = AppLanguage.ENGLISH,
-    val hasSeenAppTour: Boolean = false
+    val hasSeenAppTour: Boolean = false,
+    val defaultInflationPercent: Double = 6.0,
+    val defaultExpectedReturnPercent: Double = 12.0,
+    val hasSetDefaultRates: Boolean = false
 )

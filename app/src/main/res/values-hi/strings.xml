@@ -14,54 +14,164 @@
     <string name="calc_emi">EMI कैलकुलेटर</string>
     <string name="calc_stp">STP कैलकुलेटर</string>
     <string name="calc_swp">SWP कैलकुलेटर</string>
-    <string name="calc_inflation_goal">महंगाई-समायोजित लक्ष्य</string>
+    <string name="calc_inflation_goal">भविष्य लागत कैलकुलेटर</string>
     <string name="calc_fire">FIRE कैलकुलेटर</string>
+    <string name="calc_fd">FD कैलकुलेटर</string>
+    <string name="calc_rd">RD कैलकुलेटर</string>
+    <string name="calc_smoke">धूम्रपान लागत कैलकुलेटर</string>
+    <string name="calc_alcohol">शराब लागत कैलकुलेटर</string>
+    <string name="calc_eating_out">बाहर खाना बनाम घर का खाना</string>
+    <string name="calc_gratuity">ग्रेच्युटी कैलकुलेटर</string>
+
+    <string name="sip_screen_description">जानें कि नियमित SIP निवेश समय के साथ कैसे बढ़ता है, स्टेप-अप और महंगाई समायोजन के वैकल्पिक विकल्पों के साथ।</string>
+    <string name="lumpsum_screen_description">जानें कि एकमुश्त निवेश समय के साथ कैसे बढ़ता है।</string>
+    <string name="sip_vs_lumpsum_screen_description">तुलना करें कि समान राशि मासिक SIP के माध्यम से या एक साथ एकमुश्त निवेश करने पर कैसे बढ़ती है।</string>
+    <string name="goal_sip_screen_description">जानें कि किसी विशेष बचत लक्ष्य तक पहुंचने के लिए आपको हर महीने कितना निवेश करना होगा।</string>
+    <string name="tenure_screen_description">जानें कि किसी लक्ष्य राशि तक पहुंचने में मासिक निवेश को कितना समय लगेगा।</string>
+    <string name="ppf_screen_description">अपने पब्लिक प्रोविडेंट फंड (PPF) खाते के परिपक्वता मूल्य का अनुमान लगाएं।</string>
+    <string name="epf_screen_description">सेवानिवृत्ति पर अपने कर्मचारी भविष्य निधि (EPF) कोष का अनुमान लगाएं।</string>
+    <string name="ssy_screen_description">अपनी बेटी के लिए सुकन्या समृद्धि योजना (SSY) खाते के परिपक्वता मूल्य का अनुमान लगाएं।</string>
+    <string name="nps_screen_description">सेवानिवृत्ति पर अपने राष्ट्रीय पेंशन प्रणाली (NPS) कोष, एकमुश्त राशि और मासिक पेंशन का अनुमान लगाएं।</string>
+    <string name="emi_screen_description">अपनी मासिक ऋण EMI की गणना करें, और वैकल्पिक प्रीपेमेंट के प्रभाव को देखें।</string>
+    <string name="stp_screen_description">एक व्यवस्थित स्थानांतरण योजना (STP) का अनुकरण करें — एक एकमुश्त राशि को धीरे-धीरे एक फंड से दूसरे फंड में स्थानांतरित करना।</string>
+    <string name="swp_screen_description">एक व्यवस्थित निकासी योजना (SWP) का अनुकरण करें — निवेश कोष से नियमित निकासी।</string>
+    <string name="inflation_goal_screen_description">देखें कि महंगाई के कारण आज की लागत भविष्य में कितनी बढ़ जाएगी।</string>
+    <string name="fire_screen_description">FIRE (फाइनेंशियल इंडिपेंडेंस, रिटायर अर्ली) का मतलब है इतना बड़ा कोष बनाना कि केवल आपका निवेश ही आपके खर्चों को पूरा कर सके। आवश्यक कोष और उस तक पहुंचने के लिए आवश्यक SIP का अनुमान लगाएं।</string>
+    <string name="fd_screen_description">फिक्स्ड डिपॉजिट (FD) के परिपक्वता मूल्य का अनुमान लगाएं, त्रैमासिक चक्रवृद्धि के साथ।</string>
+    <string name="rd_screen_description">रिकरिंग डिपॉजिट (RD) के परिपक्वता मूल्य का अनुमान लगाएं, जहां आप हर महीने एक निश्चित राशि जमा करते हैं।</string>
+    <string name="smoke_screen_description">देखें कि धूम्रपान से आपको समय के साथ कितना खर्च होता है, और अगर वह पैसा निवेश किया जाए तो वह कितना बढ़ सकता है।</string>
+    <string name="alcohol_screen_description">देखें कि शराब पीने से आपको समय के साथ कितना खर्च होता है, और अगर वह पैसा निवेश किया जाए तो वह कितना बढ़ सकता है।</string>
+    <string name="eating_out_screen_description">बाहर खाने के खर्च की तुलना घर के खाने से करें, और देखें कि बचत निवेश करने पर कितनी बढ़ सकती है।</string>
+    <string name="gratuity_screen_description">ग्रेच्युटी भुगतान अधिनियम के तहत आपको देय ग्रेच्युटी का अनुमान लगाएं, आपके अंतिम वेतन और सेवा के वर्षों के आधार पर।</string>
 
     <string name="coming_soon_title">जल्द आ रहा है</string>
     <string name="coming_soon_message">इस सुविधा के लिए खाता आवश्यक है, जो आगामी अपडेट में उपलब्ध होगा।</string>
     <string name="calc_not_available_yet">यह कैलकुलेटर अभी तैयार नहीं है — जल्द ही देखें।</string>
     <string name="disclaimer_text">परिणाम आपके द्वारा दर्ज की गई मान्यताओं पर आधारित अनुमान हैं और यह निवेश सलाह नहीं है।</string>
     <string name="settings_icon_description">सेटिंग्स</string>
+    <string name="amount_in_words_suffix">%1$s रुपये</string>
+    <string name="field_help_icon_description">इसका क्या मतलब है?</string>
+    <string name="field_help_dismiss">समझ गया</string>
+    <string name="help_step_up">बढ़ती आय के साथ तालमेल बिठाने के लिए हर साल अपने मासिक निवेश को इस प्रतिशत से बढ़ाएं। हर महीने एक निश्चित राशि निवेश करने के लिए इसे खाली छोड़ दें।</string>
+    <string name="help_inflation_rate">वह दर जिस पर समय के साथ कीमतें बढ़ती हैं। सामान्य अनुमानित मूल्य के साथ-साथ आज की क्रय शक्ति के अनुसार समायोजित परिणाम देखने के लिए इसे दर्ज करें।</string>
+    <string name="help_nps_annuity">आपके NPS कोष का वह हिस्सा जो सेवानिवृत्ति पर एन्युटी (नियमित पेंशन) खरीदने के लिए जाना चाहिए — वर्तमान PFRDA नियमों के अनुसार कम से कम 40% आवश्यक है। शेष राशि एकमुश्त निकाली जा सकती है। यह न्यूनतम सीमा PFRDA द्वारा तय की जाती है और समय के साथ बदल सकती है — यदि यह वर्तमान नियम से मेल नहीं खाती, तो इसे यहां संपादित करें; हम किसी भी बदलाव के बाद जल्द ही ऐप का डिफ़ॉल्ट अपडेट कर देंगे।</string>
+    <string name="help_ppf_rate">यह इस ऐप के निर्माण के समय सरकार द्वारा अधिसूचित PPF ब्याज दर है। यह दर हर तिमाही वित्त मंत्रालय द्वारा संशोधित की जाती है — यदि यह वर्तमान आधिकारिक दर से मेल नहीं खाती, तो इसे यहां संपादित करें; हम किसी भी बदलाव के बाद जल्द ही ऐप का डिफ़ॉल्ट अपडेट कर देंगे।</string>
+    <string name="help_ssy_rate">यह इस ऐप के निर्माण के समय सरकार द्वारा अधिसूचित सुकन्या समृद्धि योजना ब्याज दर है। यह दर हर तिमाही वित्त मंत्रालय द्वारा संशोधित की जाती है — यदि यह वर्तमान आधिकारिक दर से मेल नहीं खाती, तो इसे यहां संपादित करें; हम किसी भी बदलाव के बाद जल्द ही ऐप का डिफ़ॉल्ट अपडेट कर देंगे।</string>
+    <string name="help_epf_rate">यह इस ऐप के निर्माण के समय सरकार द्वारा अधिसूचित EPF ब्याज दर है। यह दर हर साल EPFO द्वारा संशोधित की जाती है — यदि यह वर्तमान आधिकारिक दर से मेल नहीं खाती, तो इसे यहां संपादित करें; हम किसी भी बदलाव के बाद जल्द ही ऐप का डिफ़ॉल्ट अपडेट कर देंगे।</string>
+    <string name="narrative_inflation_addendum">\n\nमहंगाई के अनुसार समायोजित, आज के बराबर मूल्य %1$s होगा।</string>
 
     <string name="sip_label_monthly_amount">मासिक निवेश (₹)</string>
+    <string name="sip_label_investment_amount">निवेश राशि (₹)</string>
     <string name="sip_label_expected_return">अपेक्षित वार्षिक रिटर्न (%)</string>
     <string name="sip_label_duration">अवधि (वर्ष)</string>
     <string name="sip_label_step_up">स्टेप-अप % (वैकल्पिक)</string>
     <string name="sip_label_inflation">महंगाई % (वैकल्पिक)</string>
     <string name="sip_button_calculate">गणना करें</string>
+    <string name="sip_button_save">सहेजें</string>
+    <string name="sip_frequency_daily">दैनिक</string>
+    <string name="sip_frequency_weekly">साप्ताहिक</string>
+    <string name="sip_frequency_monthly">मासिक</string>
+    <string name="sip_frequency_adverb_daily">प्रतिदिन</string>
+    <string name="sip_frequency_adverb_weekly">प्रति सप्ताह</string>
+    <string name="sip_frequency_adverb_monthly">प्रति माह</string>
+    <string name="sip_advanced_options_toggle">उन्नत विकल्प</string>
+    <string name="sip_stepup_mode_percentage">% स्टेप-अप</string>
+    <string name="sip_stepup_mode_fixed">निश्चित राशि स्टेप-अप</string>
+    <string name="sip_label_stepup_fixed_amount">स्टेप-अप राशि (₹/वर्ष, वैकल्पिक)</string>
+    <string name="sip_label_expense_ratio">व्यय अनुपात % (वैकल्पिक)</string>
+    <string name="help_stepup_fixed_amount">प्रतिशत के बजाय, हर साल अपने निवेश को इस निश्चित राशि से बढ़ाएं — यह तब उपयोगी है जब आप अपने योगदान के आकार की परवाह किए बिना एक अनुमानित स्टेप-अप चाहते हैं।</string>
+    <string name="help_expense_ratio">फंड का वार्षिक व्यय अनुपात — यह वह शुल्क है जो वह आपके पैसे का प्रबंधन करने के लिए लेता है। विकास का अनुमान लगाने से पहले इसे आपके अपेक्षित रिटर्न से घटाया जाता है, क्योंकि यह आपके वास्तविक रिटर्न पर लगातार असर डालता है।</string>
     <string name="sip_result_maturity_value">परिपक्वता राशि</string>
     <string name="sip_result_total_invested">कुल निवेश</string>
     <string name="sip_result_wealth_gained">अर्जित धन</string>
+    <string name="sip_result_expense_cost">फंड व्यय की लागत</string>
     <string name="sip_result_inflation_adjusted">महंगाई-समायोजित मूल्य (आज का मूल्य)</string>
     <string name="sip_error_invalid_input">कृपया मान्य मासिक राशि, रिटर्न दर और अवधि दर्ज करें।</string>
+    <string name="sip_result_narrative">यदि आप %3$s वर्षों के लिए %4$s%% की अपेक्षित वार्षिक रिटर्न दर पर SIP के माध्यम से %1$s %2$s निवेश करते हैं, तो आपका निवेश अंत तक बढ़कर %5$s हो सकता है।</string>
+    <string name="sip_result_narrative_stepup_percentage_addendum">\n\nहर साल %1$s%% के स्टेप-अप के साथ, बढ़ती आय के साथ तालमेल बिठाने के लिए आपका योगदान समय के साथ बढ़ता है — ऊपर दिया गया परिणाम इसे पहले से ही दर्शाता है।</string>
+    <string name="sip_result_narrative_stepup_fixed_addendum">\n\nहर साल आपके योगदान में %1$s की वृद्धि के साथ, यह स्टेप-अप ऊपर दिए गए परिणाम में पहले से ही शामिल है।</string>
+    <string name="sip_result_narrative_expense_addendum">\n\n%1$s%% के वार्षिक व्यय अनुपात के साथ, फंड की लागत आपकी संचित राशि को लगभग %2$s तक कम कर सकती है — ऊपर दी गई राशि पहले से ही इसे ध्यान में रखती है।</string>
     <string name="lumpsum_label_principal">निवेश राशि (₹)</string>
     <string name="lumpsum_result_principal">मूलधन</string>
+    <string name="lumpsum_result_narrative">यदि आप %2$s वर्षों के लिए %3$s%% की अपेक्षित वार्षिक रिटर्न दर पर %1$s एकमुश्त निवेश करते हैं, तो यह अंत तक बढ़कर %4$s हो सकता है।</string>
 
     <string name="tenure_label_target_amount">लक्ष्य राशि (₹)</string>
     <string name="tenure_result_years">आवश्यक समय</string>
     <string name="tenure_result_years_value">%1$.1f वर्ष</string>
     <string name="tenure_error_unreachable">इस दर पर 100 वर्षों में लक्ष्य तक नहीं पहुंचा जा सकता — अधिक मासिक राशि या रिटर्न दर आज़माएं।</string>
+    <string name="tenure_result_narrative">%2$s%% की अपेक्षित वार्षिक रिटर्न दर पर हर महीने %1$s निवेश करने पर, आपके %4$s के लक्ष्य तक पहुंचने में लगभग %3$s लगेंगे।</string>
 
     <string name="inflation_goal_label_current_cost">वर्तमान लागत (₹)</string>
     <string name="inflation_goal_label_inflation">महंगाई दर (%)</string>
     <string name="inflation_goal_label_years">वर्ष</string>
     <string name="inflation_goal_result_future_cost">भविष्य की लागत</string>
     <string name="inflation_goal_result_increase">वृद्धि राशि</string>
+    <string name="inflation_goal_result_narrative">%1$s%% महंगाई दर पर, जो चीज़ आज %2$s की है वह %4$s वर्षों में %3$s की हो जाएगी — यानी %5$s की वृद्धि।</string>
 
     <string name="goal_sip_label_target">लक्ष्य राशि (₹)</string>
     <string name="goal_sip_result_required_sip">आवश्यक मासिक SIP</string>
     <string name="goal_sip_result_inflation_target">महंगाई-समायोजित लक्ष्य</string>
+    <string name="goal_sip_result_narrative">%2$s वर्षों में %3$s%% की अपेक्षित वार्षिक रिटर्न दर पर %1$s के लक्ष्य तक पहुंचने के लिए, आपको SIP के माध्यम से हर महीने %4$s निवेश करना होगा।</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nध्यान दें: %1$s%% महंगाई को ध्यान में रखते हुए, आपके लक्ष्य तक पहुंचने तक इसकी वास्तविक लागत %2$s होगी — ऊपर दिया गया SIP पहले से ही इस समायोजित राशि को लक्षित करता है।</string>
 
     <string name="sip_vs_lumpsum_label_sip_amount">मासिक SIP राशि (₹)</string>
     <string name="sip_vs_lumpsum_label_lumpsum_amount">लम्पसम राशि (₹)</string>
     <string name="sip_vs_lumpsum_column_sip">SIP</string>
     <string name="sip_vs_lumpsum_column_lumpsum">लम्पसम</string>
+    <string name="sip_vs_lumpsum_result_narrative">SIP के माध्यम से %2$s वर्षों तक %3$s%% अपेक्षित रिटर्न पर हर महीने %1$s निवेश करने पर यह बढ़कर %4$s हो सकता है। उसी अवधि में %5$s एकमुश्त निवेश करने पर यह बढ़कर %6$s हो सकता है।</string>
 
     <string name="ppf_label_yearly_contribution">वार्षिक योगदान (₹, अधिकतम ₹1,50,000)</string>
     <string name="ppf_label_duration">अवधि (वर्ष, न्यूनतम 15)</string>
     <string name="ppf_label_rate">PPF ब्याज दर (%)</string>
     <string name="ppf_result_total_contributed">कुल योगदान</string>
     <string name="ppf_result_interest_earned">अर्जित ब्याज</string>
+    <string name="ppf_result_narrative">अपने PPF खाते में %2$s वर्षों तक हर साल %1$s का योगदान करने पर, %3$s%% ब्याज दर पर आपका निवेश बढ़कर %4$s हो सकता है, जिसमें %5$s ब्याज के रूप में अर्जित होगा।</string>
+
+    <string name="fd_label_principal">जमा राशि</string>
+    <string name="fd_label_rate">ब्याज दर (%)</string>
+    <string name="fd_label_tenure">अवधि (महीने)</string>
+    <string name="fd_result_maturity_value">परिपक्वता मूल्य</string>
+    <string name="fd_result_interest_earned">अर्जित ब्याज</string>
+    <string name="fd_result_narrative">%2$s महीनों के लिए %3$s%% ब्याज दर (त्रैमासिक चक्रवृद्धि) पर फिक्स्ड डिपॉजिट में %1$s जमा करने पर, यह बढ़कर %4$s हो सकता है, जिसमें %5$s ब्याज के रूप में अर्जित होगा।</string>
+    <string name="help_fd_rate">बैंक FD ब्याज दरें बैंक और अवधि के अनुसार अलग-अलग होती हैं — अपने बैंक की वर्तमान दर जांचें और यहां दर्ज करें। यह कैलकुलेटर त्रैमासिक चक्रवृद्धि मानता है, जो भारतीय FD के लिए सबसे सामान्य तरीका है।</string>
+
+    <string name="rd_label_deposit">मासिक जमा</string>
+    <string name="rd_label_rate">ब्याज दर (%)</string>
+    <string name="rd_label_tenure">अवधि (महीने)</string>
+    <string name="rd_result_maturity_value">परिपक्वता मूल्य</string>
+    <string name="rd_result_total_deposited">कुल जमा राशि</string>
+    <string name="rd_result_interest_earned">अर्जित ब्याज</string>
+    <string name="rd_result_narrative">%2$s महीनों के लिए %3$s%% ब्याज दर (त्रैमासिक चक्रवृद्धि) पर रिकरिंग डिपॉजिट में हर महीने %1$s जमा करने पर, यह बढ़कर %4$s हो सकता है, जिसमें %5$s ब्याज के रूप में अर्जित होगा।</string>
+    <string name="help_rd_rate">बैंक RD ब्याज दरें बैंक और अवधि के अनुसार अलग-अलग होती हैं — अपने बैंक की वर्तमान दर जांचें और यहां दर्ज करें। यह कैलकुलेटर त्रैमासिक चक्रवृद्धि मानता है, जो भारतीय RD के लिए सबसे सामान्य तरीका है।</string>
+
+    <string name="smoke_label_cigarettes_per_day">प्रति दिन सिगरेट</string>
+    <string name="smoke_label_cost_per_cigarette">प्रति सिगरेट लागत</string>
+    <string name="smoke_label_years">अवधि (वर्ष)</string>
+    <string name="smoke_result_total_spent">कुल खर्च की गई राशि</string>
+    <string name="smoke_result_invested_value">अगर निवेश किया जाता</string>
+    <string name="smoke_result_narrative">प्रतिदिन %1$s सिगरेट, %2$s प्रति सिगरेट की दर से, आपको हर महीने %3$s का खर्च देती हैं। %4$s वर्षों में, यह %5$s हो जाता है — लेकिन अगर आप हर महीने उतनी ही राशि निवेश करते, %6$s%% रिटर्न पर, तो यह बढ़कर %7$s हो सकती थी।</string>
+
+    <string name="alcohol_label_drinks_per_week">प्रति सप्ताह ड्रिंक्स</string>
+    <string name="alcohol_label_cost_per_drink">प्रति ड्रिंक लागत</string>
+    <string name="alcohol_label_years">अवधि (वर्ष)</string>
+    <string name="alcohol_result_total_spent">कुल खर्च की गई राशि</string>
+    <string name="alcohol_result_invested_value">अगर निवेश किया जाता</string>
+    <string name="alcohol_result_narrative">प्रति सप्ताह %1$s ड्रिंक्स, %2$s प्रति ड्रिंक की दर से, आपको हर महीने %3$s का खर्च देती हैं। %4$s वर्षों में, यह %5$s हो जाता है — लेकिन अगर आप हर महीने उतनी ही राशि निवेश करते, %6$s%% रिटर्न पर, तो यह बढ़कर %7$s हो सकती थी।</string>
+
+    <string name="eating_out_label_eating_out_spend">मासिक बाहर खाने का खर्च</string>
+    <string name="eating_out_label_home_cooking_spend">मासिक घर के खाने का खर्च</string>
+    <string name="eating_out_label_years">अवधि (वर्ष)</string>
+    <string name="eating_out_result_total_saved">कुल बचत की गई राशि</string>
+    <string name="eating_out_result_invested_value">अगर निवेश किया जाता</string>
+    <string name="eating_out_result_narrative">बाहर खाने के बजाय घर पर खाना बनाने से आपको हर महीने %1$s की बचत होती है। %2$s वर्षों में, यह %3$s हो जाती है — और अगर आप हर महीने उतनी ही बचत निवेश करते, %4$s%% रिटर्न पर, तो यह बढ़कर %5$s हो सकती थी।</string>
+    <string name="eating_out_error_invalid_input">कृपया एक मान्य बाहर खाने का खर्च, घर के खाने का खर्च, रिटर्न दर और अवधि दर्ज करें। बाहर खाने का खर्च घर के खाने के खर्च से अधिक होना चाहिए।</string>
+
+    <string name="gratuity_label_salary">अंतिम मासिक वेतन (मूल + DA)</string>
+    <string name="gratuity_label_years_of_service">सेवा के वर्ष</string>
+    <string name="gratuity_result_amount">ग्रेच्युटी राशि</string>
+    <string name="gratuity_result_not_eligible">नोट: ग्रेच्युटी भुगतान अधिनियम के तहत न्यूनतम 5 वर्षों की निरंतर सेवा आवश्यक है। यह केवल एक अनुमानित गणना है।</string>
+    <string name="gratuity_result_narrative">%1$s के अंतिम मासिक वेतन और %2$s वर्षों की सेवा के साथ, आपकी अनुमानित ग्रेच्युटी %3$s है, ग्रेच्युटी भुगतान अधिनियम सूत्र (15 × वेतन × सेवा के वर्ष ÷ 26) के अनुसार, जो ₹20,00,000 तक सीमित है।</string>
+    <string name="help_gratuity_formula">ग्रेच्युटी = (15 × अंतिम मासिक वेतन × सेवा के वर्ष) ÷ 26, जो ₹20,00,000 की वैधानिक अधिकतम सीमा तक सीमित है। कानूनी रूप से देय होने के लिए न्यूनतम 5 वर्षों की निरंतर सेवा आवश्यक है।</string>
 
     <string name="epf_label_salary">मूल मासिक वेतन (₹)</string>
     <string name="epf_label_employee_pct">कर्मचारी योगदान (%)</string>
@@ -70,6 +180,7 @@
     <string name="epf_label_rate">अपेक्षित EPF दर (%)</string>
     <string name="epf_result_total_contributed">कुल योगदान</string>
     <string name="epf_result_interest_earned">अर्जित ब्याज</string>
+    <string name="epf_result_narrative">%1$s के मूल मासिक वेतन पर, %4$s वर्षों तक %2$s%% (आप) और %3$s%% (नियोक्ता) का योगदान करने पर, %5$s%% ब्याज दर पर आपका EPF कोष बढ़कर %6$s हो सकता है।</string>
 
     <string name="ssy_label_age">खाता खोलते समय बेटी की उम्र (10 वर्ष से कम होनी चाहिए)</string>
     <string name="ssy_label_deposit">वार्षिक जमा (₹, अधिकतम ₹1,50,000)</string>
@@ -77,6 +188,7 @@
     <string name="ssy_result_total_deposited">कुल जमा राशि</string>
     <string name="ssy_result_interest_earned">अर्जित ब्याज</string>
     <string name="ssy_result_maturity_age">बेटी के %1$d वर्ष की होने पर परिपक्व होगा</string>
+    <string name="ssy_result_narrative">%2$s वर्ष की आयु में खोले गए सुकन्या समृद्धि खाते में हर साल %1$s जमा करने पर, %3$s%% ब्याज दर पर, बेटी के %5$s वर्ष की होने तक यह बढ़कर %4$s हो सकता है।</string>
 
     <string name="nps_label_contribution">मासिक योगदान (₹)</string>
     <string name="nps_label_age">वर्तमान आयु</string>
@@ -86,6 +198,7 @@
     <string name="nps_result_lumpsum">एकमुश्त निकासी</string>
     <string name="nps_result_annuity_corpus">एन्युटी कोष</string>
     <string name="nps_result_pension">अनुमानित मासिक पेंशन</string>
+    <string name="nps_result_narrative">%2$s वर्ष की आयु से 60 वर्ष की सेवानिवृत्ति तक %3$s%% की अपेक्षित वार्षिक रिटर्न दर पर NPS में हर महीने %1$s का योगदान करने पर, आपका कोष बढ़कर %4$s हो सकता है। %5$s%% अनिवार्य रूप से एन्युटी के लिए उपयोग किए जाने पर, आप %6$s एकमुश्त निकाल सकते हैं और अनुमानित %7$s प्रति माह पेंशन के रूप में प्राप्त कर सकते हैं।</string>
 
     <string name="emi_label_loan_amount">ऋण राशि (₹)</string>
     <string name="emi_label_rate">ब्याज दर (%)</string>
@@ -100,6 +213,9 @@
     <string name="emi_result_interest_saved">बचाया गया ब्याज</string>
     <string name="emi_result_months_saved">अवधि %1$d महीने घटी</string>
     <string name="emi_result_new_emi">प्रीपेमेंट के बाद नई EMI</string>
+    <string name="emi_result_narrative">%3$s महीनों की अवधि के लिए %2$s%% ब्याज दर पर %1$s के ऋण के लिए, आपकी EMI %4$s होगी, और ऋण अवधि में कुल ब्याज व्यय %5$s होगा।</string>
+    <string name="emi_result_narrative_reduce_tenure_addendum">\n\nआपके नियोजित प्रीपेमेंट से, आप ब्याज में %1$s बचा सकते हैं और %2$d महीने पहले ऋण समाप्त कर सकते हैं।</string>
+    <string name="emi_result_narrative_reduce_emi_addendum">\n\nआपके नियोजित प्रीपेमेंट से, आप ब्याज में %1$s बचा सकते हैं और आपकी EMI घटकर %2$s हो जाएगी।</string>
 
     <string name="stp_label_source">स्रोत लम्पसम (₹)</string>
     <string name="stp_label_transfer">मासिक स्थानांतरण राशि (₹)</string>
@@ -108,6 +224,7 @@
     <string name="stp_label_target_return">लक्ष्य फंड रिटर्न (%)</string>
     <string name="stp_result_source_remaining">स्रोत फंड में शेष</string>
     <string name="stp_result_target_value">लक्ष्य फंड में मूल्य</string>
+    <string name="stp_result_narrative">%2$s के लम्पसम से (जो स्रोत फंड में %3$s%% अर्जित करता है) %5$s महीनों में %4$s%% अर्जित करने वाले लक्ष्य फंड में हर महीने %1$s स्थानांतरित करने पर, आपके स्रोत फंड में %6$s शेष रहेगा, जबकि आपका लक्ष्य फंड बढ़कर %7$s हो सकता है।</string>
 
     <string name="swp_label_corpus">प्रारंभिक कोष (₹)</string>
     <string name="swp_label_withdrawal">मासिक निकासी (₹)</string>
@@ -117,6 +234,8 @@
     <string name="swp_result_no_depletion">कोष सिमुलेटेड अवधि से अधिक चलेगा</string>
     <string name="swp_result_total_withdrawn">कुल निकाली गई राशि</string>
     <string name="swp_result_final_balance">अंतिम शेष राशि</string>
+    <string name="swp_result_narrative_depleted">%3$s%% वार्षिक रिटर्न अर्जित करने वाले %2$s के कोष से हर महीने %1$s निकालने पर, आपका कोष %4$d महीनों बाद समाप्त होने का अनुमान है।</string>
+    <string name="swp_result_narrative_survives">%3$s%% वार्षिक रिटर्न अर्जित करने वाले %2$s के कोष से %4$s वर्षों तक हर महीने %1$s निकालने पर, आप कुल %5$s निकालेंगे जबकि %6$s अभी भी शेष रहेगा।</string>
 
     <string name="fire_variant_traditional">पारंपरिक FIRE</string>
     <string name="fire_variant_lean">लीन FIRE</string>
@@ -136,8 +255,9 @@
     <string name="fire_result_required_sip">आवश्यक मासिक SIP</string>
     <string name="fire_result_coast_achieved">कोस्ट FIRE हासिल — आपकी मौजूदा बचत के अपने आप लक्ष्य तक पहुंचने का अनुमान है।</string>
     <string name="fire_result_coast_not_achieved">अभी कोस्ट FIRE नहीं — ऊपर दिखाया गया SIP बताता है कि अभी क्या आवश्यक है।</string>
+    <string name="fire_result_narrative">%2$s के तहत %3$s%% महंगाई और %4$s%% अपेक्षित सेवानिवृत्ति-पूर्व रिटर्न के साथ %1$s वर्ष की आयु में सेवानिवृत्त होने के लिए, आपको %5$s का कोष चाहिए होगा। अपने मौजूदा %6$s से शुरू करते हुए, SIP के माध्यम से हर महीने %7$s निवेश करने से आप वहां पहुंच सकते हैं।</string>
+    <string name="fire_result_narrative_coast_achieved">कोस्ट FIRE के तहत, आपको %2$s वर्ष की आयु तक %1$s का कोष चाहिए होगा। आपकी मौजूदा %3$s पहले से ही अपने आप इस तक बढ़ने का अनुमान है — किसी और SIP की आवश्यकता नहीं है।</string>
 
-    <string name="goal_planning_title">लक्ष्य योजना</string>
     <string name="goal_planning_label_name">लक्ष्य का नाम</string>
     <string name="goal_planning_label_type">लक्ष्य प्रकार</string>
     <string name="goal_type_retirement">सेवानिवृत्ति</string>
@@ -146,8 +266,19 @@
     <string name="goal_type_car">कार</string>
     <string name="goal_type_custom">कस्टम</string>
     <string name="goal_planning_button_save">लक्ष्य सहेजें और ट्रैक करें</string>
-    <string name="goal_planning_home_card_title">एक लक्ष्य बनाएं</string>
-    <string name="goal_planning_home_card_subtitle">एक लक्ष्य निर्धारित करें और देखें कि वहां पहुंचने के लिए क्या चाहिए</string>
+
+    <string name="home_search_placeholder">कैलकुलेटर खोजें</string>
+
+    <string name="category_investment">निवेश</string>
+    <string name="category_savings">बचत</string>
+    <string name="category_lifestyle">जीवनशैली</string>
+    <string name="category_government_schemes">सरकारी योजनाएं</string>
+    <string name="category_planning">योजना</string>
+    <string name="category_loan">ऋण</string>
+
+    <string name="default_rates_setup_title">अपनी डिफ़ॉल्ट दरें सेट करें</string>
+    <string name="default_rates_setup_message">ये हर कैलकुलेटर के रिटर्न और महंगाई फ़ील्ड को पहले से भर देती हैं। इन्हें किसी भी गणना के लिए बदलें, या बाद में सेटिंग्स से डिफ़ॉल्ट बदलें।</string>
+    <string name="default_rates_button_continue">जारी रखें</string>
 
     <string name="coming_soon_dismiss">समझ गया</string>
 
@@ -167,6 +298,10 @@
     <string name="settings_theme_color">थीम रंग</string>
     <string name="settings_randomize_theme">यादृच्छिक</string>
     <string name="settings_language">भाषा</string>
+    <string name="settings_default_rates_title">डिफ़ॉल्ट दरें</string>
+    <string name="settings_appearance_section_title">दिखावट</string>
+    <string name="settings_default_inflation">डिफ़ॉल्ट महंगाई दर (%)</string>
+    <string name="settings_default_expected_return">डिफ़ॉल्ट अपेक्षित रिटर्न (%)</string>
     <string name="theme_mode_light">लाइट</string>
     <string name="theme_mode_dark">डार्क</string>
     <string name="theme_mode_system">सिस्टम</string>

@@ -15,8 +15,36 @@
     <string name="calc_emi">EMI Calculator</string>
     <string name="calc_stp">STP Calculator</string>
     <string name="calc_swp">SWP Calculator</string>
-    <string name="calc_inflation_goal">Inflation-adjusted Goal</string>
+    <string name="calc_inflation_goal">Future Cost Calculator</string>
     <string name="calc_fire">FIRE Calculator</string>
+    <string name="calc_fd">FD Calculator</string>
+    <string name="calc_rd">RD Calculator</string>
+    <string name="calc_smoke">Smoking Cost Calculator</string>
+    <string name="calc_alcohol">Alcohol Cost Calculator</string>
+    <string name="calc_eating_out">Eating Out vs Home Cooking</string>
+    <string name="calc_gratuity">Gratuity Calculator</string>
+
+    <!-- Calculator screen descriptions — a one-line "what is this for" shown upfront on each screen -->
+    <string name="sip_screen_description">Estimate how a regular SIP investment grows over time, with optional step-up and inflation adjustment.</string>
+    <string name="lumpsum_screen_description">Estimate how a one-time lumpsum investment grows over time.</string>
+    <string name="sip_vs_lumpsum_screen_description">Compare how the same money would grow via monthly SIP versus investing it all at once as a lumpsum.</string>
+    <string name="goal_sip_screen_description">Find out how much you need to invest monthly to reach a specific savings goal.</string>
+    <string name="tenure_screen_description">Find out how long a monthly investment will take to reach a target amount.</string>
+    <string name="ppf_screen_description">Estimate the maturity value of your Public Provident Fund (PPF) account.</string>
+    <string name="epf_screen_description">Estimate your Employees\' Provident Fund (EPF) corpus at retirement.</string>
+    <string name="ssy_screen_description">Estimate the maturity value of a Sukanya Samriddhi Yojana (SSY) account for your daughter.</string>
+    <string name="nps_screen_description">Estimate your National Pension System (NPS) corpus, lump sum, and monthly pension at retirement.</string>
+    <string name="emi_screen_description">Calculate your monthly loan EMI, and see the impact of an optional prepayment.</string>
+    <string name="stp_screen_description">Simulate a Systematic Transfer Plan — moving a lumpsum gradually from one fund into another.</string>
+    <string name="swp_screen_description">Simulate a Systematic Withdrawal Plan — regular withdrawals from an investment corpus.</string>
+    <string name="inflation_goal_screen_description">See how much a cost today will rise to in the future because of inflation.</string>
+    <string name="fire_screen_description">FIRE (Financial Independence, Retire Early) means building a large enough corpus that your investments alone can cover your expenses. Estimate the corpus you need and the SIP required to get there.</string>
+    <string name="fd_screen_description">Estimate the maturity value of a Fixed Deposit (FD), compounded quarterly.</string>
+    <string name="rd_screen_description">Estimate the maturity value of a Recurring Deposit (RD), where you deposit a fixed amount every month.</string>
+    <string name="smoke_screen_description">See how much smoking costs you over time, and what that money could grow to if invested instead.</string>
+    <string name="alcohol_screen_description">See how much drinking costs you over time, and what that money could grow to if invested instead.</string>
+    <string name="eating_out_screen_description">Compare your eating-out spend against home cooking, and see what the savings could grow to if invested.</string>
+    <string name="gratuity_screen_description">Estimate the gratuity payable to you under the Payment of Gratuity Act, based on your last drawn salary and years of service.</string>
 
     <!-- Common -->
     <string name="coming_soon_title">Coming soon</string>
@@ -24,29 +52,61 @@
     <string name="calc_not_available_yet">This calculator isn\'t built yet — check back soon.</string>
     <string name="disclaimer_text">Results are projections based on the assumptions you enter and are not investment advice.</string>
     <string name="settings_icon_description">Settings</string>
+    <string name="amount_in_words_suffix">%1$s Rupees</string>
+    <string name="field_help_icon_description">What does this mean?</string>
+    <string name="field_help_dismiss">Got it</string>
+    <string name="help_step_up">Increase your monthly investment by this percentage every year, to keep pace with rising income. Leave this blank to invest a fixed amount every month instead.</string>
+    <string name="help_inflation_rate">The rate at which prices rise over time. Enter this to also see the result adjusted to today\'s purchasing power, alongside the plain projected value.</string>
+    <string name="help_nps_annuity">The share of your NPS corpus that must go toward buying an annuity (regular pension) at retirement — current PFRDA rules require at least 40%. The rest can be withdrawn as a lump sum. This minimum is set by PFRDA and may change over time — if it no longer matches the current rule, edit it here; we\'ll update the app\'s default soon after any change.</string>
+    <string name="help_ppf_rate">This is the government-notified PPF interest rate at the time this app was built. The rate is revised quarterly by the Ministry of Finance — if it no longer matches the current official rate, edit it here; we\'ll update the app\'s default soon after any change.</string>
+    <string name="help_ssy_rate">This is the government-notified Sukanya Samriddhi Yojana interest rate at the time this app was built. The rate is revised quarterly by the Ministry of Finance — if it no longer matches the current official rate, edit it here; we\'ll update the app\'s default soon after any change.</string>
+    <string name="help_epf_rate">This is the government-notified EPF interest rate at the time this app was built. The rate is revised annually by EPFO — if it no longer matches the current official rate, edit it here; we\'ll update the app\'s default soon after any change.</string>
+    <string name="narrative_inflation_addendum">\n\nAdjusted for inflation, today\'s equivalent value would be %1$s.</string>
 
     <!-- SIP screen -->
     <string name="sip_label_monthly_amount">Monthly investment (₹)</string>
+    <string name="sip_label_investment_amount">Investment amount (₹)</string>
     <string name="sip_label_expected_return">Expected annual return (%)</string>
     <string name="sip_label_duration">Duration (years)</string>
     <string name="sip_label_step_up">Step-up % (optional)</string>
     <string name="sip_label_inflation">Inflation % (optional)</string>
     <string name="sip_button_calculate">Calculate</string>
+    <string name="sip_button_save">Save</string>
+    <string name="sip_frequency_daily">Daily</string>
+    <string name="sip_frequency_weekly">Weekly</string>
+    <string name="sip_frequency_monthly">Monthly</string>
+    <string name="sip_frequency_adverb_daily">daily</string>
+    <string name="sip_frequency_adverb_weekly">weekly</string>
+    <string name="sip_frequency_adverb_monthly">monthly</string>
+    <string name="sip_advanced_options_toggle">Advanced options</string>
+    <string name="sip_stepup_mode_percentage">% step-up</string>
+    <string name="sip_stepup_mode_fixed">Fixed amount step-up</string>
+    <string name="sip_label_stepup_fixed_amount">Step-up amount (₹/year, optional)</string>
+    <string name="sip_label_expense_ratio">Expense ratio % (optional)</string>
+    <string name="help_stepup_fixed_amount">Increase your investment by this fixed rupee amount every year, instead of a percentage — useful when you want a predictable step-up regardless of how large your contribution has grown.</string>
+    <string name="help_expense_ratio">The fund\'s annual expense ratio — the fee it charges to manage your money. This is subtracted from your expected return before projecting growth, since it\'s a recurring drag on your actual returns.</string>
     <string name="sip_result_maturity_value">Maturity Value</string>
     <string name="sip_result_total_invested">Total Invested</string>
     <string name="sip_result_wealth_gained">Wealth Gained</string>
+    <string name="sip_result_expense_cost">Cost of Fund Expenses</string>
     <string name="sip_result_inflation_adjusted">Inflation-Adjusted Value (today\'s value)</string>
     <string name="sip_error_invalid_input">Please enter a valid monthly amount, return rate, and duration.</string>
+    <string name="sip_result_narrative">If you invest %1$s %2$s via SIP for %3$s years at an expected %4$s%% annual return, your investment could grow to %5$s by the end.</string>
+    <string name="sip_result_narrative_stepup_percentage_addendum">\n\nWith a %1$s%% step-up each year, your contribution increases over time to keep pace with rising income — the result above already reflects this.</string>
+    <string name="sip_result_narrative_stepup_fixed_addendum">\n\nWith your contribution increasing by %1$s every year, this step-up is already factored into the result above.</string>
+    <string name="sip_result_narrative_expense_addendum">\n\nWith a %1$s%% annual expense ratio, fund costs are estimated to reduce your accumulated amount by %2$s over the period — the amount above already accounts for this.</string>
 
     <!-- Lumpsum screen -->
     <string name="lumpsum_label_principal">Investment amount (₹)</string>
     <string name="lumpsum_result_principal">Principal</string>
+    <string name="lumpsum_result_narrative">If you invest %1$s as a lumpsum for %2$s years at an expected %3$s%% annual return, it could grow to %4$s by the end.</string>
 
     <!-- Tenure screen -->
     <string name="tenure_label_target_amount">Target amount (₹)</string>
     <string name="tenure_result_years">Time Required</string>
     <string name="tenure_result_years_value">%1$.1f years</string>
     <string name="tenure_error_unreachable">Target not reachable within 100 years at this rate — try a higher monthly amount or return rate.</string>
+    <string name="tenure_result_narrative">Investing %1$s monthly at an expected %2$s%% annual return, it would take about %3$s to reach your target of %4$s.</string>
 
     <!-- Inflation-adjusted Goal screen -->
     <string name="inflation_goal_label_current_cost">Current cost (₹)</string>
@@ -54,17 +114,21 @@
     <string name="inflation_goal_label_years">Years</string>
     <string name="inflation_goal_result_future_cost">Future Cost</string>
     <string name="inflation_goal_result_increase">Increase Amount</string>
+    <string name="inflation_goal_result_narrative">At %1$s%% inflation, something that costs %2$s today would cost %3$s in %4$s years — an increase of %5$s.</string>
 
     <!-- Goal-based SIP screen -->
     <string name="goal_sip_label_target">Goal amount (₹)</string>
     <string name="goal_sip_result_required_sip">Required Monthly SIP</string>
     <string name="goal_sip_result_inflation_target">Inflation-Adjusted Target</string>
+    <string name="goal_sip_result_narrative">To reach a target of %1$s in %2$s years at an expected %3$s%% annual return, you would need to invest %4$s every month via SIP.</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nNote: accounting for %1$s%% inflation, your goal will effectively cost %2$s by the time you reach it — the SIP above already targets this adjusted amount.</string>
 
     <!-- SIP vs Lumpsum screen -->
     <string name="sip_vs_lumpsum_label_sip_amount">Monthly SIP amount (₹)</string>
     <string name="sip_vs_lumpsum_label_lumpsum_amount">Lumpsum amount (₹)</string>
     <string name="sip_vs_lumpsum_column_sip">SIP</string>
     <string name="sip_vs_lumpsum_column_lumpsum">Lumpsum</string>
+    <string name="sip_vs_lumpsum_result_narrative">Investing %1$s monthly via SIP for %2$s years at %3$s%% expected return could grow to %4$s. Investing %5$s as a lumpsum over the same period could grow to %6$s.</string>
 
     <!-- PPF screen -->
     <string name="ppf_label_yearly_contribution">Yearly contribution (₹, max ₹1,50,000)</string>
@@ -72,6 +136,53 @@
     <string name="ppf_label_rate">PPF interest rate (%)</string>
     <string name="ppf_result_total_contributed">Total Contributed</string>
     <string name="ppf_result_interest_earned">Interest Earned</string>
+    <string name="ppf_result_narrative">Contributing %1$s every year to your PPF account for %2$s years at %3$s%% interest, your investment could grow to %4$s, including %5$s in interest earned.</string>
+
+    <string name="fd_label_principal">Deposit amount</string>
+    <string name="fd_label_rate">Interest rate (%)</string>
+    <string name="fd_label_tenure">Tenure (months)</string>
+    <string name="fd_result_maturity_value">Maturity Value</string>
+    <string name="fd_result_interest_earned">Interest Earned</string>
+    <string name="fd_result_narrative">Depositing %1$s in a Fixed Deposit for %2$s months at %3$s%% interest (compounded quarterly), it could grow to %4$s, including %5$s in interest earned.</string>
+    <string name="help_fd_rate">Bank FD interest rates vary by bank and tenure — check your bank\'s current rate and enter it here. This calculator assumes quarterly compounding, the most common convention for Indian FDs.</string>
+
+    <string name="rd_label_deposit">Monthly deposit</string>
+    <string name="rd_label_rate">Interest rate (%)</string>
+    <string name="rd_label_tenure">Tenure (months)</string>
+    <string name="rd_result_maturity_value">Maturity Value</string>
+    <string name="rd_result_total_deposited">Total Deposited</string>
+    <string name="rd_result_interest_earned">Interest Earned</string>
+    <string name="rd_result_narrative">Depositing %1$s every month in a Recurring Deposit for %2$s months at %3$s%% interest (compounded quarterly), it could grow to %4$s, including %5$s in interest earned.</string>
+    <string name="help_rd_rate">Bank RD interest rates vary by bank and tenure — check your bank\'s current rate and enter it here. This calculator assumes quarterly compounding, the most common convention for Indian RDs.</string>
+
+    <string name="smoke_label_cigarettes_per_day">Cigarettes per day</string>
+    <string name="smoke_label_cost_per_cigarette">Cost per cigarette</string>
+    <string name="smoke_label_years">Duration (years)</string>
+    <string name="smoke_result_total_spent">Total Money Spent</string>
+    <string name="smoke_result_invested_value">If Invested Instead</string>
+    <string name="smoke_result_narrative">Smoking %1$s cigarettes a day at %2$s each costs you %3$s every month. Over %4$s years, that adds up to %5$s spent — but if you invested that same amount every month instead, at %6$s%% return, it could grow to %7$s.</string>
+
+    <string name="alcohol_label_drinks_per_week">Drinks per week</string>
+    <string name="alcohol_label_cost_per_drink">Cost per drink</string>
+    <string name="alcohol_label_years">Duration (years)</string>
+    <string name="alcohol_result_total_spent">Total Money Spent</string>
+    <string name="alcohol_result_invested_value">If Invested Instead</string>
+    <string name="alcohol_result_narrative">Having %1$s drinks a week at %2$s each costs you %3$s every month. Over %4$s years, that adds up to %5$s spent — but if you invested that same amount every month instead, at %6$s%% return, it could grow to %7$s.</string>
+
+    <string name="eating_out_label_eating_out_spend">Monthly eating-out spend</string>
+    <string name="eating_out_label_home_cooking_spend">Monthly home-cooking spend</string>
+    <string name="eating_out_label_years">Duration (years)</string>
+    <string name="eating_out_result_total_saved">Total Money Saved</string>
+    <string name="eating_out_result_invested_value">If Invested Instead</string>
+    <string name="eating_out_result_narrative">Cooking at home instead of eating out saves you %1$s every month. Over %2$s years, that adds up to %3$s saved — and if you invested that saving every month instead, at %4$s%% return, it could grow to %5$s.</string>
+    <string name="eating_out_error_invalid_input">Please enter a valid eating-out spend, home-cooking spend, return rate, and duration. Eating-out spend must be higher than home-cooking spend.</string>
+
+    <string name="gratuity_label_salary">Last drawn monthly salary (Basic + DA)</string>
+    <string name="gratuity_label_years_of_service">Years of service</string>
+    <string name="gratuity_result_amount">Gratuity Amount</string>
+    <string name="gratuity_result_not_eligible">Note: the Payment of Gratuity Act requires a minimum of 5 years of continuous service. This is an illustrative estimate only.</string>
+    <string name="gratuity_result_narrative">With a last drawn monthly salary of %1$s and %2$s years of service, your estimated gratuity is %3$s, as per the Payment of Gratuity Act formula (15 × salary × years of service ÷ 26), capped at ₹20,00,000.</string>
+    <string name="help_gratuity_formula">Gratuity = (15 × last drawn monthly salary × years of service) ÷ 26, capped at the statutory maximum of ₹20,00,000. Requires a minimum of 5 years of continuous service to be legally payable.</string>
 
     <!-- EPF screen -->
     <string name="epf_label_salary">Basic monthly salary (₹)</string>
@@ -81,6 +192,7 @@
     <string name="epf_label_rate">Expected EPF rate (%)</string>
     <string name="epf_result_total_contributed">Total Contributed</string>
     <string name="epf_result_interest_earned">Interest Earned</string>
+    <string name="epf_result_narrative">With a basic monthly salary of %1$s, contributing %2$s%% (you) and %3$s%% (employer) for %4$s years at %5$s%% interest, your EPF corpus could grow to %6$s.</string>
 
     <!-- SSY screen -->
     <string name="ssy_label_age">Girl\'s age at account opening (must be under 10)</string>
@@ -89,6 +201,7 @@
     <string name="ssy_result_total_deposited">Total Deposited</string>
     <string name="ssy_result_interest_earned">Interest Earned</string>
     <string name="ssy_result_maturity_age">Matures when girl turns %1$d</string>
+    <string name="ssy_result_narrative">Depositing %1$s every year into a Sukanya Samriddhi account opened at age %2$s, at %3$s%% interest, it could grow to %4$s by the time she turns %5$s.</string>
 
     <!-- NPS screen -->
     <string name="nps_label_contribution">Monthly contribution (₹)</string>
@@ -99,6 +212,7 @@
     <string name="nps_result_lumpsum">Lump-sum Withdrawal</string>
     <string name="nps_result_annuity_corpus">Annuity Corpus</string>
     <string name="nps_result_pension">Estimated Monthly Pension</string>
+    <string name="nps_result_narrative">Contributing %1$s monthly to NPS from age %2$s at an expected %3$s%% annual return until retirement at 60, your corpus could grow to %4$s. With %5$s%% mandatorily used for an annuity, you could withdraw %6$s as a lump sum and receive an estimated %7$s per month as pension.</string>
 
     <!-- EMI screen -->
     <string name="emi_label_loan_amount">Loan amount (₹)</string>
@@ -114,6 +228,9 @@
     <string name="emi_result_interest_saved">Interest Saved</string>
     <string name="emi_result_months_saved">Tenure Reduced By %1$d months</string>
     <string name="emi_result_new_emi">New EMI After Prepayment</string>
+    <string name="emi_result_narrative">For a loan of %1$s at %2$s%% interest over %3$s months, your EMI would be %4$s, with a total interest outgo of %5$s over the loan tenure.</string>
+    <string name="emi_result_narrative_reduce_tenure_addendum">\n\nWith your planned prepayment, you could save %1$s in interest and finish %2$d months early.</string>
+    <string name="emi_result_narrative_reduce_emi_addendum">\n\nWith your planned prepayment, you could save %1$s in interest and your EMI would reduce to %2$s.</string>
 
     <!-- STP screen -->
     <string name="stp_label_source">Source lumpsum (₹)</string>
@@ -123,6 +240,7 @@
     <string name="stp_label_target_return">Target fund return (%)</string>
     <string name="stp_result_source_remaining">Remaining in Source Fund</string>
     <string name="stp_result_target_value">Value in Target Fund</string>
+    <string name="stp_result_narrative">Transferring %1$s monthly from a lumpsum of %2$s (earning %3$s%% in the source fund) into a target fund earning %4$s%% over %5$s months, your source fund would have %6$s remaining, while your target fund could grow to %7$s.</string>
 
     <!-- SWP screen -->
     <string name="swp_label_corpus">Initial corpus (₹)</string>
@@ -133,6 +251,8 @@
     <string name="swp_result_no_depletion">Corpus outlasts the simulated period</string>
     <string name="swp_result_total_withdrawn">Total Withdrawn</string>
     <string name="swp_result_final_balance">Final Balance</string>
+    <string name="swp_result_narrative_depleted">Withdrawing %1$s monthly from a corpus of %2$s earning %3$s%% annual return, your corpus is projected to run out after %4$d months.</string>
+    <string name="swp_result_narrative_survives">Withdrawing %1$s monthly from a corpus of %2$s earning %3$s%% annual return over %4$s years, you would withdraw a total of %5$s while still having %6$s remaining.</string>
 
     <!-- FIRE screen -->
     <string name="fire_variant_traditional">Traditional FIRE</string>
@@ -153,9 +273,10 @@
     <string name="fire_result_required_sip">Required Monthly SIP</string>
     <string name="fire_result_coast_achieved">Coast FIRE achieved — your existing savings are projected to reach the target on their own.</string>
     <string name="fire_result_coast_not_achieved">Not yet at Coast FIRE — the SIP above shows what\'s still needed.</string>
+    <string name="fire_result_narrative">To retire at age %1$s under %2$s with %3$s%% inflation and an expected %4$s%% pre-retirement return, you would need a corpus of %5$s. Starting from your existing %6$s, investing %7$s monthly via SIP could get you there.</string>
+    <string name="fire_result_narrative_coast_achieved">Under Coast FIRE, you would need a corpus of %1$s by age %2$s. Your existing %3$s is already projected to grow to this on its own — no further SIP is needed.</string>
 
-    <!-- Goal Planning screen -->
-    <string name="goal_planning_title">Goal Planning</string>
+    <!-- Goal-based SIP screen (also covers what was the separate Goal Planning screen) -->
     <string name="goal_planning_label_name">Goal name</string>
     <string name="goal_planning_label_type">Goal type</string>
     <string name="goal_type_retirement">Retirement</string>
@@ -164,8 +285,22 @@
     <string name="goal_type_car">Car</string>
     <string name="goal_type_custom">Custom</string>
     <string name="goal_planning_button_save">Save &amp; Track Goal</string>
-    <string name="goal_planning_home_card_title">Plan a Goal</string>
-    <string name="goal_planning_home_card_subtitle">Set a target and see what it takes to get there</string>
+
+    <!-- Home screen search -->
+    <string name="home_search_placeholder">Search calculators</string>
+
+    <!-- Home screen categories -->
+    <string name="category_investment">Investment</string>
+    <string name="category_savings">Savings</string>
+    <string name="category_lifestyle">Lifestyle</string>
+    <string name="category_government_schemes">Government schemes</string>
+    <string name="category_planning">Planning</string>
+    <string name="category_loan">Loan</string>
+
+    <!-- First-launch default rates setup -->
+    <string name="default_rates_setup_title">Set your default rates</string>
+    <string name="default_rates_setup_message">These prefill the return and inflation fields on every calculator. Edit them anytime per calculation, or change the defaults later from Settings.</string>
+    <string name="default_rates_button_continue">Continue</string>
 
     <!-- Coming Soon sheet -->
     <string name="coming_soon_dismiss">Got it</string>
@@ -189,6 +324,10 @@
     <string name="settings_theme_color">Theme Color</string>
     <string name="settings_randomize_theme">Randomize</string>
     <string name="settings_language">Language</string>
+    <string name="settings_default_rates_title">Default Rates</string>
+    <string name="settings_appearance_section_title">Appearance</string>
+    <string name="settings_default_inflation">Default inflation rate (%)</string>
+    <string name="settings_default_expected_return">Default expected return (%)</string>
     <string name="theme_mode_light">Light</string>
     <string name="theme_mode_dark">Dark</string>
     <string name="theme_mode_system">System</string>

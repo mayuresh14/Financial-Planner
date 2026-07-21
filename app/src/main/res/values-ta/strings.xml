@@ -14,54 +14,164 @@
     <string name="calc_emi">EMI கால்குலேட்டர்</string>
     <string name="calc_stp">STP கால்குலேட்டர்</string>
     <string name="calc_swp">SWP கால்குலேட்டர்</string>
-    <string name="calc_inflation_goal">பணவீக்க-சரிசெய்யப்பட்ட இலக்கு</string>
+    <string name="calc_inflation_goal">எதிர்கால செலவு கால்குலேட்டர்</string>
     <string name="calc_fire">FIRE கால்குலேட்டர்</string>
+    <string name="calc_fd">FD கால்குலேட்டர்</string>
+    <string name="calc_rd">RD கால்குலேட்டர்</string>
+    <string name="calc_smoke">புகைபிடிப்பு செலவு கால்குலேட்டர்</string>
+    <string name="calc_alcohol">மது செலவு கால்குலேட்டர்</string>
+    <string name="calc_eating_out">வெளியில் சாப்பிடுதல் vs வீட்டு சமையல்</string>
+    <string name="calc_gratuity">பணிநிறைவூதிய கால்குலேட்டர்</string>
+
+    <string name="sip_screen_description">ஒரு வழக்கமான SIP முதலீடு காலப்போக்கில் எவ்வாறு வளர்கிறது என்பதை மதிப்பிடுங்கள், விருப்பமான ஸ்டெப்-அப் மற்றும் பணவீக்க சரிசெய்தலுடன்.</string>
+    <string name="lumpsum_screen_description">ஒரு முறை முதலீடு காலப்போக்கில் எவ்வாறு வளர்கிறது என்பதை மதிப்பிடுங்கள்.</string>
+    <string name="sip_vs_lumpsum_screen_description">அதே தொகை மாதாந்திர SIP மூலமாகவும், ஒரே முறையில் லம்ப்சமாகவும் முதலீடு செய்யும்போது எவ்வாறு வளரும் என்பதை ஒப்பிடுங்கள்.</string>
+    <string name="goal_sip_screen_description">ஒரு குறிப்பிட்ட சேமிப்பு இலக்கை அடைய மாதந்தோறும் எவ்வளவு முதலீடு செய்ய வேண்டும் என்பதை கண்டறியுங்கள்.</string>
+    <string name="tenure_screen_description">ஒரு இலக்குத் தொகையை அடைய மாதாந்திர முதலீடு எவ்வளவு காலம் எடுக்கும் என்பதை கண்டறியுங்கள்.</string>
+    <string name="ppf_screen_description">உங்கள் பொது வருங்கால வைப்பு நிதி (PPF) கணக்கின் முதிர்வு மதிப்பை மதிப்பிடுங்கள்.</string>
+    <string name="epf_screen_description">ஓய்வூதிய காலத்தில் உங்கள் ஊழியர் வருங்கால வைப்பு நிதி (EPF) தொகையை மதிப்பிடுங்கள்.</string>
+    <string name="ssy_screen_description">உங்கள் மகளுக்கான சுகன்யா சம்ரிதி யோஜனா (SSY) கணக்கின் முதிர்வு மதிப்பை மதிப்பிடுங்கள்.</string>
+    <string name="nps_screen_description">ஓய்வூதிய காலத்தில் உங்கள் தேசிய ஓய்வூதிய அமைப்பு (NPS) நிதி, மொத்தத் தொகை மற்றும் மாதாந்திர ஓய்வூதியத்தை மதிப்பிடுங்கள்.</string>
+    <string name="emi_screen_description">உங்கள் மாதாந்திர கடன் EMI ஐ கணக்கிடுங்கள், மேலும் விருப்பமான முன்கூட்டிய கட்டணத்தின் தாக்கத்தைப் பாருங்கள்.</string>
+    <string name="stp_screen_description">ஒரு முறையான பரிமாற்றத் திட்டத்தை (STP) உருவகப்படுத்துங்கள் — ஒரு லம்ப்சம் தொகையை படிப்படியாக ஒரு நிதியிலிருந்து மற்றொரு நிதிக்கு மாற்றுதல்.</string>
+    <string name="swp_screen_description">ஒரு முறையான திரும்பப்பெறும் திட்டத்தை (SWP) உருவகப்படுத்துங்கள் — முதலீட்டு நிதியிலிருந்து வழக்கமான திரும்பப் பெறுதல்.</string>
+    <string name="inflation_goal_screen_description">பணவீக்கத்தால் இன்றைய செலவு எதிர்காலத்தில் எவ்வளவு உயரும் என்பதைப் பாருங்கள்.</string>
+    <string name="fire_screen_description">FIRE (நிதி சுதந்திரம், முன்கூட்டிய ஓய்வு) என்பது உங்கள் முதலீடுகள் மட்டுமே உங்கள் செலவுகளை ஈடுகட்டும் அளவுக்கு பெரிய நிதியை உருவாக்குவதைக் குறிக்கிறது. தேவையான நிதி மற்றும் அதை அடைய தேவையான SIP ஐ மதிப்பிடுங்கள்.</string>
+    <string name="fd_screen_description">ஒரு நிலையான வைப்பு (FD) இன் முதிர்வு மதிப்பை மதிப்பிடுங்கள், காலாண்டு வட்டி கூட்டலுடன்.</string>
+    <string name="rd_screen_description">ஒரு தொடர் வைப்பு (RD) இன் முதிர்வு மதிப்பை மதிப்பிடுங்கள், அங்கு நீங்கள் ஒவ்வொரு மாதமும் ஒரு நிலையான தொகையை வைப்பு செய்கிறீர்கள்.</string>
+    <string name="smoke_screen_description">புகைபிடிப்பது காலப்போக்கில் உங்களுக்கு எவ்வளவு செலவாகிறது என்பதைப் பாருங்கள், மேலும் அந்தப் பணத்தை முதலீடு செய்தால் அது எவ்வளவு வளரக்கூடும் என்பதையும் பாருங்கள்.</string>
+    <string name="alcohol_screen_description">மது அருந்துவது காலப்போக்கில் உங்களுக்கு எவ்வளவு செலவாகிறது என்பதைப் பாருங்கள், மேலும் அந்தப் பணத்தை முதலீடு செய்தால் அது எவ்வளவு வளரக்கூடும் என்பதையும் பாருங்கள்.</string>
+    <string name="eating_out_screen_description">வெளியில் சாப்பிடும் செலவை வீட்டு சமையலுடன் ஒப்பிடுங்கள், மேலும் சேமிப்பை முதலீடு செய்தால் அது எவ்வளவு வளரக்கூடும் என்பதைப் பாருங்கள்.</string>
+    <string name="gratuity_screen_description">பணிநிறைவூதியச் சட்டத்தின் கீழ் உங்களுக்கு செலுத்த வேண்டிய பணிநிறைவூதியத்தை, உங்கள் கடைசி சம்பளம் மற்றும் பணி ஆண்டுகளின் அடிப்படையில் மதிப்பிடுங்கள்.</string>
 
     <string name="coming_soon_title">விரைவில் வரும்</string>
     <string name="coming_soon_message">இந்த அம்சத்திற்கு கணக்கு தேவை, இது எதிர்கால புதுப்பிப்பில் கிடைக்கும்.</string>
     <string name="calc_not_available_yet">இந்த கால்குலேட்டர் இன்னும் தயாராகவில்லை — விரைவில் மீண்டும் பாருங்கள்.</string>
     <string name="disclaimer_text">முடிவுகள் நீங்கள் உள்ளிட்ட அனுமானங்களின் அடிப்படையிலான மதிப்பீடுகள் மற்றும் இது முதலீட்டு ஆலோசனை அல்ல.</string>
     <string name="settings_icon_description">அமைப்புகள்</string>
+    <string name="amount_in_words_suffix">%1$s ரூபாய்</string>
+    <string name="field_help_icon_description">இதன் அர்த்தம் என்ன?</string>
+    <string name="field_help_dismiss">புரிந்தது</string>
+    <string name="help_step_up">அதிகரிக்கும் வருமானத்திற்கு ஏற்ப ஒவ்வொரு ஆண்டும் உங்கள் மாதாந்திர முதலீட்டை இந்த சதவீதத்தால் அதிகரிக்கவும். ஒவ்வொரு மாதமும் ஒரு நிலையான தொகையை முதலீடு செய்ய இதை காலியாக விடவும்.</string>
+    <string name="help_inflation_rate">காலப்போக்கில் விலைகள் உயரும் விகிதம். சாதாரண மதிப்பீட்டு மதிப்புடன், இன்றைய வாங்கும் திறனுக்கு ஏற்ப சரிசெய்யப்பட்ட முடிவைப் பார்க்க இதை உள்ளிடவும்.</string>
+    <string name="help_nps_annuity">ஓய்வூதியத்தின் போது ஆன்யுட்டி (வழக்கமான ஓய்வூதியம்) வாங்குவதற்குப் பயன்படுத்தப்பட வேண்டிய உங்கள் NPS நிதியின் பங்கு — தற்போதைய PFRDA விதிகளின்படி குறைந்தபட்சம் 40% தேவை. மீதமுள்ளதை மொத்தமாக எடுக்கலாம். இந்த குறைந்தபட்ச வரம்பு PFRDA ஆல் நிர்ணயிக்கப்படுகிறது, காலப்போக்கில் மாறலாம் — இது தற்போதைய விதிக்கு பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
+    <string name="help_ppf_rate">இது இந்த ஆப் உருவாக்கப்பட்ட நேரத்தில் அரசாங்கம் அறிவித்த PPF வட்டி விகிதம். இந்த விகிதம் ஒவ்வொரு காலாண்டிலும் நிதி அமைச்சகத்தால் திருத்தப்படுகிறது — இது தற்போதைய அதிகாரப்பூர்வ விகிதத்துடன் பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
+    <string name="help_ssy_rate">இது இந்த ஆப் உருவாக்கப்பட்ட நேரத்தில் அரசாங்கம் அறிவித்த சுகன்யா சம்ரிதி யோஜனா வட்டி விகிதம். இந்த விகிதம் ஒவ்வொரு காலாண்டிலும் நிதி அமைச்சகத்தால் திருத்தப்படுகிறது — இது தற்போதைய அதிகாரப்பூர்வ விகிதத்துடன் பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
+    <string name="help_epf_rate">இது இந்த ஆப் உருவாக்கப்பட்ட நேரத்தில் அரசாங்கம் அறிவித்த EPF வட்டி விகிதம். இந்த விகிதம் ஒவ்வொரு ஆண்டும் EPFO ஆல் திருத்தப்படுகிறது — இது தற்போதைய அதிகாரப்பூர்வ விகிதத்துடன் பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
+    <string name="narrative_inflation_addendum">\n\nபணவீக்கத்திற்கு ஏற்ப சரிசெய்தால், இன்றைய சமமான மதிப்பு %1$s ஆக இருக்கும்.</string>
 
     <string name="sip_label_monthly_amount">மாதாந்திர முதலீடு (₹)</string>
+    <string name="sip_label_investment_amount">முதலீட்டுத் தொகை (₹)</string>
     <string name="sip_label_expected_return">எதிர்பார்க்கப்படும் ஆண்டு வருமானம் (%)</string>
     <string name="sip_label_duration">காலம் (ஆண்டுகள்)</string>
     <string name="sip_label_step_up">ஸ்டெப்-அப் % (விருப்பத்தேர்வு)</string>
     <string name="sip_label_inflation">பணவீக்கம் % (விருப்பத்தேர்வு)</string>
     <string name="sip_button_calculate">கணக்கிடு</string>
+    <string name="sip_button_save">சேமி</string>
+    <string name="sip_frequency_daily">தினசரி</string>
+    <string name="sip_frequency_weekly">வாராந்திரம்</string>
+    <string name="sip_frequency_monthly">மாதாந்திரம்</string>
+    <string name="sip_frequency_adverb_daily">தினமும்</string>
+    <string name="sip_frequency_adverb_weekly">வாரந்தோறும்</string>
+    <string name="sip_frequency_adverb_monthly">மாதந்தோறும்</string>
+    <string name="sip_advanced_options_toggle">மேம்பட்ட விருப்பங்கள்</string>
+    <string name="sip_stepup_mode_percentage">% ஸ்டெப்-அப்</string>
+    <string name="sip_stepup_mode_fixed">நிலையான தொகை ஸ்டெப்-அப்</string>
+    <string name="sip_label_stepup_fixed_amount">ஸ்டெப்-அப் தொகை (₹/ஆண்டு, விருப்பத்தேர்வு)</string>
+    <string name="sip_label_expense_ratio">செலவு விகிதம் % (விருப்பத்தேர்வு)</string>
+    <string name="help_stepup_fixed_amount">சதவீதத்திற்குப் பதிலாக, ஒவ்வோர் ஆண்டும் உங்கள் முதலீட்டை இந்த நிலையான தொகையால் அதிகரிக்கவும் — உங்கள் பங்களிப்பின் அளவைப் பொருட்படுத்தாமல் ஒரு முன்கணிக்கக்கூடிய ஸ்டெப்-அப் வேண்டும் என்றால் இது பயனுள்ளதாக இருக்கும்.</string>
+    <string name="help_expense_ratio">நிதியின் ஆண்டு செலவு விகிதம் — உங்கள் பணத்தை நிர்வகிப்பதற்காக அது வசூலிக்கும் கட்டணம். வளர்ச்சியை மதிப்பிடுவதற்கு முன் இது உங்கள் எதிர்பார்க்கப்படும் வருமானத்திலிருந்து கழிக்கப்படுகிறது, ஏனெனில் இது உங்கள் உண்மையான வருமானத்தில் தொடர்ச்சியான தாக்கத்தை ஏற்படுத்துகிறது.</string>
     <string name="sip_result_maturity_value">முதிர்வு மதிப்பு</string>
     <string name="sip_result_total_invested">மொத்த முதலீடு</string>
     <string name="sip_result_wealth_gained">ஈட்டிய செல்வம்</string>
+    <string name="sip_result_expense_cost">நிதி செலவுகளின் விலை</string>
     <string name="sip_result_inflation_adjusted">பணவீக்க-சரிசெய்யப்பட்ட மதிப்பு (இன்றைய மதிப்பு)</string>
     <string name="sip_error_invalid_input">சரியான மாதாந்திர தொகை, வருமான விகிதம் மற்றும் காலத்தை உள்ளிடவும்.</string>
+    <string name="sip_result_narrative">நீங்கள் %3$s ஆண்டுகளுக்கு %4$s%% எதிர்பார்க்கப்படும் ஆண்டு வருமானத்தில் SIP மூலம் %2$s %1$s முதலீடு செய்தால், உங்கள் முதலீடு இறுதியில் %5$s ஆக வளரக்கூடும்.</string>
+    <string name="sip_result_narrative_stepup_percentage_addendum">\n\nஒவ்வோர் ஆண்டும் %1$s%% ஸ்டெப்-அப்புடன், அதிகரிக்கும் வருமானத்திற்கு ஏற்ப உங்கள் பங்களிப்பு காலப்போக்கில் அதிகரிக்கிறது — மேலே உள்ள முடிவு இதை ஏற்கனவே காட்டுகிறது.</string>
+    <string name="sip_result_narrative_stepup_fixed_addendum">\n\nஒவ்வோர் ஆண்டும் உங்கள் பங்களிப்பு %1$s ஆல் அதிகரிப்பதால், இந்த ஸ்டெப்-அப் மேலே உள்ள முடிவில் ஏற்கனவே சேர்க்கப்பட்டுள்ளது.</string>
+    <string name="sip_result_narrative_expense_addendum">\n\n%1$s%% ஆண்டு செலவு விகிதத்துடன், நிதி செலவுகள் உங்கள் திரட்டப்பட்ட தொகையை %2$s அளவு குறைக்கக்கூடும் — மேலே உள்ள தொகை இதை ஏற்கனவே கணக்கில் எடுத்துக்கொள்கிறது.</string>
     <string name="lumpsum_label_principal">முதலீட்டுத் தொகை (₹)</string>
     <string name="lumpsum_result_principal">அசல் தொகை</string>
+    <string name="lumpsum_result_narrative">நீங்கள் %2$s ஆண்டுகளுக்கு %3$s%% எதிர்பார்க்கப்படும் ஆண்டு வருமானத்தில் %1$s ஐ ஒரே தொகையாக முதலீடு செய்தால், அது இறுதியில் %4$s ஆக வளரக்கூடும்.</string>
 
     <string name="tenure_label_target_amount">இலக்குத் தொகை (₹)</string>
     <string name="tenure_result_years">தேவையான காலம்</string>
     <string name="tenure_result_years_value">%1$.1f ஆண்டுகள்</string>
     <string name="tenure_error_unreachable">இந்த விகிதத்தில் 100 ஆண்டுகளில் இலக்கை அடைய முடியாது — அதிக மாதாந்திர தொகை அல்லது வருமான விகிதத்தை முயற்சிக்கவும்.</string>
+    <string name="tenure_result_narrative">%2$s%% எதிர்பார்க்கப்படும் ஆண்டு வருமானத்தில் மாதம் %1$s முதலீடு செய்தால், உங்கள் %4$s இலக்கை அடைய சுமார் %3$s ஆகும்.</string>
 
     <string name="inflation_goal_label_current_cost">தற்போதைய செலவு (₹)</string>
     <string name="inflation_goal_label_inflation">பணவீக்க விகிதம் (%)</string>
     <string name="inflation_goal_label_years">ஆண்டுகள்</string>
     <string name="inflation_goal_result_future_cost">எதிர்கால செலவு</string>
     <string name="inflation_goal_result_increase">அதிகரிப்பு தொகை</string>
+    <string name="inflation_goal_result_narrative">%1$s%% பணவீக்கத்தில், இன்று %2$s செலவாகும் ஒரு பொருள் %4$s ஆண்டுகளில் %3$s ஆக இருக்கும் — அதாவது %5$s அதிகரிப்பு.</string>
 
     <string name="goal_sip_label_target">இலக்குத் தொகை (₹)</string>
     <string name="goal_sip_result_required_sip">தேவையான மாதாந்திர SIP</string>
     <string name="goal_sip_result_inflation_target">பணவீக்க-சரிசெய்யப்பட்ட இலக்கு</string>
+    <string name="goal_sip_result_narrative">%2$s ஆண்டுகளில் %3$s%% எதிர்பார்க்கப்படும் ஆண்டு வருமானத்தில் %1$s இலக்கை அடைய, நீங்கள் SIP மூலம் மாதம் %4$s முதலீடு செய்ய வேண்டும்.</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nகுறிப்பு: %1$s%% பணவீக்கத்தைக் கணக்கில் எடுத்துக்கொண்டு, நீங்கள் உங்கள் இலக்கை அடையும் நேரத்தில் அதன் உண்மையான செலவு %2$s ஆக இருக்கும் — மேலே உள்ள SIP ஏற்கனவே இந்த சரிசெய்யப்பட்ட தொகையை இலக்காகக் கொண்டுள்ளது.</string>
 
     <string name="sip_vs_lumpsum_label_sip_amount">மாதாந்திர SIP தொகை (₹)</string>
     <string name="sip_vs_lumpsum_label_lumpsum_amount">லம்ப்சம் தொகை (₹)</string>
     <string name="sip_vs_lumpsum_column_sip">SIP</string>
     <string name="sip_vs_lumpsum_column_lumpsum">லம்ப்சம்</string>
+    <string name="sip_vs_lumpsum_result_narrative">SIP மூலம் %2$s ஆண்டுகளுக்கு %3$s%% எதிர்பார்க்கப்படும் வருமானத்தில் மாதம் %1$s முதலீடு செய்தால் அது %4$s ஆக வளரக்கூடும். அதே காலத்தில் %5$s ஐ ஒரே தொகையாக முதலீடு செய்தால் அது %6$s ஆக வளரக்கூடும்.</string>
 
     <string name="ppf_label_yearly_contribution">ஆண்டு பங்களிப்பு (₹, அதிகபட்சம் ₹1,50,000)</string>
     <string name="ppf_label_duration">காலம் (ஆண்டுகள், குறைந்தது 15)</string>
     <string name="ppf_label_rate">PPF வட்டி விகிதம் (%)</string>
     <string name="ppf_result_total_contributed">மொத்த பங்களிப்பு</string>
     <string name="ppf_result_interest_earned">ஈட்டிய வட்டி</string>
+    <string name="ppf_result_narrative">உங்கள் PPF கணக்கில் %2$s ஆண்டுகளுக்கு ஒவ்வோர் ஆண்டும் %1$s பங்களித்தால், %3$s%% வட்டி விகிதத்தில் உங்கள் முதலீடு %4$s ஆக வளரக்கூடும், இதில் %5$s வட்டியாக ஈட்டப்படும்.</string>
+
+    <string name="fd_label_principal">வைப்புத் தொகை</string>
+    <string name="fd_label_rate">வட்டி விகிதம் (%)</string>
+    <string name="fd_label_tenure">காலம் (மாதங்கள்)</string>
+    <string name="fd_result_maturity_value">முதிர்வு மதிப்பு</string>
+    <string name="fd_result_interest_earned">ஈட்டிய வட்டி</string>
+    <string name="fd_result_narrative">%2$s மாதங்களுக்கு %3$s%% வட்டி விகிதத்தில் (காலாண்டு வட்டி கூட்டல்) நிலையான வைப்பில் %1$s வைப்பு செய்தால், அது %4$s ஆக வளரக்கூடும், இதில் %5$s வட்டியாக ஈட்டப்படும்.</string>
+    <string name="help_fd_rate">வங்கி FD வட்டி விகிதங்கள் வங்கி மற்றும் காலத்தைப் பொறுத்து மாறுபடும் — உங்கள் வங்கியின் தற்போதைய விகிதத்தைச் சரிபார்த்து இங்கே உள்ளிடவும். இந்த கால்குலேட்டர் காலாண்டு வட்டி கூட்டலை கருதுகிறது, இது இந்திய FD-க்கான மிகவும் பொதுவான முறை.</string>
+
+    <string name="rd_label_deposit">மாதாந்திர வைப்பு</string>
+    <string name="rd_label_rate">வட்டி விகிதம் (%)</string>
+    <string name="rd_label_tenure">காலம் (மாதங்கள்)</string>
+    <string name="rd_result_maturity_value">முதிர்வு மதிப்பு</string>
+    <string name="rd_result_total_deposited">மொத்த வைப்புத் தொகை</string>
+    <string name="rd_result_interest_earned">ஈட்டிய வட்டி</string>
+    <string name="rd_result_narrative">%2$s மாதங்களுக்கு %3$s%% வட்டி விகிதத்தில் (காலாண்டு வட்டி கூட்டல்) தொடர் வைப்பில் ஒவ்வொரு மாதமும் %1$s வைப்பு செய்தால், அது %4$s ஆக வளரக்கூடும், இதில் %5$s வட்டியாக ஈட்டப்படும்.</string>
+    <string name="help_rd_rate">வங்கி RD வட்டி விகிதங்கள் வங்கி மற்றும் காலத்தைப் பொறுத்து மாறுபடும் — உங்கள் வங்கியின் தற்போதைய விகிதத்தைச் சரிபார்த்து இங்கே உள்ளிடவும். இந்த கால்குலேட்டர் காலாண்டு வட்டி கூட்டலை கருதுகிறது, இது இந்திய RD-க்கான மிகவும் பொதுவான முறை.</string>
+
+    <string name="smoke_label_cigarettes_per_day">ஒரு நாளைக்கு சிகரெட்டுகள்</string>
+    <string name="smoke_label_cost_per_cigarette">ஒரு சிகரெட்டின் விலை</string>
+    <string name="smoke_label_years">காலம் (ஆண்டுகள்)</string>
+    <string name="smoke_result_total_spent">மொத்தம் செலவழித்த தொகை</string>
+    <string name="smoke_result_invested_value">முதலீடு செய்திருந்தால்</string>
+    <string name="smoke_result_narrative">ஒரு நாளைக்கு %1$s சிகரெட்டுகள், ஒவ்வொன்றும் %2$s விலையில், உங்களுக்கு மாதம் %3$s செலவாகிறது. %4$s ஆண்டுகளில், இது %5$s ஆக சேரும் — ஆனால் அதே தொகையை மாதந்தோறும் முதலீடு செய்திருந்தால், %6$s%% வருமானத்தில், அது %7$s ஆக வளரக்கூடும்.</string>
+
+    <string name="alcohol_label_drinks_per_week">வாரத்திற்கு பானங்கள்</string>
+    <string name="alcohol_label_cost_per_drink">ஒரு பானத்தின் விலை</string>
+    <string name="alcohol_label_years">காலம் (ஆண்டுகள்)</string>
+    <string name="alcohol_result_total_spent">மொத்தம் செலவழித்த தொகை</string>
+    <string name="alcohol_result_invested_value">முதலீடு செய்திருந்தால்</string>
+    <string name="alcohol_result_narrative">வாரத்திற்கு %1$s பானங்கள், ஒவ்வொன்றும் %2$s விலையில், உங்களுக்கு மாதம் %3$s செலவாகிறது. %4$s ஆண்டுகளில், இது %5$s ஆக சேரும் — ஆனால் அதே தொகையை மாதந்தோறும் முதலீடு செய்திருந்தால், %6$s%% வருமானத்தில், அது %7$s ஆக வளரக்கூடும்.</string>
+
+    <string name="eating_out_label_eating_out_spend">மாதாந்திர வெளியில் சாப்பிடும் செலவு</string>
+    <string name="eating_out_label_home_cooking_spend">மாதாந்திர வீட்டு சமையல் செலவு</string>
+    <string name="eating_out_label_years">காலம் (ஆண்டுகள்)</string>
+    <string name="eating_out_result_total_saved">மொத்தம் சேமித்த தொகை</string>
+    <string name="eating_out_result_invested_value">முதலீடு செய்திருந்தால்</string>
+    <string name="eating_out_result_narrative">வெளியில் சாப்பிடுவதற்குப் பதிலாக வீட்டில் சமைப்பது உங்களுக்கு மாதம் %1$s சேமிக்க உதவுகிறது. %2$s ஆண்டுகளில், இது %3$s ஆக சேரும் — மேலும் அதே சேமிப்பை மாதந்தோறும் முதலீடு செய்திருந்தால், %4$s%% வருமானத்தில், அது %5$s ஆக வளரக்கூடும்.</string>
+    <string name="eating_out_error_invalid_input">சரியான வெளியில் சாப்பிடும் செலவு, வீட்டு சமையல் செலவு, வருமான விகிதம் மற்றும் காலத்தை உள்ளிடவும். வெளியில் சாப்பிடும் செலவு வீட்டு சமையல் செலவை விட அதிகமாக இருக்க வேண்டும்.</string>
+
+    <string name="gratuity_label_salary">கடைசி மாத சம்பளம் (அடிப்படை + DA)</string>
+    <string name="gratuity_label_years_of_service">பணி ஆண்டுகள்</string>
+    <string name="gratuity_result_amount">பணிநிறைவூதியத் தொகை</string>
+    <string name="gratuity_result_not_eligible">குறிப்பு: பணிநிறைவூதியச் சட்டத்தின் கீழ் குறைந்தபட்சம் 5 ஆண்டுகள் தொடர்ச்சியான சேவை தேவை. இது ஒரு விளக்கமான மதிப்பீடு மட்டுமே.</string>
+    <string name="gratuity_result_narrative">%1$s கடைசி மாத சம்பளம் மற்றும் %2$s ஆண்டுகள் சேவையுடன், உங்கள் மதிப்பிடப்பட்ட பணிநிறைவூதியம் %3$s ஆகும், பணிநிறைவூதியச் சட்ட சூத்திரத்தின்படி (15 × சம்பளம் × பணி ஆண்டுகள் ÷ 26), ₹20,00,000 வரை வரம்பிடப்பட்டுள்ளது.</string>
+    <string name="help_gratuity_formula">பணிநிறைவூதியம் = (15 × கடைசி மாத சம்பளம் × பணி ஆண்டுகள்) ÷ 26, ₹20,00,000 சட்டப்பூர்வ அதிகபட்ச வரம்புக்கு உட்பட்டது. சட்டப்படி செலுத்தப்பட குறைந்தபட்சம் 5 ஆண்டுகள் தொடர்ச்சியான சேவை தேவை.</string>
 
     <string name="epf_label_salary">அடிப்படை மாதாந்திர சம்பளம் (₹)</string>
     <string name="epf_label_employee_pct">பணியாளர் பங்களிப்பு (%)</string>
@@ -70,6 +180,7 @@
     <string name="epf_label_rate">எதிர்பார்க்கப்படும் EPF விகிதம் (%)</string>
     <string name="epf_result_total_contributed">மொத்த பங்களிப்பு</string>
     <string name="epf_result_interest_earned">ஈட்டிய வட்டி</string>
+    <string name="epf_result_narrative">%1$s அடிப்படை மாதாந்திர சம்பளத்தில், %4$s ஆண்டுகளுக்கு %2$s%% (நீங்கள்) மற்றும் %3$s%% (முதலாளி) பங்களித்தால், %5$s%% வட்டி விகிதத்தில் உங்கள் EPF நிதி %6$s ஆக வளரக்கூடும்.</string>
 
     <string name="ssy_label_age">கணக்கு தொடங்கும்போது பெண் குழந்தையின் வயது (10 வயதுக்கு கீழ் இருக்க வேண்டும்)</string>
     <string name="ssy_label_deposit">ஆண்டு வைப்பு (₹, அதிகபட்சம் ₹1,50,000)</string>
@@ -77,6 +188,7 @@
     <string name="ssy_result_total_deposited">மொத்த வைப்பு</string>
     <string name="ssy_result_interest_earned">ஈட்டிய வட்டி</string>
     <string name="ssy_result_maturity_age">பெண் குழந்தைக்கு %1$d வயதாகும்போது முதிர்வடையும்</string>
+    <string name="ssy_result_narrative">%2$s வயதில் திறக்கப்பட்ட சுகன்யா சம்ரிதி கணக்கில் ஒவ்வோர் ஆண்டும் %1$s டெபாசிட் செய்தால், %3$s%% வட்டி விகிதத்தில், பெண் குழந்தைக்கு %5$s வயதாகும் நேரத்தில் அது %4$s ஆக வளரக்கூடும்.</string>
 
     <string name="nps_label_contribution">மாதாந்திர பங்களிப்பு (₹)</string>
     <string name="nps_label_age">தற்போதைய வயது</string>
@@ -86,6 +198,7 @@
     <string name="nps_result_lumpsum">முழுத்தொகை திரும்பப்பெறல்</string>
     <string name="nps_result_annuity_corpus">அன்யூட்டி நிதி</string>
     <string name="nps_result_pension">மதிப்பிடப்பட்ட மாதாந்திர ஓய்வூதியம்</string>
+    <string name="nps_result_narrative">%2$s வயது முதல் 60 வயதில் ஓய்வு பெறும் வரை %3$s%% எதிர்பார்க்கப்படும் ஆண்டு வருமானத்தில் NPS இல் மாதம் %1$s பங்களித்தால், உங்கள் நிதி %4$s ஆக வளரக்கூடும். %5$s%% கட்டாயமாக அன்யூட்டிக்குப் பயன்படுத்தப்படுவதால், நீங்கள் %6$s ஐ முழுத்தொகையாக திரும்பப்பெறலாம் மற்றும் மதிப்பிடப்பட்ட %7$s ஐ மாதந்தோறும் ஓய்வூதியமாகப் பெறலாம்.</string>
 
     <string name="emi_label_loan_amount">கடன் தொகை (₹)</string>
     <string name="emi_label_rate">வட்டி விகிதம் (%)</string>
@@ -100,6 +213,9 @@
     <string name="emi_result_interest_saved">சேமிக்கப்பட்ட வட்டி</string>
     <string name="emi_result_months_saved">காலம் %1$d மாதங்கள் குறைந்தது</string>
     <string name="emi_result_new_emi">முன்கூட்டிய கட்டணத்திற்குப் பின் புதிய EMI</string>
+    <string name="emi_result_narrative">%3$s மாதங்கள் காலத்திற்கு %2$s%% வட்டி விகிதத்தில் %1$s கடனுக்கு, உங்கள் EMI %4$s ஆக இருக்கும், கடன் காலத்தில் மொத்த வட்டிச் செலவு %5$s ஆக இருக்கும்.</string>
+    <string name="emi_result_narrative_reduce_tenure_addendum">\n\nஉங்கள் திட்டமிட்ட முன்கூட்டிய கட்டணத்துடன், நீங்கள் வட்டியில் %1$s சேமிக்கலாம் மற்றும் %2$d மாதங்கள் முன்னதாகவே முடிக்கலாம்.</string>
+    <string name="emi_result_narrative_reduce_emi_addendum">\n\nஉங்கள் திட்டமிட்ட முன்கூட்டிய கட்டணத்துடன், நீங்கள் வட்டியில் %1$s சேமிக்கலாம் மற்றும் உங்கள் EMI %2$s ஆகக் குறையும்.</string>
 
     <string name="stp_label_source">மூல தொகை (₹)</string>
     <string name="stp_label_transfer">மாதாந்திர பரிமாற்றத் தொகை (₹)</string>
@@ -108,6 +224,7 @@
     <string name="stp_label_target_return">இலக்கு நிதி வருமானம் (%)</string>
     <string name="stp_result_source_remaining">மூல நிதியில் மீதம்</string>
     <string name="stp_result_target_value">இலக்கு நிதியில் மதிப்பு</string>
+    <string name="stp_result_narrative">%2$s மொத்தத் தொகையிலிருந்து (மூல நிதியில் %3$s%% ஈட்டுகிறது) %5$s மாதங்களில் %4$s%% ஈட்டும் இலக்கு நிதிக்கு மாதம் %1$s மாற்றினால், உங்கள் மூல நிதியில் %6$s மீதமிருக்கும், அதேசமயம் உங்கள் இலக்கு நிதி %7$s ஆக வளரக்கூடும்.</string>
 
     <string name="swp_label_corpus">தொடக்க நிதி (₹)</string>
     <string name="swp_label_withdrawal">மாதாந்திர திரும்பப்பெறல் (₹)</string>
@@ -117,6 +234,8 @@
     <string name="swp_result_no_depletion">நிதி உருவகப்படுத்தப்பட்ட காலத்தை விட நீடிக்கும்</string>
     <string name="swp_result_total_withdrawn">மொத்தம் திரும்பப்பெறப்பட்டது</string>
     <string name="swp_result_final_balance">இறுதி இருப்பு</string>
+    <string name="swp_result_narrative_depleted">%3$s%% ஆண்டு வருமானம் ஈட்டும் %2$s நிதியிலிருந்து மாதம் %1$s திரும்பப்பெற்றால், உங்கள் நிதி %4$d மாதங்களுக்குப் பிறகு தீரும் என்று மதிப்பிடப்படுகிறது.</string>
+    <string name="swp_result_narrative_survives">%3$s%% ஆண்டு வருமானம் ஈட்டும் %2$s நிதியிலிருந்து %4$s ஆண்டுகளுக்கு மாதம் %1$s திரும்பப்பெற்றால், நீங்கள் மொத்தம் %5$s திரும்பப்பெறுவீர்கள், அதே சமயம் %6$s இன்னும் மீதமிருக்கும்.</string>
 
     <string name="fire_variant_traditional">பாரம்பரிய FIRE</string>
     <string name="fire_variant_lean">லீன் FIRE</string>
@@ -136,8 +255,9 @@
     <string name="fire_result_required_sip">தேவையான மாதாந்திர SIP</string>
     <string name="fire_result_coast_achieved">கோஸ்ட் FIRE அடையப்பட்டது — உங்கள் தற்போதைய சேமிப்பு தானாகவே இலக்கை அடையும் என்று மதிப்பிடப்படுகிறது.</string>
     <string name="fire_result_coast_not_achieved">இன்னும் கோஸ்ட் FIRE இல்லை — மேலே உள்ள SIP இன்னும் என்ன தேவை என்பதைக் காட்டுகிறது.</string>
+    <string name="fire_result_narrative">%2$s இன் கீழ் %3$s%% பணவீக்கம் மற்றும் %4$s%% எதிர்பார்க்கப்படும் ஓய்வுக்கு முந்தைய வருமானத்துடன் %1$s வயதில் ஓய்வு பெற, உங்களுக்கு %5$s நிதி தேவைப்படும். உங்கள் தற்போதுள்ள %6$s இலிருந்து தொடங்கி, SIP மூலம் மாதம் %7$s முதலீடு செய்தால் நீங்கள் அங்கு அடையலாம்.</string>
+    <string name="fire_result_narrative_coast_achieved">கோஸ்ட் FIRE இன் கீழ், %2$s வயதுக்குள் உங்களுக்கு %1$s நிதி தேவைப்படும். உங்கள் தற்போதுள்ள %3$s ஏற்கனவே அதைத் தானாகவே அடையும் என்று மதிப்பிடப்படுகிறது — மேலும் எந்த SIP தேவையில்லை.</string>
 
-    <string name="goal_planning_title">இலக்கு திட்டமிடல்</string>
     <string name="goal_planning_label_name">இலக்கின் பெயர்</string>
     <string name="goal_planning_label_type">இலக்கு வகை</string>
     <string name="goal_type_retirement">ஓய்வூதியம்</string>
@@ -146,8 +266,19 @@
     <string name="goal_type_car">கார்</string>
     <string name="goal_type_custom">தனிப்பயன்</string>
     <string name="goal_planning_button_save">இலக்கை சேமித்து கண்காணிக்கவும்</string>
-    <string name="goal_planning_home_card_title">ஒரு இலக்கைத் திட்டமிடுங்கள்</string>
-    <string name="goal_planning_home_card_subtitle">ஒரு இலக்கை நிர்ணயித்து அதை அடைய என்ன தேவை என்பதைப் பாருங்கள்</string>
+
+    <string name="home_search_placeholder">கால்குலேட்டர்களைத் தேடுங்கள்</string>
+
+    <string name="category_investment">முதலீடு</string>
+    <string name="category_savings">சேமிப்பு</string>
+    <string name="category_lifestyle">வாழ்க்கை முறை</string>
+    <string name="category_government_schemes">அரசு திட்டங்கள்</string>
+    <string name="category_planning">திட்டமிடல்</string>
+    <string name="category_loan">கடன்</string>
+
+    <string name="default_rates_setup_title">உங்கள் இயல்புநிலை விகிதங்களை அமைக்கவும்</string>
+    <string name="default_rates_setup_message">இவை ஒவ்வொரு கால்குலேட்டரின் வருவாய் மற்றும் பணவீக்க புலங்களை முன்கூட்டியே நிரப்பும். எப்போது வேண்டுமானாலும் ஒவ்வொரு கணக்கீட்டிற்கும் திருத்தலாம், அல்லது பின்னர் அமைப்புகளில் இயல்புநிலைகளை மாற்றலாம்.</string>
+    <string name="default_rates_button_continue">தொடரவும்</string>
 
     <string name="coming_soon_dismiss">சரி</string>
 
@@ -167,6 +298,10 @@
     <string name="settings_theme_color">தீம் நிறம்</string>
     <string name="settings_randomize_theme">சீரற்றது</string>
     <string name="settings_language">மொழி</string>
+    <string name="settings_default_rates_title">இயல்புநிலை விகிதங்கள்</string>
+    <string name="settings_appearance_section_title">தோற்றம்</string>
+    <string name="settings_default_inflation">இயல்புநிலை பணவீக்க விகிதம் (%)</string>
+    <string name="settings_default_expected_return">இயல்புநிலை எதிர்பார்க்கும் வருவாய் (%)</string>
     <string name="theme_mode_light">லைட்</string>
     <string name="theme_mode_dark">டார்க்</string>
     <string name="theme_mode_system">சிஸ்டம்</string>

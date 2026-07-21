@@ -14,42 +14,55 @@ object FinanceMath {
      * Future value of a regular (non-step-up) SIP.
      * Standard SIP future value formula, monthly compounding:
      *   FV = P * [ ((1 + r)^n - 1) / r ] * (1 + r)
-     * where r = monthly rate, n = number of months.
+     * where r = per-period rate, n = number of periods.
+     *
+     * [periodsPerYear] defaults to 12 (monthly) — all existing callers pass
+     * only the first three args and stay monthly. The SIP calculator's daily
+     * (365) / weekly (52) frequency options pass it explicitly.
      */
     fun sipFutureValue(
         monthlyAmount: Double,
         annualReturnPercent: Double,
-        months: Int
+        months: Int,
+        periodsPerYear: Int = 12
     ): Double {
         if (months <= 0) return 0.0
-        val monthlyRate = (annualReturnPercent / 100.0) / 12.0
-        if (monthlyRate == 0.0) return monthlyAmount * months
+        val periodicRate = (annualReturnPercent / 100.0) / periodsPerYear
+        if (periodicRate == 0.0) return monthlyAmount * months
         return monthlyAmount *
-            (((1 + monthlyRate).pow(months) - 1) / monthlyRate) *
-            (1 + monthlyRate)
+            (((1 + periodicRate).pow(months) - 1) / periodicRate) *
+            (1 + periodicRate)
     }
 
     /**
-     * Future value of a step-up SIP, where the monthly contribution increases
-     * by [stepUpPercent] once every 12 months. Simulated month-by-month since
-     * there's no closed-form formula once contributions change annually.
+     * Future value of a step-up SIP, where the contribution increases once
+     * every year — either by [stepUpPercent] or, if positive, by a flat
+     * [stepUpFixedAmount] instead (the two are mutually exclusive; fixed
+     * amount wins if both are somehow non-zero). Simulated period-by-period
+     * since there's no closed-form formula once contributions change annually.
      */
     fun stepUpSipFutureValue(
-        initialMonthlyAmount: Double,
+        initialAmount: Double,
         annualReturnPercent: Double,
-        months: Int,
-        stepUpPercent: Double
+        totalPeriods: Int,
+        stepUpPercent: Double = 0.0,
+        stepUpFixedAmount: Double = 0.0,
+        periodsPerYear: Int = 12
     ): Double {
-        if (months <= 0) return 0.0
-        val monthlyRate = (annualReturnPercent / 100.0) / 12.0
+        if (totalPeriods <= 0) return 0.0
+        val periodicRate = (annualReturnPercent / 100.0) / periodsPerYear
         var corpus = 0.0
-        var currentMonthlyAmount = initialMonthlyAmount
+        var currentAmount = initialAmount
 
-        for (month in 1..months) {
-            corpus = (corpus + currentMonthlyAmount) * (1 + monthlyRate)
-            // Bump the contribution at the start of each new year (every 12 months)
-            if (month % 12 == 0 && month != months) {
-                currentMonthlyAmount *= (1 + stepUpPercent / 100.0)
+        for (period in 1..totalPeriods) {
+            corpus = (corpus + currentAmount) * (1 + periodicRate)
+            // Bump the contribution at the start of each new year
+            if (period % periodsPerYear == 0 && period != totalPeriods) {
+                currentAmount = if (stepUpFixedAmount > 0) {
+                    currentAmount + stepUpFixedAmount
+                } else {
+                    currentAmount * (1 + stepUpPercent / 100.0)
+                }
             }
         }
         return corpus
@@ -57,16 +70,22 @@ object FinanceMath {
 
     /** Total amount invested over a step-up SIP (for "wealth gained" breakdown). */
     fun stepUpTotalInvested(
-        initialMonthlyAmount: Double,
-        months: Int,
-        stepUpPercent: Double
+        initialAmount: Double,
+        totalPeriods: Int,
+        stepUpPercent: Double = 0.0,
+        stepUpFixedAmount: Double = 0.0,
+        periodsPerYear: Int = 12
     ): Double {
         var total = 0.0
-        var currentMonthlyAmount = initialMonthlyAmount
-        for (month in 1..months) {
-            total += currentMonthlyAmount
-            if (month % 12 == 0 && month != months) {
-                currentMonthlyAmount *= (1 + stepUpPercent / 100.0)
+        var currentAmount = initialAmount
+        for (period in 1..totalPeriods) {
+            total += currentAmount
+            if (period % periodsPerYear == 0 && period != totalPeriods) {
+                currentAmount = if (stepUpFixedAmount > 0) {
+                    currentAmount + stepUpFixedAmount
+                } else {
+                    currentAmount * (1 + stepUpPercent / 100.0)
+                }
             }
         }
         return total
@@ -286,6 +305,56 @@ object FinanceMath {
             }
         }
         return WithdrawalResult(depletionMonth = null, totalWithdrawn = totalWithdrawn, finalBalance = balance)
+    }
+
+    /**
+     * Fixed Deposit maturity value, quarterly compounding (standard for
+     * Indian bank FDs):
+     *   FV = P * (1 + r/4)^(4 * years)
+     */
+    fun fdMaturityValue(
+        principal: Double,
+        annualRatePercent: Double,
+        tenureMonths: Int,
+        compoundingsPerYear: Int = 4
+    ): Double {
+        if (tenureMonths <= 0) return principal
+        val years = tenureMonths / 12.0
+        val rate = annualRatePercent / 100.0
+        return principal * (1 + rate / compoundingsPerYear).pow(compoundingsPerYear * years)
+    }
+
+    /**
+     * Recurring Deposit maturity value. Deposits are made monthly; interest
+     * compounds quarterly (standard for Indian bank RDs) — simulated
+     * month-by-month rather than a closed form, applying compounding at the
+     * end of every 3rd month, with any leftover partial quarter compounded
+     * proportionally at the end.
+     */
+    fun rdMaturityValue(monthlyDeposit: Double, annualRatePercent: Double, tenureMonths: Int): Double {
+        if (tenureMonths <= 0) return 0.0
+        val quarterlyRate = annualRatePercent / 400.0
+        var balance = 0.0
+        for (month in 1..tenureMonths) {
+            balance += monthlyDeposit
+            if (month % 3 == 0) balance *= (1 + quarterlyRate)
+        }
+        val leftoverMonths = tenureMonths % 3
+        if (leftoverMonths != 0) {
+            balance *= (1 + quarterlyRate).pow(leftoverMonths / 3.0)
+        }
+        return balance
+    }
+
+    /**
+     * Statutory gratuity formula under the Payment of Gratuity Act, 1972:
+     *   Gratuity = (15 * last drawn monthly salary * years of service) / 26
+     * Capped at the statutory maximum of ₹20,00,000.
+     */
+    fun gratuityAmount(lastDrawnMonthlySalary: Double, yearsOfService: Int): Double {
+        val statutoryCap = 2_000_000.0
+        val raw = (15.0 * lastDrawnMonthlySalary * yearsOfService) / 26.0
+        return minOf(raw, statutoryCap)
     }
 
     /**

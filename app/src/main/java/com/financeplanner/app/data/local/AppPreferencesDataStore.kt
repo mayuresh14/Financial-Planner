@@ -3,6 +3,7 @@ package com.financeplanner.app.data.local
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.financeplanner.app.domain.model.AppDisplayPreferences
@@ -27,9 +28,13 @@ class AppPreferencesDataStore @Inject constructor(
         val THEME_PRESET = stringPreferencesKey("theme_preset")
         val LANGUAGE = stringPreferencesKey("language")
         val HAS_SEEN_APP_TOUR = booleanPreferencesKey("has_seen_app_tour")
+        val DEFAULT_INFLATION_PERCENT = doublePreferencesKey("default_inflation_percent")
+        val DEFAULT_EXPECTED_RETURN_PERCENT = doublePreferencesKey("default_expected_return_percent")
+        val HAS_SET_DEFAULT_RATES = booleanPreferencesKey("has_set_default_rates")
     }
 
     val preferencesFlow: Flow<AppDisplayPreferences> = dataStore.data.map { prefs ->
+        val defaults = AppDisplayPreferences()
         AppDisplayPreferences(
             themeMode = prefs[Keys.THEME_MODE]?.let { runCatching { ThemeMode.valueOf(it) }.getOrNull() }
                 ?: ThemeMode.SYSTEM_DEFAULT,
@@ -37,7 +42,11 @@ class AppPreferencesDataStore @Inject constructor(
                 ?: ThemePreset.EMERALD,
             language = prefs[Keys.LANGUAGE]?.let { code -> AppLanguage.entries.find { it.localeTag == code } }
                 ?: AppLanguage.ENGLISH,
-            hasSeenAppTour = prefs[Keys.HAS_SEEN_APP_TOUR] ?: false
+            hasSeenAppTour = prefs[Keys.HAS_SEEN_APP_TOUR] ?: false,
+            defaultInflationPercent = prefs[Keys.DEFAULT_INFLATION_PERCENT] ?: defaults.defaultInflationPercent,
+            defaultExpectedReturnPercent = prefs[Keys.DEFAULT_EXPECTED_RETURN_PERCENT]
+                ?: defaults.defaultExpectedReturnPercent,
+            hasSetDefaultRates = prefs[Keys.HAS_SET_DEFAULT_RATES] ?: false
         )
     }
 
@@ -55,5 +64,17 @@ class AppPreferencesDataStore @Inject constructor(
 
     suspend fun setHasSeenAppTour(seen: Boolean) {
         dataStore.edit { it[Keys.HAS_SEEN_APP_TOUR] = seen }
+    }
+
+    suspend fun setDefaultInflationPercent(value: Double) {
+        dataStore.edit { it[Keys.DEFAULT_INFLATION_PERCENT] = value }
+    }
+
+    suspend fun setDefaultExpectedReturnPercent(value: Double) {
+        dataStore.edit { it[Keys.DEFAULT_EXPECTED_RETURN_PERCENT] = value }
+    }
+
+    suspend fun setHasSetDefaultRates(value: Boolean) {
+        dataStore.edit { it[Keys.HAS_SET_DEFAULT_RATES] = value }
     }
 }

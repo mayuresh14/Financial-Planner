@@ -6,39 +6,51 @@ import com.financeplanner.app.domain.util.FinanceMath
 import javax.inject.Inject
 
 /**
- * Calculates SIP maturity value, handling both regular and step-up SIPs,
- * with an optional inflation-adjusted view. This is the template pattern
- * every other calculator's UseCase follows: plain constructor injection,
- * a single [invoke] operator, no Android framework dependencies so it's
- * trivially unit-testable and portable if calculation ever moves server-side.
+ * Calculates SIP maturity value, handling regular and step-up SIPs (either
+ * percentage or fixed-amount step-up), daily/weekly/monthly contribution
+ * frequency, an optional expense-ratio drag on the return, and an optional
+ * inflation-adjusted view. This is the template pattern every other
+ * calculator's UseCase follows: plain constructor injection, a single
+ * [invoke] operator, no Android framework dependencies so it's trivially
+ * unit-testable and portable if calculation ever moves server-side.
  */
 class CalculateSipUseCase @Inject constructor() {
 
     operator fun invoke(input: SipInput): SipResult {
-        val months = input.durationYears * 12
+        val periodsPerYear = input.frequency.periodsPerYear
+        val totalPeriods = input.durationYears * periodsPerYear
 
-        val maturityValue: Double
-        val totalInvested: Double
+        // Expense ratio is modeled as a straight drag on the gross expected
+        // return — the standard simplified way fund costs reduce net growth.
+        val expenseRatio = input.expenseRatioPercent ?: 0.0
+        val netReturnPercent = (input.expectedReturnPercent - expenseRatio).coerceAtLeast(0.0)
 
-        if (input.stepUpPercent != null && input.stepUpPercent > 0) {
-            maturityValue = FinanceMath.stepUpSipFutureValue(
-                initialMonthlyAmount = input.monthlyAmount,
-                annualReturnPercent = input.expectedReturnPercent,
-                months = months,
-                stepUpPercent = input.stepUpPercent
-            )
-            totalInvested = FinanceMath.stepUpTotalInvested(
-                initialMonthlyAmount = input.monthlyAmount,
-                months = months,
-                stepUpPercent = input.stepUpPercent
+        val stepUpPercent = input.stepUpPercent ?: 0.0
+        val stepUpFixedAmount = input.stepUpFixedAmount ?: 0.0
+        val hasStepUp = stepUpPercent > 0 || stepUpFixedAmount > 0
+
+        val maturityValue = growthFor(input, netReturnPercent, totalPeriods, periodsPerYear, hasStepUp, stepUpPercent, stepUpFixedAmount)
+        val totalInvested = if (hasStepUp) {
+            FinanceMath.stepUpTotalInvested(
+                initialAmount = input.contributionAmount,
+                totalPeriods = totalPeriods,
+                stepUpPercent = stepUpPercent,
+                stepUpFixedAmount = stepUpFixedAmount,
+                periodsPerYear = periodsPerYear
             )
         } else {
-            maturityValue = FinanceMath.sipFutureValue(
-                monthlyAmount = input.monthlyAmount,
-                annualReturnPercent = input.expectedReturnPercent,
-                months = months
+            input.contributionAmount * totalPeriods
+        }
+
+        // Expense amount: how much smaller the corpus is versus what it would
+        // have been at the gross (pre-expense) return — i.e. the fees' cost.
+        val expenseAmount = if (expenseRatio > 0) {
+            val grossMaturityValue = growthFor(
+                input, input.expectedReturnPercent, totalPeriods, periodsPerYear, hasStepUp, stepUpPercent, stepUpFixedAmount
             )
-            totalInvested = input.monthlyAmount * months
+            (grossMaturityValue - maturityValue).coerceAtLeast(0.0)
+        } else {
+            null
         }
 
         val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
@@ -53,7 +65,34 @@ class CalculateSipUseCase @Inject constructor() {
             maturityValue = maturityValue,
             totalInvested = totalInvested,
             wealthGained = maturityValue - totalInvested,
+            expenseAmount = expenseAmount,
             inflationAdjustedValue = inflationAdjustedValue
+        )
+    }
+
+    private fun growthFor(
+        input: SipInput,
+        annualReturnPercent: Double,
+        totalPeriods: Int,
+        periodsPerYear: Int,
+        hasStepUp: Boolean,
+        stepUpPercent: Double,
+        stepUpFixedAmount: Double
+    ): Double = if (hasStepUp) {
+        FinanceMath.stepUpSipFutureValue(
+            initialAmount = input.contributionAmount,
+            annualReturnPercent = annualReturnPercent,
+            totalPeriods = totalPeriods,
+            stepUpPercent = stepUpPercent,
+            stepUpFixedAmount = stepUpFixedAmount,
+            periodsPerYear = periodsPerYear
+        )
+    } else {
+        FinanceMath.sipFutureValue(
+            monthlyAmount = input.contributionAmount,
+            annualReturnPercent = annualReturnPercent,
+            months = totalPeriods,
+            periodsPerYear = periodsPerYear
         )
     }
 }

@@ -14,6 +14,17 @@ class CalculateStpUseCase @Inject constructor() {
             sourceAnnualReturnPercent = input.sourceReturnPercent,
             targetAnnualReturnPercent = input.targetReturnPercent
         )
-        return StpResult(sourceRemaining = result.sourceRemaining, targetValue = result.targetValue)
+        val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
+            FinanceMath.inflationAdjustedValue(
+                futureValue = result.targetValue,
+                annualInflationPercent = inflation,
+                years = input.durationMonths / 12.0
+            )
+        }
+        return StpResult(
+            sourceRemaining = result.sourceRemaining,
+            targetValue = result.targetValue,
+            inflationAdjustedValue = inflationAdjustedValue
+        )
     }
 }

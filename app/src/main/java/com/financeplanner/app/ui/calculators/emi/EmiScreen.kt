@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -24,7 +23,10 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -35,6 +37,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,8 +48,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.EmiResult
 import com.financeplanner.app.domain.model.PrepaymentStrategy
+import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
+import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
+import com.financeplanner.app.ui.common.formatAmountWithWords
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -60,6 +68,14 @@ fun EmiScreen(
     val state by viewModel.uiState.collectAsState()
     val preferences by settingsViewModel.preferences.collectAsState()
     var showSettingsSheet by remember { mutableStateOf(false) }
+    val resultSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val coroutineScope = rememberCoroutineScope()
+
+    fun dismissResultSheet() {
+        coroutineScope.launch { resultSheetState.hide() }.invokeOnCompletion {
+            if (!resultSheetState.isVisible) viewModel.onResultDismissed()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -78,10 +94,16 @@ fun EmiScreen(
             modifier = Modifier.padding(padding).padding(16.dp).verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            OutlinedTextField(
+            Text(
+                text = stringResource(R.string.emi_screen_description),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            AmountOutlinedTextField(
                 value = state.loanAmount, onValueChange = viewModel::onLoanAmountChange,
                 label = { Text(stringResource(R.string.emi_label_loan_amount)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true
+                modifier = Modifier.fillMaxWidth()
             )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedTextField(
@@ -108,10 +130,10 @@ fun EmiScreen(
             AnimatedVisibility(visible = state.enablePrepayment) {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        OutlinedTextField(
+                        AmountOutlinedTextField(
                             value = state.prepaymentAmount, onValueChange = viewModel::onPrepaymentAmountChange,
                             label = { Text(stringResource(R.string.emi_label_prepayment_amount)) },
-                            modifier = Modifier.weight(1f), singleLine = true
+                            modifier = Modifier.weight(1f)
                         )
                         OutlinedTextField(
                             value = state.prepaymentAfterMonth, onValueChange = viewModel::onPrepaymentAfterMonthChange,
@@ -145,12 +167,22 @@ fun EmiScreen(
             Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.sip_button_calculate))
             }
+        }
+    }
 
-            AnimatedVisibility(
-                visible = state.result != null,
-                enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()
+    if (state.result != null) {
+        ModalBottomSheet(
+            onDismissRequest = ::dismissResultSheet,
+            sheetState = resultSheetState
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                state.result?.let { EmiResultCard(it) }
+                state.result?.let { EmiResultCard(it, state) }
+                Button(onClick = viewModel::onSaveClicked, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
@@ -162,50 +194,101 @@ fun EmiScreen(
             onThemePresetChange = settingsViewModel::setThemePreset,
             onRandomizeTheme = settingsViewModel::randomizeTheme,
             onLanguageChange = settingsViewModel::setLanguage,
+            onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
+            onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
             onDismiss = { showSettingsSheet = false }
         )
+    }
+
+    if (state.showComingSoonSheet) {
+        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
     }
 }
 
 @Composable
-private fun EmiResultCard(result: EmiResult) {
-    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")) }
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = MaterialTheme.shapes.large
-    ) {
-        Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(text = stringResource(R.string.emi_result_emi), style = MaterialTheme.typography.labelLarge)
-            Text(
-                text = currencyFormat.format(result.emi),
-                style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
-            )
-            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
-            ResultRow(stringResource(R.string.emi_result_total_interest), currencyFormat.format(result.totalInterestWithoutPrepayment))
+private fun EmiResultCard(result: EmiResult, state: EmiUiState) {
+    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")).apply { maximumFractionDigits = 0 } }
 
-            if (result.totalInterestWithPrepayment != null) {
-                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
-                result.interestSaved?.let {
-                    ResultRow(stringResource(R.string.emi_result_interest_saved), currencyFormat.format(it))
-                }
-                result.monthsSaved?.let {
-                    ResultRow(stringResource(R.string.emi_result_months_saved, it), "")
-                }
-                result.newEmiAfterPrepayment?.let {
-                    ResultRow(stringResource(R.string.emi_result_new_emi), currencyFormat.format(it))
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        val narrative = buildString {
+            append(
+                stringResource(
+                    R.string.emi_result_narrative,
+                    formatAmountWithWords(state.loanAmount.toDoubleOrNull() ?: 0.0, currencyFormat),
+                    state.interestRatePercent,
+                    state.tenureMonths,
+                    formatAmountWithWords(result.emi, currencyFormat),
+                    formatAmountWithWords(result.totalInterestWithoutPrepayment, currencyFormat)
+                )
+            )
+            if (result.interestSaved != null) {
+                when (state.prepaymentStrategy) {
+                    PrepaymentStrategy.REDUCE_TENURE -> result.monthsSaved?.let { months ->
+                        append(
+                            stringResource(
+                                R.string.emi_result_narrative_reduce_tenure_addendum,
+                                formatAmountWithWords(result.interestSaved, currencyFormat),
+                                months
+                            )
+                        )
+                    }
+                    PrepaymentStrategy.REDUCE_EMI -> result.newEmiAfterPrepayment?.let { newEmi ->
+                        append(
+                            stringResource(
+                                R.string.emi_result_narrative_reduce_emi_addendum,
+                                formatAmountWithWords(result.interestSaved, currencyFormat),
+                                formatAmountWithWords(newEmi, currencyFormat)
+                            )
+                        )
+                    }
                 }
             }
         }
+
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            shape = MaterialTheme.shapes.large
+        ) {
+            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = stringResource(R.string.emi_result_emi), style = MaterialTheme.typography.labelLarge)
+                Text(
+                    text = currencyFormat.format(result.emi),
+                    style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
+                )
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                ResultRow(stringResource(R.string.emi_result_total_interest), currencyFormat.format(result.totalInterestWithoutPrepayment))
+
+                if (result.totalInterestWithPrepayment != null) {
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                    result.interestSaved?.let {
+                        ResultRow(stringResource(R.string.emi_result_interest_saved), currencyFormat.format(it))
+                    }
+                    result.monthsSaved?.let {
+                        ResultRow(stringResource(R.string.emi_result_months_saved, it), "")
+                    }
+                    result.newEmiAfterPrepayment?.let {
+                        ResultRow(stringResource(R.string.emi_result_new_emi), currencyFormat.format(it))
+                    }
+                }
+            }
+        }
+
+        NarrativeResultCard(narrative)
     }
 }
 
 @Composable
 private fun ResultRow(label: String, value: String) {
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-        Text(text = label, style = MaterialTheme.typography.bodyMedium)
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = LocalContentColor.current.copy(alpha = 0.75f)
+        )
         if (value.isNotEmpty()) {
-            Text(text = value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+            Text(text = value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
         }
     }
 }

@@ -5,21 +5,26 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.financeplanner.app.ui.calculators.alcohol.AlcoholScreen
+import com.financeplanner.app.ui.calculators.eatingout.EatingOutScreen
 import com.financeplanner.app.ui.calculators.emi.EmiScreen
 import com.financeplanner.app.ui.calculators.epf.EpfScreen
+import com.financeplanner.app.ui.calculators.fd.FdScreen
 import com.financeplanner.app.ui.calculators.fire.FireScreen
 import com.financeplanner.app.ui.calculators.goalbasedsip.GoalBasedSipScreen
+import com.financeplanner.app.ui.calculators.gratuity.GratuityScreen
 import com.financeplanner.app.ui.calculators.inflationgoal.InflationGoalScreen
 import com.financeplanner.app.ui.calculators.lumpsum.LumpsumScreen
 import com.financeplanner.app.ui.calculators.nps.NpsScreen
 import com.financeplanner.app.ui.calculators.ppf.PpfScreen
+import com.financeplanner.app.ui.calculators.rd.RdScreen
 import com.financeplanner.app.ui.calculators.sip.SipScreen
+import com.financeplanner.app.ui.calculators.smoke.SmokeScreen
 import com.financeplanner.app.ui.calculators.sipvslumpsum.SipVsLumpsumScreen
 import com.financeplanner.app.ui.calculators.ssy.SsyScreen
 import com.financeplanner.app.ui.calculators.stp.StpScreen
 import com.financeplanner.app.ui.calculators.swp.SwpScreen
 import com.financeplanner.app.ui.calculators.tenure.TenureScreen
-import com.financeplanner.app.ui.goals.GoalPlanningScreen
 import com.financeplanner.app.ui.home.HomeScreen
 
 /**
@@ -43,7 +48,12 @@ object Routes {
     const val STP = "stp"
     const val SWP = "swp"
     const val FIRE = "fire"
-    const val GOAL_PLANNING = "goal_planning"
+    const val FD = "fd"
+    const val RD = "rd"
+    const val SMOKE = "smoke"
+    const val ALCOHOL = "alcohol"
+    const val EATING_OUT = "eating_out"
+    const val GRATUITY = "gratuity"
 }
 
 @Composable
@@ -53,11 +63,9 @@ fun FinancePlannerNavHost(
     NavHost(navController = navController, startDestination = Routes.HOME) {
         composable(Routes.HOME) {
             HomeScreen(
-                onNavigateToCalculator = { route -> navController.navigate(route) },
-                onNavigateToGoalPlanning = { navController.navigate(Routes.GOAL_PLANNING) }
+                onNavigateToCalculator = { route -> navController.navigate(route) }
             )
         }
-        composable(Routes.GOAL_PLANNING) { GoalPlanningScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.SIP) { SipScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.LUMPSUM) { LumpsumScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.TENURE) { TenureScreen(onBack = { navController.popBackStack() }) }
@@ -72,5 +80,11 @@ fun FinancePlannerNavHost(
         composable(Routes.STP) { StpScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.SWP) { SwpScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.FIRE) { FireScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.FD) { FdScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.RD) { RdScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.SMOKE) { SmokeScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.ALCOHOL) { AlcoholScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.EATING_OUT) { EatingOutScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.GRATUITY) { GratuityScreen(onBack = { navController.popBackStack() }) }
     }
 }

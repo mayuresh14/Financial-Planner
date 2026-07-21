@@ -13,11 +13,19 @@ class CalculateSsyUseCase @Inject constructor() {
         )
         val depositYears = minOf(15, 21)
         val totalDeposited = input.yearlyDeposit * depositYears
+        val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
+            FinanceMath.inflationAdjustedValue(
+                futureValue = maturityValue,
+                annualInflationPercent = inflation,
+                years = 21.0
+            )
+        }
         return SsyResult(
             maturityValue = maturityValue,
             totalDeposited = totalDeposited,
             interestEarned = maturityValue - totalDeposited,
-            girlAgeAtMaturity = input.girlAgeAtOpening + 21
+            girlAgeAtMaturity = input.girlAgeAtOpening + 21,
+            inflationAdjustedValue = inflationAdjustedValue
         )
     }
 }

@@ -1,16 +1,10 @@
 package com.financeplanner.app.ui.calculators.stp
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -22,7 +16,10 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,6 +29,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -40,8 +38,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.StpResult
+import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
+import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.FieldHelpIcon
+import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
+import com.financeplanner.app.ui.common.formatAmountWithWords
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -55,6 +59,14 @@ fun StpScreen(
     val state by viewModel.uiState.collectAsState()
     val preferences by settingsViewModel.preferences.collectAsState()
     var showSettingsSheet by remember { mutableStateOf(false) }
+    val resultSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val coroutineScope = rememberCoroutineScope()
+
+    fun dismissResultSheet() {
+        coroutineScope.launch { resultSheetState.hide() }.invokeOnCompletion {
+            if (!resultSheetState.isVisible) viewModel.onResultDismissed()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -73,15 +85,21 @@ fun StpScreen(
             modifier = Modifier.padding(padding).padding(16.dp).verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            OutlinedTextField(
+            Text(
+                text = stringResource(R.string.stp_screen_description),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            AmountOutlinedTextField(
                 value = state.sourceLumpsum, onValueChange = viewModel::onSourceLumpsumChange,
                 label = { Text(stringResource(R.string.stp_label_source)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true
+                modifier = Modifier.fillMaxWidth()
             )
-            OutlinedTextField(
+            AmountOutlinedTextField(
                 value = state.monthlyTransferAmount, onValueChange = viewModel::onTransferAmountChange,
                 label = { Text(stringResource(R.string.stp_label_transfer)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true
+                modifier = Modifier.fillMaxWidth()
             )
             OutlinedTextField(
                 value = state.durationMonths, onValueChange = viewModel::onDurationChange,
@@ -101,6 +119,13 @@ fun StpScreen(
                 )
             }
 
+            OutlinedTextField(
+                value = state.inflationPercent, onValueChange = viewModel::onInflationChange,
+                label = { Text(stringResource(R.string.sip_label_inflation)) },
+                modifier = Modifier.fillMaxWidth(), singleLine = true,
+                trailingIcon = { FieldHelpIcon(stringResource(R.string.help_inflation_rate)) }
+            )
+
             state.error?.let { error ->
                 val message = when (error) {
                     is StpValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
@@ -112,12 +137,22 @@ fun StpScreen(
             Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.sip_button_calculate))
             }
+        }
+    }
 
-            AnimatedVisibility(
-                visible = state.result != null,
-                enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()
+    if (state.result != null) {
+        ModalBottomSheet(
+            onDismissRequest = ::dismissResultSheet,
+            sheetState = resultSheetState
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                state.result?.let { StpResultCard(it) }
+                state.result?.let { StpResultCard(it, state) }
+                Button(onClick = viewModel::onSaveClicked, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
@@ -129,32 +164,84 @@ fun StpScreen(
             onThemePresetChange = settingsViewModel::setThemePreset,
             onRandomizeTheme = settingsViewModel::randomizeTheme,
             onLanguageChange = settingsViewModel::setLanguage,
+            onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
+            onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
             onDismiss = { showSettingsSheet = false }
         )
+    }
+
+    if (state.showComingSoonSheet) {
+        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
     }
 }
 
 @Composable
-private fun StpResultCard(result: StpResult) {
-    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")) }
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = MaterialTheme.shapes.large
-    ) {
-        Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(text = stringResource(R.string.stp_result_target_value), style = MaterialTheme.typography.labelLarge)
-            Text(
-                text = currencyFormat.format(result.targetValue),
-                style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
-            )
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(text = stringResource(R.string.stp_result_source_remaining), style = MaterialTheme.typography.bodyMedium)
-                Text(
-                    text = currencyFormat.format(result.sourceRemaining),
-                    style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold
+private fun StpResultCard(result: StpResult, state: StpUiState) {
+    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")).apply { maximumFractionDigits = 0 } }
+
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        val narrative = buildString {
+            append(
+                stringResource(
+                    R.string.stp_result_narrative,
+                    formatAmountWithWords(state.monthlyTransferAmount.toDoubleOrNull() ?: 0.0, currencyFormat),
+                    formatAmountWithWords(state.sourceLumpsum.toDoubleOrNull() ?: 0.0, currencyFormat),
+                    state.sourceReturnPercent,
+                    state.targetReturnPercent,
+                    state.durationMonths,
+                    formatAmountWithWords(result.sourceRemaining, currencyFormat),
+                    formatAmountWithWords(result.targetValue, currencyFormat)
                 )
+            )
+            result.inflationAdjustedValue?.let {
+                append(stringResource(R.string.narrative_inflation_addendum, formatAmountWithWords(it, currencyFormat)))
             }
         }
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            shape = MaterialTheme.shapes.large
+        ) {
+            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = stringResource(R.string.stp_result_target_value), style = MaterialTheme.typography.labelLarge)
+                Text(
+                    text = currencyFormat.format(result.targetValue),
+                    style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
+                )
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = stringResource(R.string.stp_result_source_remaining),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = LocalContentColor.current.copy(alpha = 0.75f)
+                    )
+                    Text(
+                        text = currencyFormat.format(result.sourceRemaining),
+                        style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold
+                    )
+                }
+
+                result.inflationAdjustedValue?.let { adjusted ->
+                    ResultRow(
+                        stringResource(R.string.sip_result_inflation_adjusted),
+                        currencyFormat.format(adjusted)
+                    )
+                }
+            }
+        }
+
+        NarrativeResultCard(narrative)
+    }
+}
+
+@Composable
+private fun ResultRow(label: String, value: String) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = LocalContentColor.current.copy(alpha = 0.75f)
+        )
+        Text(text = value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
     }
 }

@@ -16,10 +16,18 @@ class CalculateEpfUseCase @Inject constructor() {
             months = input.durationYears * 12
         )
         val totalContributed = monthlyContribution * input.durationYears * 12
+        val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
+            FinanceMath.inflationAdjustedValue(
+                futureValue = maturityValue,
+                annualInflationPercent = inflation,
+                years = input.durationYears.toDouble()
+            )
+        }
         return EpfResult(
             maturityValue = maturityValue,
             totalContributed = totalContributed,
-            interestEarned = maturityValue - totalContributed
+            interestEarned = maturityValue - totalContributed,
+            inflationAdjustedValue = inflationAdjustedValue
         )
     }
 }

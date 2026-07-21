@@ -1,16 +1,10 @@
 package com.financeplanner.app.ui.calculators.fire
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -26,7 +20,10 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -36,6 +33,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -45,8 +43,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.FireResult
 import com.financeplanner.app.domain.model.FireVariant
+import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
+import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.FieldHelpIcon
+import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
+import com.financeplanner.app.ui.common.formatAmountWithWords
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -60,6 +64,14 @@ fun FireScreen(
     val state by viewModel.uiState.collectAsState()
     val preferences by settingsViewModel.preferences.collectAsState()
     var showSettingsSheet by remember { mutableStateOf(false) }
+    val resultSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val coroutineScope = rememberCoroutineScope()
+
+    fun dismissResultSheet() {
+        coroutineScope.launch { resultSheetState.hide() }.invokeOnCompletion {
+            if (!resultSheetState.isVisible) viewModel.onResultDismissed()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -78,6 +90,12 @@ fun FireScreen(
             modifier = Modifier.padding(padding).padding(16.dp).verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            Text(
+                text = stringResource(R.string.fire_screen_description),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(FireVariant.entries) { variant ->
                     FilterChip(
@@ -105,16 +123,17 @@ fun FireScreen(
                     modifier = Modifier.weight(1f), singleLine = true
                 )
             }
-            OutlinedTextField(
+            AmountOutlinedTextField(
                 value = state.currentAnnualExpenses, onValueChange = viewModel::onExpensesChange,
                 label = { Text(stringResource(R.string.fire_label_expenses)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true
+                modifier = Modifier.fillMaxWidth()
             )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedTextField(
                     value = state.inflationPercent, onValueChange = viewModel::onInflationChange,
                     label = { Text(stringResource(R.string.fire_label_inflation)) },
-                    modifier = Modifier.weight(1f), singleLine = true
+                    modifier = Modifier.weight(1f), singleLine = true,
+                    trailingIcon = { FieldHelpIcon(stringResource(R.string.help_inflation_rate)) }
                 )
                 OutlinedTextField(
                     value = state.preRetirementReturnPercent, onValueChange = viewModel::onReturnChange,
@@ -122,10 +141,10 @@ fun FireScreen(
                     modifier = Modifier.weight(1f), singleLine = true
                 )
             }
-            OutlinedTextField(
+            AmountOutlinedTextField(
                 value = state.existingCorpus, onValueChange = viewModel::onExistingCorpusChange,
                 label = { Text(stringResource(R.string.fire_label_existing_corpus)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true
+                modifier = Modifier.fillMaxWidth()
             )
 
             state.error?.let { error ->
@@ -139,12 +158,22 @@ fun FireScreen(
             Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.sip_button_calculate))
             }
+        }
+    }
 
-            AnimatedVisibility(
-                visible = state.result != null,
-                enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()
+    if (state.result != null) {
+        ModalBottomSheet(
+            onDismissRequest = ::dismissResultSheet,
+            sheetState = resultSheetState
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                state.result?.let { FireResultCard(it) }
+                state.result?.let { FireResultCard(it, state) }
+                Button(onClick = viewModel::onSaveClicked, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
@@ -156,8 +185,14 @@ fun FireScreen(
             onThemePresetChange = settingsViewModel::setThemePreset,
             onRandomizeTheme = settingsViewModel::randomizeTheme,
             onLanguageChange = settingsViewModel::setLanguage,
+            onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
+            onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
             onDismiss = { showSettingsSheet = false }
         )
+    }
+
+    if (state.showComingSoonSheet) {
+        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
     }
 }
 
@@ -178,35 +213,64 @@ private fun variantExplainer(variant: FireVariant): String = when (variant) {
 }
 
 @Composable
-private fun FireResultCard(result: FireResult) {
-    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")) }
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        shape = MaterialTheme.shapes.large
-    ) {
-        Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(text = stringResource(R.string.fire_result_required_corpus), style = MaterialTheme.typography.labelLarge)
-            Text(
-                text = currencyFormat.format(result.requiredCorpus),
-                style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
+private fun FireResultCard(result: FireResult, state: FireUiState) {
+    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")).apply { maximumFractionDigits = 0 } }
+
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        val narrative = if (result.isCoastFireAchieved == true) {
+            stringResource(
+                R.string.fire_result_narrative_coast_achieved,
+                formatAmountWithWords(result.requiredCorpus, currencyFormat),
+                state.retirementAge,
+                formatAmountWithWords(state.existingCorpus.toDoubleOrNull() ?: 0.0, currencyFormat)
             )
-            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(text = stringResource(R.string.fire_result_required_sip), style = MaterialTheme.typography.bodyMedium)
+        } else {
+            stringResource(
+                R.string.fire_result_narrative,
+                state.retirementAge,
+                variantLabel(state.variant),
+                state.inflationPercent,
+                state.preRetirementReturnPercent,
+                formatAmountWithWords(result.requiredCorpus, currencyFormat),
+                formatAmountWithWords(state.existingCorpus.toDoubleOrNull() ?: 0.0, currencyFormat),
+                formatAmountWithWords(result.requiredMonthlySip, currencyFormat)
+            )
+        }
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            shape = MaterialTheme.shapes.large
+        ) {
+            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = stringResource(R.string.fire_result_required_corpus), style = MaterialTheme.typography.labelLarge)
                 Text(
-                    text = currencyFormat.format(result.requiredMonthlySip),
-                    style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold
+                    text = currencyFormat.format(result.requiredCorpus),
+                    style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
                 )
-            }
-            result.isCoastFireAchieved?.let { achieved ->
-                Text(
-                    text = if (achieved) stringResource(R.string.fire_result_coast_achieved)
-                           else stringResource(R.string.fire_result_coast_not_achieved),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = if (achieved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = stringResource(R.string.fire_result_required_sip),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = LocalContentColor.current.copy(alpha = 0.75f)
+                    )
+                    Text(
+                        text = currencyFormat.format(result.requiredMonthlySip),
+                        style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold
+                    )
+                }
+                result.isCoastFireAchieved?.let { achieved ->
+                    Text(
+                        text = if (achieved) stringResource(R.string.fire_result_coast_achieved)
+                               else stringResource(R.string.fire_result_coast_not_achieved),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = if (achieved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
+
+        NarrativeResultCard(narrative)
     }
 }

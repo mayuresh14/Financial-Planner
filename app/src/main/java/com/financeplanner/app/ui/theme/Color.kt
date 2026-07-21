@@ -4,6 +4,8 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.luminance
 import com.financeplanner.app.domain.model.ThemePreset
 
 // Each preset defines a seed/primary color; secondary/tertiary are derived
@@ -41,20 +43,83 @@ private val presetSeeds = mapOf(
     )
 )
 
-fun lightColorSchemeFor(preset: ThemePreset): ColorScheme {
-    val seed = presetSeeds.getValue(preset)
-    return lightColorScheme(
-        primary = seed.primary,
-        secondary = seed.secondary,
-        tertiary = seed.tertiary
-    )
+// Picks black or white for text/icons placed on top of `color`, based on
+// its luminance, so every derived role stays readable regardless of preset.
+private fun onColorFor(color: Color): Color =
+    if (color.luminance() > 0.45f) Color.Black else Color.White
+
+// "Container" tones (used for the tinted card backgrounds, badges, etc.)
+// are a wash of the seed color toward white (light theme) or black (dark
+// theme) — this is what makes cards/badges actually track the selected
+// preset instead of sitting on Material's default baseline purple.
+private fun containerFor(color: Color, isDark: Boolean): Color =
+    lerp(color, if (isDark) Color.Black else Color.White, if (isDark) 0.6f else 0.8f)
+
+private fun neutralSurface(seed: Color, isDark: Boolean, fraction: Float): Color =
+    lerp(seed, if (isDark) Color.Black else Color.White, fraction)
+
+private fun buildColorScheme(seed: PresetSeed, isDark: Boolean): ColorScheme {
+    // Dark theme swaps primary/secondary so the brighter of the two leads,
+    // matching Material's dark-theme guidance of desaturated-but-visible primaries.
+    val primary = if (isDark) seed.secondary else seed.primary
+    val secondary = if (isDark) seed.primary else seed.secondary
+    val tertiary = seed.tertiary
+
+    val primaryContainer = containerFor(primary, isDark)
+    val secondaryContainer = containerFor(secondary, isDark)
+    val tertiaryContainer = containerFor(tertiary, isDark)
+
+    val background = neutralSurface(seed.primary, isDark, if (isDark) 0.92f else 0.96f)
+    val onBackground = onColorFor(background)
+    val surfaceVariant = neutralSurface(seed.primary, isDark, if (isDark) 0.85f else 0.90f)
+
+    return if (isDark) {
+        darkColorScheme(
+            primary = primary,
+            onPrimary = onColorFor(primary),
+            primaryContainer = primaryContainer,
+            onPrimaryContainer = onColorFor(primaryContainer),
+            secondary = secondary,
+            onSecondary = onColorFor(secondary),
+            secondaryContainer = secondaryContainer,
+            onSecondaryContainer = onColorFor(secondaryContainer),
+            tertiary = tertiary,
+            onTertiary = onColorFor(tertiary),
+            tertiaryContainer = tertiaryContainer,
+            onTertiaryContainer = onColorFor(tertiaryContainer),
+            background = background,
+            onBackground = onBackground,
+            surface = background,
+            onSurface = onBackground,
+            surfaceVariant = surfaceVariant,
+            onSurfaceVariant = onColorFor(surfaceVariant)
+        )
+    } else {
+        lightColorScheme(
+            primary = primary,
+            onPrimary = onColorFor(primary),
+            primaryContainer = primaryContainer,
+            onPrimaryContainer = onColorFor(primaryContainer),
+            secondary = secondary,
+            onSecondary = onColorFor(secondary),
+            secondaryContainer = secondaryContainer,
+            onSecondaryContainer = onColorFor(secondaryContainer),
+            tertiary = tertiary,
+            onTertiary = onColorFor(tertiary),
+            tertiaryContainer = tertiaryContainer,
+            onTertiaryContainer = onColorFor(tertiaryContainer),
+            background = background,
+            onBackground = onBackground,
+            surface = background,
+            onSurface = onBackground,
+            surfaceVariant = surfaceVariant,
+            onSurfaceVariant = onColorFor(surfaceVariant)
+        )
+    }
 }
 
-fun darkColorSchemeFor(preset: ThemePreset): ColorScheme {
-    val seed = presetSeeds.getValue(preset)
-    return darkColorScheme(
-        primary = seed.secondary,
-        secondary = seed.primary,
-        tertiary = seed.tertiary
-    )
-}
+fun lightColorSchemeFor(preset: ThemePreset): ColorScheme =
+    buildColorScheme(presetSeeds.getValue(preset), isDark = false)
+
+fun darkColorSchemeFor(preset: ThemePreset): ColorScheme =
+    buildColorScheme(presetSeeds.getValue(preset), isDark = true)
