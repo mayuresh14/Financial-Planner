@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Finance Planner</string>
+    <string name="app_name">MoneyMint</string>
 
     <!-- Calculator names — will be referenced across nav, cards, and screen titles -->
     <string name="calc_sip">SIP Calculator</string>

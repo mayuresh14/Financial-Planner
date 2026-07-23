@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">वित्त नियोजक</string>
+    <string name="app_name">MoneyMint</string>
 
     <string name="calc_sip">SIP कॅल्क्युलेटर</string>
     <string name="calc_lumpsum">लंपसम कॅल्क्युलेटर</string>

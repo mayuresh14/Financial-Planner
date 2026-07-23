@@ -14,7 +14,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.financeplanner.app"
+        applicationId = "com.financeplanner.moneymint"
         minSdk = 26          // Android 8.0 — covers ~95%+ of active Indian Android devices
         targetSdk = 36
         versionCode = 1

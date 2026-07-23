@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "534026381122",
-    "project_id": "finance-planner-6cdc2",
-    "storage_bucket": "finance-planner-6cdc2.firebasestorage.app"
+    "project_number": "235332000518",
+    "project_id": "moneymint-81bce",
+    "storage_bucket": "moneymint-81bce.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:534026381122:android:4a73f1157f42fb5e70cadb",
+        "mobilesdk_app_id": "1:235332000518:android:3fcbe3632088d8c170dc87",
         "android_client_info": {
-          "package_name": "com.financeplanner.app"
+          "package_name": "com.financeplanner.moneymint"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCi2wOozB1Gt1Smc3aaxV8Ji4g03W_f1Uc"
+          "current_key": "AIzaSyAl9MUXlz1KtECd5SevM7Uv7eTZzUEQno0"
         }
       ],
       "services": {
