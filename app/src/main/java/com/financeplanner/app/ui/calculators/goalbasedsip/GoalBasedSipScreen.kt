@@ -141,8 +141,8 @@ fun GoalBasedSipScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is GoalBasedSipValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is GoalBasedSipValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is GoalBasedSipValidationError.InvalidInput -> stringResource(R.string.goal_sip_error_invalid_input)
+                    is GoalBasedSipValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.goal_sip_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
@@ -212,12 +212,13 @@ private fun GoalBasedSipResultCard(result: GoalBasedSipResult, state: GoalBasedS
                     formatAmountWithWords(result.requiredMonthlySip, currencyFormat)
                 )
             )
-            result.inflationAdjustedTarget?.let {
+            result.inflationAdjustedTarget?.let { target ->
                 append(
                     stringResource(
                         R.string.goal_sip_result_narrative_inflation_addendum,
                         state.inflationPercent,
-                        formatAmountWithWords(it, currencyFormat)
+                        formatAmountWithWords(target, currencyFormat),
+                        formatAmountWithWords(result.sipForInflationAdjustedTarget ?: 0.0, currencyFormat)
                     )
                 )
             }
@@ -246,6 +247,19 @@ private fun GoalBasedSipResultCard(result: GoalBasedSipResult, state: GoalBasedS
                             text = currencyFormat.format(target),
                             style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold
                         )
+                    }
+                    result.sipForInflationAdjustedTarget?.let { sip ->
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                text = stringResource(R.string.goal_sip_result_inflation_sip),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = LocalContentColor.current.copy(alpha = 0.75f)
+                            )
+                            Text(
+                                text = currencyFormat.format(sip),
+                                style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold
+                            )
+                        }
                     }
                 }
             }

@@ -16,5 +16,6 @@ data class GoalBasedSipInput(
 
 data class GoalBasedSipResult(
     val requiredMonthlySip: Double,
-    val inflationAdjustedTarget: Double? = null // target inflated to future value, if inflation supplied
+    val inflationAdjustedTarget: Double? = null, // target inflated to future value, if inflation supplied
+    val sipForInflationAdjustedTarget: Double? = null // SIP needed to hit the inflated target, info only
 )

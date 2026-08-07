@@ -121,8 +121,8 @@ fun FdScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is FdValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is FdValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is FdValidationError.InvalidInput -> stringResource(R.string.fd_error_invalid_input)
+                    is FdValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.fd_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

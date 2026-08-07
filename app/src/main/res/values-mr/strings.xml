@@ -76,6 +76,8 @@
     <string name="sip_stepup_mode_percentage">% स्टेप-अप</string>
     <string name="sip_stepup_mode_fixed">निश्चित रक्कम स्टेप-अप</string>
     <string name="sip_label_stepup_fixed_amount">स्टेप-अप रक्कम (₹/वर्ष, ऐच्छिक)</string>
+    <string name="sip_label_initial_lumpsum">प्रारंभिक एकरकमी गुंतवणूक (ऐच्छिक)</string>
+    <string name="sip_result_narrative_lumpsum_addendum"> तुम्ही %1$s ची एकरकमी प्रारंभिक रक्कम देखील समाविष्ट केली आहे, जी वरील परिपक्वता मूल्यात गृहीत धरली आहे.</string>
     <string name="sip_label_expense_ratio">खर्च गुणोत्तर % (ऐच्छिक)</string>
     <string name="help_stepup_fixed_amount">टक्केवारीऐवजी, दरवर्षी तुमची गुंतवणूक या निश्चित रकमेने वाढवा — तुमच्या योगदानाचा आकार कितीही असला तरी अंदाजे स्टेप-अप हवा असल्यास हे उपयुक्त आहे.</string>
     <string name="help_expense_ratio">फंडाचे वार्षिक खर्च गुणोत्तर — तुमचे पैसे व्यवस्थापित करण्यासाठी आकारले जाणारे शुल्क. वाढीचा अंदाज लावण्यापूर्वी हे तुमच्या अपेक्षित परताव्यातून वजा केले जाते, कारण हा तुमच्या प्रत्यक्ष परताव्यावर सतत होणारा परिणाम आहे.</string>
@@ -86,7 +88,25 @@
     <string name="sip_result_wealth_gained">मिळवलेली संपत्ती</string>
     <string name="sip_result_expense_cost">फंड खर्चाची किंमत</string>
     <string name="sip_result_inflation_adjusted">महागाई-समायोजित मूल्य (आजचे मूल्य)</string>
-    <string name="sip_error_invalid_input">कृपया वैध मासिक रक्कम, परतावा दर आणि कालावधी प्रविष्ट करा.</string>
+    <string name="sip_error_invalid_input">कृपया वैध SIP रक्कम, अपेक्षित परतावा आणि कालावधी टाका.</string>
+    <string name="lumpsum_error_invalid_input">कृपया वैध गुंतवणूक रक्कम, अपेक्षित परतावा आणि कालावधी टाका.</string>
+    <string name="sip_vs_lumpsum_error_invalid_input">कृपया वैध मासिक SIP रक्कम, लंपसम रक्कम, अपेक्षित परतावा आणि कालावधी टाका.</string>
+    <string name="tenure_error_invalid_input">कृपया वैध मासिक गुंतवणूक रक्कम, अपेक्षित परतावा आणि लक्ष्य रक्कम टाका.</string>
+    <string name="ppf_error_invalid_input">कृपया वैध वार्षिक योगदान, कालावधी आणि व्याज दर टाका.</string>
+    <string name="epf_error_invalid_input">कृपया वैध पगार, कर्मचारी योगदान %, नियोक्ता योगदान %, कालावधी आणि अपेक्षित परतावा टाका.</string>
+    <string name="ssy_error_invalid_input">कृपया मुलीचे वैध वय, वार्षिक ठेव आणि व्याज दर टाका.</string>
+    <string name="nps_error_invalid_input">कृपया वैध मासिक योगदान, वय, अपेक्षित परतावा आणि अॅन्युइटी टक्केवारी टाका.</string>
+    <string name="emi_error_invalid_input">कृपया वैध कर्ज रक्कम, व्याज दर आणि कालावधी टाका. प्रीपेमेंट सक्षम असल्यास, वैध प्रीपेमेंट रक्कम आणि महिना देखील टाका.</string>
+    <string name="stp_error_invalid_input">कृपया वैध स्रोत लंपसम, मासिक ट्रान्सफर रक्कम, कालावधी, स्रोत परतावा आणि लक्ष्य परतावा टाका.</string>
+    <string name="swp_error_invalid_input">कृपया वैध प्रारंभिक निधी, मासिक पैसे काढणे, अपेक्षित परतावा आणि सिम्युलेशन वर्षे टाका.</string>
+    <string name="inflation_goal_error_invalid_input">कृपया वैध सध्याचा खर्च, महागाई दर आणि वर्षे टाका.</string>
+    <string name="fire_error_invalid_input">कृपया वैध सध्याचे वय, निवृत्तीचे वय, वार्षिक खर्च, महागाई दर आणि अपेक्षित परतावा टाका.</string>
+    <string name="goal_sip_error_invalid_input">कृपया वैध लक्ष्य रक्कम, कालावधी आणि अपेक्षित परतावा टाका.</string>
+    <string name="fd_error_invalid_input">कृपया वैध ठेव रक्कम, व्याज दर आणि कालावधी टाका.</string>
+    <string name="rd_error_invalid_input">कृपया वैध मासिक ठेव, व्याज दर आणि कालावधी टाका.</string>
+    <string name="smoke_error_invalid_input">कृपया दररोजच्या सिगारेटची वैध संख्या, प्रति सिगारेट खर्च, कालावधी आणि अपेक्षित परतावा टाका.</string>
+    <string name="alcohol_error_invalid_input">कृपया दर आठवड्याच्या ड्रिंक्सची वैध संख्या, प्रति ड्रिंक खर्च, कालावधी आणि अपेक्षित परतावा टाका.</string>
+    <string name="gratuity_error_invalid_input">कृपया वैध शेवटचा पगार आणि सेवेची वर्षे टाका.</string>
     <string name="sip_result_narrative">जर तुम्ही %3$s वर्षांसाठी %4$s%% अपेक्षित वार्षिक परताव्याने SIP द्वारे %1$s %2$s गुंतवले, तर तुमची गुंतवणूक शेवटी %5$s पर्यंत वाढू शकते.</string>
     <string name="sip_result_narrative_stepup_percentage_addendum">\n\nदरवर्षी %1$s%% स्टेप-अपसह, वाढत्या उत्पन्नाशी जुळवून घेण्यासाठी तुमचे योगदान कालांतराने वाढते — वरील निकाल हे आधीच दर्शवतो.</string>
     <string name="sip_result_narrative_stepup_fixed_addendum">\n\nदरवर्षी तुमच्या योगदानात %1$s ने वाढ झाल्याने, हा स्टेप-अप वरील निकालात आधीच समाविष्ट आहे.</string>
@@ -111,8 +131,9 @@
     <string name="goal_sip_label_target">उद्दिष्ट रक्कम (₹)</string>
     <string name="goal_sip_result_required_sip">आवश्यक मासिक SIP</string>
     <string name="goal_sip_result_inflation_target">महागाई-समायोजित उद्दिष्ट</string>
+    <string name="goal_sip_result_inflation_sip">महागाई-समायोजित उद्दिष्टासाठी आवश्यक SIP</string>
     <string name="goal_sip_result_narrative">%2$s वर्षांत %3$s%% अपेक्षित वार्षिक परताव्याने %1$s चे लक्ष्य गाठण्यासाठी, तुम्हाला SIP द्वारे दरमहा %4$s गुंतवावे लागेल.</string>
-    <string name="goal_sip_result_narrative_inflation_addendum">\n\nटीप: %1$s%% महागाई लक्षात घेता, तुमचे लक्ष्य गाठेपर्यंत त्याची प्रत्यक्ष किंमत %2$s असेल — वरील SIP आधीच या समायोजित रकमेसाठी आहे.</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nटीप: %1$s%% महागाई लक्षात घेता, तुमचे लक्ष्य गाठेपर्यंत त्याची प्रत्यक्ष किंमत %2$s असेल — या महागाई-समायोजित रकमेपर्यंत पोहोचण्यासाठी तुम्हाला दरमहा %3$s गुंतवावे लागतील.</string>
 
     <string name="sip_vs_lumpsum_label_sip_amount">मासिक SIP रक्कम (₹)</string>
     <string name="sip_vs_lumpsum_label_lumpsum_amount">लंपसम रक्कम (₹)</string>
@@ -251,6 +272,35 @@
     <string name="fire_label_inflation">महागाई दर (%)</string>
     <string name="fire_label_return">निवृत्तीपूर्व अपेक्षित परतावा (%)</string>
     <string name="fire_label_existing_corpus">विद्यमान कोष (₹, ऐच्छिक)</string>
+    <string name="fire_label_monthly_sip">मासिक SIP रक्कम</string>
+    <string name="fire_mode_find_sip">SIP शोधा</string>
+    <string name="fire_mode_find_age">FIRE वय शोधा</string>
+    <string name="fire_age_result_label">FIRE वय</string>
+    <string name="fire_age_result_value">%1$d वर्षे</string>
+    <string name="fire_age_result_narrative">%2$s अंतर्गत दरमहा %1$s गुंतवल्यास, %3$s%% महागाई आणि अपेक्षित %4$s%% प्री-रिटायरमेंट परताव्यासह, तुमचा कोष %5$s वयापर्यंत तुमचे FIRE उद्दिष्ट पूर्ण करेल — त्यावेळी आवश्यक कोष %6$s असेल.</string>
+    <string name="fire_age_result_unreachable">ही SIP रक्कम 70 वर्षांच्या आत तुमचे FIRE उद्दिष्ट गाठत नाही — मासिक SIP किंवा अपेक्षित परतावा वाढवण्याचा प्रयत्न करा.</string>
+
+    <string name="calc_asset_allocation">अ‍ॅसेट अलोकेशन कॅल्क्युलेटर</string>
+    <string name="asset_allocation_screen_description">तुमचे वय, निवृत्तीची कालमर्यादा आणि जोखीम क्षमता यावर आधारित एक सामान्य अ‍ॅसेट-मिक्स सूचना मिळवा — सुरुवात करण्यासाठी एक सर्वसाधारण नियम, वैयक्तिक सल्ला नाही.</string>
+    <string name="asset_allocation_label_aggressiveness">जोखीम क्षमता</string>
+    <string name="asset_allocation_aggressiveness_conservative">पुराणमतवादी</string>
+    <string name="asset_allocation_aggressiveness_moderate">मध्यम</string>
+    <string name="asset_allocation_aggressiveness_aggressive">आक्रमक</string>
+    <string name="asset_allocation_label_include_crypto">क्रिप्टोमध्ये स्वारस्य आहे?</string>
+    <string name="asset_allocation_error_invalid_input">कृपया वैध सध्याचे वय आणि निवृत्तीचे वय टाका.</string>
+    <string name="asset_allocation_result_title">सुचवलेले अलोकेशन</string>
+    <string name="asset_allocation_bucket_equity">इक्विटी</string>
+    <string name="asset_allocation_bucket_debt">डेट</string>
+    <string name="asset_allocation_bucket_gold">सोने</string>
+    <string name="asset_allocation_bucket_emergency_fund">आपत्कालीन निधी</string>
+    <string name="asset_allocation_bucket_crypto">क्रिप्टो</string>
+    <string name="asset_allocation_disclaimer">हे सर्वसाधारण नियमांवर आधारित एक जेनेरिक अलोकेशन मॉडेल आहे, वैयक्तिक आर्थिक सल्ला नाही. गुंतवणूक करण्यापूर्वी परवानाधारक सल्लागाराचा सल्ला घ्या.</string>
+    <string name="asset_allocation_result_narrative">सध्याचे वय %1$s, निवृत्तीचे वय %2$s, आणि %3$s जोखीम क्षमतेच्या आधारे, ही अ‍ॅसेट क्लासेसमधील एक सर्वसाधारण सुरुवातीची अलोकेशन आहे. ती तुमच्या ध्येयांनुसार समायोजित करा आणि यावर कृती करण्यापूर्वी परवानाधारक सल्लागाराचा सल्ला घ्या.</string>
+
+    <string name="local_data_popup_title">तुमचा डेटा तुमच्याचकडे राहतो!</string>
+    <string name="local_data_popup_body">सर्व काही तुमच्या फोनमध्येच राहते. कुठेही काही पाठवले जात नाही. बिनधास्त हिशोब करा!</string>
+    <string name="local_data_popup_subtext">हे आणखी %1$d वेळा दिसेल, नंतर कधीच नाही.</string>
+    <string name="local_data_popup_button">समजलं!</string>
     <string name="fire_result_required_corpus">निवृत्तीच्या वेळी आवश्यक कोष</string>
     <string name="fire_result_required_sip">आवश्यक मासिक SIP</string>
     <string name="fire_result_coast_achieved">कोस्ट FIRE साध्य — तुमची विद्यमान बचत स्वतःहून लक्ष्यापर्यंत पोहोचण्याचा अंदाज आहे.</string>
@@ -297,6 +347,7 @@
     <string name="settings_theme_mode">थीम मोड</string>
     <string name="settings_theme_color">थीम रंग</string>
     <string name="settings_randomize_theme">यादृच्छिक</string>
+    <string name="settings_randomize_theme_active_hint">तुम्ही जेव्हा जेव्हा अ‍ॅप उघडाल, तेव्हा नवीन रंग निवडला जाईल.</string>
     <string name="settings_language">भाषा</string>
     <string name="settings_default_rates_title">डीफॉल्ट दर</string>
     <string name="settings_appearance_section_title">रूपरेषा</string>
@@ -305,11 +356,11 @@
     <string name="theme_mode_light">लाइट</string>
     <string name="theme_mode_dark">डार्क</string>
     <string name="theme_mode_system">सिस्टम</string>
-    <string name="theme_preset_emerald">एमराल्ड</string>
+    <string name="theme_preset_crimson">क्रिमसन</string>
     <string name="theme_preset_ocean">ओशन</string>
     <string name="theme_preset_sunset">सनसेट</string>
     <string name="theme_preset_orchid">ऑर्किड</string>
-    <string name="theme_preset_slate">स्लेट</string>
+    <string name="theme_preset_vibrant">व्हायब्रंट</string>
 
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>

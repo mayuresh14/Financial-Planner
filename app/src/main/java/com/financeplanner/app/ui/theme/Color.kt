@@ -16,11 +16,6 @@ import com.financeplanner.app.domain.model.ThemePreset
 private data class PresetSeed(val primary: Color, val secondary: Color, val tertiary: Color)
 
 private val presetSeeds = mapOf(
-    ThemePreset.EMERALD to PresetSeed(
-        primary = Color(0xFF00695C),
-        secondary = Color(0xFF4DB6AC),
-        tertiary = Color(0xFFFFB74D)
-    ),
     ThemePreset.OCEAN to PresetSeed(
         primary = Color(0xFF01579B),
         secondary = Color(0xFF4FC3F7),
@@ -36,10 +31,18 @@ private val presetSeeds = mapOf(
         secondary = Color(0xFFBA68C8),
         tertiary = Color(0xFF66BB6A)
     ),
-    ThemePreset.SLATE to PresetSeed(
-        primary = Color(0xFF37474F),
-        secondary = Color(0xFF90A4AE),
-        tertiary = Color(0xFFFFCA28)
+    // Bold hot-pink/red pairing — punchier than the old muted Emerald/Slate options.
+    ThemePreset.CRIMSON to PresetSeed(
+        primary = Color(0xFFD50032),
+        secondary = Color(0xFFFF4081),
+        tertiary = Color(0xFF7C4DFF)
+    ),
+    // The most saturated preset in the set: electric violet + neon green +
+    // amber, deliberately loud — the "if in doubt, pick this one" option.
+    ThemePreset.VIBRANT to PresetSeed(
+        primary = Color(0xFF6200EA),
+        secondary = Color(0xFF00E676),
+        tertiary = Color(0xFFFFC400)
     )
 )
 

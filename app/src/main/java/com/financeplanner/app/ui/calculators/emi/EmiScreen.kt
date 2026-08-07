@@ -158,8 +158,8 @@ fun EmiScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is EmiValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is EmiValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is EmiValidationError.InvalidInput -> stringResource(R.string.emi_error_invalid_input)
+                    is EmiValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.emi_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

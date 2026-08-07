@@ -16,7 +16,6 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -125,27 +124,39 @@ fun ThemeLanguageSheet(
                 }
             }
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+            Text(
+                text = stringResource(R.string.settings_theme_color),
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+            // Randomize chip temporarily hidden (not removed — flip this back
+            // to true to re-enable). Underlying toggle/auto-pick-on-launch
+            // logic in AppSettingsViewModel is untouched.
+            val isRandomizeChipEnabled = false
+            if (isRandomizeChipEnabled && preferences.randomizeOnLaunch) {
                 Text(
-                    text = stringResource(R.string.settings_theme_color),
-                    style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+                    text = stringResource(R.string.settings_randomize_theme_active_hint),
+                    style = androidx.compose.material3.MaterialTheme.typography.bodySmall,
+                    color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                OutlinedButton(onClick = onRandomizeTheme) {
-                    Icon(Icons.Filled.Refresh, contentDescription = null, modifier = Modifier.padding(end = 4.dp))
-                    Text(stringResource(R.string.settings_randomize_theme))
-                }
             }
 
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(ThemePreset.entries) { preset ->
                     FilterChip(
-                        selected = preferences.themePreset == preset,
+                        selected = !preferences.randomizeOnLaunch && preferences.themePreset == preset,
                         onClick = { onThemePresetChange(preset) },
                         label = { Text(presetLabel(preset)) }
                     )
+                }
+                if (isRandomizeChipEnabled) {
+                    item {
+                        FilterChip(
+                            selected = preferences.randomizeOnLaunch,
+                            onClick = onRandomizeTheme,
+                            leadingIcon = { Icon(Icons.Filled.Refresh, contentDescription = null) },
+                            label = { Text(stringResource(R.string.settings_randomize_theme)) }
+                        )
+                    }
                 }
             }
 
@@ -188,11 +199,11 @@ private fun DefaultRateField(
 
 @Composable
 private fun presetLabel(preset: ThemePreset): String = when (preset) {
-    ThemePreset.EMERALD -> stringResource(R.string.theme_preset_emerald)
     ThemePreset.OCEAN -> stringResource(R.string.theme_preset_ocean)
     ThemePreset.SUNSET -> stringResource(R.string.theme_preset_sunset)
     ThemePreset.ORCHID -> stringResource(R.string.theme_preset_orchid)
-    ThemePreset.SLATE -> stringResource(R.string.theme_preset_slate)
+    ThemePreset.CRIMSON -> stringResource(R.string.theme_preset_crimson)
+    ThemePreset.VIBRANT -> stringResource(R.string.theme_preset_vibrant)
 }
 
 @Composable

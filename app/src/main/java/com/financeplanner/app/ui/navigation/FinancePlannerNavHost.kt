@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.financeplanner.app.ui.calculators.alcohol.AlcoholScreen
+import com.financeplanner.app.ui.calculators.assetallocation.AssetAllocationScreen
 import com.financeplanner.app.ui.calculators.eatingout.EatingOutScreen
 import com.financeplanner.app.ui.calculators.emi.EmiScreen
 import com.financeplanner.app.ui.calculators.epf.EpfScreen
@@ -54,6 +55,7 @@ object Routes {
     const val ALCOHOL = "alcohol"
     const val EATING_OUT = "eating_out"
     const val GRATUITY = "gratuity"
+    const val ASSET_ALLOCATION = "asset_allocation"
 }
 
 @Composable
@@ -86,5 +88,6 @@ fun FinancePlannerNavHost(
         composable(Routes.ALCOHOL) { AlcoholScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.EATING_OUT) { EatingOutScreen(onBack = { navController.popBackStack() }) }
         composable(Routes.GRATUITY) { GratuityScreen(onBack = { navController.popBackStack() }) }
+        composable(Routes.ASSET_ALLOCATION) { AssetAllocationScreen(onBack = { navController.popBackStack() }) }
     }
 }

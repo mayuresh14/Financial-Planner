@@ -138,8 +138,8 @@ fun LumpsumScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is LumpsumValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is LumpsumValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is LumpsumValidationError.InvalidInput -> stringResource(R.string.lumpsum_error_invalid_input)
+                    is LumpsumValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.lumpsum_error_invalid_input)
                 }
                 Text(
                     text = message,

@@ -182,6 +182,13 @@ fun SipScreen(
 
             AnimatedVisibility(visible = state.showAdvancedOptions) {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    AmountOutlinedTextField(
+                        value = state.initialLumpsum,
+                        onValueChange = viewModel::onInitialLumpsumChange,
+                        label = { Text(stringResource(R.string.sip_label_initial_lumpsum)) },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         FilterChip(
                             selected = state.stepUpMode == StepUpMode.PERCENTAGE,
@@ -308,6 +315,14 @@ private fun SipResultCard(result: SipResult, state: SipUiState) {
                     formatAmountWithWords(result.maturityValue, currencyFormat)
                 )
             )
+            state.initialLumpsum.toDoubleOrNull()?.takeIf { it > 0 }?.let {
+                append(
+                    stringResource(
+                        R.string.sip_result_narrative_lumpsum_addendum,
+                        formatAmountWithWords(it, currencyFormat)
+                    )
+                )
+            }
             if (state.stepUpMode == StepUpMode.PERCENTAGE) {
                 state.stepUpPercent.toDoubleOrNull()?.takeIf { it > 0 }?.let {
                     append(stringResource(R.string.sip_result_narrative_stepup_percentage_addendum, state.stepUpPercent))

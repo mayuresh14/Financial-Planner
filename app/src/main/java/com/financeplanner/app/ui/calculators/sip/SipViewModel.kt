@@ -46,6 +46,7 @@ data class SipUiState(
     val stepUpFixedAmount: String = "",
     val expenseRatioPercent: String = "",
     val inflationPercent: String = "",
+    val initialLumpsum: String = "",
     val result: SipResult? = null,
     val error: SipValidationError? = null,
     val showComingSoonSheet: Boolean = false
@@ -112,6 +113,10 @@ class SipViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(inflationPercent = value, error = null)
     }
 
+    fun onInitialLumpsumChange(value: String) {
+        _uiState.value = _uiState.value.copy(initialLumpsum = value, error = null)
+    }
+
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
     }
@@ -135,6 +140,7 @@ class SipViewModel @Inject constructor(
         val stepUpFixedAmount = if (state.stepUpMode == StepUpMode.FIXED_AMOUNT) state.stepUpFixedAmount.toDoubleOrNull() else null
         val expenseRatio = state.expenseRatioPercent.toDoubleOrNull()
         val inflation = state.inflationPercent.toDoubleOrNull()
+        val initialLumpsum = state.initialLumpsum.toDoubleOrNull()
 
         if (monthlyAmount == null || expectedReturn == null || duration == null) {
             _uiState.value = state.copy(error = SipValidationError.InvalidInput, result = null)
@@ -150,7 +156,8 @@ class SipViewModel @Inject constructor(
                 stepUpPercent = stepUpPercent,
                 stepUpFixedAmount = stepUpFixedAmount,
                 expenseRatioPercent = expenseRatio,
-                inflationPercent = inflation
+                inflationPercent = inflation,
+                initialLumpsum = initialLumpsum
             )
             val result = calculateSip(input)
             _uiState.value = state.copy(result = result, error = null)

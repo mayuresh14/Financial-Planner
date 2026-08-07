@@ -78,6 +78,8 @@
     <string name="sip_stepup_mode_percentage">% स्टेप-अप</string>
     <string name="sip_stepup_mode_fixed">निश्चित राशि स्टेप-अप</string>
     <string name="sip_label_stepup_fixed_amount">स्टेप-अप राशि (₹/वर्ष, वैकल्पिक)</string>
+    <string name="sip_label_initial_lumpsum">प्रारंभिक एकमुश्त निवेश (वैकल्पिक)</string>
+    <string name="sip_result_narrative_lumpsum_addendum"> आपने %1$s की एकमुश्त प्रारंभिक राशि भी जोड़ी है, जिसे ऊपर दिए गए परिपक्वता मूल्य में शामिल किया गया है।</string>
     <string name="sip_label_expense_ratio">व्यय अनुपात % (वैकल्पिक)</string>
     <string name="help_stepup_fixed_amount">प्रतिशत के बजाय, हर साल अपने निवेश को इस निश्चित राशि से बढ़ाएं — यह तब उपयोगी है जब आप अपने योगदान के आकार की परवाह किए बिना एक अनुमानित स्टेप-अप चाहते हैं।</string>
     <string name="help_expense_ratio">फंड का वार्षिक व्यय अनुपात — यह वह शुल्क है जो वह आपके पैसे का प्रबंधन करने के लिए लेता है। विकास का अनुमान लगाने से पहले इसे आपके अपेक्षित रिटर्न से घटाया जाता है, क्योंकि यह आपके वास्तविक रिटर्न पर लगातार असर डालता है।</string>
@@ -86,7 +88,25 @@
     <string name="sip_result_wealth_gained">अर्जित धन</string>
     <string name="sip_result_expense_cost">फंड व्यय की लागत</string>
     <string name="sip_result_inflation_adjusted">महंगाई-समायोजित मूल्य (आज का मूल्य)</string>
-    <string name="sip_error_invalid_input">कृपया मान्य मासिक राशि, रिटर्न दर और अवधि दर्ज करें।</string>
+    <string name="sip_error_invalid_input">कृपया मान्य SIP राशि, अपेक्षित रिटर्न और अवधि दर्ज करें।</string>
+    <string name="lumpsum_error_invalid_input">कृपया मान्य निवेश राशि, अपेक्षित रिटर्न और अवधि दर्ज करें।</string>
+    <string name="sip_vs_lumpsum_error_invalid_input">कृपया मान्य मासिक SIP राशि, लंपसम राशि, अपेक्षित रिटर्न और अवधि दर्ज करें।</string>
+    <string name="tenure_error_invalid_input">कृपया मान्य मासिक निवेश राशि, अपेक्षित रिटर्न और लक्ष्य राशि दर्ज करें।</string>
+    <string name="ppf_error_invalid_input">कृपया मान्य वार्षिक योगदान, अवधि और ब्याज दर दर्ज करें।</string>
+    <string name="epf_error_invalid_input">कृपया मान्य वेतन, कर्मचारी योगदान %, नियोक्ता योगदान %, अवधि और अपेक्षित रिटर्न दर्ज करें।</string>
+    <string name="ssy_error_invalid_input">कृपया बेटी की मान्य आयु, वार्षिक जमा और ब्याज दर दर्ज करें।</string>
+    <string name="nps_error_invalid_input">कृपया मान्य मासिक योगदान, आयु, अपेक्षित रिटर्न और एन्युटी प्रतिशत दर्ज करें।</string>
+    <string name="emi_error_invalid_input">कृपया मान्य ऋण राशि, ब्याज दर और अवधि दर्ज करें। यदि प्रीपेमेंट सक्षम है, तो मान्य प्रीपेमेंट राशि और महीना भी दर्ज करें।</string>
+    <string name="stp_error_invalid_input">कृपया मान्य स्रोत लंपसम, मासिक ट्रांसफर राशि, अवधि, स्रोत रिटर्न और लक्ष्य रिटर्न दर्ज करें।</string>
+    <string name="swp_error_invalid_input">कृपया मान्य प्रारंभिक कोष, मासिक निकासी, अपेक्षित रिटर्न और सिमुलेशन वर्ष दर्ज करें।</string>
+    <string name="inflation_goal_error_invalid_input">कृपया मान्य वर्तमान लागत, महंगाई दर और वर्ष दर्ज करें।</string>
+    <string name="fire_error_invalid_input">कृपया मान्य वर्तमान आयु, सेवानिवृत्ति आयु, वार्षिक खर्च, महंगाई दर और अपेक्षित रिटर्न दर्ज करें।</string>
+    <string name="goal_sip_error_invalid_input">कृपया मान्य लक्ष्य राशि, अवधि और अपेक्षित रिटर्न दर्ज करें।</string>
+    <string name="fd_error_invalid_input">कृपया मान्य जमा राशि, ब्याज दर और अवधि दर्ज करें।</string>
+    <string name="rd_error_invalid_input">कृपया मान्य मासिक जमा, ब्याज दर और अवधि दर्ज करें।</string>
+    <string name="smoke_error_invalid_input">कृपया प्रतिदिन सिगरेट की मान्य संख्या, प्रति सिगरेट लागत, अवधि और अपेक्षित रिटर्न दर्ज करें।</string>
+    <string name="alcohol_error_invalid_input">कृपया प्रति सप्ताह ड्रिंक्स की मान्य संख्या, प्रति ड्रिंक लागत, अवधि और अपेक्षित रिटर्न दर्ज करें।</string>
+    <string name="gratuity_error_invalid_input">कृपया मान्य अंतिम वेतन और सेवा के वर्ष दर्ज करें।</string>
     <string name="sip_result_narrative">यदि आप %3$s वर्षों के लिए %4$s%% की अपेक्षित वार्षिक रिटर्न दर पर SIP के माध्यम से %1$s %2$s निवेश करते हैं, तो आपका निवेश अंत तक बढ़कर %5$s हो सकता है।</string>
     <string name="sip_result_narrative_stepup_percentage_addendum">\n\nहर साल %1$s%% के स्टेप-अप के साथ, बढ़ती आय के साथ तालमेल बिठाने के लिए आपका योगदान समय के साथ बढ़ता है — ऊपर दिया गया परिणाम इसे पहले से ही दर्शाता है।</string>
     <string name="sip_result_narrative_stepup_fixed_addendum">\n\nहर साल आपके योगदान में %1$s की वृद्धि के साथ, यह स्टेप-अप ऊपर दिए गए परिणाम में पहले से ही शामिल है।</string>
@@ -111,8 +131,9 @@
     <string name="goal_sip_label_target">लक्ष्य राशि (₹)</string>
     <string name="goal_sip_result_required_sip">आवश्यक मासिक SIP</string>
     <string name="goal_sip_result_inflation_target">महंगाई-समायोजित लक्ष्य</string>
+    <string name="goal_sip_result_inflation_sip">महंगाई-समायोजित लक्ष्य के लिए आवश्यक SIP</string>
     <string name="goal_sip_result_narrative">%2$s वर्षों में %3$s%% की अपेक्षित वार्षिक रिटर्न दर पर %1$s के लक्ष्य तक पहुंचने के लिए, आपको SIP के माध्यम से हर महीने %4$s निवेश करना होगा।</string>
-    <string name="goal_sip_result_narrative_inflation_addendum">\n\nध्यान दें: %1$s%% महंगाई को ध्यान में रखते हुए, आपके लक्ष्य तक पहुंचने तक इसकी वास्तविक लागत %2$s होगी — ऊपर दिया गया SIP पहले से ही इस समायोजित राशि को लक्षित करता है।</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nध्यान दें: %1$s%% महंगाई को ध्यान में रखते हुए, आपके लक्ष्य तक पहुंचने तक इसकी वास्तविक लागत %2$s होगी — इस महंगाई-समायोजित राशि तक पहुंचने के लिए आपको हर महीने %3$s निवेश करना होगा।</string>
 
     <string name="sip_vs_lumpsum_label_sip_amount">मासिक SIP राशि (₹)</string>
     <string name="sip_vs_lumpsum_label_lumpsum_amount">लम्पसम राशि (₹)</string>
@@ -251,6 +272,35 @@
     <string name="fire_label_inflation">महंगाई दर (%)</string>
     <string name="fire_label_return">सेवानिवृत्ति-पूर्व अपेक्षित रिटर्न (%)</string>
     <string name="fire_label_existing_corpus">मौजूदा कोष (₹, वैकल्पिक)</string>
+    <string name="fire_label_monthly_sip">मासिक SIP राशि</string>
+    <string name="fire_mode_find_sip">SIP खोजें</string>
+    <string name="fire_mode_find_age">FIRE आयु खोजें</string>
+    <string name="fire_age_result_label">FIRE आयु</string>
+    <string name="fire_age_result_value">%1$d वर्ष</string>
+    <string name="fire_age_result_narrative">%2$s के तहत हर महीने %1$s निवेश करने पर, %3$s%% महंगाई और अपेक्षित %4$s%% प्री-रिटायरमेंट रिटर्न के साथ, आपका कोष %5$s वर्ष की आयु तक आपके FIRE लक्ष्य को पूरा कर देगा — उस समय आवश्यक कोष %6$s होगा।</string>
+    <string name="fire_age_result_unreachable">यह SIP राशि 70 वर्षों के भीतर आपके FIRE लक्ष्य तक नहीं पहुंचती — मासिक SIP या अपेक्षित रिटर्न बढ़ाने का प्रयास करें।</string>
+
+    <string name="calc_asset_allocation">एसेट एलोकेशन कैलकुलेटर</string>
+    <string name="asset_allocation_screen_description">अपनी उम्र, रिटायरमेंट की समय-सीमा और जोखिम क्षमता के आधार पर एक सामान्य एसेट-मिक्स सुझाव पाएं — शुरुआत के लिए एक सामान्य नियम, व्यक्तिगत सलाह नहीं।</string>
+    <string name="asset_allocation_label_aggressiveness">जोखिम क्षमता</string>
+    <string name="asset_allocation_aggressiveness_conservative">रूढ़िवादी</string>
+    <string name="asset_allocation_aggressiveness_moderate">मध्यम</string>
+    <string name="asset_allocation_aggressiveness_aggressive">आक्रामक</string>
+    <string name="asset_allocation_label_include_crypto">क्रिप्टो में रुचि है?</string>
+    <string name="asset_allocation_error_invalid_input">कृपया एक मान्य वर्तमान आयु और रिटायरमेंट आयु दर्ज करें।</string>
+    <string name="asset_allocation_result_title">सुझाई गई एलोकेशन</string>
+    <string name="asset_allocation_bucket_equity">इक्विटी</string>
+    <string name="asset_allocation_bucket_debt">डेट</string>
+    <string name="asset_allocation_bucket_gold">सोना</string>
+    <string name="asset_allocation_bucket_emergency_fund">आपातकालीन निधि</string>
+    <string name="asset_allocation_bucket_crypto">क्रिप्टो</string>
+    <string name="asset_allocation_disclaimer">यह सामान्य नियमों पर आधारित एक जेनेरिक एलोकेशन मॉडल है, व्यक्तिगत वित्तीय सलाह नहीं। निवेश करने से पहले एक लाइसेंस प्राप्त सलाहकार से परामर्श करें।</string>
+    <string name="asset_allocation_result_narrative">वर्तमान आयु %1$s, रिटायरमेंट आयु %2$s, और %3$s जोखिम क्षमता के आधार पर, यह एसेट क्लासेस में एक सामान्य शुरुआती एलोकेशन है। इसे अपने लक्ष्यों के अनुसार समायोजित करें और इस पर कार्य करने से पहले एक लाइसेंस प्राप्त सलाहकार से परामर्श करें।</string>
+
+    <string name="local_data_popup_title">आपका डेटा आपके पास ही रहता है!</string>
+    <string name="local_data_popup_body">सब कुछ आपके फोन में ही रहता है। कहीं कुछ नहीं भेजा जाता। बेझिझक हिसाब लगाइए!</string>
+    <string name="local_data_popup_subtext">यह %1$d बार और दिखेगा, फिर कभी नहीं।</string>
+    <string name="local_data_popup_button">समझ गया!</string>
     <string name="fire_result_required_corpus">सेवानिवृत्ति पर आवश्यक कोष</string>
     <string name="fire_result_required_sip">आवश्यक मासिक SIP</string>
     <string name="fire_result_coast_achieved">कोस्ट FIRE हासिल — आपकी मौजूदा बचत के अपने आप लक्ष्य तक पहुंचने का अनुमान है।</string>
@@ -297,6 +347,7 @@
     <string name="settings_theme_mode">थीम मोड</string>
     <string name="settings_theme_color">थीम रंग</string>
     <string name="settings_randomize_theme">यादृच्छिक</string>
+    <string name="settings_randomize_theme_active_hint">आप जब भी ऐप खोलेंगे, एक नया रंग चुना जाएगा।</string>
     <string name="settings_language">भाषा</string>
     <string name="settings_default_rates_title">डिफ़ॉल्ट दरें</string>
     <string name="settings_appearance_section_title">दिखावट</string>
@@ -305,11 +356,11 @@
     <string name="theme_mode_light">लाइट</string>
     <string name="theme_mode_dark">डार्क</string>
     <string name="theme_mode_system">सिस्टम</string>
-    <string name="theme_preset_emerald">एमराल्ड</string>
+    <string name="theme_preset_crimson">क्रिमसन</string>
     <string name="theme_preset_ocean">ओशन</string>
     <string name="theme_preset_sunset">सनसेट</string>
     <string name="theme_preset_orchid">ऑर्किड</string>
-    <string name="theme_preset_slate">स्लेट</string>
+    <string name="theme_preset_vibrant">वाइब्रेंट</string>
 
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>

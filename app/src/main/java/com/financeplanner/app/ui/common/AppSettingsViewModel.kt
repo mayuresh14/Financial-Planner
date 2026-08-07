@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -43,6 +44,20 @@ class AppSettingsViewModel @Inject constructor(
         .onEach { _hasLoadedPreferences.value = true }
         .stateIn(viewModelScope, SharingStarted.Eagerly, AppDisplayPreferences())
 
+    init {
+        // If the user left "Randomize" on, pick a fresh color once per app
+        // launch (this ViewModel is created once per process) — a one-shot
+        // check against the first emitted value, not the ongoing `preferences`
+        // flow, so it doesn't re-trigger every time prefs are re-read.
+        viewModelScope.launch {
+            val initial = preferencesDataStore.preferencesFlow.first()
+            if (initial.randomizeOnLaunch) {
+                val randomized = ThemePreset.random(exclude = initial.themePreset)
+                preferencesDataStore.setThemePreset(randomized)
+            }
+        }
+    }
+
     fun setThemeMode(mode: ThemeMode) {
         analytics.logSettingChanged(SETTING_THEME_MODE, mode.name)
         viewModelScope.launch { preferencesDataStore.setThemeMode(mode) }
@@ -50,15 +65,31 @@ class AppSettingsViewModel @Inject constructor(
 
     fun setThemePreset(preset: ThemePreset) {
         analytics.logSettingChanged(SETTING_THEME_PRESET, preset.name)
-        viewModelScope.launch { preferencesDataStore.setThemePreset(preset) }
+        viewModelScope.launch {
+            // Picking a specific color is an explicit override — turn off
+            // "Randomize" mode if it was on, so this pick actually sticks.
+            preferencesDataStore.setThemePreset(preset)
+            if (preferences.value.randomizeOnLaunch) preferencesDataStore.setRandomizeOnLaunch(false)
+        }
     }
 
+    /**
+     * Toggles "Randomize" mode. Turning it on immediately picks a new color
+     * (instant feedback) and persists the mode so every future app launch
+     * also picks a fresh one (see the init block). Turning it off just stops
+     * future auto-picks — it leaves the current color in place.
+     */
     fun randomizeTheme() {
         viewModelScope.launch {
-            val current = preferences.value.themePreset
-            val randomized = ThemePreset.random(exclude = current)
-            analytics.logSettingChanged(SETTING_THEME_PRESET, randomized.name)
-            preferencesDataStore.setThemePreset(randomized)
+            val current = preferences.value
+            if (current.randomizeOnLaunch) {
+                preferencesDataStore.setRandomizeOnLaunch(false)
+            } else {
+                val randomized = ThemePreset.random(exclude = current.themePreset)
+                analytics.logSettingChanged(SETTING_THEME_PRESET, randomized.name)
+                preferencesDataStore.setThemePreset(randomized)
+                preferencesDataStore.setRandomizeOnLaunch(true)
+            }
         }
     }
 
@@ -88,6 +119,10 @@ class AppSettingsViewModel @Inject constructor(
 
     fun setHasSetDefaultRates(value: Boolean) {
         viewModelScope.launch { preferencesDataStore.setHasSetDefaultRates(value) }
+    }
+
+    fun onLocalDataPopupShown() {
+        viewModelScope.launch { preferencesDataStore.incrementLocalDataPopupShownCount() }
     }
 
     private companion object {

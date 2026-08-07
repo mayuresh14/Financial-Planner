@@ -125,8 +125,8 @@ fun NpsScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is NpsValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is NpsValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is NpsValidationError.InvalidInput -> stringResource(R.string.nps_error_invalid_input)
+                    is NpsValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.nps_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

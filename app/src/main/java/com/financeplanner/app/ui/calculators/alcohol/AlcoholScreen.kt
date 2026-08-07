@@ -127,8 +127,8 @@ fun AlcoholScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is AlcoholValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is AlcoholValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is AlcoholValidationError.InvalidInput -> stringResource(R.string.alcohol_error_invalid_input)
+                    is AlcoholValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.alcohol_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

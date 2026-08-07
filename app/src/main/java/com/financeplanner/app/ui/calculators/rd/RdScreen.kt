@@ -121,8 +121,8 @@ fun RdScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is RdValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is RdValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is RdValidationError.InvalidInput -> stringResource(R.string.rd_error_invalid_input)
+                    is RdValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.rd_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

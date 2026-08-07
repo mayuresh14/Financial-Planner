@@ -103,8 +103,8 @@ fun GratuityScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is GratuityValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is GratuityValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is GratuityValidationError.InvalidInput -> stringResource(R.string.gratuity_error_invalid_input)
+                    is GratuityValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.gratuity_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

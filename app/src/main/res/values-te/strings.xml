@@ -78,6 +78,8 @@
     <string name="sip_stepup_mode_percentage">% స్టెప్-అప్</string>
     <string name="sip_stepup_mode_fixed">నిర్ణీత మొత్తం స్టెప్-అప్</string>
     <string name="sip_label_stepup_fixed_amount">స్టెప్-అప్ మొత్తం (₹/సంవత్సరం, ఐచ్ఛికం)</string>
+    <string name="sip_label_initial_lumpsum">ప్రారంభ ఏకమొత్తం పెట్టుబడి (ఐచ్ఛికం)</string>
+    <string name="sip_result_narrative_lumpsum_addendum"> మీరు %1$s ఏకమొత్తం ప్రారంభ మొత్తాన్ని కూడా జోడించారు, ఇది పైన ఉన్న మెచ్యూరిటీ విలువలో లెక్కించబడింది.</string>
     <string name="sip_label_expense_ratio">వ్యయ నిష్పత్తి % (ఐచ్ఛికం)</string>
     <string name="help_stepup_fixed_amount">శాతానికి బదులుగా, ప్రతి సంవత్సరం మీ పెట్టుబడిని ఈ నిర్ణీత మొత్తంతో పెంచండి — మీ పెట్టుబడి పరిమాణంతో సంబంధం లేకుండా ఊహించదగిన స్టెప్-అప్ కావాలంటే ఇది ఉపయోగకరంగా ఉంటుంది.</string>
     <string name="help_expense_ratio">ఫండ్ యొక్క వార్షిక వ్యయ నిష్పత్తి — మీ డబ్బును నిర్వహించడానికి అది వసూలు చేసే రుసుము. వృద్ధిని అంచనా వేయడానికి ముందు ఇది మీ ఆశించిన రాబడి నుండి తీసివేయబడుతుంది, ఎందుకంటే ఇది మీ వాస్తవ రాబడిపై నిరంతర ప్రభావాన్ని చూపుతుంది.</string>
@@ -86,7 +88,25 @@
     <string name="sip_result_wealth_gained">ఆర్జించిన సంపద</string>
     <string name="sip_result_expense_cost">ఫండ్ ఖర్చుల వ్యయం</string>
     <string name="sip_result_inflation_adjusted">ద్రవ్యోల్బణ-సర్దుబాటు విలువ (నేటి విలువ)</string>
-    <string name="sip_error_invalid_input">దయచేసి సరైన నెలవారీ మొత్తం, రాబడి రేటు మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="sip_error_invalid_input">దయచేసి సరైన SIP మొత్తం, ఆశించిన రాబడి మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="lumpsum_error_invalid_input">దయచేసి సరైన పెట్టుబడి మొత్తం, ఆశించిన రాబడి మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="sip_vs_lumpsum_error_invalid_input">దయచేసి సరైన నెలవారీ SIP మొత్తం, లంప్‌సమ్ మొత్తం, ఆశించిన రాబడి మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="tenure_error_invalid_input">దయచేసి సరైన నెలవారీ పెట్టుబడి మొత్తం, ఆశించిన రాబడి మరియు లక్ష్య మొత్తాన్ని నమోదు చేయండి.</string>
+    <string name="ppf_error_invalid_input">దయచేసి సరైన వార్షిక సహకారం, కాలవ్యవధి మరియు వడ్డీ రేటును నమోదు చేయండి.</string>
+    <string name="epf_error_invalid_input">దయచేసి సరైన జీతం, ఉద్యోగి సహకారం %, యజమాని సహకారం %, కాలవ్యవధి మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
+    <string name="ssy_error_invalid_input">దయచేసి బాలిక యొక్క సరైన వయస్సు, వార్షిక డిపాజిట్ మరియు వడ్డీ రేటును నమోదు చేయండి.</string>
+    <string name="nps_error_invalid_input">దయచేసి సరైన నెలవారీ సహకారం, వయస్సు, ఆశించిన రాబడి మరియు యాన్యుటీ శాతాన్ని నమోదు చేయండి.</string>
+    <string name="emi_error_invalid_input">దయచేసి సరైన రుణ మొత్తం, వడ్డీ రేటు మరియు కాలవ్యవధిని నమోదు చేయండి. ప్రీపేమెంట్ ప్రారంభించి ఉంటే, సరైన ప్రీపేమెంట్ మొత్తం మరియు నెలను కూడా నమోదు చేయండి.</string>
+    <string name="stp_error_invalid_input">దయచేసి సరైన సోర్స్ లంప్‌సమ్, నెలవారీ బదిలీ మొత్తం, కాలవ్యవధి, సోర్స్ రాబడి మరియు టార్గెట్ రాబడిని నమోదు చేయండి.</string>
+    <string name="swp_error_invalid_input">దయచేసి సరైన ప్రారంభ నిధి, నెలవారీ ఉపసంహరణ, ఆశించిన రాబడి మరియు అనుకరణ సంవత్సరాలను నమోదు చేయండి.</string>
+    <string name="inflation_goal_error_invalid_input">దయచేసి సరైన ప్రస్తుత ఖర్చు, ద్రవ్యోల్బణ రేటు మరియు సంవత్సరాలను నమోదు చేయండి.</string>
+    <string name="fire_error_invalid_input">దయచేసి సరైన ప్రస్తుత వయస్సు, పదవీ విరమణ వయస్సు, వార్షిక ఖర్చులు, ద్రవ్యోల్బణ రేటు మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
+    <string name="goal_sip_error_invalid_input">దయచేసి సరైన లక్ష్య మొత్తం, కాలవ్యవధి మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
+    <string name="fd_error_invalid_input">దయచేసి సరైన డిపాజిట్ మొత్తం, వడ్డీ రేటు మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="rd_error_invalid_input">దయచేసి సరైన నెలవారీ డిపాజిట్, వడ్డీ రేటు మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
+    <string name="smoke_error_invalid_input">దయచేసి రోజుకు సరైన సిగరెట్ల సంఖ్య, సిగరెట్ ఒక్కంటికి ధర, కాలవ్యవధి మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
+    <string name="alcohol_error_invalid_input">దయచేసి వారానికి సరైన డ్రింక్స్ సంఖ్య, డ్రింక్ ఒక్కంటికి ధర, కాలవ్యవధి మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
+    <string name="gratuity_error_invalid_input">దయచేసి సరైన చివరి జీతం మరియు సర్వీసు సంవత్సరాలను నమోదు చేయండి.</string>
     <string name="sip_result_narrative">మీరు %3$s సంవత్సరాల పాటు %4$s%% అంచనా వార్షిక రాబడితో SIP ద్వారా %1$s %2$s పెట్టుబడి పెడితే, మీ పెట్టుబడి చివరికి %5$s వరకు పెరగవచ్చు.</string>
     <string name="sip_result_narrative_stepup_percentage_addendum">\n\nప్రతి సంవత్సరం %1$s%% స్టెప్-అప్‌తో, పెరుగుతున్న ఆదాయానికి అనుగుణంగా మీ పెట్టుబడి కాలక్రమేణా పెరుగుతుంది — పైన ఉన్న ఫలితం దీన్ని ఇప్పటికే ప్రతిబింబిస్తుంది.</string>
     <string name="sip_result_narrative_stepup_fixed_addendum">\n\nప్రతి సంవత్సరం మీ పెట్టుబడి %1$s పెరగడం వల్ల, ఈ స్టెప్-అప్ పైన ఉన్న ఫలితంలో ఇప్పటికే చేర్చబడింది.</string>
@@ -111,8 +131,9 @@
     <string name="goal_sip_label_target">లక్ష్య మొత్తం (₹)</string>
     <string name="goal_sip_result_required_sip">అవసరమైన నెలవారీ SIP</string>
     <string name="goal_sip_result_inflation_target">ద్రవ్యోల్బణ-సర్దుబాటు లక్ష్యం</string>
+    <string name="goal_sip_result_inflation_sip">ద్రవ్యోల్బణ-సర్దుబాటు లక్ష్యానికి అవసరమైన SIP</string>
     <string name="goal_sip_result_narrative">%2$s సంవత్సరాలలో %3$s%% అంచనా వార్షిక రాబడితో %1$s లక్ష్యాన్ని చేరుకోవడానికి, మీరు SIP ద్వారా ప్రతి నెలా %4$s పెట్టుబడి పెట్టాలి.</string>
-    <string name="goal_sip_result_narrative_inflation_addendum">\n\nగమనిక: %1$s%% ద్రవ్యోల్బణాన్ని పరిగణనలోకి తీసుకుంటే, మీరు మీ లక్ష్యాన్ని చేరుకునే సమయానికి దాని అసలు ఖర్చు %2$s అవుతుంది — పైన ఉన్న SIP ఇప్పటికే ఈ సర్దుబాటు చేసిన మొత్తాన్ని లక్ష్యంగా చేసుకుంది.</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nగమనిక: %1$s%% ద్రవ్యోల్బణాన్ని పరిగణనలోకి తీసుకుంటే, మీరు మీ లక్ష్యాన్ని చేరుకునే సమయానికి దాని అసలు ఖర్చు %2$s అవుతుంది — ఈ ద్రవ్యోల్బణ-సర్దుబాటు మొత్తాన్ని చేరుకోవడానికి మీరు ప్రతి నెలా %3$s పెట్టుబడి పెట్టాలి.</string>
 
     <string name="sip_vs_lumpsum_label_sip_amount">నెలవారీ SIP మొత్తం (₹)</string>
     <string name="sip_vs_lumpsum_label_lumpsum_amount">లంప్‌సమ్ మొత్తం (₹)</string>
@@ -251,6 +272,35 @@
     <string name="fire_label_inflation">ద్రవ్యోల్బణ రేటు (%)</string>
     <string name="fire_label_return">పదవీ విరమణకు ముందు ఆశించిన రాబడి (%)</string>
     <string name="fire_label_existing_corpus">ఇప్పటికే ఉన్న నిధి (₹, ఐచ్ఛికం)</string>
+    <string name="fire_label_monthly_sip">నెలవారీ SIP మొత్తం</string>
+    <string name="fire_mode_find_sip">SIP కనుగొనండి</string>
+    <string name="fire_mode_find_age">FIRE వయస్సును కనుగొనండి</string>
+    <string name="fire_age_result_label">FIRE వయస్సు</string>
+    <string name="fire_age_result_value">%1$d సంవత్సరాలు</string>
+    <string name="fire_age_result_narrative">%2$s కింద ప్రతి నెలా %1$s పెట్టుబడి పెడితే, %3$s%% ద్రవ్యోల్బణం మరియు అంచనా %4$s%% ప్రీ-రిటైర్మెంట్ రిటర్న్‌తో, మీ నిధి %5$s సంవత్సరాల వయస్సు నాటికి మీ FIRE లక్ష్యాన్ని చేరుకుంటుంది — ఆ సమయంలో అవసరమైన నిధి %6$s.</string>
+    <string name="fire_age_result_unreachable">ఈ SIP మొత్తం 70 సంవత్సరాలలో మీ FIRE లక్ష్యాన్ని చేరుకోదు — నెలవారీ SIP లేదా అంచనా రాబడిని పెంచడానికి ప్రయత్నించండి.</string>
+
+    <string name="calc_asset_allocation">ఆస్తి కేటాయింపు కాలిక్యులేటర్</string>
+    <string name="asset_allocation_screen_description">మీ వయస్సు, పదవీ విరమణ కాలపరిమితి మరియు రిస్క్ సామర్థ్యం ఆధారంగా సాధారణ ఆస్తి-మిశ్రమ సూచనను పొందండి — ప్రారంభించడానికి ఒక సాధారణ నియమం, వ్యక్తిగత సలహా కాదు.</string>
+    <string name="asset_allocation_label_aggressiveness">రిస్క్ సామర్థ్యం</string>
+    <string name="asset_allocation_aggressiveness_conservative">సాంప్రదాయిక</string>
+    <string name="asset_allocation_aggressiveness_moderate">మధ్యస్థ</string>
+    <string name="asset_allocation_aggressiveness_aggressive">దూకుడైన</string>
+    <string name="asset_allocation_label_include_crypto">క్రిప్టోపై ఆసక్తి ఉందా?</string>
+    <string name="asset_allocation_error_invalid_input">దయచేసి చెల్లుబాటు అయ్యే ప్రస్తుత వయస్సు మరియు పదవీ విరమణ వయస్సును నమోదు చేయండి.</string>
+    <string name="asset_allocation_result_title">సూచించిన కేటాయింపు</string>
+    <string name="asset_allocation_bucket_equity">ఈక్విటీ</string>
+    <string name="asset_allocation_bucket_debt">డెట్</string>
+    <string name="asset_allocation_bucket_gold">బంగారం</string>
+    <string name="asset_allocation_bucket_emergency_fund">అత్యవసర నిధి</string>
+    <string name="asset_allocation_bucket_crypto">క్రిప్టో</string>
+    <string name="asset_allocation_disclaimer">ఇది సాధారణ నియమాల ఆధారంగా రూపొందించిన ఒక సాధారణ కేటాయింపు నమూనా, వ్యక్తిగత ఆర్థిక సలహా కాదు. పెట్టుబడి పెట్టే ముందు లైసెన్స్ పొందిన సలహాదారుని సంప్రదించండి.</string>
+    <string name="asset_allocation_result_narrative">ప్రస్తుత వయస్సు %1$s, పదవీ విరమణ వయస్సు %2$s, మరియు %3$s రిస్క్ సామర్థ్యం ఆధారంగా, ఇది ఆస్తి తరగతులలో ఒక సాధారణ ప్రారంభ-స్థాయి కేటాయింపు. దీన్ని మీ లక్ష్యాలకు అనుగుణంగా సర్దుబాటు చేసుకుని, దీనిపై చర్య తీసుకునే ముందు లైసెన్స్ పొందిన సలహాదారుని సంప్రదించండి.</string>
+
+    <string name="local_data_popup_title">మీ డేటా మీ దగ్గరే ఉంటుంది!</string>
+    <string name="local_data_popup_body">అంతా మీ ఫోన్‌లోనే ఉంటుంది. ఎక్కడికీ ఏమీ పంపబడదు. నిర్భయంగా లెక్కలు వేసుకోండి!</string>
+    <string name="local_data_popup_subtext">ఇది ఇంకా %1$d సార్లు కనిపిస్తుంది, ఆ తర్వాత ఎప్పుడూ కనిపించదు.</string>
+    <string name="local_data_popup_button">సరే!</string>
     <string name="fire_result_required_corpus">పదవీ విరమణలో అవసరమైన నిధి</string>
     <string name="fire_result_required_sip">అవసరమైన నెలవారీ SIP</string>
     <string name="fire_result_coast_achieved">కోస్ట్ FIRE సాధించారు — మీ ప్రస్తుత పొదుపులు స్వయంగా లక్ష్యాన్ని చేరుకుంటాయని అంచనా.</string>
@@ -297,6 +347,7 @@
     <string name="settings_theme_mode">థీమ్ మోడ్</string>
     <string name="settings_theme_color">థీమ్ రంగు</string>
     <string name="settings_randomize_theme">యాదృచ్ఛికం</string>
+    <string name="settings_randomize_theme_active_hint">మీరు యాప్‌ను తెరిచిన ప్రతిసారీ కొత్త రంగు ఎంపిక చేయబడుతుంది.</string>
     <string name="settings_language">భాష</string>
     <string name="settings_default_rates_title">డిఫాల్ట్ రేట్లు</string>
     <string name="settings_appearance_section_title">స్వరూపం</string>
@@ -305,11 +356,11 @@
     <string name="theme_mode_light">లైట్</string>
     <string name="theme_mode_dark">డార్క్</string>
     <string name="theme_mode_system">సిస్టమ్</string>
-    <string name="theme_preset_emerald">ఎమరాల్డ్</string>
+    <string name="theme_preset_crimson">క్రిమ్సన్</string>
     <string name="theme_preset_ocean">ఓషన్</string>
     <string name="theme_preset_sunset">సన్‌సెట్</string>
     <string name="theme_preset_orchid">ఆర్కిడ్</string>
-    <string name="theme_preset_slate">స్లేట్</string>
+    <string name="theme_preset_vibrant">వైబ్రంట్</string>
 
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>

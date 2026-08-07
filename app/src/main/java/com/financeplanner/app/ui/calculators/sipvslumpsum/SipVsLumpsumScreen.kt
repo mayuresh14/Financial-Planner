@@ -116,8 +116,8 @@ fun SipVsLumpsumScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is SipVsLumpsumValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is SipVsLumpsumValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is SipVsLumpsumValidationError.InvalidInput -> stringResource(R.string.sip_vs_lumpsum_error_invalid_input)
+                    is SipVsLumpsumValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_vs_lumpsum_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

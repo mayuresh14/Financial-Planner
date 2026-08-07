@@ -21,7 +21,8 @@ data class SipInput(
     val stepUpPercent: Double? = null,
     val stepUpFixedAmount: Double? = null,
     val expenseRatioPercent: Double? = null,
-    val inflationPercent: Double? = null
+    val inflationPercent: Double? = null,
+    val initialLumpsum: Double? = null
 ) {
     init {
         require(contributionAmount > 0) { "Contribution amount must be positive" }
@@ -34,6 +35,7 @@ data class SipInput(
         }
         expenseRatioPercent?.let { require(it >= 0) { "Expense ratio cannot be negative" } }
         inflationPercent?.let { require(it >= 0) { "Inflation percent cannot be negative" } }
+        initialLumpsum?.let { require(it >= 0) { "Initial lumpsum cannot be negative" } }
     }
 }
 

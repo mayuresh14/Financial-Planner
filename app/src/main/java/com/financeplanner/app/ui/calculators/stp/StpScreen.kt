@@ -128,8 +128,8 @@ fun StpScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is StpValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is StpValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is StpValidationError.InvalidInput -> stringResource(R.string.stp_error_invalid_input)
+                    is StpValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.stp_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

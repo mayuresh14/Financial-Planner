@@ -7,22 +7,30 @@ import javax.inject.Inject
 
 class CalculateGoalBasedSipUseCase @Inject constructor() {
     operator fun invoke(input: GoalBasedSipInput): GoalBasedSipResult {
-        // If inflation is supplied, the target (given in today's terms) is
-        // first inflated to what it'll actually cost at the goal date —
-        // otherwise the SIP would undershoot the real future requirement.
-        val effectiveTarget = input.inflationPercent?.let { inflation ->
-            FinanceMath.futureCost(input.targetAmount, inflation, input.durationYears.toDouble())
-        } ?: input.targetAmount
-
+        // The primary result targets the amount exactly as entered, matching
+        // every other calculator's pattern where inflation only annotates the
+        // display rather than silently changing the headline number.
         val requiredSip = FinanceMath.requiredMonthlySip(
-            targetFutureValue = effectiveTarget,
+            targetFutureValue = input.targetAmount,
             annualReturnPercent = input.expectedReturnPercent,
             months = input.durationYears * 12
         )
 
+        val inflatedTarget = input.inflationPercent?.let { inflation ->
+            FinanceMath.futureCost(input.targetAmount, inflation, input.durationYears.toDouble())
+        }
+        val sipForInflatedTarget = inflatedTarget?.let {
+            FinanceMath.requiredMonthlySip(
+                targetFutureValue = it,
+                annualReturnPercent = input.expectedReturnPercent,
+                months = input.durationYears * 12
+            )
+        }
+
         return GoalBasedSipResult(
             requiredMonthlySip = requiredSip,
-            inflationAdjustedTarget = input.inflationPercent?.let { effectiveTarget }
+            inflationAdjustedTarget = inflatedTarget,
+            sipForInflationAdjustedTarget = sipForInflatedTarget
         )
     }
 }

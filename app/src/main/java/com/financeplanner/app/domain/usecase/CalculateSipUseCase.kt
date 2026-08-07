@@ -29,8 +29,16 @@ class CalculateSipUseCase @Inject constructor() {
         val stepUpFixedAmount = input.stepUpFixedAmount ?: 0.0
         val hasStepUp = stepUpPercent > 0 || stepUpFixedAmount > 0
 
-        val maturityValue = growthFor(input, netReturnPercent, totalPeriods, periodsPerYear, hasStepUp, stepUpPercent, stepUpFixedAmount)
-        val totalInvested = if (hasStepUp) {
+        val initialLumpsum = input.initialLumpsum ?: 0.0
+        val lumpsumMaturityValue = if (initialLumpsum > 0) {
+            FinanceMath.lumpsumFutureValue(initialLumpsum, netReturnPercent, input.durationYears)
+        } else {
+            0.0
+        }
+
+        val maturityValue = growthFor(input, netReturnPercent, totalPeriods, periodsPerYear, hasStepUp, stepUpPercent, stepUpFixedAmount) +
+            lumpsumMaturityValue
+        val totalInvested = (if (hasStepUp) {
             FinanceMath.stepUpTotalInvested(
                 initialAmount = input.contributionAmount,
                 totalPeriods = totalPeriods,
@@ -40,14 +48,19 @@ class CalculateSipUseCase @Inject constructor() {
             )
         } else {
             input.contributionAmount * totalPeriods
-        }
+        }) + initialLumpsum
 
         // Expense amount: how much smaller the corpus is versus what it would
         // have been at the gross (pre-expense) return — i.e. the fees' cost.
         val expenseAmount = if (expenseRatio > 0) {
+            val grossLumpsumMaturityValue = if (initialLumpsum > 0) {
+                FinanceMath.lumpsumFutureValue(initialLumpsum, input.expectedReturnPercent, input.durationYears)
+            } else {
+                0.0
+            }
             val grossMaturityValue = growthFor(
                 input, input.expectedReturnPercent, totalPeriods, periodsPerYear, hasStepUp, stepUpPercent, stepUpFixedAmount
-            )
+            ) + grossLumpsumMaturityValue
             (grossMaturityValue - maturityValue).coerceAtLeast(0.0)
         } else {
             null

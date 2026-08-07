@@ -52,6 +52,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.financeplanner.app.R
 import com.financeplanner.app.ui.common.AppSettingsViewModel
 import com.financeplanner.app.ui.common.DefaultRatesSetupSheet
+import com.financeplanner.app.ui.common.LocalDataPopup
+import com.financeplanner.app.ui.common.MAX_LOCAL_DATA_POPUP_SHOWN_COUNT
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
 import com.financeplanner.app.ui.common.TourOverlay
 import kotlinx.coroutines.launch
@@ -85,17 +87,27 @@ fun HomeScreen(
 
     var showTour by remember { mutableStateOf(false) }
     var showDefaultRatesSetup by remember { mutableStateOf(false) }
+    var showLocalDataPopup by remember { mutableStateOf(false) }
+
+    fun proceedPastLocalDataPopup() {
+        if (isAppTourEnabled && !preferences.hasSeenAppTour) {
+            showTour = true
+            settingsViewModel.logAppTourShown()
+        } else if (!preferences.hasSetDefaultRates) {
+            showDefaultRatesSetup = true
+        }
+    }
+
     LaunchedEffect(hasLoadedPreferences) {
         // Gated on hasLoadedPreferences (not just preferences.hasSeenAppTour)
         // so this doesn't fire on the synthetic "not seen" default that
         // `preferences` starts with before the real DataStore value loads —
         // otherwise the tour would flash/reshow on every launch.
         if (hasLoadedPreferences) {
-            if (isAppTourEnabled && !preferences.hasSeenAppTour) {
-                showTour = true
-                settingsViewModel.logAppTourShown()
-            } else if (!preferences.hasSetDefaultRates) {
-                showDefaultRatesSetup = true
+            if (preferences.localDataPopupShownCount < MAX_LOCAL_DATA_POPUP_SHOWN_COUNT) {
+                showLocalDataPopup = true
+            } else {
+                proceedPastLocalDataPopup()
             }
         }
     }
@@ -152,6 +164,17 @@ fun HomeScreen(
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
             onDismiss = { showSettingsSheet = false }
+        )
+    }
+
+    if (showLocalDataPopup) {
+        LocalDataPopup(
+            shownCount = preferences.localDataPopupShownCount,
+            onDismiss = {
+                showLocalDataPopup = false
+                settingsViewModel.onLocalDataPopupShown()
+                proceedPastLocalDataPopup()
+            }
         )
     }
 

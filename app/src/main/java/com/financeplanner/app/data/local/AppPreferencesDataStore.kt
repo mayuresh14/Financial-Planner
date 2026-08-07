@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.financeplanner.app.domain.model.AppDisplayPreferences
 import com.financeplanner.app.domain.model.AppLanguage
@@ -31,6 +32,8 @@ class AppPreferencesDataStore @Inject constructor(
         val DEFAULT_INFLATION_PERCENT = doublePreferencesKey("default_inflation_percent")
         val DEFAULT_EXPECTED_RETURN_PERCENT = doublePreferencesKey("default_expected_return_percent")
         val HAS_SET_DEFAULT_RATES = booleanPreferencesKey("has_set_default_rates")
+        val LOCAL_DATA_POPUP_SHOWN_COUNT = intPreferencesKey("local_data_popup_shown_count")
+        val RANDOMIZE_ON_LAUNCH = booleanPreferencesKey("randomize_on_launch")
     }
 
     val preferencesFlow: Flow<AppDisplayPreferences> = dataStore.data.map { prefs ->
@@ -39,14 +42,16 @@ class AppPreferencesDataStore @Inject constructor(
             themeMode = prefs[Keys.THEME_MODE]?.let { runCatching { ThemeMode.valueOf(it) }.getOrNull() }
                 ?: ThemeMode.SYSTEM_DEFAULT,
             themePreset = prefs[Keys.THEME_PRESET]?.let { runCatching { ThemePreset.valueOf(it) }.getOrNull() }
-                ?: ThemePreset.EMERALD,
+                ?: ThemePreset.VIBRANT,
             language = prefs[Keys.LANGUAGE]?.let { code -> AppLanguage.entries.find { it.localeTag == code } }
                 ?: AppLanguage.ENGLISH,
             hasSeenAppTour = prefs[Keys.HAS_SEEN_APP_TOUR] ?: false,
             defaultInflationPercent = prefs[Keys.DEFAULT_INFLATION_PERCENT] ?: defaults.defaultInflationPercent,
             defaultExpectedReturnPercent = prefs[Keys.DEFAULT_EXPECTED_RETURN_PERCENT]
                 ?: defaults.defaultExpectedReturnPercent,
-            hasSetDefaultRates = prefs[Keys.HAS_SET_DEFAULT_RATES] ?: false
+            hasSetDefaultRates = prefs[Keys.HAS_SET_DEFAULT_RATES] ?: false,
+            localDataPopupShownCount = prefs[Keys.LOCAL_DATA_POPUP_SHOWN_COUNT] ?: 0,
+            randomizeOnLaunch = prefs[Keys.RANDOMIZE_ON_LAUNCH] ?: false
         )
     }
 
@@ -76,5 +81,16 @@ class AppPreferencesDataStore @Inject constructor(
 
     suspend fun setHasSetDefaultRates(value: Boolean) {
         dataStore.edit { it[Keys.HAS_SET_DEFAULT_RATES] = value }
+    }
+
+    suspend fun setRandomizeOnLaunch(value: Boolean) {
+        dataStore.edit { it[Keys.RANDOMIZE_ON_LAUNCH] = value }
+    }
+
+    suspend fun incrementLocalDataPopupShownCount() {
+        dataStore.edit { prefs ->
+            val current = prefs[Keys.LOCAL_DATA_POPUP_SHOWN_COUNT] ?: 0
+            prefs[Keys.LOCAL_DATA_POPUP_SHOWN_COUNT] = current + 1
+        }
     }
 }

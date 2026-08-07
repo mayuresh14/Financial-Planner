@@ -8,8 +8,8 @@ import com.financeplanner.app.ui.navigation.Routes
 enum class CalculatorCategory(@StringRes val titleRes: Int) {
     INVESTMENT(R.string.category_investment),
     SAVINGS(R.string.category_savings),
-    GOVERNMENT_SCHEMES(R.string.category_government_schemes),
     PLANNING(R.string.category_planning),
+    GOVERNMENT_SCHEMES(R.string.category_government_schemes),
     LOAN(R.string.category_loan),
     LIFESTYLE(R.string.category_lifestyle)
 }
@@ -38,10 +38,11 @@ object CalculatorCatalog {
         CalculatorCatalogItem(R.string.calc_ssy, "SSY", Routes.SSY, CalculatorCategory.GOVERNMENT_SCHEMES),
         CalculatorCatalogItem(R.string.calc_nps, "NPS", Routes.NPS, CalculatorCategory.GOVERNMENT_SCHEMES),
         CalculatorCatalogItem(R.string.calc_gratuity, "GRT", Routes.GRATUITY, CalculatorCategory.GOVERNMENT_SCHEMES),
+        CalculatorCatalogItem(R.string.calc_fire, "FIRE", Routes.FIRE, CalculatorCategory.PLANNING),
         CalculatorCatalogItem(R.string.calc_goal_based_sip, "GS", Routes.GOAL_BASED_SIP, CalculatorCategory.PLANNING),
         CalculatorCatalogItem(R.string.calc_swp, "SWP", Routes.SWP, CalculatorCategory.PLANNING),
         CalculatorCatalogItem(R.string.calc_inflation_goal, "INF", Routes.INFLATION_GOAL, CalculatorCategory.PLANNING),
-        CalculatorCatalogItem(R.string.calc_fire, "FIRE", Routes.FIRE, CalculatorCategory.PLANNING),
+        CalculatorCatalogItem(R.string.calc_asset_allocation, "AA", Routes.ASSET_ALLOCATION, CalculatorCategory.PLANNING),
         CalculatorCatalogItem(R.string.calc_tenure, "TN", Routes.TENURE, CalculatorCategory.PLANNING),
         CalculatorCatalogItem(R.string.calc_emi, "EMI", Routes.EMI, CalculatorCategory.LOAN),
         CalculatorCatalogItem(R.string.calc_smoke, "SMK", Routes.SMOKE, CalculatorCategory.LIFESTYLE),

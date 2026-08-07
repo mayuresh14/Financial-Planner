@@ -4,9 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financeplanner.app.data.analytics.AppAnalytics
 import com.financeplanner.app.data.local.AppPreferencesDataStore
+import com.financeplanner.app.domain.model.FireAgeInput
+import com.financeplanner.app.domain.model.FireAgeResult
+import com.financeplanner.app.domain.model.FireCalculationMode
 import com.financeplanner.app.domain.model.FireInput
 import com.financeplanner.app.domain.model.FireResult
 import com.financeplanner.app.domain.model.FireVariant
+import com.financeplanner.app.domain.usecase.CalculateFireAgeUseCase
 import com.financeplanner.app.domain.usecase.CalculateFireUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,6 +26,7 @@ sealed interface FireValidationError {
 }
 
 data class FireUiState(
+    val mode: FireCalculationMode = FireCalculationMode.FIND_SIP,
     val variant: FireVariant = FireVariant.TRADITIONAL,
     val currentAge: String = "",
     val retirementAge: String = "",
@@ -29,7 +34,9 @@ data class FireUiState(
     val inflationPercent: String = "6",
     val preRetirementReturnPercent: String = "12",
     val existingCorpus: String = "",
+    val monthlySip: String = "",
     val result: FireResult? = null,
+    val ageResult: FireAgeResult? = null,
     val error: FireValidationError? = null,
     val showComingSoonSheet: Boolean = false
 )
@@ -37,6 +44,7 @@ data class FireUiState(
 @HiltViewModel
 class FireViewModel @Inject constructor(
     private val calculateFire: CalculateFireUseCase,
+    private val calculateFireAge: CalculateFireAgeUseCase,
     private val preferencesDataStore: AppPreferencesDataStore,
     private val analytics: AppAnalytics
 ) : ViewModel() {
@@ -55,8 +63,11 @@ class FireViewModel @Inject constructor(
         }
     }
 
+    fun onModeChange(mode: FireCalculationMode) {
+        _uiState.value = _uiState.value.copy(mode = mode, error = null, result = null, ageResult = null)
+    }
     fun onVariantChange(variant: FireVariant) {
-        _uiState.value = _uiState.value.copy(variant = variant, error = null, result = null)
+        _uiState.value = _uiState.value.copy(variant = variant, error = null, result = null, ageResult = null)
     }
     fun onCurrentAgeChange(value: String) {
         _uiState.value = _uiState.value.copy(currentAge = value, error = null)
@@ -76,9 +87,12 @@ class FireViewModel @Inject constructor(
     fun onExistingCorpusChange(value: String) {
         _uiState.value = _uiState.value.copy(existingCorpus = value, error = null)
     }
+    fun onMonthlySipChange(value: String) {
+        _uiState.value = _uiState.value.copy(monthlySip = value, error = null)
+    }
 
     fun onResultDismissed() {
-        _uiState.value = _uiState.value.copy(result = null)
+        _uiState.value = _uiState.value.copy(result = null, ageResult = null)
     }
 
     fun onSaveClicked() {
@@ -94,25 +108,43 @@ class FireViewModel @Inject constructor(
         analytics.logCalculateTapped(CALCULATOR_NAME)
         val state = _uiState.value
         val currentAge = state.currentAge.toIntOrNull()
-        val retirementAge = state.retirementAge.toIntOrNull()
         val expenses = state.currentAnnualExpenses.toDoubleOrNull()
         val inflation = state.inflationPercent.toDoubleOrNull()
         val returnPct = state.preRetirementReturnPercent.toDoubleOrNull()
         val existingCorpus = state.existingCorpus.toDoubleOrNull() ?: 0.0
 
-        if (currentAge == null || retirementAge == null || expenses == null || inflation == null || returnPct == null) {
-            _uiState.value = state.copy(error = FireValidationError.InvalidInput, result = null)
-            return
-        }
-        try {
-            val result = calculateFire(
-                FireInput(state.variant, currentAge, retirementAge, expenses, inflation, returnPct, existingCorpus)
-            )
-            _uiState.value = state.copy(result = result, error = null)
-            analytics.logResultViewed(CALCULATOR_NAME)
-        } catch (e: IllegalArgumentException) {
-            analytics.recordException(e, CALCULATOR_NAME)
-            _uiState.value = state.copy(error = FireValidationError.InvalidValue(e.message), result = null)
+        if (state.mode == FireCalculationMode.FIND_SIP) {
+            val retirementAge = state.retirementAge.toIntOrNull()
+            if (currentAge == null || retirementAge == null || expenses == null || inflation == null || returnPct == null) {
+                _uiState.value = state.copy(error = FireValidationError.InvalidInput, result = null, ageResult = null)
+                return
+            }
+            try {
+                val result = calculateFire(
+                    FireInput(state.variant, currentAge, retirementAge, expenses, inflation, returnPct, existingCorpus)
+                )
+                _uiState.value = state.copy(result = result, ageResult = null, error = null)
+                analytics.logResultViewed(CALCULATOR_NAME)
+            } catch (e: IllegalArgumentException) {
+                analytics.recordException(e, CALCULATOR_NAME)
+                _uiState.value = state.copy(error = FireValidationError.InvalidValue(e.message), result = null, ageResult = null)
+            }
+        } else {
+            val monthlySip = state.monthlySip.toDoubleOrNull()
+            if (currentAge == null || expenses == null || inflation == null || returnPct == null || monthlySip == null) {
+                _uiState.value = state.copy(error = FireValidationError.InvalidInput, result = null, ageResult = null)
+                return
+            }
+            try {
+                val result = calculateFireAge(
+                    FireAgeInput(state.variant, currentAge, expenses, inflation, returnPct, monthlySip, existingCorpus)
+                )
+                _uiState.value = state.copy(ageResult = result, result = null, error = null)
+                analytics.logResultViewed(CALCULATOR_NAME)
+            } catch (e: IllegalArgumentException) {
+                analytics.recordException(e, CALCULATOR_NAME)
+                _uiState.value = state.copy(error = FireValidationError.InvalidValue(e.message), result = null, ageResult = null)
+            }
         }
     }
 

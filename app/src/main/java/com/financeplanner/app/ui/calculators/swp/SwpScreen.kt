@@ -117,8 +117,8 @@ fun SwpScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is SwpValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is SwpValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is SwpValidationError.InvalidInput -> stringResource(R.string.swp_error_invalid_input)
+                    is SwpValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.swp_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

@@ -127,8 +127,8 @@ fun SmokeScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is SmokeValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is SmokeValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is SmokeValidationError.InvalidInput -> stringResource(R.string.smoke_error_invalid_input)
+                    is SmokeValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.smoke_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

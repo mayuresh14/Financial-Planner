@@ -82,6 +82,8 @@
     <string name="sip_stepup_mode_percentage">% step-up</string>
     <string name="sip_stepup_mode_fixed">Fixed amount step-up</string>
     <string name="sip_label_stepup_fixed_amount">Step-up amount (₹/year, optional)</string>
+    <string name="sip_label_initial_lumpsum">Initial lumpsum investment (optional)</string>
+    <string name="sip_result_narrative_lumpsum_addendum"> You\'ve also included a one-time initial lumpsum of %1$s, which is factored into the maturity value above.</string>
     <string name="sip_label_expense_ratio">Expense ratio % (optional)</string>
     <string name="help_stepup_fixed_amount">Increase your investment by this fixed rupee amount every year, instead of a percentage — useful when you want a predictable step-up regardless of how large your contribution has grown.</string>
     <string name="help_expense_ratio">The fund\'s annual expense ratio — the fee it charges to manage your money. This is subtracted from your expected return before projecting growth, since it\'s a recurring drag on your actual returns.</string>
@@ -90,7 +92,25 @@
     <string name="sip_result_wealth_gained">Wealth Gained</string>
     <string name="sip_result_expense_cost">Cost of Fund Expenses</string>
     <string name="sip_result_inflation_adjusted">Inflation-Adjusted Value (today\'s value)</string>
-    <string name="sip_error_invalid_input">Please enter a valid monthly amount, return rate, and duration.</string>
+    <string name="sip_error_invalid_input">Please enter a valid SIP amount, expected return, and duration.</string>
+    <string name="lumpsum_error_invalid_input">Please enter a valid investment amount, expected return, and duration.</string>
+    <string name="sip_vs_lumpsum_error_invalid_input">Please enter a valid monthly SIP amount, lumpsum amount, expected return, and duration.</string>
+    <string name="tenure_error_invalid_input">Please enter a valid monthly investment amount, expected return, and target amount.</string>
+    <string name="ppf_error_invalid_input">Please enter a valid yearly contribution, duration, and interest rate.</string>
+    <string name="epf_error_invalid_input">Please enter a valid salary, employee contribution %, employer contribution %, duration, and expected return.</string>
+    <string name="ssy_error_invalid_input">Please enter a valid girl\'s age, yearly deposit, and interest rate.</string>
+    <string name="nps_error_invalid_input">Please enter a valid monthly contribution, age, expected return, and annuity percentage.</string>
+    <string name="emi_error_invalid_input">Please enter a valid loan amount, interest rate, and tenure. If prepayment is enabled, also enter a valid prepayment amount and month.</string>
+    <string name="stp_error_invalid_input">Please enter a valid source lumpsum, monthly transfer amount, duration, source return, and target return.</string>
+    <string name="swp_error_invalid_input">Please enter a valid initial corpus, monthly withdrawal, expected return, and simulation years.</string>
+    <string name="inflation_goal_error_invalid_input">Please enter a valid current cost, inflation rate, and years.</string>
+    <string name="fire_error_invalid_input">Please enter a valid current age, retirement age, annual expenses, inflation rate, and expected return.</string>
+    <string name="goal_sip_error_invalid_input">Please enter a valid target amount, duration, and expected return.</string>
+    <string name="fd_error_invalid_input">Please enter a valid deposit amount, interest rate, and tenure.</string>
+    <string name="rd_error_invalid_input">Please enter a valid monthly deposit, interest rate, and tenure.</string>
+    <string name="smoke_error_invalid_input">Please enter a valid number of cigarettes per day, cost per cigarette, duration, and expected return.</string>
+    <string name="alcohol_error_invalid_input">Please enter a valid number of drinks per week, cost per drink, duration, and expected return.</string>
+    <string name="gratuity_error_invalid_input">Please enter a valid last drawn salary and years of service.</string>
     <string name="sip_result_narrative">If you invest %1$s %2$s via SIP for %3$s years at an expected %4$s%% annual return, your investment could grow to %5$s by the end.</string>
     <string name="sip_result_narrative_stepup_percentage_addendum">\n\nWith a %1$s%% step-up each year, your contribution increases over time to keep pace with rising income — the result above already reflects this.</string>
     <string name="sip_result_narrative_stepup_fixed_addendum">\n\nWith your contribution increasing by %1$s every year, this step-up is already factored into the result above.</string>
@@ -120,8 +140,9 @@
     <string name="goal_sip_label_target">Goal amount (₹)</string>
     <string name="goal_sip_result_required_sip">Required Monthly SIP</string>
     <string name="goal_sip_result_inflation_target">Inflation-Adjusted Target</string>
+    <string name="goal_sip_result_inflation_sip">SIP Needed for Inflation-Adjusted Target</string>
     <string name="goal_sip_result_narrative">To reach a target of %1$s in %2$s years at an expected %3$s%% annual return, you would need to invest %4$s every month via SIP.</string>
-    <string name="goal_sip_result_narrative_inflation_addendum">\n\nNote: accounting for %1$s%% inflation, your goal will effectively cost %2$s by the time you reach it — the SIP above already targets this adjusted amount.</string>
+    <string name="goal_sip_result_narrative_inflation_addendum">\n\nNote: accounting for %1$s%% inflation, your goal will effectively cost %2$s by the time you reach it — to hit that inflation-adjusted amount, you would need to invest %3$s every month instead.</string>
 
     <!-- SIP vs Lumpsum screen -->
     <string name="sip_vs_lumpsum_label_sip_amount">Monthly SIP amount (₹)</string>
@@ -269,6 +290,35 @@
     <string name="fire_label_inflation">Inflation rate (%)</string>
     <string name="fire_label_return">Pre-retirement expected return (%)</string>
     <string name="fire_label_existing_corpus">Existing corpus (₹, optional)</string>
+    <string name="fire_label_monthly_sip">Monthly SIP amount</string>
+    <string name="fire_mode_find_sip">Find SIP</string>
+    <string name="fire_mode_find_age">Find FIRE Age</string>
+    <string name="fire_age_result_label">FIRE Age</string>
+    <string name="fire_age_result_value">%1$d years</string>
+    <string name="fire_age_result_narrative">Investing %1$s every month under %2$s, with %3$s%% inflation and an expected %4$s%% pre-retirement return, your corpus would cover your FIRE number by age %5$s — a required corpus of %6$s at that point.</string>
+    <string name="fire_age_result_unreachable">This SIP amount doesn\'t reach your FIRE number within 70 years — try increasing the monthly SIP or the expected return.</string>
+
+    <string name="calc_asset_allocation">Asset Allocation Calculator</string>
+    <string name="asset_allocation_screen_description">Get a generic asset-mix suggestion based on your age, retirement horizon, and risk appetite — a rule of thumb to start from, not personalized advice.</string>
+    <string name="asset_allocation_label_aggressiveness">Risk appetite</string>
+    <string name="asset_allocation_aggressiveness_conservative">Conservative</string>
+    <string name="asset_allocation_aggressiveness_moderate">Moderate</string>
+    <string name="asset_allocation_aggressiveness_aggressive">Aggressive</string>
+    <string name="asset_allocation_label_include_crypto">Interested in crypto?</string>
+    <string name="asset_allocation_error_invalid_input">Please enter a valid current age and retirement age.</string>
+    <string name="asset_allocation_result_title">Suggested Allocation</string>
+    <string name="asset_allocation_bucket_equity">Equity</string>
+    <string name="asset_allocation_bucket_debt">Debt</string>
+    <string name="asset_allocation_bucket_gold">Gold</string>
+    <string name="asset_allocation_bucket_emergency_fund">Emergency Fund</string>
+    <string name="asset_allocation_bucket_crypto">Crypto</string>
+    <string name="asset_allocation_disclaimer">This is a generic allocation model based on common rules of thumb, not personalized financial advice. Consult a licensed advisor before investing.</string>
+    <string name="asset_allocation_result_narrative">Based on a current age of %1$s, a retirement age of %2$s, and a %3$s risk appetite, here\'s a generic starting-point allocation across asset classes. Adjust it to fit your own goals and consult a licensed advisor before acting on it.</string>
+
+    <string name="local_data_popup_title">Your data stays with you!</string>
+    <string name="local_data_popup_body">Everything stays on your phone. Nothing is sent anywhere. Calculate away, freely!</string>
+    <string name="local_data_popup_subtext">You\'ll see this %1$d more time(s), then never again.</string>
+    <string name="local_data_popup_button">Got it!</string>
     <string name="fire_result_required_corpus">Required Corpus at Retirement</string>
     <string name="fire_result_required_sip">Required Monthly SIP</string>
     <string name="fire_result_coast_achieved">Coast FIRE achieved — your existing savings are projected to reach the target on their own.</string>
@@ -323,6 +373,7 @@
     <string name="settings_theme_mode">Theme Mode</string>
     <string name="settings_theme_color">Theme Color</string>
     <string name="settings_randomize_theme">Randomize</string>
+    <string name="settings_randomize_theme_active_hint">A new color will be picked every time you open the app.</string>
     <string name="settings_language">Language</string>
     <string name="settings_default_rates_title">Default Rates</string>
     <string name="settings_appearance_section_title">Appearance</string>
@@ -331,11 +382,11 @@
     <string name="theme_mode_light">Light</string>
     <string name="theme_mode_dark">Dark</string>
     <string name="theme_mode_system">System</string>
-    <string name="theme_preset_emerald">Emerald</string>
     <string name="theme_preset_ocean">Ocean</string>
     <string name="theme_preset_sunset">Sunset</string>
     <string name="theme_preset_orchid">Orchid</string>
-    <string name="theme_preset_slate">Slate</string>
+    <string name="theme_preset_crimson">Crimson</string>
+    <string name="theme_preset_vibrant">Vibrant</string>
 
     <!-- Languages -->
     <string name="language_english">English</string>

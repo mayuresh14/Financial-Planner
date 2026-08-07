@@ -121,8 +121,8 @@ fun SsyScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is SsyValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is SsyValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is SsyValidationError.InvalidInput -> stringResource(R.string.ssy_error_invalid_input)
+                    is SsyValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.ssy_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

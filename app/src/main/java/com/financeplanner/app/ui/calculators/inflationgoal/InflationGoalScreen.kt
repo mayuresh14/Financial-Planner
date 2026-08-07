@@ -113,8 +113,8 @@ fun InflationGoalScreen(
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is InflationGoalValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is InflationGoalValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is InflationGoalValidationError.InvalidInput -> stringResource(R.string.inflation_goal_error_invalid_input)
+                    is InflationGoalValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.inflation_goal_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }

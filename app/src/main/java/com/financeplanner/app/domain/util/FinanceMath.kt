@@ -284,7 +284,10 @@ object FinanceMath {
 
     /**
      * SWP simulation: fixed monthly withdrawal from a corpus growing at
-     * [annualReturnPercent], simulated for up to [maxMonths].
+     * [annualReturnPercent], simulated for up to [maxMonths]. Withdrawal is
+     * taken at the start of each month (matching standard SWP calculator
+     * convention), with only the remaining balance earning that month's
+     * return.
      */
     fun simulateSwp(
         initialCorpus: Double,
@@ -296,13 +299,13 @@ object FinanceMath {
         var balance = initialCorpus
         var totalWithdrawn = 0.0
         for (month in 1..maxMonths) {
-            balance *= (1 + monthlyRate)
             val withdrawal = minOf(monthlyWithdrawal, balance)
             balance -= withdrawal
             totalWithdrawn += withdrawal
             if (balance <= 0.01) {
                 return WithdrawalResult(depletionMonth = month, totalWithdrawn = totalWithdrawn, finalBalance = 0.0)
             }
+            balance *= (1 + monthlyRate)
         }
         return WithdrawalResult(depletionMonth = null, totalWithdrawn = totalWithdrawn, finalBalance = balance)
     }
@@ -355,6 +358,37 @@ object FinanceMath {
         val statutoryCap = 2_000_000.0
         val raw = (15.0 * lastDrawnMonthlySalary * yearsOfService) / 26.0
         return minOf(raw, statutoryCap)
+    }
+
+    /**
+     * Months until a growing corpus (existing lumpsum + a fixed monthly
+     * contribution, both compounding at [preRetirementReturnPercent]) first
+     * covers an inflation-growing target (e.g. a FIRE number based on
+     * [currentAnnualExpenses] inflating at [inflationPercent], multiplied by
+     * [expenseMultiple]). Stepped month-by-month since the target itself
+     * moves every month — no closed form once both sides change over time.
+     * Capped at [maxMonths] (default 70 years) to guarantee termination for
+     * unreachable combinations (e.g. contribution too small for the return).
+     */
+    fun monthsToReachGrowingTarget(
+        existingCorpus: Double,
+        monthlyContribution: Double,
+        preRetirementReturnPercent: Double,
+        currentAnnualExpenses: Double,
+        inflationPercent: Double,
+        expenseMultiple: Double,
+        maxMonths: Int = 840
+    ): Int? {
+        val monthlyRate = preRetirementReturnPercent / 1200.0
+        var corpus = existingCorpus
+        if (corpus >= currentAnnualExpenses * expenseMultiple) return 0
+        for (month in 1..maxMonths) {
+            corpus = (corpus + monthlyContribution) * (1 + monthlyRate)
+            val yearsElapsed = month / 12.0
+            val requiredCorpus = futureCost(currentAnnualExpenses, inflationPercent, yearsElapsed) * expenseMultiple
+            if (corpus >= requiredCorpus) return month
+        }
+        return null // unreachable within the cap
     }
 
     /**

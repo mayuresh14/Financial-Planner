@@ -40,7 +40,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import com.financeplanner.app.R
+import com.financeplanner.app.domain.model.FireAgeResult
+import com.financeplanner.app.domain.model.FireCalculationMode
 import com.financeplanner.app.domain.model.FireResult
 import com.financeplanner.app.domain.model.FireVariant
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
@@ -96,6 +101,22 @@ fun FireScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
+            SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                val modes = listOf(
+                    FireCalculationMode.FIND_SIP to R.string.fire_mode_find_sip,
+                    FireCalculationMode.FIND_AGE to R.string.fire_mode_find_age
+                )
+                modes.forEachIndexed { index, (mode, labelRes) ->
+                    SegmentedButton(
+                        selected = state.mode == mode,
+                        onClick = { viewModel.onModeChange(mode) },
+                        shape = SegmentedButtonDefaults.itemShape(index = index, count = modes.size)
+                    ) {
+                        Text(stringResource(labelRes))
+                    }
+                }
+            }
+
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(FireVariant.entries) { variant ->
                     FilterChip(
@@ -111,16 +132,24 @@ fun FireScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            if (state.mode == FireCalculationMode.FIND_SIP) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(
+                        value = state.currentAge, onValueChange = viewModel::onCurrentAgeChange,
+                        label = { Text(stringResource(R.string.fire_label_current_age)) },
+                        modifier = Modifier.weight(1f), singleLine = true
+                    )
+                    OutlinedTextField(
+                        value = state.retirementAge, onValueChange = viewModel::onRetirementAgeChange,
+                        label = { Text(stringResource(R.string.fire_label_retirement_age)) },
+                        modifier = Modifier.weight(1f), singleLine = true
+                    )
+                }
+            } else {
                 OutlinedTextField(
                     value = state.currentAge, onValueChange = viewModel::onCurrentAgeChange,
                     label = { Text(stringResource(R.string.fire_label_current_age)) },
-                    modifier = Modifier.weight(1f), singleLine = true
-                )
-                OutlinedTextField(
-                    value = state.retirementAge, onValueChange = viewModel::onRetirementAgeChange,
-                    label = { Text(stringResource(R.string.fire_label_retirement_age)) },
-                    modifier = Modifier.weight(1f), singleLine = true
+                    modifier = Modifier.fillMaxWidth(), singleLine = true
                 )
             }
             AmountOutlinedTextField(
@@ -146,11 +175,18 @@ fun FireScreen(
                 label = { Text(stringResource(R.string.fire_label_existing_corpus)) },
                 modifier = Modifier.fillMaxWidth()
             )
+            if (state.mode == FireCalculationMode.FIND_AGE) {
+                AmountOutlinedTextField(
+                    value = state.monthlySip, onValueChange = viewModel::onMonthlySipChange,
+                    label = { Text(stringResource(R.string.fire_label_monthly_sip)) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
 
             state.error?.let { error ->
                 val message = when (error) {
-                    is FireValidationError.InvalidInput -> stringResource(R.string.sip_error_invalid_input)
-                    is FireValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.sip_error_invalid_input)
+                    is FireValidationError.InvalidInput -> stringResource(R.string.fire_error_invalid_input)
+                    is FireValidationError.InvalidValue -> error.rawMessage ?: stringResource(R.string.fire_error_invalid_input)
                 }
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
@@ -161,7 +197,7 @@ fun FireScreen(
         }
     }
 
-    if (state.result != null) {
+    if (state.result != null || state.ageResult != null) {
         ModalBottomSheet(
             onDismissRequest = ::dismissResultSheet,
             sheetState = resultSheetState
@@ -171,6 +207,7 @@ fun FireScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { FireResultCard(it, state) }
+                state.ageResult?.let { FireAgeResultCard(it, state) }
                 Button(onClick = viewModel::onSaveClicked, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.sip_button_save))
                 }
@@ -266,6 +303,65 @@ private fun FireResultCard(result: FireResult, state: FireUiState) {
                                else stringResource(R.string.fire_result_coast_not_achieved),
                         style = MaterialTheme.typography.bodySmall,
                         color = if (achieved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+        }
+
+        NarrativeResultCard(narrative)
+    }
+}
+
+@Composable
+private fun FireAgeResultCard(result: FireAgeResult, state: FireUiState) {
+    val currencyFormat = remember(result) { NumberFormat.getCurrencyInstance(Locale("en", "IN")).apply { maximumFractionDigits = 0 } }
+
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        val narrative = if (result.fireAge != null && result.yearsToFire != null && result.requiredCorpusAtFire != null) {
+            stringResource(
+                R.string.fire_age_result_narrative,
+                formatAmountWithWords(state.monthlySip.toDoubleOrNull() ?: 0.0, currencyFormat),
+                variantLabel(state.variant),
+                state.inflationPercent,
+                state.preRetirementReturnPercent,
+                result.fireAge,
+                formatAmountWithWords(result.requiredCorpusAtFire, currencyFormat)
+            )
+        } else {
+            stringResource(R.string.fire_age_result_unreachable)
+        }
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            shape = MaterialTheme.shapes.large
+        ) {
+            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(text = stringResource(R.string.fire_age_result_label), style = MaterialTheme.typography.labelLarge)
+                if (result.fireAge != null) {
+                    Text(
+                        text = stringResource(R.string.fire_age_result_value, result.fireAge),
+                        style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold
+                    )
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+                    result.requiredCorpusAtFire?.let { corpus ->
+                        Column(modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                text = stringResource(R.string.fire_result_required_corpus),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = LocalContentColor.current.copy(alpha = 0.75f)
+                            )
+                            Text(
+                                text = currencyFormat.format(corpus),
+                                style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                    }
+                } else {
+                    Text(
+                        text = stringResource(R.string.fire_age_result_unreachable),
+                        style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.error
                     )
                 }
             }
