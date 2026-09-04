@@ -10,11 +10,16 @@ private const val ASSUMED_ANNUITY_RATE_PERCENT = 6.0 // typical current annuity 
 
 class CalculateNpsUseCase @Inject constructor() {
     operator fun invoke(input: NpsInput): NpsResult {
-        val months = (NPS_RETIREMENT_AGE - input.currentAge) * 12
+        val yearsToRetirement = NPS_RETIREMENT_AGE - input.currentAge
+        val months = yearsToRetirement * 12
         val corpus = FinanceMath.sipFutureValue(
             monthlyAmount = input.monthlyContribution,
             annualReturnPercent = input.expectedReturnPercent,
             months = months
+        ) + FinanceMath.lumpsumFutureValue(
+            principal = input.existingBalance,
+            annualReturnPercent = input.expectedReturnPercent,
+            years = yearsToRetirement
         )
         val annuityCorpus = corpus * (input.annuityPercent / 100.0)
         val lumpsum = corpus - annuityCorpus
@@ -23,7 +28,7 @@ class CalculateNpsUseCase @Inject constructor() {
             FinanceMath.inflationAdjustedValue(
                 futureValue = corpus,
                 annualInflationPercent = inflation,
-                years = (NPS_RETIREMENT_AGE - input.currentAge).toDouble()
+                years = yearsToRetirement.toDouble()
             )
         }
 

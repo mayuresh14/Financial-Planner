@@ -25,8 +25,7 @@ data class InflationGoalUiState(
     val inflationPercent: String = "6",
     val years: String = "",
     val result: InflationGoalResult? = null,
-    val error: InflationGoalValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: InflationGoalValidationError? = null
 )
 
 @HiltViewModel
@@ -59,15 +58,6 @@ class InflationGoalViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

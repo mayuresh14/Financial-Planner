@@ -25,10 +25,8 @@ data class SmokeUiState(
     val costPerCigarette: String = "",
     val years: String = "",
     val expectedReturnPercent: String = "",
-    val inflationPercent: String = "",
     val result: SmokeResult? = null,
-    val error: SmokeValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: SmokeValidationError? = null
 )
 
 @HiltViewModel
@@ -46,8 +44,7 @@ class SmokeViewModel @Inject constructor(
         viewModelScope.launch {
             val prefs = preferencesDataStore.preferencesFlow.first()
             _uiState.value = _uiState.value.copy(
-                expectedReturnPercent = prefs.defaultExpectedReturnPercent.toString(),
-                inflationPercent = prefs.defaultInflationPercent.toString()
+                expectedReturnPercent = prefs.defaultExpectedReturnPercent.toString()
             )
         }
     }
@@ -64,21 +61,9 @@ class SmokeViewModel @Inject constructor(
     fun onReturnChange(value: String) {
         _uiState.value = _uiState.value.copy(expectedReturnPercent = value, error = null)
     }
-    fun onInflationChange(value: String) {
-        _uiState.value = _uiState.value.copy(inflationPercent = value, error = null)
-    }
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {
@@ -88,7 +73,6 @@ class SmokeViewModel @Inject constructor(
         val costPerCigarette = state.costPerCigarette.toDoubleOrNull()
         val years = state.years.toIntOrNull()
         val expectedReturn = state.expectedReturnPercent.toDoubleOrNull()
-        val inflation = state.inflationPercent.toDoubleOrNull()
 
         if (cigarettesPerDay == null || costPerCigarette == null || years == null || expectedReturn == null) {
             _uiState.value = state.copy(error = SmokeValidationError.InvalidInput, result = null)
@@ -100,8 +84,7 @@ class SmokeViewModel @Inject constructor(
                     cigarettesPerDay = cigarettesPerDay,
                     costPerCigarette = costPerCigarette,
                     years = years,
-                    expectedReturnPercent = expectedReturn,
-                    inflationPercent = inflation
+                    expectedReturnPercent = expectedReturn
                 )
             )
             _uiState.value = state.copy(result = result, error = null)

@@ -10,9 +10,13 @@ class CalculateSsyUseCase @Inject constructor() {
         val maturityValue = FinanceMath.ssyMaturityValue(
             yearlyDeposit = input.yearlyDeposit,
             annualRatePercent = input.interestRatePercent
+        ) + FinanceMath.lumpsumFutureValue(
+            principal = input.existingBalance,
+            annualReturnPercent = input.interestRatePercent,
+            years = 21
         )
         val depositYears = minOf(15, 21)
-        val totalDeposited = input.yearlyDeposit * depositYears
+        val totalDeposited = input.yearlyDeposit * depositYears + input.existingBalance
         val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
             FinanceMath.inflationAdjustedValue(
                 futureValue = maturityValue,

@@ -1,0 +1,15 @@
+package com.financeplanner.app.data.local.db
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "saved_calculations")
+data class SavedCalculationEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val type: String,
+    val customName: String,
+    val notes: String?,
+    val detailsJson: String,
+    val lastComputedValue: Double?,
+    val createdAt: Long
+)

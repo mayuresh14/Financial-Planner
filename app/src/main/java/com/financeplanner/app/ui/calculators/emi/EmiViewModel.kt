@@ -26,8 +26,7 @@ data class EmiUiState(
     val prepaymentAfterMonth: String = "",
     val prepaymentStrategy: PrepaymentStrategy = PrepaymentStrategy.REDUCE_TENURE,
     val result: EmiResult? = null,
-    val error: EmiValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: EmiValidationError? = null
 )
 
 @HiltViewModel
@@ -67,15 +66,6 @@ class EmiViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

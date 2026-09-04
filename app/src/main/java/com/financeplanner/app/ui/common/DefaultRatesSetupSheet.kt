@@ -9,9 +9,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.ModalBottomSheetDefaults
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -32,6 +30,10 @@ import com.financeplanner.app.R
  * from day one instead of starting blank. Editable later from the same two
  * fields in ThemeLanguageSheet — this sheet only exists to collect an
  * initial value, not to be the sole place these can be changed.
+ *
+ * Closable via swipe/back/tap-outside/Continue — whichever values are
+ * showing at close time (edited or still the prefilled defaults) are saved,
+ * so dismissing early doesn't lose the prefill.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,20 +45,18 @@ fun DefaultRatesSetupSheet(
     var inflationText by remember { mutableStateOf(initialInflationPercent.toString()) }
     var returnText by remember { mutableStateOf(initialExpectedReturnPercent.toString()) }
 
-    // Fully non-cancellable: confirmValueChange rejects the swipe-to-Hidden
-    // gesture (a no-op onDismissRequest alone doesn't stop that, since
-    // dragging manipulates the sheet's internal state directly), and
-    // shouldDismissOnBackPress/onDismissRequest block back-press and
-    // tap-outside. The user must tap Continue to close this sheet.
-    val sheetState = rememberModalBottomSheetState(
-        skipPartiallyExpanded = true,
-        confirmValueChange = { it != SheetValue.Hidden }
-    )
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+
+    fun saveAndClose() {
+        onSave(
+            inflationText.toDoubleOrNull() ?: initialInflationPercent,
+            returnText.toDoubleOrNull() ?: initialExpectedReturnPercent
+        )
+    }
 
     ModalBottomSheet(
-        onDismissRequest = { /* one-time setup — must be confirmed, not dismissed */ },
-        sheetState = sheetState,
-        properties = ModalBottomSheetDefaults.properties(shouldDismissOnBackPress = false)
+        onDismissRequest = ::saveAndClose,
+        sheetState = sheetState
     ) {
         Column(
             modifier = Modifier
@@ -90,12 +90,7 @@ fun DefaultRatesSetupSheet(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Button(
-                onClick = {
-                    onSave(
-                        inflationText.toDoubleOrNull() ?: initialInflationPercent,
-                        returnText.toDoubleOrNull() ?: initialExpectedReturnPercent
-                    )
-                },
+                onClick = ::saveAndClose,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(stringResource(R.string.default_rates_button_continue))

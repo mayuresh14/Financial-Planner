@@ -26,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -47,7 +48,11 @@ import com.financeplanner.app.domain.model.GoalBasedSipResult
 import com.financeplanner.app.domain.model.GoalType
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.domain.model.SaveTarget
+import com.financeplanner.app.ui.common.SaveCalculationSheet
+import com.financeplanner.app.ui.common.SaveCompletedEffect
+import com.financeplanner.app.ui.common.SaveInvestmentSheet
+import com.financeplanner.app.ui.common.SaveTargetChooserSheet
 import com.financeplanner.app.ui.common.FieldHelpIcon
 import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
@@ -74,6 +79,8 @@ fun GoalBasedSipScreen(
             if (!resultSheetState.isVisible) viewModel.onResultDismissed()
         }
     }
+
+    SaveCompletedEffect(state.saveCompleted, viewModel::onSaveCompletedHandled, onBack)
 
     Scaffold(
         topBar = {
@@ -147,19 +154,24 @@ fun GoalBasedSipScreen(
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
 
-            Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.sip_button_calculate))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = viewModel::calculate, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_calculate))
+                }
+                OutlinedButton(onClick = viewModel::onSaveDirectClicked, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
 
-    if (state.result != null) {
+    if (state.result != null && state.showResultSheet) {
         ModalBottomSheet(
             onDismissRequest = ::dismissResultSheet,
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { GoalBasedSipResultCard(it, state) }
@@ -179,12 +191,35 @@ fun GoalBasedSipScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
     }
 
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
+    if (state.showSaveSheet) {
+        if (state.saveTarget == SaveTarget.INVESTMENT) {
+            SaveInvestmentSheet(
+                onDismiss = viewModel::onSaveSheetDismissed,
+                onSave = { name, inst, notes, _ -> viewModel.onSaveConfirmed(name, inst, notes) },
+                initialCustomName = state.savedCustomName,
+                initialInstitutionName = state.institutionName,
+                initialNotes = state.notes
+            )
+        } else {
+            SaveCalculationSheet(
+                onDismiss = viewModel::onSaveSheetDismissed,
+                onSave = { name, notes -> viewModel.onSaveConfirmed(name, null, notes) },
+                initialCustomName = state.savedCustomName,
+                initialNotes = state.notes
+            )
+        }
+    }
+
+    if (state.showSaveTargetChooser) {
+        SaveTargetChooserSheet(
+            onDismiss = viewModel::onSaveTargetChooserDismissed,
+            onChoose = viewModel::onSaveTargetChosen
+        )
     }
 }
 

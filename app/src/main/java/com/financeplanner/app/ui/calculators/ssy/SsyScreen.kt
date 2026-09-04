@@ -22,6 +22,7 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -42,7 +43,8 @@ import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.SsyResult
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.SaveCompletedEffect
+import com.financeplanner.app.ui.common.SaveInvestmentSheet
 import com.financeplanner.app.ui.common.FieldHelpIcon
 import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
@@ -69,6 +71,8 @@ fun SsyScreen(
             if (!resultSheetState.isVisible) viewModel.onResultDismissed()
         }
     }
+
+    SaveCompletedEffect(state.saveCompleted, viewModel::onSaveCompletedHandled, onBack)
 
     Scaffold(
         topBar = {
@@ -97,6 +101,12 @@ fun SsyScreen(
                 value = state.girlAgeAtOpening, onValueChange = viewModel::onAgeChange,
                 label = { Text(stringResource(R.string.ssy_label_age)) },
                 modifier = Modifier.fillMaxWidth(), singleLine = true
+            )
+            AmountOutlinedTextField(
+                value = state.existingBalance, onValueChange = viewModel::onExistingBalanceChange,
+                label = { Text(stringResource(R.string.label_existing_balance)) },
+                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = { FieldHelpIcon(stringResource(R.string.help_existing_balance)) }
             )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 AmountOutlinedTextField(
@@ -127,19 +137,24 @@ fun SsyScreen(
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
 
-            Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.sip_button_calculate))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = viewModel::calculate, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_calculate))
+                }
+                OutlinedButton(onClick = viewModel::onSaveDirectClicked, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
 
-    if (state.result != null) {
+    if (state.result != null && state.showResultSheet) {
         ModalBottomSheet(
             onDismissRequest = ::dismissResultSheet,
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { SsyResultCard(it, state) }
@@ -159,12 +174,19 @@ fun SsyScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
     }
 
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
+    if (state.showSaveSheet) {
+        SaveInvestmentSheet(
+            onDismiss = viewModel::onSaveSheetDismissed,
+            onSave = { name, inst, notes, _ -> viewModel.onSaveConfirmed(name, inst, notes) },
+            initialCustomName = state.customName,
+            initialInstitutionName = state.institutionName,
+            initialNotes = state.notes
+        )
     }
 }
 

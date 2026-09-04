@@ -17,8 +17,8 @@ android {
         applicationId = "com.financeplanner.moneymint"
         minSdk = 26          // Android 8.0 — covers ~95%+ of active Indian Android devices
         targetSdk = 36
-        versionCode = 2
-        versionName = "0.2.0"
+        versionCode = 3
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // Base locale config; hi/mr/ta/te resource sets added under res/values-<lang>/
@@ -89,6 +89,16 @@ dependencies {
 
     // Local storage (Phase 1 — settings/theme/language prefs)
     implementation(libs.datastore.preferences)
+
+    // Background work — maturity reminder notifications (checked daily, no backend needed)
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.hilt.work)
+    ksp(libs.androidx.hilt.compiler)
+
+    // Local storage (Phase 2 — saved investments, still fully on-device, no backend)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // Serialization (calculator input snapshots, prefs)
     implementation(libs.kotlinx.serialization.json)

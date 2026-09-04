@@ -15,18 +15,10 @@ class CalculateAlcoholUseCase @Inject constructor() {
             annualReturnPercent = input.expectedReturnPercent,
             months = months
         )
-        val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
-            FinanceMath.inflationAdjustedValue(
-                futureValue = investedValue,
-                annualInflationPercent = inflation,
-                years = input.years.toDouble()
-            )
-        }
         return AlcoholResult(
             monthlySpend = monthlySpend,
             totalMoneySpent = totalMoneySpent,
-            investedValue = investedValue,
-            inflationAdjustedValue = inflationAdjustedValue
+            investedValue = investedValue
         )
     }
 }

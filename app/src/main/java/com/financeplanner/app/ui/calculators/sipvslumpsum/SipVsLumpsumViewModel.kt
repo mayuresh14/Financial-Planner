@@ -30,8 +30,7 @@ data class SipVsLumpsumUiState(
     val expectedReturnPercent: String = "12",
     val durationYears: String = "",
     val result: SipVsLumpsumResult? = null,
-    val error: SipVsLumpsumValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: SipVsLumpsumValidationError? = null
 )
 
 @HiltViewModel
@@ -67,15 +66,6 @@ class SipVsLumpsumViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

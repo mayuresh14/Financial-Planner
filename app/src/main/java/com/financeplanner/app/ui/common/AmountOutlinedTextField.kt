@@ -33,7 +33,8 @@ fun AmountOutlinedTextField(
     onValueChange: (String) -> Unit,
     label: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    trailingIcon: @Composable (() -> Unit)? = null
 ) {
     val visualTransformation = remember { IndianCurrencyVisualTransformation() }
     val words = remember(value) {
@@ -65,7 +66,8 @@ fun AmountOutlinedTextField(
             enabled = enabled,
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            visualTransformation = visualTransformation
+            visualTransformation = visualTransformation,
+            trailingIcon = trailingIcon
         )
     }
 }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- INTERNET reserved for Phase 2 (backend calls); unused in Phase 1 but declared
          now so the manifest doesn't need revisiting when Phase 2 lands. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Runtime-requested on Android 13+ before turning on maturity reminders. -->
 
     <application
         android:name=".FinancePlannerApp"
@@ -15,10 +18,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinancePlanner">
 
+        <!-- WorkManager's default initializer builds a plain (non-Hilt) Configuration;
+             removed so FinancePlannerApp's Configuration.Provider (HiltWorkerFactory) is
+             the only one used, letting MaturityReminderWorker receive @Inject dependencies. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+        <!-- Grants share-sheet apps (Drive, email, etc.) temporary read access to the export
+             files this app writes to its own cache dir — required to share a file:// path as
+             content:// on API 24+. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.FinancePlanner">
+            <!-- singleTask (not the default "standard") guarantees a notification tap while the
+                 app is already running is delivered via onNewIntent to the existing instance,
+                 rather than ambiguously creating a new one that skips the deep-link handling. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

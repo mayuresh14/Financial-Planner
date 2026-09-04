@@ -24,6 +24,25 @@
     <string name="calc_eating_out">Eating Out vs Home Cooking</string>
     <string name="calc_gratuity">Gratuity Calculator</string>
 
+    <!-- Plain investment/calculation type names — used on saved items and the "add" menu, where "SIP Calculator" would read oddly next to an actual saved SIP -->
+    <string name="investment_type_sip">SIP</string>
+    <string name="investment_type_lumpsum">Lumpsum</string>
+    <string name="investment_type_ppf">PPF</string>
+    <string name="investment_type_epf">EPF</string>
+    <string name="investment_type_nps">NPS</string>
+    <string name="investment_type_fd">FD</string>
+    <string name="investment_type_rd">RD</string>
+
+    <!-- Asset category — what a SIP/Lumpsum investment is actually held in -->
+    <string name="asset_category_mutual_fund">Mutual Fund</string>
+    <string name="asset_category_stocks">Stocks</string>
+    <string name="asset_category_crypto">Crypto</string>
+    <string name="asset_category_gold">Gold</string>
+    <string name="asset_category_other">Other</string>
+    <string name="save_investment_label_asset_category">Asset category</string>
+    <string name="investments_analysis_asset_mix_title">Asset Class Mix</string>
+    <string name="my_investments_filter_asset_category_all">All assets</string>
+
     <!-- Calculator screen descriptions — a one-line "what is this for" shown upfront on each screen -->
     <string name="sip_screen_description">Estimate how a regular SIP investment grows over time, with optional step-up and inflation adjustment.</string>
     <string name="lumpsum_screen_description">Estimate how a one-time lumpsum investment grows over time.</string>
@@ -47,8 +66,6 @@
     <string name="gratuity_screen_description">Estimate the gratuity payable to you under the Payment of Gratuity Act, based on your last drawn salary and years of service.</string>
 
     <!-- Common -->
-    <string name="coming_soon_title">Coming soon</string>
-    <string name="coming_soon_message">This feature needs an account, which is coming in a future update.</string>
     <string name="calc_not_available_yet">This calculator isn\'t built yet — check back soon.</string>
     <string name="disclaimer_text">Results are projections based on the assumptions you enter and are not investment advice.</string>
     <string name="settings_icon_description">Settings</string>
@@ -57,6 +74,7 @@
     <string name="field_help_dismiss">Got it</string>
     <string name="help_step_up">Increase your monthly investment by this percentage every year, to keep pace with rising income. Leave this blank to invest a fixed amount every month instead.</string>
     <string name="help_inflation_rate">The rate at which prices rise over time. Enter this to also see the result adjusted to today\'s purchasing power, alongside the plain projected value.</string>
+    <string name="help_lifestyle_savings_return">The annual return you\'d expect if you invested the money you save instead of spending it (e.g. in mutual funds) — not related to the habit itself.</string>
     <string name="help_nps_annuity">The share of your NPS corpus that must go toward buying an annuity (regular pension) at retirement — current PFRDA rules require at least 40%. The rest can be withdrawn as a lump sum. This minimum is set by PFRDA and may change over time — if it no longer matches the current rule, edit it here; we\'ll update the app\'s default soon after any change.</string>
     <string name="help_ppf_rate">This is the government-notified PPF interest rate at the time this app was built. The rate is revised quarterly by the Ministry of Finance — if it no longer matches the current official rate, edit it here; we\'ll update the app\'s default soon after any change.</string>
     <string name="help_ssy_rate">This is the government-notified Sukanya Samriddhi Yojana interest rate at the time this app was built. The rate is revised quarterly by the Ministry of Finance — if it no longer matches the current official rate, edit it here; we\'ll update the app\'s default soon after any change.</string>
@@ -70,8 +88,14 @@
     <string name="sip_label_duration">Duration (years)</string>
     <string name="sip_label_step_up">Step-up % (optional)</string>
     <string name="sip_label_inflation">Inflation % (optional)</string>
+    <string name="label_existing_balance">Existing balance (optional)</string>
+    <string name="help_existing_balance">Already have money in this account? Enter the current balance so the projection includes it growing alongside your future contributions.</string>
     <string name="sip_button_calculate">Calculate</string>
     <string name="sip_button_save">Save</string>
+    <string name="save_target_chooser_title">Save as…</string>
+    <string name="save_target_chooser_subtitle">Is this a real investment you hold, or just a what-if scenario?</string>
+    <string name="save_target_chooser_investment">Save as Investment</string>
+    <string name="save_target_chooser_calculation">Save as Calculation</string>
     <string name="sip_frequency_daily">Daily</string>
     <string name="sip_frequency_weekly">Weekly</string>
     <string name="sip_frequency_monthly">Monthly</string>
@@ -97,7 +121,7 @@
     <string name="sip_vs_lumpsum_error_invalid_input">Please enter a valid monthly SIP amount, lumpsum amount, expected return, and duration.</string>
     <string name="tenure_error_invalid_input">Please enter a valid monthly investment amount, expected return, and target amount.</string>
     <string name="ppf_error_invalid_input">Please enter a valid yearly contribution, duration, and interest rate.</string>
-    <string name="epf_error_invalid_input">Please enter a valid salary, employee contribution %, employer contribution %, duration, and expected return.</string>
+    <string name="epf_error_invalid_input">Please enter a valid salary, employee contribution %%, employer contribution %%, duration, and expected return.</string>
     <string name="ssy_error_invalid_input">Please enter a valid girl\'s age, yearly deposit, and interest rate.</string>
     <string name="nps_error_invalid_input">Please enter a valid monthly contribution, age, expected return, and annuity percentage.</string>
     <string name="emi_error_invalid_input">Please enter a valid loan amount, interest rate, and tenure. If prepayment is enabled, also enter a valid prepayment amount and month.</string>
@@ -153,6 +177,9 @@
 
     <!-- PPF screen -->
     <string name="ppf_label_yearly_contribution">Yearly contribution (₹, max ₹1,50,000)</string>
+    <string name="ppf_label_monthly_contribution">Monthly contribution (₹)</string>
+    <string name="ppf_contribution_frequency_yearly">Yearly</string>
+    <string name="ppf_contribution_frequency_monthly">Monthly</string>
     <string name="ppf_label_duration">Duration (years, min 15)</string>
     <string name="ppf_label_rate">PPF interest rate (%)</string>
     <string name="ppf_result_total_contributed">Total Contributed</string>
@@ -196,7 +223,7 @@
     <string name="eating_out_result_total_saved">Total Money Saved</string>
     <string name="eating_out_result_invested_value">If Invested Instead</string>
     <string name="eating_out_result_narrative">Cooking at home instead of eating out saves you %1$s every month. Over %2$s years, that adds up to %3$s saved — and if you invested that saving every month instead, at %4$s%% return, it could grow to %5$s.</string>
-    <string name="eating_out_error_invalid_input">Please enter a valid eating-out spend, home-cooking spend, return rate, and duration. Eating-out spend must be higher than home-cooking spend.</string>
+    <string name="eating_out_error_invalid_input">Please enter a valid eating-out spend, home-cooking spend, return rate, and duration.</string>
 
     <string name="gratuity_label_salary">Last drawn monthly salary (Basic + DA)</string>
     <string name="gratuity_label_years_of_service">Years of service</string>
@@ -214,6 +241,10 @@
     <string name="epf_result_total_contributed">Total Contributed</string>
     <string name="epf_result_interest_earned">Interest Earned</string>
     <string name="epf_result_narrative">With a basic monthly salary of %1$s, contributing %2$s%% (you) and %3$s%% (employer) for %4$s years at %5$s%% interest, your EPF corpus could grow to %6$s.</string>
+    <string name="epf_result_narrative_flat">Contributing %1$s every month for %2$s years at %3$s%% interest, your EPF corpus could grow to %4$s.</string>
+    <string name="epf_contribution_mode_from_salary">From salary</string>
+    <string name="epf_contribution_mode_flat_amount">Flat amount</string>
+    <string name="epf_label_flat_monthly_contribution">Monthly contribution (₹, you + employer combined)</string>
 
     <!-- SSY screen -->
     <string name="ssy_label_age">Girl\'s age at account opening (must be under 10)</string>
@@ -353,7 +384,6 @@
     <string name="default_rates_button_continue">Continue</string>
 
     <!-- Coming Soon sheet -->
-    <string name="coming_soon_dismiss">Got it</string>
 
     <!-- Disclaimer -->
     <string name="disclaimer_banner">Projections only — not investment advice.</string>
@@ -375,6 +405,31 @@
     <string name="settings_randomize_theme">Randomize</string>
     <string name="settings_randomize_theme_active_hint">A new color will be picked every time you open the app.</string>
     <string name="settings_language">Language</string>
+    <string name="settings_export_investments_action">Export</string>
+    <string name="settings_export_empty_title">Nothing to export</string>
+    <string name="settings_export_empty_message">You haven\'t saved any investments yet.</string>
+    <string name="settings_reminders_section_title">Reminders</string>
+    <string name="settings_maturity_reminders_title">Maturity reminders</string>
+    <string name="settings_maturity_reminders_description">Get notified 7 days before, and on the day, an FD or RD matures</string>
+    <string name="maturity_reminder_channel_name">Maturity reminders</string>
+    <string name="maturity_reminder_channel_description">Notifies you when a saved FD or RD is about to mature</string>
+    <string name="maturity_reminder_title">Investment maturing soon</string>
+    <string name="maturity_reminder_body_today">%1$s matures today</string>
+    <string name="maturity_reminder_body_upcoming">%1$s matures in %2$d days</string>
+    <string name="settings_maturity_reminders_blocked_hint">Notifications are blocked in system settings — tap to fix</string>
+    <string name="notification_permission_denied_title">Notifications blocked</string>
+    <string name="notification_permission_denied_message">Maturity reminders won\'t arrive because notifications are turned off for MoneyMint. You can enable them in system settings.</string>
+    <string name="notification_permission_denied_open_settings">Open Settings</string>
+    <string name="notification_permission_denied_not_now">Not now</string>
+    <string name="notification_permission_denied_turn_off">Turn off</string>
+    <string name="notification_permission_revoked_title">Notifications turned off</string>
+    <string name="notification_permission_revoked_message">Maturity reminders are on, but notification permission was turned off. Turn it back on to keep getting reminders?</string>
+    <string name="notification_permission_revoked_enable">Enable</string>
+    <string name="maturity_reminder_intro_title">Get maturity reminders?</string>
+    <string name="maturity_reminder_intro_message">We can notify you 7 days before, and on the day, a saved FD or RD matures.</string>
+    <string name="maturity_reminder_intro_turn_on">Turn on</string>
+    <string name="maturity_reminder_intro_not_now">Not needed</string>
+    <string name="settings_your_name_title">Your Name</string>
     <string name="settings_default_rates_title">Default Rates</string>
     <string name="settings_appearance_section_title">Appearance</string>
     <string name="settings_default_inflation">Default inflation rate (%)</string>
@@ -382,11 +437,12 @@
     <string name="theme_mode_light">Light</string>
     <string name="theme_mode_dark">Dark</string>
     <string name="theme_mode_system">System</string>
+    <string name="theme_preset_green">Green</string>
     <string name="theme_preset_ocean">Ocean</string>
     <string name="theme_preset_sunset">Sunset</string>
     <string name="theme_preset_orchid">Orchid</string>
     <string name="theme_preset_crimson">Crimson</string>
-    <string name="theme_preset_vibrant">Vibrant</string>
+    <string name="theme_preset_amber">Amber</string>
 
     <!-- Languages -->
     <string name="language_english">English</string>
@@ -394,4 +450,73 @@
     <string name="language_marathi">मराठी</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="language_telugu">తెలుగు</string>
+
+    <!-- Save Investment (Phase 2, local-only) -->
+    <string name="save_investment_title">Save this investment</string>
+    <string name="save_investment_label_name">Name</string>
+    <string name="save_investment_name_placeholder">e.g. Wedding Fund RD</string>
+    <string name="save_investment_label_institution">Bank / Institution (optional)</string>
+    <string name="save_investment_label_notes">Notes (optional)</string>
+    <string name="save_investment_button_save">Save</string>
+
+    <!-- My Investments -->
+    <string name="my_investments_title">My Investments</string>
+    <string name="my_investments_icon_description">My Investments</string>
+    <string name="my_investments_empty_title">Nothing saved yet</string>
+    <string name="my_investments_empty_message">Tap + to add your first investment.</string>
+    <string name="my_investments_current_value">Projected value</string>
+    <string name="my_investments_summary_count">%1$d investment(s)</string>
+    <string name="my_investments_summary_total">Total: %1$s</string>
+    <string name="investments_analysis_monthly_commitment">Monthly Commitment</string>
+    <string name="investments_analysis_lump_sum">Lump Sum Invested</string>
+    <string name="investments_analysis_projected_value">Projected Value</string>
+    <string name="investments_analysis_portfolio_mix_title">Portfolio Mix</string>
+    <string name="investments_analysis_upcoming_maturities_title">Upcoming Maturities</string>
+    <string name="investments_analysis_maturity_row">%1$s matures in %2$d days (%3$s)</string>
+    <string name="investments_analysis_maturity_row_today">%1$s matures today</string>
+    <string name="dashboard_maturities_more">+%1$d more</string>
+    <string name="my_investments_delete_confirm_title">Delete this?</string>
+    <string name="my_investments_delete_confirm_message">This will remove \"%1$s\" from your saved investments. This can\'t be undone.</string>
+    <string name="my_investments_delete_confirm_button">Delete</string>
+    <string name="my_investments_cancel_button">Cancel</string>
+    <string name="my_investments_close_button">Close</string>
+    <string name="my_investments_edit_button">Edit</string>
+    <string name="saved_item_show_details">Show details</string>
+    <string name="saved_item_hide_details">Hide details</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="label_start_date">Start Date</string>
+    <string name="label_end_date">End Date (estimated)</string>
+    <string name="my_investments_search_placeholder">Search by name or bank</string>
+    <string name="my_investments_view_toggle">Switch view</string>
+    <string name="my_investments_filter_all">All</string>
+    <string name="my_investments_no_results">No matches found</string>
+
+    <string name="calculators_tab_title">Calculators</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_calculators">Calculators</string>
+    <string name="tab_investments">Investments</string>
+
+    <string name="dashboard_greeting_named">Hi %1$s!</string>
+    <string name="dashboard_greeting_generic">Hi there!</string>
+    <string name="dashboard_subtitle">Here\'s your financial overview.</string>
+    <string name="dashboard_investments_summary_title">Your Investments</string>
+    <string name="dashboard_investments_summary_empty">No investments saved yet.</string>
+
+    <string name="ask_name_title">What should we call you?</string>
+    <string name="ask_name_subtitle">This stays on your device — just for a friendlier greeting.</string>
+    <string name="ask_name_label">Your name</string>
+    <string name="ask_name_save_button">Save</string>
+    <string name="ask_name_skip_button">Skip</string>
+
+    <string name="tab_calculations">Calculations</string>
+    <string name="saved_calculations_title">Saved Calculations</string>
+    <string name="saved_calculations_empty_title">Nothing saved yet</string>
+    <string name="saved_calculations_empty_message">Save a scenario from the SIP, Lumpsum, or Goal-based SIP calculators to see it here.</string>
+    <string name="saved_calculations_search_placeholder">Search by name</string>
+    <string name="save_calculation_title">Save this calculation</string>
+    <string name="save_calculation_name_placeholder">e.g. Retirement plan v2</string>
+    <string name="save_success_toast">Saved!</string>
+    <string name="my_investments_add_button">Add investment</string>
+    <string name="my_investments_add_menu_title">What would you like to add?</string>
 </resources>

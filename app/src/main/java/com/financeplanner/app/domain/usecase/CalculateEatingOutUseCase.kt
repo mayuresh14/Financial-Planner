@@ -15,18 +15,10 @@ class CalculateEatingOutUseCase @Inject constructor() {
             annualReturnPercent = input.expectedReturnPercent,
             months = months
         )
-        val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
-            FinanceMath.inflationAdjustedValue(
-                futureValue = investedValue,
-                annualInflationPercent = inflation,
-                years = input.years.toDouble()
-            )
-        }
         return EatingOutResult(
             monthlySavings = monthlySavings,
             totalMoneySaved = totalMoneySaved,
-            investedValue = investedValue,
-            inflationAdjustedValue = inflationAdjustedValue
+            investedValue = investedValue
         )
     }
 }

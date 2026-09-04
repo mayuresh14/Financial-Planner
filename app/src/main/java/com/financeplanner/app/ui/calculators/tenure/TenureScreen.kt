@@ -38,7 +38,6 @@ import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.TenureResult
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
 import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
 import com.financeplanner.app.ui.common.formatAmountWithWords
@@ -124,13 +123,10 @@ fun TenureScreen(
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { TenureResultCard(it, state) }
-                Button(onClick = viewModel::onSaveClicked, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.sip_button_save))
-                }
             }
         }
     }
@@ -144,12 +140,9 @@ fun TenureScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
-    }
-
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
     }
 }
 

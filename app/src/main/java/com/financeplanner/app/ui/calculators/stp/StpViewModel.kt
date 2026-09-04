@@ -28,8 +28,7 @@ data class StpUiState(
     val targetReturnPercent: String = "",
     val inflationPercent: String = "",
     val result: StpResult? = null,
-    val error: StpValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: StpValidationError? = null
 )
 
 @HiltViewModel
@@ -71,15 +70,6 @@ class StpViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

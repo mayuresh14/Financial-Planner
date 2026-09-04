@@ -37,8 +37,7 @@ data class FireUiState(
     val monthlySip: String = "",
     val result: FireResult? = null,
     val ageResult: FireAgeResult? = null,
-    val error: FireValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: FireValidationError? = null
 )
 
 @HiltViewModel
@@ -93,15 +92,6 @@ class FireViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null, ageResult = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

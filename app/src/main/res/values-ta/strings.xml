@@ -23,6 +23,23 @@
     <string name="calc_eating_out">வெளியில் சாப்பிடுதல் vs வீட்டு சமையல்</string>
     <string name="calc_gratuity">பணிநிறைவூதிய கால்குலேட்டர்</string>
 
+    <string name="investment_type_sip">SIP</string>
+    <string name="investment_type_lumpsum">லம்ப்சம்</string>
+    <string name="investment_type_ppf">PPF</string>
+    <string name="investment_type_epf">EPF</string>
+    <string name="investment_type_nps">NPS</string>
+    <string name="investment_type_fd">FD</string>
+    <string name="investment_type_rd">RD</string>
+
+    <string name="asset_category_mutual_fund">மியூச்சுவல் ஃபண்ட்</string>
+    <string name="asset_category_stocks">பங்குகள்</string>
+    <string name="asset_category_crypto">கிரிப்டோ</string>
+    <string name="asset_category_gold">தங்கம்</string>
+    <string name="asset_category_other">மற்றவை</string>
+    <string name="save_investment_label_asset_category">சொத்து வகை</string>
+    <string name="investments_analysis_asset_mix_title">சொத்து வகை கலவை</string>
+    <string name="my_investments_filter_asset_category_all">அனைத்து சொத்துகள்</string>
+
     <string name="sip_screen_description">ஒரு வழக்கமான SIP முதலீடு காலப்போக்கில் எவ்வாறு வளர்கிறது என்பதை மதிப்பிடுங்கள், விருப்பமான ஸ்டெப்-அப் மற்றும் பணவீக்க சரிசெய்தலுடன்.</string>
     <string name="lumpsum_screen_description">ஒரு முறை முதலீடு காலப்போக்கில் எவ்வாறு வளர்கிறது என்பதை மதிப்பிடுங்கள்.</string>
     <string name="sip_vs_lumpsum_screen_description">அதே தொகை மாதாந்திர SIP மூலமாகவும், ஒரே முறையில் லம்ப்சமாகவும் முதலீடு செய்யும்போது எவ்வாறு வளரும் என்பதை ஒப்பிடுங்கள்.</string>
@@ -44,8 +61,6 @@
     <string name="eating_out_screen_description">வெளியில் சாப்பிடும் செலவை வீட்டு சமையலுடன் ஒப்பிடுங்கள், மேலும் சேமிப்பை முதலீடு செய்தால் அது எவ்வளவு வளரக்கூடும் என்பதைப் பாருங்கள்.</string>
     <string name="gratuity_screen_description">பணிநிறைவூதியச் சட்டத்தின் கீழ் உங்களுக்கு செலுத்த வேண்டிய பணிநிறைவூதியத்தை, உங்கள் கடைசி சம்பளம் மற்றும் பணி ஆண்டுகளின் அடிப்படையில் மதிப்பிடுங்கள்.</string>
 
-    <string name="coming_soon_title">விரைவில் வரும்</string>
-    <string name="coming_soon_message">இந்த அம்சத்திற்கு கணக்கு தேவை, இது எதிர்கால புதுப்பிப்பில் கிடைக்கும்.</string>
     <string name="calc_not_available_yet">இந்த கால்குலேட்டர் இன்னும் தயாராகவில்லை — விரைவில் மீண்டும் பாருங்கள்.</string>
     <string name="disclaimer_text">முடிவுகள் நீங்கள் உள்ளிட்ட அனுமானங்களின் அடிப்படையிலான மதிப்பீடுகள் மற்றும் இது முதலீட்டு ஆலோசனை அல்ல.</string>
     <string name="settings_icon_description">அமைப்புகள்</string>
@@ -54,6 +69,7 @@
     <string name="field_help_dismiss">புரிந்தது</string>
     <string name="help_step_up">அதிகரிக்கும் வருமானத்திற்கு ஏற்ப ஒவ்வொரு ஆண்டும் உங்கள் மாதாந்திர முதலீட்டை இந்த சதவீதத்தால் அதிகரிக்கவும். ஒவ்வொரு மாதமும் ஒரு நிலையான தொகையை முதலீடு செய்ய இதை காலியாக விடவும்.</string>
     <string name="help_inflation_rate">காலப்போக்கில் விலைகள் உயரும் விகிதம். சாதாரண மதிப்பீட்டு மதிப்புடன், இன்றைய வாங்கும் திறனுக்கு ஏற்ப சரிசெய்யப்பட்ட முடிவைப் பார்க்க இதை உள்ளிடவும்.</string>
+    <string name="help_lifestyle_savings_return">நீங்கள் சேமிக்கும் பணத்தை செலவிடாமல் முதலீடு செய்தால் (எ.கா. மியூச்சுவல் ஃபண்டில்) எதிர்பார்க்கும் ஆண்டு வருமான விகிதம் — இது பழக்கத்துடன் தொடர்பில்லை.</string>
     <string name="help_nps_annuity">ஓய்வூதியத்தின் போது ஆன்யுட்டி (வழக்கமான ஓய்வூதியம்) வாங்குவதற்குப் பயன்படுத்தப்பட வேண்டிய உங்கள் NPS நிதியின் பங்கு — தற்போதைய PFRDA விதிகளின்படி குறைந்தபட்சம் 40% தேவை. மீதமுள்ளதை மொத்தமாக எடுக்கலாம். இந்த குறைந்தபட்ச வரம்பு PFRDA ஆல் நிர்ணயிக்கப்படுகிறது, காலப்போக்கில் மாறலாம் — இது தற்போதைய விதிக்கு பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
     <string name="help_ppf_rate">இது இந்த ஆப் உருவாக்கப்பட்ட நேரத்தில் அரசாங்கம் அறிவித்த PPF வட்டி விகிதம். இந்த விகிதம் ஒவ்வொரு காலாண்டிலும் நிதி அமைச்சகத்தால் திருத்தப்படுகிறது — இது தற்போதைய அதிகாரப்பூர்வ விகிதத்துடன் பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
     <string name="help_ssy_rate">இது இந்த ஆப் உருவாக்கப்பட்ட நேரத்தில் அரசாங்கம் அறிவித்த சுகன்யா சம்ரிதி யோஜனா வட்டி விகிதம். இந்த விகிதம் ஒவ்வொரு காலாண்டிலும் நிதி அமைச்சகத்தால் திருத்தப்படுகிறது — இது தற்போதைய அதிகாரப்பூர்வ விகிதத்துடன் பொருந்தவில்லை என்றால், இங்கே திருத்தவும்; எந்த மாற்றத்திற்குப் பிறகும் நாங்கள் விரைவில் ஆப்பின் இயல்புநிலையை புதுப்பிப்போம்.</string>
@@ -66,8 +82,14 @@
     <string name="sip_label_duration">காலம் (ஆண்டுகள்)</string>
     <string name="sip_label_step_up">ஸ்டெப்-அப் % (விருப்பத்தேர்வு)</string>
     <string name="sip_label_inflation">பணவீக்கம் % (விருப்பத்தேர்வு)</string>
+    <string name="label_existing_balance">தற்போதைய இருப்பு (விருப்பத்தேர்வு)</string>
+    <string name="help_existing_balance">இந்தக் கணக்கில் ஏற்கனவே பணம் உள்ளதா? உங்கள் எதிர்கால பங்களிப்புகளுடன் அது வளர்வதை கணிப்பில் சேர்க்க தற்போதைய இருப்பை உள்ளிடவும்.</string>
     <string name="sip_button_calculate">கணக்கிடு</string>
     <string name="sip_button_save">சேமி</string>
+    <string name="save_target_chooser_title">இவ்வாறு சேமிக்கவும்…</string>
+    <string name="save_target_chooser_subtitle">இது நீங்கள் வைத்திருக்கும் உண்மையான முதலீடா, அல்லது ஒரு கற்பனைச் சூழ்நிலையா?</string>
+    <string name="save_target_chooser_investment">முதலீடாக சேமிக்கவும்</string>
+    <string name="save_target_chooser_calculation">கணக்கீடாக சேமிக்கவும்</string>
     <string name="sip_frequency_daily">தினசரி</string>
     <string name="sip_frequency_weekly">வாராந்திரம்</string>
     <string name="sip_frequency_monthly">மாதாந்திரம்</string>
@@ -93,7 +115,7 @@
     <string name="sip_vs_lumpsum_error_invalid_input">சரியான மாதாந்திர SIP தொகை, லம்ப்சம் தொகை, எதிர்பார்க்கும் வருமானம் மற்றும் காலத்தை உள்ளிடவும்.</string>
     <string name="tenure_error_invalid_input">சரியான மாதாந்திர முதலீட்டுத் தொகை, எதிர்பார்க்கும் வருமானம் மற்றும் இலக்குத் தொகையை உள்ளிடவும்.</string>
     <string name="ppf_error_invalid_input">சரியான ஆண்டு பங்களிப்பு, காலம் மற்றும் வட்டி விகிதத்தை உள்ளிடவும்.</string>
-    <string name="epf_error_invalid_input">சரியான சம்பளம், ஊழியர் பங்களிப்பு %, முதலாளி பங்களிப்பு %, காலம் மற்றும் எதிர்பார்க்கும் வருமானத்தை உள்ளிடவும்.</string>
+    <string name="epf_error_invalid_input">சரியான சம்பளம், ஊழியர் பங்களிப்பு %%, முதலாளி பங்களிப்பு %%, காலம் மற்றும் எதிர்பார்க்கும் வருமானத்தை உள்ளிடவும்.</string>
     <string name="ssy_error_invalid_input">பெண் குழந்தையின் சரியான வயது, ஆண்டு வைப்பு மற்றும் வட்டி விகிதத்தை உள்ளிடவும்.</string>
     <string name="nps_error_invalid_input">சரியான மாதாந்திர பங்களிப்பு, வயது, எதிர்பார்க்கும் வருமானம் மற்றும் அன்னுயிட்டி சதவீதத்தை உள்ளிடவும்.</string>
     <string name="emi_error_invalid_input">சரியான கடன் தொகை, வட்டி விகிதம் மற்றும் காலத்தை உள்ளிடவும். முன்கூட்டிய கட்டணம் இயக்கப்பட்டிருந்தால், சரியான முன்கூட்டிய தொகை மற்றும் மாதத்தையும் உள்ளிடவும்.</string>
@@ -142,6 +164,9 @@
     <string name="sip_vs_lumpsum_result_narrative">SIP மூலம் %2$s ஆண்டுகளுக்கு %3$s%% எதிர்பார்க்கப்படும் வருமானத்தில் மாதம் %1$s முதலீடு செய்தால் அது %4$s ஆக வளரக்கூடும். அதே காலத்தில் %5$s ஐ ஒரே தொகையாக முதலீடு செய்தால் அது %6$s ஆக வளரக்கூடும்.</string>
 
     <string name="ppf_label_yearly_contribution">ஆண்டு பங்களிப்பு (₹, அதிகபட்சம் ₹1,50,000)</string>
+    <string name="ppf_label_monthly_contribution">மாதாந்திர பங்களிப்பு (₹)</string>
+    <string name="ppf_contribution_frequency_yearly">ஆண்டு</string>
+    <string name="ppf_contribution_frequency_monthly">மாதம்</string>
     <string name="ppf_label_duration">காலம் (ஆண்டுகள், குறைந்தது 15)</string>
     <string name="ppf_label_rate">PPF வட்டி விகிதம் (%)</string>
     <string name="ppf_result_total_contributed">மொத்த பங்களிப்பு</string>
@@ -185,7 +210,7 @@
     <string name="eating_out_result_total_saved">மொத்தம் சேமித்த தொகை</string>
     <string name="eating_out_result_invested_value">முதலீடு செய்திருந்தால்</string>
     <string name="eating_out_result_narrative">வெளியில் சாப்பிடுவதற்குப் பதிலாக வீட்டில் சமைப்பது உங்களுக்கு மாதம் %1$s சேமிக்க உதவுகிறது. %2$s ஆண்டுகளில், இது %3$s ஆக சேரும் — மேலும் அதே சேமிப்பை மாதந்தோறும் முதலீடு செய்திருந்தால், %4$s%% வருமானத்தில், அது %5$s ஆக வளரக்கூடும்.</string>
-    <string name="eating_out_error_invalid_input">சரியான வெளியில் சாப்பிடும் செலவு, வீட்டு சமையல் செலவு, வருமான விகிதம் மற்றும் காலத்தை உள்ளிடவும். வெளியில் சாப்பிடும் செலவு வீட்டு சமையல் செலவை விட அதிகமாக இருக்க வேண்டும்.</string>
+    <string name="eating_out_error_invalid_input">சரியான வெளியில் சாப்பிடும் செலவு, வீட்டு சமையல் செலவு, வருமான விகிதம் மற்றும் காலத்தை உள்ளிடவும்.</string>
 
     <string name="gratuity_label_salary">கடைசி மாத சம்பளம் (அடிப்படை + DA)</string>
     <string name="gratuity_label_years_of_service">பணி ஆண்டுகள்</string>
@@ -202,6 +227,10 @@
     <string name="epf_result_total_contributed">மொத்த பங்களிப்பு</string>
     <string name="epf_result_interest_earned">ஈட்டிய வட்டி</string>
     <string name="epf_result_narrative">%1$s அடிப்படை மாதாந்திர சம்பளத்தில், %4$s ஆண்டுகளுக்கு %2$s%% (நீங்கள்) மற்றும் %3$s%% (முதலாளி) பங்களித்தால், %5$s%% வட்டி விகிதத்தில் உங்கள் EPF நிதி %6$s ஆக வளரக்கூடும்.</string>
+    <string name="epf_result_narrative_flat">ஒவ்வொரு மாதமும் %1$s பங்களித்தால், %2$s ஆண்டுகளுக்கு %3$s%% வட்டி விகிதத்தில் உங்கள் EPF நிதி %4$s ஆக வளரக்கூடும்.</string>
+    <string name="epf_contribution_mode_from_salary">சம்பளத்திலிருந்து</string>
+    <string name="epf_contribution_mode_flat_amount">நிலையான தொகை</string>
+    <string name="epf_label_flat_monthly_contribution">மாதாந்திர பங்களிப்பு (₹, நீங்கள் + முதலாளி மொத்தம்)</string>
 
     <string name="ssy_label_age">கணக்கு தொடங்கும்போது பெண் குழந்தையின் வயது (10 வயதுக்கு கீழ் இருக்க வேண்டும்)</string>
     <string name="ssy_label_deposit">ஆண்டு வைப்பு (₹, அதிகபட்சம் ₹1,50,000)</string>
@@ -330,7 +359,6 @@
     <string name="default_rates_setup_message">இவை ஒவ்வொரு கால்குலேட்டரின் வருவாய் மற்றும் பணவீக்க புலங்களை முன்கூட்டியே நிரப்பும். எப்போது வேண்டுமானாலும் ஒவ்வொரு கணக்கீட்டிற்கும் திருத்தலாம், அல்லது பின்னர் அமைப்புகளில் இயல்புநிலைகளை மாற்றலாம்.</string>
     <string name="default_rates_button_continue">தொடரவும்</string>
 
-    <string name="coming_soon_dismiss">சரி</string>
 
     <string name="disclaimer_banner">மதிப்பீடுகள் மட்டுமே — இது முதலீட்டு ஆலோசனை அல்ல.</string>
 
@@ -349,6 +377,31 @@
     <string name="settings_randomize_theme">சீரற்றது</string>
     <string name="settings_randomize_theme_active_hint">நீங்கள் ஆப்ஸைத் திறக்கும் ஒவ்வொரு முறையும் ஒரு புதிய நிறம் தேர்ந்தெடுக்கப்படும்.</string>
     <string name="settings_language">மொழி</string>
+    <string name="settings_export_investments_action">ஏற்றுமதி</string>
+    <string name="settings_export_empty_title">ஏற்றுமதி செய்ய எதுவும் இல்லை</string>
+    <string name="settings_export_empty_message">நீங்கள் இதுவரை எந்த முதலீட்டையும் சேமிக்கவில்லை.</string>
+    <string name="settings_reminders_section_title">நினைவூட்டல்கள்</string>
+    <string name="settings_maturity_reminders_title">முதிர்வு நினைவூட்டல்கள்</string>
+    <string name="settings_maturity_reminders_description">FD அல்லது RD முதிர்வதற்கு 7 நாட்களுக்கு முன்பும், அன்றைய தினமும் அறிவிப்பு பெறவும்</string>
+    <string name="maturity_reminder_channel_name">முதிர்வு நினைவூட்டல்கள்</string>
+    <string name="maturity_reminder_channel_description">சேமிக்கப்பட்ட FD அல்லது RD முதிர்வதற்கு முன் உங்களுக்கு அறிவிக்கிறது</string>
+    <string name="maturity_reminder_title">முதலீடு விரைவில் முதிர்கிறது</string>
+    <string name="maturity_reminder_body_today">%1$s இன்று முதிர்கிறது</string>
+    <string name="maturity_reminder_body_upcoming">%1$s %2$d நாட்களில் முதிர்கிறது</string>
+    <string name="settings_maturity_reminders_blocked_hint">கணினி அமைப்புகளில் அறிவிப்புகள் தடுக்கப்பட்டுள்ளன — சரிசெய்ய தட்டவும்</string>
+    <string name="notification_permission_denied_title">அறிவிப்புகள் தடுக்கப்பட்டுள்ளன</string>
+    <string name="notification_permission_denied_message">MoneyMint க்கான அறிவிப்புகள் முடக்கப்பட்டிருப்பதால் முதிர்வு நினைவூட்டல்கள் வராது. கணினி அமைப்புகளில் அவற்றை இயக்கலாம்.</string>
+    <string name="notification_permission_denied_open_settings">அமைப்புகளைத் திற</string>
+    <string name="notification_permission_denied_not_now">இப்போது வேண்டாம்</string>
+    <string name="notification_permission_denied_turn_off">அணை</string>
+    <string name="notification_permission_revoked_title">அறிவிப்புகள் அணைக்கப்பட்டன</string>
+    <string name="notification_permission_revoked_message">முதிர்வு நினைவூட்டல்கள் இயக்கத்தில் உள்ளன, ஆனால் அறிவிப்பு அனுமதி அணைக்கப்பட்டது. நினைவூட்டல்களைத் தொடர்ந்து பெற அதை மீண்டும் இயக்கவா?</string>
+    <string name="notification_permission_revoked_enable">இயக்கு</string>
+    <string name="maturity_reminder_intro_title">முதிர்வு நினைவூட்டல்கள் வேண்டுமா?</string>
+    <string name="maturity_reminder_intro_message">சேமிக்கப்பட்ட FD அல்லது RD முதிர்வதற்கு 7 நாட்களுக்கு முன்பும், அன்றைய தினமும் உங்களுக்கு அறிவிக்க முடியும்.</string>
+    <string name="maturity_reminder_intro_turn_on">இயக்கு</string>
+    <string name="maturity_reminder_intro_not_now">தேவையில்லை</string>
+    <string name="settings_your_name_title">உங்கள் பெயர்</string>
     <string name="settings_default_rates_title">இயல்புநிலை விகிதங்கள்</string>
     <string name="settings_appearance_section_title">தோற்றம்</string>
     <string name="settings_default_inflation">இயல்புநிலை பணவீக்க விகிதம் (%)</string>
@@ -357,14 +410,82 @@
     <string name="theme_mode_dark">டார்க்</string>
     <string name="theme_mode_system">சிஸ்டம்</string>
     <string name="theme_preset_crimson">கிரிம்சன்</string>
+    <string name="theme_preset_amber">அம்பர்</string>
+    <string name="theme_preset_green">பச்சை</string>
     <string name="theme_preset_ocean">ஓஷன்</string>
     <string name="theme_preset_sunset">சன்செட்</string>
     <string name="theme_preset_orchid">ஆர்க்கிட்</string>
-    <string name="theme_preset_vibrant">வைப்ரண்ட்</string>
 
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>
     <string name="language_marathi">मराठी</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="language_telugu">తెలుగు</string>
+
+    <string name="save_investment_title">இந்த முதலீட்டைச் சேமிக்கவும்</string>
+    <string name="save_investment_label_name">பெயர்</string>
+    <string name="save_investment_name_placeholder">எ.கா. திருமண நிதி RD</string>
+    <string name="save_investment_label_institution">வங்கி / நிறுவனம் (விருப்பத்தேர்வு)</string>
+    <string name="save_investment_label_notes">குறிப்புகள் (விருப்பத்தேர்வு)</string>
+    <string name="save_investment_button_save">சேமிக்கவும்</string>
+
+    <string name="my_investments_title">என் முதலீடுகள்</string>
+    <string name="my_investments_icon_description">என் முதலீடுகள்</string>
+    <string name="my_investments_empty_title">இதுவரை எதுவும் சேமிக்கப்படவில்லை</string>
+    <string name="my_investments_empty_message">முதல் முதலீட்டைச் சேர்க்க + ஐத் தட்டவும்.</string>
+    <string name="my_investments_current_value">கணிக்கப்பட்ட மதிப்பு</string>
+    <string name="my_investments_summary_count">%1$d முதலீடுகள்</string>
+    <string name="my_investments_summary_total">மொத்தம்: %1$s</string>
+    <string name="investments_analysis_monthly_commitment">மாதாந்திர கடமை</string>
+    <string name="investments_analysis_lump_sum">ஒரே தொகை முதலீடு</string>
+    <string name="investments_analysis_projected_value">கணிக்கப்பட்ட மதிப்பு</string>
+    <string name="investments_analysis_portfolio_mix_title">போர்ட்ஃபோலியோ கலவை</string>
+    <string name="investments_analysis_upcoming_maturities_title">வரவிருக்கும் முதிர்வுகள்</string>
+    <string name="investments_analysis_maturity_row">%1$s %2$d நாட்களில் முதிர்வடையும் (%3$s)</string>
+    <string name="investments_analysis_maturity_row_today">%1$s இன்று முதிர்வடையும்</string>
+    <string name="dashboard_maturities_more">+%1$d மேலும்</string>
+    <string name="my_investments_delete_confirm_title">இதை நீக்கவா?</string>
+    <string name="my_investments_delete_confirm_message">இது \"%1$s\" ஐ உங்கள் சேமிக்கப்பட்ட முதலீடுகளிலிருந்து அகற்றும். இதை மீட்டெடுக்க முடியாது.</string>
+    <string name="my_investments_delete_confirm_button">நீக்கு</string>
+    <string name="my_investments_cancel_button">ரத்துசெய்</string>
+    <string name="my_investments_close_button">மூடு</string>
+    <string name="my_investments_edit_button">திருத்து</string>
+    <string name="saved_item_show_details">விவரங்களைக் காட்டு</string>
+    <string name="saved_item_hide_details">விவரங்களை மறை</string>
+    <string name="common_ok">சரி</string>
+    <string name="common_cancel">ரத்துசெய்</string>
+    <string name="label_start_date">தொடக்க தேதி</string>
+    <string name="label_end_date">முடிவு தேதி (மதிப்பிடப்பட்டது)</string>
+    <string name="my_investments_search_placeholder">பெயர் அல்லது வங்கி மூலம் தேடவும்</string>
+    <string name="my_investments_view_toggle">காட்சியை மாற்று</string>
+    <string name="my_investments_filter_all">அனைத்தும்</string>
+    <string name="my_investments_no_results">பொருத்தங்கள் இல்லை</string>
+
+    <string name="calculators_tab_title">கால்குலேட்டர்கள்</string>
+    <string name="tab_home">முகப்பு</string>
+    <string name="tab_calculators">கால்குலேட்டர்கள்</string>
+    <string name="tab_investments">முதலீடுகள்</string>
+
+    <string name="dashboard_greeting_named">வணக்கம் %1$s!</string>
+    <string name="dashboard_greeting_generic">வணக்கம்!</string>
+    <string name="dashboard_subtitle">இதோ உங்கள் நிதி மேலோட்டம்.</string>
+    <string name="dashboard_investments_summary_title">உங்கள் முதலீடுகள்</string>
+    <string name="dashboard_investments_summary_empty">இதுவரை முதலீடுகள் எதுவும் சேமிக்கப்படவில்லை.</string>
+
+    <string name="ask_name_title">உங்களை என்ன அழைக்க வேண்டும்?</string>
+    <string name="ask_name_subtitle">இது உங்கள் சாதனத்திலேயே இருக்கும் — நட்பான வாழ்த்துக்காக மட்டும்.</string>
+    <string name="ask_name_label">உங்கள் பெயர்</string>
+    <string name="ask_name_save_button">சேமிக்கவும்</string>
+    <string name="ask_name_skip_button">தவிர்</string>
+
+    <string name="tab_calculations">கணக்கீடுகள்</string>
+    <string name="saved_calculations_title">சேமிக்கப்பட்ட கணக்கீடுகள்</string>
+    <string name="saved_calculations_empty_title">இதுவரை எதுவும் சேமிக்கப்படவில்லை</string>
+    <string name="saved_calculations_empty_message">SIP, லம்ப்சம், அல்லது இலக்கு அடிப்படையிலான SIP கால்குலேட்டரிலிருந்து ஒரு சூழ்நிலையைச் சேமிக்கவும், அது இங்கே தோன்றும்.</string>
+    <string name="saved_calculations_search_placeholder">பெயரால் தேடவும்</string>
+    <string name="save_calculation_title">இந்தக் கணக்கீட்டைச் சேமிக்கவும்</string>
+    <string name="save_calculation_name_placeholder">எ.கா. ஓய்வூதிய திட்டம் v2</string>
+    <string name="save_success_toast">சேமிக்கப்பட்டது!</string>
+    <string name="my_investments_add_button">முதலீடு சேர்க்கவும்</string>
+    <string name="my_investments_add_menu_title">நீங்கள் எதைச் சேர்க்க விரும்புகிறீர்கள்?</string>
 </resources>

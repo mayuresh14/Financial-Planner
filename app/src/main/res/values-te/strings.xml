@@ -23,6 +23,23 @@
     <string name="calc_eating_out">బయట తినడం vs ఇంటి వంట</string>
     <string name="calc_gratuity">గ్రాట్యుటీ కాలిక్యులేటర్</string>
 
+    <string name="investment_type_sip">SIP</string>
+    <string name="investment_type_lumpsum">లంప్‌సమ్</string>
+    <string name="investment_type_ppf">PPF</string>
+    <string name="investment_type_epf">EPF</string>
+    <string name="investment_type_nps">NPS</string>
+    <string name="investment_type_fd">FD</string>
+    <string name="investment_type_rd">RD</string>
+
+    <string name="asset_category_mutual_fund">మ్యూచువల్ ఫండ్</string>
+    <string name="asset_category_stocks">స్టాక్స్</string>
+    <string name="asset_category_crypto">క్రిప్టో</string>
+    <string name="asset_category_gold">బంగారం</string>
+    <string name="asset_category_other">ఇతర</string>
+    <string name="save_investment_label_asset_category">ఆస్తి వర్గం</string>
+    <string name="investments_analysis_asset_mix_title">ఆస్తి వర్గ మిశ్రమం</string>
+    <string name="my_investments_filter_asset_category_all">అన్ని ఆస్తులు</string>
+
     <string name="sip_screen_description">క్రమమైన SIP పెట్టుబడి కాలక్రమేణా ఎలా పెరుగుతుందో అంచనా వేయండి, ఐచ్ఛిక స్టెప్-అప్ మరియు ద్రవ్యోల్బణ సర్దుబాటుతో.</string>
     <string name="lumpsum_screen_description">ఒకేసారి పెట్టుబడి కాలక్రమేణా ఎలా పెరుగుతుందో అంచనా వేయండి.</string>
     <string name="sip_vs_lumpsum_screen_description">అదే మొత్తం నెలవారీ SIP ద్వారా లేదా ఒకేసారి లంప్‌సమ్‌గా పెట్టుబడి పెడితే ఎలా పెరుగుతుందో పోల్చండి.</string>
@@ -44,8 +61,6 @@
     <string name="eating_out_screen_description">బయట తినే ఖర్చును ఇంటి వంటతో పోల్చండి, మరియు పొదుపును పెట్టుబడి పెడితే అది ఎంత పెరగవచ్చో చూడండి.</string>
     <string name="gratuity_screen_description">గ్రాట్యుటీ చెల్లింపు చట్టం ప్రకారం మీకు చెల్లించవలసిన గ్రాట్యుటీని, మీ చివరి జీతం మరియు సర్వీసు సంవత్సరాల ఆధారంగా అంచనా వేయండి.</string>
 
-    <string name="coming_soon_title">త్వరలో వస్తుంది</string>
-    <string name="coming_soon_message">ఈ ఫీచర్‌కు ఖాతా అవసరం, ఇది భవిష్యత్తు అప్‌డేట్‌లో అందుబాటులో ఉంటుంది.</string>
     <string name="calc_not_available_yet">ఈ కాలిక్యులేటర్ ఇంకా సిద్ధంగా లేదు — త్వరలో మళ్ళీ చూడండి.</string>
     <string name="disclaimer_text">ఫలితాలు మీరు నమోదు చేసిన ఊహలపై ఆధారపడిన అంచనాలు మరియు ఇది పెట్టుబడి సలహా కాదు.</string>
     <string name="settings_icon_description">సెట్టింగ్‌లు</string>
@@ -54,6 +69,7 @@
     <string name="field_help_dismiss">అర్థమైంది</string>
     <string name="help_step_up">పెరుగుతున్న ఆదాయానికి అనుగుణంగా ప్రతి సంవత్సరం మీ నెలవారీ పెట్టుబడిని ఈ శాతం మేర పెంచండి. ప్రతి నెలా స్థిర మొత్తాన్ని పెట్టుబడి పెట్టడానికి దీన్ని ఖాళీగా ఉంచండి.</string>
     <string name="help_inflation_rate">కాలక్రమేణా ధరలు పెరిగే రేటు. సాధారణ అంచనా విలువతో పాటు, నేటి కొనుగోలు శక్తికి సర్దుబాటు చేయబడిన ఫలితాన్ని చూడటానికి దీన్ని నమోదు చేయండి.</string>
+    <string name="help_lifestyle_savings_return">మీరు ఆదా చేసిన డబ్బును ఖర్చు చేయకుండా పెట్టుబడి పెడితే (ఉదా. మ్యూచువల్ ఫండ్‌లలో) మీరు ఆశించే వార్షిక రాబడి — ఇది అలవాటుకు సంబంధించినది కాదు.</string>
     <string name="help_nps_annuity">పదవీ విరమణ సమయంలో యాన్యుటీ (సాధారణ పెన్షన్) కొనుగోలు చేయడానికి వెళ్లవలసిన మీ NPS నిధిలో వాటా — ప్రస్తుత PFRDA నిబంధనల ప్రకారం కనీసం 40% అవసరం. మిగిలినది ఒకేసారి ఉపసంహరించుకోవచ్చు. ఈ కనీస పరిమితిని PFRDA నిర్ణయిస్తుంది మరియు కాలక్రమేణా మారవచ్చు — ఇది ప్రస్తుత నియమానికి సరిపోలకపోతే, దీన్ని ఇక్కడ సవరించండి; ఏదైనా మార్పు తర్వాత మేము త్వరలో యాప్ డిఫాల్ట్‌ను అప్‌డేట్ చేస్తాము.</string>
     <string name="help_ppf_rate">ఇది ఈ యాప్ నిర్మించిన సమయంలో ప్రభుత్వం ప్రకటించిన PPF వడ్డీ రేటు. ఈ రేటు ప్రతి త్రైమాసికంలో ఆర్థిక మంత్రిత్వ శాఖ ద్వారా సవరించబడుతుంది — ఇది ప్రస్తుత అధికారిక రేటుకు సరిపోలకపోతే, దీన్ని ఇక్కడ సవరించండి; ఏదైనా మార్పు తర్వాత మేము త్వరలో యాప్ డిఫాల్ట్‌ను అప్‌డేట్ చేస్తాము.</string>
     <string name="help_ssy_rate">ఇది ఈ యాప్ నిర్మించిన సమయంలో ప్రభుత్వం ప్రకటించిన సుకన్య సమృద్ధి యోజన వడ్డీ రేటు. ఈ రేటు ప్రతి త్రైమాసికంలో ఆర్థిక మంత్రిత్వ శాఖ ద్వారా సవరించబడుతుంది — ఇది ప్రస్తుత అధికారిక రేటుకు సరిపోలకపోతే, దీన్ని ఇక్కడ సవరించండి; ఏదైనా మార్పు తర్వాత మేము త్వరలో యాప్ డిఫాల్ట్‌ను అప్‌డేట్ చేస్తాము.</string>
@@ -66,8 +82,14 @@
     <string name="sip_label_duration">కాలవ్యవధి (సంవత్సరాలు)</string>
     <string name="sip_label_step_up">స్టెప్-అప్ % (ఐచ్ఛికం)</string>
     <string name="sip_label_inflation">ద్రవ్యోల్బణం % (ఐచ్ఛికం)</string>
+    <string name="label_existing_balance">ప్రస్తుత బ్యాలెన్స్ (ఐచ్ఛికం)</string>
+    <string name="help_existing_balance">ఈ ఖాతాలో ఇప్పటికే డబ్బు ఉందా? మీ భవిష్యత్ కంట్రిబ్యూషన్‌లతో పాటు అది పెరగడాన్ని అంచనాలో చేర్చడానికి ప్రస్తుత బ్యాలెన్స్‌ను నమోదు చేయండి.</string>
     <string name="sip_button_calculate">లెక్కించు</string>
     <string name="sip_button_save">సేవ్ చేయి</string>
+    <string name="save_target_chooser_title">దీనిగా సేవ్ చేయండి…</string>
+    <string name="save_target_chooser_subtitle">ఇది మీరు కలిగి ఉన్న నిజమైన పెట్టుబడినా, లేదా కేవలం ఊహాజనిత దృశ్యమా?</string>
+    <string name="save_target_chooser_investment">పెట్టుబడిగా సేవ్ చేయండి</string>
+    <string name="save_target_chooser_calculation">గణనగా సేవ్ చేయండి</string>
     <string name="sip_frequency_daily">రోజువారీ</string>
     <string name="sip_frequency_weekly">వారానికి</string>
     <string name="sip_frequency_monthly">నెలవారీ</string>
@@ -93,7 +115,7 @@
     <string name="sip_vs_lumpsum_error_invalid_input">దయచేసి సరైన నెలవారీ SIP మొత్తం, లంప్‌సమ్ మొత్తం, ఆశించిన రాబడి మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
     <string name="tenure_error_invalid_input">దయచేసి సరైన నెలవారీ పెట్టుబడి మొత్తం, ఆశించిన రాబడి మరియు లక్ష్య మొత్తాన్ని నమోదు చేయండి.</string>
     <string name="ppf_error_invalid_input">దయచేసి సరైన వార్షిక సహకారం, కాలవ్యవధి మరియు వడ్డీ రేటును నమోదు చేయండి.</string>
-    <string name="epf_error_invalid_input">దయచేసి సరైన జీతం, ఉద్యోగి సహకారం %, యజమాని సహకారం %, కాలవ్యవధి మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
+    <string name="epf_error_invalid_input">దయచేసి సరైన జీతం, ఉద్యోగి సహకారం %%, యజమాని సహకారం %%, కాలవ్యవధి మరియు ఆశించిన రాబడిని నమోదు చేయండి.</string>
     <string name="ssy_error_invalid_input">దయచేసి బాలిక యొక్క సరైన వయస్సు, వార్షిక డిపాజిట్ మరియు వడ్డీ రేటును నమోదు చేయండి.</string>
     <string name="nps_error_invalid_input">దయచేసి సరైన నెలవారీ సహకారం, వయస్సు, ఆశించిన రాబడి మరియు యాన్యుటీ శాతాన్ని నమోదు చేయండి.</string>
     <string name="emi_error_invalid_input">దయచేసి సరైన రుణ మొత్తం, వడ్డీ రేటు మరియు కాలవ్యవధిని నమోదు చేయండి. ప్రీపేమెంట్ ప్రారంభించి ఉంటే, సరైన ప్రీపేమెంట్ మొత్తం మరియు నెలను కూడా నమోదు చేయండి.</string>
@@ -142,6 +164,9 @@
     <string name="sip_vs_lumpsum_result_narrative">SIP ద్వారా %2$s సంవత్సరాల పాటు %3$s%% అంచనా రాబడితో నెలకు %1$s పెట్టుబడి పెడితే అది %4$s వరకు పెరగవచ్చు. అదే కాలంలో %5$s ను ఒకేసారి పెట్టుబడిగా పెడితే అది %6$s వరకు పెరగవచ్చు.</string>
 
     <string name="ppf_label_yearly_contribution">వార్షిక సహకారం (₹, గరిష్టం ₹1,50,000)</string>
+    <string name="ppf_label_monthly_contribution">నెలవారీ సహకారం (₹)</string>
+    <string name="ppf_contribution_frequency_yearly">వార్షికం</string>
+    <string name="ppf_contribution_frequency_monthly">నెలవారీ</string>
     <string name="ppf_label_duration">కాలవ్యవధి (సంవత్సరాలు, కనిష్టం 15)</string>
     <string name="ppf_label_rate">PPF వడ్డీ రేటు (%)</string>
     <string name="ppf_result_total_contributed">మొత్తం సహకారం</string>
@@ -185,7 +210,7 @@
     <string name="eating_out_result_total_saved">మొత్తం పొదుపు చేసిన మొత్తం</string>
     <string name="eating_out_result_invested_value">పెట్టుబడి పెట్టి ఉంటే</string>
     <string name="eating_out_result_narrative">బయట తినడానికి బదులుగా ఇంట్లో వంట చేసుకోవడం వల్ల మీకు నెలకు %1$s ఆదా అవుతుంది. %2$s సంవత్సరాలలో, ఇది %3$s కి చేరుతుంది — మరియు అదే పొదుపును ప్రతి నెలా పెట్టుబడి పెడితే, %4$s%% రాబడితో, అది %5$s వరకు పెరగవచ్చు.</string>
-    <string name="eating_out_error_invalid_input">దయచేసి సరైన బయట తినే ఖర్చు, ఇంటి వంట ఖర్చు, రాబడి రేటు మరియు కాలవ్యవధిని నమోదు చేయండి. బయట తినే ఖర్చు ఇంటి వంట ఖర్చు కంటే ఎక్కువగా ఉండాలి.</string>
+    <string name="eating_out_error_invalid_input">దయచేసి సరైన బయట తినే ఖర్చు, ఇంటి వంట ఖర్చు, రాబడి రేటు మరియు కాలవ్యవధిని నమోదు చేయండి.</string>
 
     <string name="gratuity_label_salary">చివరి నెలవారీ జీతం (బేసిక్ + DA)</string>
     <string name="gratuity_label_years_of_service">సర్వీసు సంవత్సరాలు</string>
@@ -202,6 +227,10 @@
     <string name="epf_result_total_contributed">మొత్తం సహకారం</string>
     <string name="epf_result_interest_earned">ఆర్జించిన వడ్డీ</string>
     <string name="epf_result_narrative">%1$s ప్రాథమిక నెలవారీ జీతంతో, %4$s సంవత్సరాల పాటు %2$s%% (మీరు) మరియు %3$s%% (యజమాని) సహకారం అందిస్తే, %5$s%% వడ్డీ రేటుతో మీ EPF నిధి %6$s వరకు పెరగవచ్చు.</string>
+    <string name="epf_result_narrative_flat">ప్రతి నెలా %1$s సహకారం అందిస్తే, %2$s సంవత్సరాల పాటు %3$s%% వడ్డీ రేటుతో మీ EPF నిధి %4$s వరకు పెరగవచ్చు.</string>
+    <string name="epf_contribution_mode_from_salary">జీతం నుండి</string>
+    <string name="epf_contribution_mode_flat_amount">నిర్ణీత మొత్తం</string>
+    <string name="epf_label_flat_monthly_contribution">నెలవారీ సహకారం (₹, మీరు + యజమాని కలిపి)</string>
 
     <string name="ssy_label_age">ఖాతా తెరిచేటప్పుడు అమ్మాయి వయస్సు (10 ఏళ్ళ లోపు ఉండాలి)</string>
     <string name="ssy_label_deposit">వార్షిక డిపాజిట్ (₹, గరిష్టం ₹1,50,000)</string>
@@ -330,7 +359,6 @@
     <string name="default_rates_setup_message">ఇవి ప్రతి కాలిక్యులేటర్‌లోని రిటర్న్ మరియు ద్రవ్యోల్బణం ఫీల్డ్‌లను ముందుగానే నింపుతాయి. ఎప్పుడైనా ప్రతి గణన కోసం వీటిని మార్చుకోవచ్చు, లేదా తర్వాత సెట్టింగ్‌ల నుండి డిఫాల్ట్‌లను మార్చవచ్చు.</string>
     <string name="default_rates_button_continue">కొనసాగించండి</string>
 
-    <string name="coming_soon_dismiss">అర్థమైంది</string>
 
     <string name="disclaimer_banner">అంచనాలు మాత్రమే — ఇది పెట్టుబడి సలహా కాదు.</string>
 
@@ -349,6 +377,31 @@
     <string name="settings_randomize_theme">యాదృచ్ఛికం</string>
     <string name="settings_randomize_theme_active_hint">మీరు యాప్‌ను తెరిచిన ప్రతిసారీ కొత్త రంగు ఎంపిక చేయబడుతుంది.</string>
     <string name="settings_language">భాష</string>
+    <string name="settings_export_investments_action">ఎగుమతి చేయండి</string>
+    <string name="settings_export_empty_title">ఎగుమతి చేయడానికి ఏమీ లేదు</string>
+    <string name="settings_export_empty_message">మీరు ఇంకా ఏ పెట్టుబడిని సేవ్ చేయలేదు.</string>
+    <string name="settings_reminders_section_title">రిమైండర్‌లు</string>
+    <string name="settings_maturity_reminders_title">మెచ్యూరిటీ రిమైండర్‌లు</string>
+    <string name="settings_maturity_reminders_description">FD లేదా RD మెచ్యూర్ అవ్వడానికి 7 రోజుల ముందు, మరియు ఆ రోజున నోటిఫికేషన్ పొందండి</string>
+    <string name="maturity_reminder_channel_name">మెచ్యూరిటీ రిమైండర్‌లు</string>
+    <string name="maturity_reminder_channel_description">మీ సేవ్ చేసిన FD లేదా RD మెచ్యూర్ అవ్వబోతున్నప్పుడు తెలియజేస్తుంది</string>
+    <string name="maturity_reminder_title">పెట్టుబడి త్వరలో మెచ్యూర్ అవుతోంది</string>
+    <string name="maturity_reminder_body_today">%1$s ఈరోజు మెచ్యూర్ అవుతోంది</string>
+    <string name="maturity_reminder_body_upcoming">%1$s %2$d రోజుల్లో మెచ్యూర్ అవుతుంది</string>
+    <string name="settings_maturity_reminders_blocked_hint">సిస్టమ్ సెట్టింగ్‌లలో నోటిఫికేషన్‌లు బ్లాక్ చేయబడ్డాయి — సరిచేయడానికి నొక్కండి</string>
+    <string name="notification_permission_denied_title">నోటిఫికేషన్‌లు బ్లాక్ చేయబడ్డాయి</string>
+    <string name="notification_permission_denied_message">MoneyMint కోసం నోటిఫికేషన్‌లు ఆఫ్ చేయబడినందున మెచ్యూరిటీ రిమైండర్‌లు రావు. మీరు వాటిని సిస్టమ్ సెట్టింగ్‌లలో ప్రారంభించవచ్చు.</string>
+    <string name="notification_permission_denied_open_settings">సెట్టింగ్‌లను తెరవండి</string>
+    <string name="notification_permission_denied_not_now">ఇప్పుడు వద్దు</string>
+    <string name="notification_permission_denied_turn_off">ఆఫ్ చేయండి</string>
+    <string name="notification_permission_revoked_title">నోటిఫికేషన్‌లు ఆఫ్ చేయబడ్డాయి</string>
+    <string name="notification_permission_revoked_message">మెచ్యూరిటీ రిమైండర్‌లు ఆన్‌లో ఉన్నాయి, కానీ నోటిఫికేషన్ అనుమతి ఆఫ్ చేయబడింది. రిమైండర్‌లు పొందడం కొనసాగించడానికి దాన్ని మళ్లీ ఆన్ చేయాలా?</string>
+    <string name="notification_permission_revoked_enable">ప్రారంభించండి</string>
+    <string name="maturity_reminder_intro_title">మెచ్యూరిటీ రిమైండర్‌లు కావాలా?</string>
+    <string name="maturity_reminder_intro_message">మీరు సేవ్ చేసిన FD లేదా RD మెచ్యూర్ అవ్వడానికి 7 రోజుల ముందు, మరియు ఆ రోజున మేము మిమ్మల్ని తెలియజేయగలము.</string>
+    <string name="maturity_reminder_intro_turn_on">ఆన్ చేయండి</string>
+    <string name="maturity_reminder_intro_not_now">అవసరం లేదు</string>
+    <string name="settings_your_name_title">మీ పేరు</string>
     <string name="settings_default_rates_title">డిఫాల్ట్ రేట్లు</string>
     <string name="settings_appearance_section_title">స్వరూపం</string>
     <string name="settings_default_inflation">డిఫాల్ట్ ద్రవ్యోల్బణ రేటు (%)</string>
@@ -357,14 +410,82 @@
     <string name="theme_mode_dark">డార్క్</string>
     <string name="theme_mode_system">సిస్టమ్</string>
     <string name="theme_preset_crimson">క్రిమ్సన్</string>
+    <string name="theme_preset_amber">అంబర్</string>
+    <string name="theme_preset_green">గ్రీన్</string>
     <string name="theme_preset_ocean">ఓషన్</string>
     <string name="theme_preset_sunset">సన్‌సెట్</string>
     <string name="theme_preset_orchid">ఆర్కిడ్</string>
-    <string name="theme_preset_vibrant">వైబ్రంట్</string>
 
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>
     <string name="language_marathi">मराठी</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="language_telugu">తెలుగు</string>
+
+    <string name="save_investment_title">ఈ పెట్టుబడిని సేవ్ చేయండి</string>
+    <string name="save_investment_label_name">పేరు</string>
+    <string name="save_investment_name_placeholder">ఉదా. వివాహ నిధి RD</string>
+    <string name="save_investment_label_institution">బ్యాంక్ / సంస్థ (ఐచ్ఛికం)</string>
+    <string name="save_investment_label_notes">గమనికలు (ఐచ్ఛికం)</string>
+    <string name="save_investment_button_save">సేవ్ చేయండి</string>
+
+    <string name="my_investments_title">నా పెట్టుబడులు</string>
+    <string name="my_investments_icon_description">నా పెట్టుబడులు</string>
+    <string name="my_investments_empty_title">ఇంకా ఏమీ సేవ్ చేయలేదు</string>
+    <string name="my_investments_empty_message">మీ మొదటి పెట్టుబడిని జోడించడానికి + నొక్కండి.</string>
+    <string name="my_investments_current_value">అంచనా విలువ</string>
+    <string name="my_investments_summary_count">%1$d పెట్టుబడులు</string>
+    <string name="my_investments_summary_total">మొత్తం: %1$s</string>
+    <string name="investments_analysis_monthly_commitment">నెలవారీ నిబద్ధత</string>
+    <string name="investments_analysis_lump_sum">లంప్ సమ్ పెట్టుబడి</string>
+    <string name="investments_analysis_projected_value">అంచనా విలువ</string>
+    <string name="investments_analysis_portfolio_mix_title">పోర్ట్‌ఫోలియో మిశ్రమం</string>
+    <string name="investments_analysis_upcoming_maturities_title">రాబోయే మెచ్యూరిటీలు</string>
+    <string name="investments_analysis_maturity_row">%1$s %2$d రోజుల్లో మెచ్యూర్ అవుతుంది (%3$s)</string>
+    <string name="investments_analysis_maturity_row_today">%1$s ఈరోజు మెచ్యూర్ అవుతుంది</string>
+    <string name="dashboard_maturities_more">+%1$d మరిన్ని</string>
+    <string name="my_investments_delete_confirm_title">దీన్ని తొలగించాలా?</string>
+    <string name="my_investments_delete_confirm_message">ఇది \"%1$s\" ను మీ సేవ్ చేసిన పెట్టుబడుల నుండి తీసివేస్తుంది. దీన్ని తిరిగి పొందలేరు.</string>
+    <string name="my_investments_delete_confirm_button">తొలగించండి</string>
+    <string name="my_investments_cancel_button">రద్దు చేయండి</string>
+    <string name="my_investments_close_button">మూసివేయండి</string>
+    <string name="my_investments_edit_button">సవరించండి</string>
+    <string name="saved_item_show_details">వివరాలు చూపించు</string>
+    <string name="saved_item_hide_details">వివరాలు దాచు</string>
+    <string name="common_ok">సరే</string>
+    <string name="common_cancel">రద్దు చేయండి</string>
+    <string name="label_start_date">ప్రారంభ తేదీ</string>
+    <string name="label_end_date">ముగింపు తేదీ (అంచనా)</string>
+    <string name="my_investments_search_placeholder">పేరు లేదా బ్యాంక్ ద్వారా వెతకండి</string>
+    <string name="my_investments_view_toggle">వీక్షణను మార్చండి</string>
+    <string name="my_investments_filter_all">అన్నీ</string>
+    <string name="my_investments_no_results">సరిపోలికలు కనుగొనబడలేదు</string>
+
+    <string name="calculators_tab_title">కాలిక్యులేటర్లు</string>
+    <string name="tab_home">హోమ్</string>
+    <string name="tab_calculators">కాలిక్యులేటర్లు</string>
+    <string name="tab_investments">పెట్టుబడులు</string>
+
+    <string name="dashboard_greeting_named">నమస్తే %1$s!</string>
+    <string name="dashboard_greeting_generic">నమస్తే!</string>
+    <string name="dashboard_subtitle">ఇదిగో మీ ఆర్థిక అవలోకనం.</string>
+    <string name="dashboard_investments_summary_title">మీ పెట్టుబడులు</string>
+    <string name="dashboard_investments_summary_empty">ఇంకా పెట్టుబడులు ఏవీ సేవ్ చేయలేదు.</string>
+
+    <string name="ask_name_title">మిమ్మల్ని ఏమని పిలవాలి?</string>
+    <string name="ask_name_subtitle">ఇది మీ పరికరంలోనే ఉంటుంది — స్నేహపూర్వక అభివందనం కోసం మాత్రమే.</string>
+    <string name="ask_name_label">మీ పేరు</string>
+    <string name="ask_name_save_button">సేవ్ చేయండి</string>
+    <string name="ask_name_skip_button">దాటవేయండి</string>
+
+    <string name="tab_calculations">లెక్కలు</string>
+    <string name="saved_calculations_title">సేవ్ చేసిన లెక్కలు</string>
+    <string name="saved_calculations_empty_title">ఇంకా ఏమీ సేవ్ చేయలేదు</string>
+    <string name="saved_calculations_empty_message">SIP, లంప్‌సమ్, లేదా గోల్-బేస్డ్ SIP కాలిక్యులేటర్ నుండి ఒక సన్నివేశాన్ని సేవ్ చేయండి, అది ఇక్కడ కనిపిస్తుంది.</string>
+    <string name="saved_calculations_search_placeholder">పేరుతో వెతకండి</string>
+    <string name="save_calculation_title">ఈ లెక్కను సేవ్ చేయండి</string>
+    <string name="save_calculation_name_placeholder">ఉదా. రిటైర్మెంట్ ప్లాన్ v2</string>
+    <string name="save_success_toast">సేవ్ చేయబడింది!</string>
+    <string name="my_investments_add_button">పెట్టుబడి జోడించండి</string>
+    <string name="my_investments_add_menu_title">మీరు ఏమి జోడించాలనుకుంటున్నారు?</string>
 </resources>

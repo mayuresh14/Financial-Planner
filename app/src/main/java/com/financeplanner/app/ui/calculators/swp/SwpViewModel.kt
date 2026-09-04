@@ -26,8 +26,7 @@ data class SwpUiState(
     val expectedReturnPercent: String = "7",
     val simulateYears: String = "",
     val result: SwpResult? = null,
-    val error: SwpValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: SwpValidationError? = null
 )
 
 @HiltViewModel
@@ -63,15 +62,6 @@ class SwpViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

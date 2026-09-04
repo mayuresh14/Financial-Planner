@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financeplanner.app.data.analytics.AppAnalytics
 import com.financeplanner.app.data.local.AppPreferencesDataStore
+import com.financeplanner.app.data.reminders.ReminderScheduler
 import com.financeplanner.app.domain.model.AppDisplayPreferences
 import com.financeplanner.app.domain.model.AppLanguage
 import com.financeplanner.app.domain.model.ThemeMode
@@ -28,7 +29,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AppSettingsViewModel @Inject constructor(
     private val preferencesDataStore: AppPreferencesDataStore,
-    private val analytics: AppAnalytics
+    private val analytics: AppAnalytics,
+    private val reminderScheduler: ReminderScheduler
 ) : ViewModel() {
 
     // preferencesFlow reads DataStore asynchronously; stateIn must seed an
@@ -50,11 +52,16 @@ class AppSettingsViewModel @Inject constructor(
         // check against the first emitted value, not the ongoing `preferences`
         // flow, so it doesn't re-trigger every time prefs are re-read.
         viewModelScope.launch {
+            preferencesDataStore.applyGreenDefaultMigrationIfNeeded()
             val initial = preferencesDataStore.preferencesFlow.first()
             if (initial.randomizeOnLaunch) {
                 val randomized = ThemePreset.random(exclude = initial.themePreset)
                 preferencesDataStore.setThemePreset(randomized)
             }
+            // Re-sync the scheduled work every launch, not just when the toggle changes —
+            // enqueueUniquePeriodicWork with UPDATE is idempotent/cheap, and this covers the
+            // case where the app was reinstalled/updated and WorkManager's own record was lost.
+            if (initial.maturityRemindersEnabled) reminderScheduler.schedule() else reminderScheduler.cancel()
         }
     }
 
@@ -125,11 +132,56 @@ class AppSettingsViewModel @Inject constructor(
         viewModelScope.launch { preferencesDataStore.incrementLocalDataPopupShownCount() }
     }
 
+    // Not persisted — deliberately in-memory only, so it resets on every
+    // fresh app process (a new "session") but survives Home being disposed
+    // and recomposed as the user navigates to a calculator and back, since
+    // this ViewModel is scoped to Home's NavBackStackEntry and outlives that.
+    private var hasCheckedLocalDataPopupThisSession = false
+
+    /** True only the first time this is called in the current app session. */
+    fun consumeLocalDataPopupSessionCheck(): Boolean {
+        if (hasCheckedLocalDataPopupThisSession) return false
+        hasCheckedLocalDataPopupThisSession = true
+        return true
+    }
+
+    fun setUserName(name: String) {
+        viewModelScope.launch {
+            preferencesDataStore.setUserName(name)
+            preferencesDataStore.setHasAskedUserName(true)
+        }
+    }
+
+    fun setHasAskedUserName(value: Boolean) {
+        viewModelScope.launch { preferencesDataStore.setHasAskedUserName(value) }
+    }
+
+    /** [enabled] should only ever be set true once POST_NOTIFICATIONS is confirmed granted —
+     * callers (MainActivity's launch flow, ThemeLanguageSheet's toggle) own that check. */
+    fun setMaturityRemindersEnabled(enabled: Boolean) {
+        analytics.logSettingChanged(SETTING_MATURITY_REMINDERS, enabled.toString())
+        viewModelScope.launch { preferencesDataStore.setMaturityRemindersEnabled(enabled) }
+        if (enabled) reminderScheduler.schedule() else reminderScheduler.cancel()
+    }
+
+    /** Marks that the OS permission prompt has actually been shown at least once — used to
+     * tell "never asked" apart from "permanently denied" via shouldShowRequestPermissionRationale. */
+    fun setHasRequestedNotificationPermission(value: Boolean) {
+        viewModelScope.launch { preferencesDataStore.setHasRequestedNotificationPermission(value) }
+    }
+
+    /** Marks the one-time "enable maturity reminders?" launch dialog as shown, regardless of
+     * the user's choice, so it's never shown again automatically after the first launch. */
+    fun setHasShownMaturityReminderIntro(value: Boolean) {
+        viewModelScope.launch { preferencesDataStore.setHasShownMaturityReminderIntro(value) }
+    }
+
     private companion object {
         const val SETTING_THEME_MODE = "theme_mode"
         const val SETTING_THEME_PRESET = "theme_preset"
         const val SETTING_LANGUAGE = "language"
         const val SETTING_DEFAULT_INFLATION = "default_inflation_percent"
         const val SETTING_DEFAULT_EXPECTED_RETURN = "default_expected_return_percent"
+        const val SETTING_MATURITY_REMINDERS = "maturity_reminders_enabled"
     }
 }

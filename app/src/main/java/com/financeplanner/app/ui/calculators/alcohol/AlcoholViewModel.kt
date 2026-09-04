@@ -25,10 +25,8 @@ data class AlcoholUiState(
     val costPerDrink: String = "",
     val years: String = "",
     val expectedReturnPercent: String = "",
-    val inflationPercent: String = "",
     val result: AlcoholResult? = null,
-    val error: AlcoholValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: AlcoholValidationError? = null
 )
 
 @HiltViewModel
@@ -46,8 +44,7 @@ class AlcoholViewModel @Inject constructor(
         viewModelScope.launch {
             val prefs = preferencesDataStore.preferencesFlow.first()
             _uiState.value = _uiState.value.copy(
-                expectedReturnPercent = prefs.defaultExpectedReturnPercent.toString(),
-                inflationPercent = prefs.defaultInflationPercent.toString()
+                expectedReturnPercent = prefs.defaultExpectedReturnPercent.toString()
             )
         }
     }
@@ -64,21 +61,9 @@ class AlcoholViewModel @Inject constructor(
     fun onReturnChange(value: String) {
         _uiState.value = _uiState.value.copy(expectedReturnPercent = value, error = null)
     }
-    fun onInflationChange(value: String) {
-        _uiState.value = _uiState.value.copy(inflationPercent = value, error = null)
-    }
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {
@@ -88,7 +73,6 @@ class AlcoholViewModel @Inject constructor(
         val costPerDrink = state.costPerDrink.toDoubleOrNull()
         val years = state.years.toIntOrNull()
         val expectedReturn = state.expectedReturnPercent.toDoubleOrNull()
-        val inflation = state.inflationPercent.toDoubleOrNull()
 
         if (drinksPerWeek == null || costPerDrink == null || years == null || expectedReturn == null) {
             _uiState.value = state.copy(error = AlcoholValidationError.InvalidInput, result = null)
@@ -100,8 +84,7 @@ class AlcoholViewModel @Inject constructor(
                     drinksPerWeek = drinksPerWeek,
                     costPerDrink = costPerDrink,
                     years = years,
-                    expectedReturnPercent = expectedReturn,
-                    inflationPercent = inflation
+                    expectedReturnPercent = expectedReturn
                 )
             )
             _uiState.value = state.copy(result = result, error = null)

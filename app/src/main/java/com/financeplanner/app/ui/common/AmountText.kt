@@ -30,19 +30,22 @@ fun formatAmountWithWords(amount: Double, currencyFormat: NumberFormat): String 
 /**
  * A plain-English narrative summarizing the calculation, shown alongside the
  * numeric result card so a non-technical user can read the outcome as a
- * sentence rather than parsing labeled figures alone.
+ * sentence rather than parsing labeled figures alone. Deliberately the same
+ * containerColor as the numeric result card above it (primaryContainer) —
+ * pairing it with secondaryContainer made every result sheet read as "too
+ * many colors" for what's really one result shown two ways.
  */
 @Composable
 fun NarrativeResultCard(text: String) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         shape = MaterialTheme.shapes.large
     ) {
         Text(
             text = text,
             style = MaterialTheme.typography.bodyLarge.copy(lineHeight = 28.sp),
-            color = MaterialTheme.colorScheme.onSecondaryContainer,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
             modifier = Modifier.padding(16.dp)
         )
     }

@@ -23,6 +23,23 @@
     <string name="calc_eating_out">बाहेर जेवण वि घरचे जेवण</string>
     <string name="calc_gratuity">ग्रॅच्युइटी कॅल्क्युलेटर</string>
 
+    <string name="investment_type_sip">SIP</string>
+    <string name="investment_type_lumpsum">लंपसम</string>
+    <string name="investment_type_ppf">PPF</string>
+    <string name="investment_type_epf">EPF</string>
+    <string name="investment_type_nps">NPS</string>
+    <string name="investment_type_fd">FD</string>
+    <string name="investment_type_rd">RD</string>
+
+    <string name="asset_category_mutual_fund">म्युच्युअल फंड</string>
+    <string name="asset_category_stocks">शेअर्स</string>
+    <string name="asset_category_crypto">क्रिप्टो</string>
+    <string name="asset_category_gold">सोने</string>
+    <string name="asset_category_other">इतर</string>
+    <string name="save_investment_label_asset_category">मालमत्ता श्रेणी</string>
+    <string name="investments_analysis_asset_mix_title">मालमत्ता वर्ग मिश्रण</string>
+    <string name="my_investments_filter_asset_category_all">सर्व मालमत्ता</string>
+
     <string name="sip_screen_description">नियमित SIP गुंतवणूक कालांतराने कशी वाढते ते जाणून घ्या, स्टेप-अप आणि महागाई समायोजनाच्या पर्यायी सुविधांसह.</string>
     <string name="lumpsum_screen_description">एकरकमी गुंतवणूक कालांतराने कशी वाढते ते जाणून घ्या.</string>
     <string name="sip_vs_lumpsum_screen_description">तीच रक्कम मासिक SIP द्वारे किंवा एकाच वेळी एकरकमी गुंतवल्यास कशी वाढते याची तुलना करा.</string>
@@ -44,8 +61,6 @@
     <string name="eating_out_screen_description">बाहेर जेवणाच्या खर्चाची घरच्या जेवणाशी तुलना करा, आणि बचत गुंतवल्यास ती किती वाढू शकते ते पहा.</string>
     <string name="gratuity_screen_description">ग्रॅच्युइटी पेमेंट कायद्यांतर्गत तुम्हाला देय ग्रॅच्युइटीचा अंदाज लावा, तुमच्या शेवटच्या पगारावर आणि सेवेच्या वर्षांवर आधारित.</string>
 
-    <string name="coming_soon_title">लवकरच येत आहे</string>
-    <string name="coming_soon_message">या वैशिष्ट्यासाठी खाते आवश्यक आहे, जे भविष्यातील अपडेटमध्ये उपलब्ध होईल.</string>
     <string name="calc_not_available_yet">हे कॅल्क्युलेटर अद्याप तयार नाही — लवकरच पुन्हा तपासा.</string>
     <string name="disclaimer_text">निकाल तुम्ही प्रविष्ट केलेल्या गृहितकांवर आधारित अंदाज आहेत आणि ती गुंतवणूक सल्ला नाही.</string>
     <string name="settings_icon_description">सेटिंग्ज</string>
@@ -54,6 +69,7 @@
     <string name="field_help_dismiss">समजले</string>
     <string name="help_step_up">वाढत्या उत्पन्नाशी जुळवून घेण्यासाठी दरवर्षी तुमची मासिक गुंतवणूक या टक्केवारीने वाढवा. दरमहा निश्चित रक्कम गुंतवण्यासाठी हे रिकामे ठेवा.</string>
     <string name="help_inflation_rate">ज्या दराने कालांतराने किंमती वाढतात. सामान्य अंदाजित मूल्यासोबतच आजच्या क्रयशक्तीनुसार समायोजित निकाल पाहण्यासाठी हे प्रविष्ट करा.</string>
+    <string name="help_lifestyle_savings_return">तुम्ही वाचवलेले पैसे खर्च करण्याऐवजी गुंतवल्यास (उदा. म्युच्युअल फंडात) अपेक्षित असलेला वार्षिक परतावा — हा सवयीशी संबंधित नाही.</string>
     <string name="help_nps_annuity">तुमच्या NPS निधीचा तो भाग जो निवृत्तीच्या वेळी अ‍ॅन्युइटी (नियमित पेन्शन) खरेदी करण्यासाठी वापरावा लागतो — सध्याच्या PFRDA नियमांनुसार किमान 40% आवश्यक आहे. उर्वरित रक्कम एकरकमी काढता येते. ही किमान मर्यादा PFRDA द्वारे ठरवली जाते आणि कालांतराने बदलू शकते — जर ती सध्याच्या नियमाशी जुळत नसेल, तर ती इथे संपादित करा; कोणत्याही बदलानंतर आम्ही लवकरच अ‍ॅपचे डीफॉल्ट अपडेट करू.</string>
     <string name="help_ppf_rate">हा या अ‍ॅपच्या निर्मितीच्या वेळी सरकारने अधिसूचित केलेला PPF व्याज दर आहे. हा दर दर तिमाहीला अर्थ मंत्रालयाकडून सुधारित केला जातो — जर तो सध्याच्या अधिकृत दराशी जुळत नसेल, तर तो इथे संपादित करा; कोणत्याही बदलानंतर आम्ही लवकरच अ‍ॅपचे डीफॉल्ट अपडेट करू.</string>
     <string name="help_ssy_rate">हा या अ‍ॅपच्या निर्मितीच्या वेळी सरकारने अधिसूचित केलेला सुकन्या समृद्धी योजना व्याज दर आहे. हा दर दर तिमाहीला अर्थ मंत्रालयाकडून सुधारित केला जातो — जर तो सध्याच्या अधिकृत दराशी जुळत नसेल, तर तो इथे संपादित करा; कोणत्याही बदलानंतर आम्ही लवकरच अ‍ॅपचे डीफॉल्ट अपडेट करू.</string>
@@ -66,6 +82,8 @@
     <string name="sip_label_duration">कालावधी (वर्षे)</string>
     <string name="sip_label_step_up">स्टेप-अप % (ऐच्छिक)</string>
     <string name="sip_label_inflation">महागाई % (ऐच्छिक)</string>
+    <string name="label_existing_balance">सध्याची शिल्लक (ऐच्छिक)</string>
+    <string name="help_existing_balance">या खात्यात आधीच पैसे आहेत का? अंदाजात ते भविष्यातील योगदानासह वाढताना समाविष्ट करण्यासाठी सध्याची शिल्लक टाका.</string>
     <string name="sip_frequency_daily">दैनिक</string>
     <string name="sip_frequency_weekly">साप्ताहिक</string>
     <string name="sip_frequency_monthly">मासिक</string>
@@ -83,6 +101,10 @@
     <string name="help_expense_ratio">फंडाचे वार्षिक खर्च गुणोत्तर — तुमचे पैसे व्यवस्थापित करण्यासाठी आकारले जाणारे शुल्क. वाढीचा अंदाज लावण्यापूर्वी हे तुमच्या अपेक्षित परताव्यातून वजा केले जाते, कारण हा तुमच्या प्रत्यक्ष परताव्यावर सतत होणारा परिणाम आहे.</string>
     <string name="sip_button_calculate">गणना करा</string>
     <string name="sip_button_save">जतन करा</string>
+    <string name="save_target_chooser_title">म्हणून जतन करा…</string>
+    <string name="save_target_chooser_subtitle">हा तुमच्याकडे असलेला खरा गुंतवणूक आहे, की फक्त एक अंदाजित परिस्थिती आहे?</string>
+    <string name="save_target_chooser_investment">गुंतवणूक म्हणून जतन करा</string>
+    <string name="save_target_chooser_calculation">गणना म्हणून जतन करा</string>
     <string name="sip_result_maturity_value">परिपक्वता रक्कम</string>
     <string name="sip_result_total_invested">एकूण गुंतवणूक</string>
     <string name="sip_result_wealth_gained">मिळवलेली संपत्ती</string>
@@ -93,7 +115,7 @@
     <string name="sip_vs_lumpsum_error_invalid_input">कृपया वैध मासिक SIP रक्कम, लंपसम रक्कम, अपेक्षित परतावा आणि कालावधी टाका.</string>
     <string name="tenure_error_invalid_input">कृपया वैध मासिक गुंतवणूक रक्कम, अपेक्षित परतावा आणि लक्ष्य रक्कम टाका.</string>
     <string name="ppf_error_invalid_input">कृपया वैध वार्षिक योगदान, कालावधी आणि व्याज दर टाका.</string>
-    <string name="epf_error_invalid_input">कृपया वैध पगार, कर्मचारी योगदान %, नियोक्ता योगदान %, कालावधी आणि अपेक्षित परतावा टाका.</string>
+    <string name="epf_error_invalid_input">कृपया वैध पगार, कर्मचारी योगदान %%, नियोक्ता योगदान %%, कालावधी आणि अपेक्षित परतावा टाका.</string>
     <string name="ssy_error_invalid_input">कृपया मुलीचे वैध वय, वार्षिक ठेव आणि व्याज दर टाका.</string>
     <string name="nps_error_invalid_input">कृपया वैध मासिक योगदान, वय, अपेक्षित परतावा आणि अॅन्युइटी टक्केवारी टाका.</string>
     <string name="emi_error_invalid_input">कृपया वैध कर्ज रक्कम, व्याज दर आणि कालावधी टाका. प्रीपेमेंट सक्षम असल्यास, वैध प्रीपेमेंट रक्कम आणि महिना देखील टाका.</string>
@@ -142,6 +164,9 @@
     <string name="sip_vs_lumpsum_result_narrative">SIP द्वारे %2$s वर्षांसाठी %3$s%% अपेक्षित परताव्याने दरमहा %1$s गुंतवल्यास ते %4$s पर्यंत वाढू शकते. त्याच कालावधीत %5$s एकरकमी गुंतवल्यास ते %6$s पर्यंत वाढू शकते.</string>
 
     <string name="ppf_label_yearly_contribution">वार्षिक योगदान (₹, कमाल ₹1,50,000)</string>
+    <string name="ppf_label_monthly_contribution">मासिक योगदान (₹)</string>
+    <string name="ppf_contribution_frequency_yearly">वार्षिक</string>
+    <string name="ppf_contribution_frequency_monthly">मासिक</string>
     <string name="ppf_label_duration">कालावधी (वर्षे, किमान 15)</string>
     <string name="ppf_label_rate">PPF व्याज दर (%)</string>
     <string name="ppf_result_total_contributed">एकूण योगदान</string>
@@ -185,7 +210,7 @@
     <string name="eating_out_result_total_saved">एकूण बचत केलेली रक्कम</string>
     <string name="eating_out_result_invested_value">गुंतवले असते तर</string>
     <string name="eating_out_result_narrative">बाहेर जेवण्याऐवजी घरी स्वयंपाक केल्यास तुम्हाला दरमहा %1$s बचत होते. %2$s वर्षांत, ही बचत %3$s इतकी होते — आणि जर तुम्ही दरमहा तेवढीच बचत गुंतवली असती, %4$s%% परताव्यावर, तर ती वाढून %5$s होऊ शकली असती.</string>
-    <string name="eating_out_error_invalid_input">कृपया वैध बाहेर जेवणाचा खर्च, घरच्या जेवणाचा खर्च, परतावा दर आणि कालावधी टाका. बाहेर जेवणाचा खर्च घरच्या जेवणाच्या खर्चापेक्षा जास्त असावा.</string>
+    <string name="eating_out_error_invalid_input">कृपया वैध बाहेर जेवणाचा खर्च, घरच्या जेवणाचा खर्च, परतावा दर आणि कालावधी टाका.</string>
 
     <string name="gratuity_label_salary">शेवटचा मासिक पगार (मूळ + DA)</string>
     <string name="gratuity_label_years_of_service">सेवेची वर्षे</string>
@@ -202,6 +227,10 @@
     <string name="epf_result_total_contributed">एकूण योगदान</string>
     <string name="epf_result_interest_earned">मिळवलेले व्याज</string>
     <string name="epf_result_narrative">%1$s मूळ मासिक पगारावर, %4$s वर्षांसाठी %2$s%% (तुम्ही) आणि %3$s%% (नियोक्ता) योगदान दिल्यास, %5$s%% व्याजदराने तुमचा EPF निधी %6$s पर्यंत वाढू शकतो.</string>
+    <string name="epf_result_narrative_flat">दरमहा %1$s योगदान देत, %2$s वर्षांसाठी %3$s%% व्याजदराने तुमचा EPF निधी %4$s पर्यंत वाढू शकतो.</string>
+    <string name="epf_contribution_mode_from_salary">पगारावरून</string>
+    <string name="epf_contribution_mode_flat_amount">निश्चित रक्कम</string>
+    <string name="epf_label_flat_monthly_contribution">मासिक योगदान (₹, तुम्ही + नियोक्ता एकूण)</string>
 
     <string name="ssy_label_age">खाते उघडताना मुलीचे वय (10 वर्षांपेक्षा कमी असणे आवश्यक)</string>
     <string name="ssy_label_deposit">वार्षिक ठेव (₹, कमाल ₹1,50,000)</string>
@@ -330,7 +359,6 @@
     <string name="default_rates_setup_message">हे प्रत्येक कॅल्क्युलेटरचे रिटर्न आणि महागाई फील्ड आधीच भरतात. कधीही प्रत्येक गणनेसाठी बदला, किंवा नंतर सेटिंग्जमधून डीफॉल्ट बदला.</string>
     <string name="default_rates_button_continue">पुढे सुरू ठेवा</string>
 
-    <string name="coming_soon_dismiss">समजले</string>
 
     <string name="disclaimer_banner">फक्त अंदाज — ही गुंतवणूक सल्ला नाही.</string>
 
@@ -349,6 +377,31 @@
     <string name="settings_randomize_theme">यादृच्छिक</string>
     <string name="settings_randomize_theme_active_hint">तुम्ही जेव्हा जेव्हा अ‍ॅप उघडाल, तेव्हा नवीन रंग निवडला जाईल.</string>
     <string name="settings_language">भाषा</string>
+    <string name="settings_export_investments_action">निर्यात करा</string>
+    <string name="settings_export_empty_title">निर्यात करण्यासाठी काहीही नाही</string>
+    <string name="settings_export_empty_message">तुम्ही अद्याप कोणतीही गुंतवणूक जतन केलेली नाही.</string>
+    <string name="settings_reminders_section_title">स्मरणपत्रे</string>
+    <string name="settings_maturity_reminders_title">परिपक्वता स्मरणपत्रे</string>
+    <string name="settings_maturity_reminders_description">FD किंवा RD परिपक्व होण्याच्या 7 दिवस आधी आणि त्या दिवशी सूचना मिळवा</string>
+    <string name="maturity_reminder_channel_name">परिपक्वता स्मरणपत्रे</string>
+    <string name="maturity_reminder_channel_description">तुमची जतन केलेली FD किंवा RD परिपक्व होणार असल्यास सूचित करते</string>
+    <string name="maturity_reminder_title">गुंतवणूक लवकरच परिपक्व होत आहे</string>
+    <string name="maturity_reminder_body_today">%1$s आज परिपक्व होत आहे</string>
+    <string name="maturity_reminder_body_upcoming">%1$s %2$d दिवसांत परिपक्व होईल</string>
+    <string name="settings_maturity_reminders_blocked_hint">सिस्टम सेटिंग्जमध्ये सूचना अवरोधित आहेत — दुरुस्त करण्यासाठी टॅप करा</string>
+    <string name="notification_permission_denied_title">सूचना अवरोधित आहेत</string>
+    <string name="notification_permission_denied_message">MoneyMint साठी सूचना बंद असल्याने परिपक्वता स्मरणपत्रे मिळणार नाहीत. तुम्ही ती सिस्टम सेटिंग्जमध्ये सक्षम करू शकता.</string>
+    <string name="notification_permission_denied_open_settings">सेटिंग्ज उघडा</string>
+    <string name="notification_permission_denied_not_now">आत्ता नाही</string>
+    <string name="notification_permission_denied_turn_off">बंद करा</string>
+    <string name="notification_permission_revoked_title">सूचना बंद केल्या गेल्या</string>
+    <string name="notification_permission_revoked_message">परिपक्वता स्मरणपत्रे चालू आहेत, पण सूचना परवानगी बंद केली गेली आहे. स्मरणपत्रे मिळत राहण्यासाठी ती पुन्हा चालू करायची?</string>
+    <string name="notification_permission_revoked_enable">सक्षम करा</string>
+    <string name="maturity_reminder_intro_title">परिपक्वता स्मरणपत्रे हवी आहेत?</string>
+    <string name="maturity_reminder_intro_message">आम्ही तुमची जतन केलेली FD किंवा RD परिपक्व होण्याच्या 7 दिवस आधी आणि त्या दिवशी तुम्हाला सूचित करू शकतो.</string>
+    <string name="maturity_reminder_intro_turn_on">चालू करा</string>
+    <string name="maturity_reminder_intro_not_now">गरज नाही</string>
+    <string name="settings_your_name_title">तुमचे नाव</string>
     <string name="settings_default_rates_title">डीफॉल्ट दर</string>
     <string name="settings_appearance_section_title">रूपरेषा</string>
     <string name="settings_default_inflation">डीफॉल्ट महागाई दर (%)</string>
@@ -357,14 +410,82 @@
     <string name="theme_mode_dark">डार्क</string>
     <string name="theme_mode_system">सिस्टम</string>
     <string name="theme_preset_crimson">क्रिमसन</string>
+    <string name="theme_preset_amber">अंबर</string>
+    <string name="theme_preset_green">ग्रीन</string>
     <string name="theme_preset_ocean">ओशन</string>
     <string name="theme_preset_sunset">सनसेट</string>
     <string name="theme_preset_orchid">ऑर्किड</string>
-    <string name="theme_preset_vibrant">व्हायब्रंट</string>
 
     <string name="language_english">English</string>
     <string name="language_hindi">हिंदी</string>
     <string name="language_marathi">मराठी</string>
     <string name="language_tamil">தமிழ்</string>
     <string name="language_telugu">తెలుగు</string>
+
+    <string name="save_investment_title">ही गुंतवणूक सेव्ह करा</string>
+    <string name="save_investment_label_name">नाव</string>
+    <string name="save_investment_name_placeholder">उदा. लग्न फंड RD</string>
+    <string name="save_investment_label_institution">बँक / संस्था (ऐच्छिक)</string>
+    <string name="save_investment_label_notes">नोंदी (ऐच्छिक)</string>
+    <string name="save_investment_button_save">सेव्ह करा</string>
+
+    <string name="my_investments_title">माझी गुंतवणूक</string>
+    <string name="my_investments_icon_description">माझी गुंतवणूक</string>
+    <string name="my_investments_empty_title">अजून काहीही सेव्ह केलेले नाही</string>
+    <string name="my_investments_empty_message">पहिली गुंतवणूक जोडण्यासाठी + वर टॅप करा.</string>
+    <string name="my_investments_current_value">अंदाजित मूल्य</string>
+    <string name="my_investments_summary_count">%1$d गुंतवणुकी</string>
+    <string name="my_investments_summary_total">एकूण: %1$s</string>
+    <string name="investments_analysis_monthly_commitment">मासिक बांधिलकी</string>
+    <string name="investments_analysis_lump_sum">एकरकमी गुंतवणूक</string>
+    <string name="investments_analysis_projected_value">अंदाजित मूल्य</string>
+    <string name="investments_analysis_portfolio_mix_title">पोर्टफोलिओ मिश्रण</string>
+    <string name="investments_analysis_upcoming_maturities_title">आगामी मुदतपूर्ती</string>
+    <string name="investments_analysis_maturity_row">%1$s %2$d दिवसांत मुदतपूर्ण होईल (%3$s)</string>
+    <string name="investments_analysis_maturity_row_today">%1$s आज मुदतपूर्ण होईल</string>
+    <string name="dashboard_maturities_more">+%1$d अधिक</string>
+    <string name="my_investments_delete_confirm_title">हे हटवायचे?</string>
+    <string name="my_investments_delete_confirm_message">यामुळे \"%1$s\" तुमच्या सेव्ह केलेल्या गुंतवणुकींमधून काढले जाईल. हे पूर्ववत करता येणार नाही.</string>
+    <string name="my_investments_delete_confirm_button">हटवा</string>
+    <string name="my_investments_cancel_button">रद्द करा</string>
+    <string name="my_investments_close_button">बंद करा</string>
+    <string name="my_investments_edit_button">संपादित करा</string>
+    <string name="saved_item_show_details">तपशील दाखवा</string>
+    <string name="saved_item_hide_details">तपशील लपवा</string>
+    <string name="common_ok">ठीक आहे</string>
+    <string name="common_cancel">रद्द करा</string>
+    <string name="label_start_date">सुरुवातीची तारीख</string>
+    <string name="label_end_date">समाप्तीची तारीख (अंदाजे)</string>
+    <string name="my_investments_search_placeholder">नाव किंवा बँकेने शोधा</string>
+    <string name="my_investments_view_toggle">दृश्य बदला</string>
+    <string name="my_investments_filter_all">सर्व</string>
+    <string name="my_investments_no_results">काही जुळत नाही</string>
+
+    <string name="calculators_tab_title">कॅल्क्युलेटर</string>
+    <string name="tab_home">होम</string>
+    <string name="tab_calculators">कॅल्क्युलेटर</string>
+    <string name="tab_investments">गुंतवणूक</string>
+
+    <string name="dashboard_greeting_named">नमस्कार %1$s!</string>
+    <string name="dashboard_greeting_generic">नमस्कार!</string>
+    <string name="dashboard_subtitle">हे आहे तुमचे आर्थिक विहंगावलोकन.</string>
+    <string name="dashboard_investments_summary_title">तुमच्या गुंतवणुकी</string>
+    <string name="dashboard_investments_summary_empty">अद्याप कोणतीही गुंतवणूक सेव्ह केलेली नाही.</string>
+
+    <string name="ask_name_title">आम्ही तुम्हाला काय म्हणून हाक मारावी?</string>
+    <string name="ask_name_subtitle">हे फक्त तुमच्या डिव्हाइसवर राहते — फक्त एका मैत्रीपूर्ण अभिवादनासाठी.</string>
+    <string name="ask_name_label">तुमचे नाव</string>
+    <string name="ask_name_save_button">सेव्ह करा</string>
+    <string name="ask_name_skip_button">वगळा</string>
+
+    <string name="tab_calculations">गणना</string>
+    <string name="saved_calculations_title">सेव्ह केलेल्या गणना</string>
+    <string name="saved_calculations_empty_title">अजून काहीही सेव्ह केलेले नाही</string>
+    <string name="saved_calculations_empty_message">SIP, लंपसम, किंवा गोल-आधारित SIP कॅल्क्युलेटरमधून एक परिस्थिती सेव्ह करा, ती इथे दिसेल.</string>
+    <string name="saved_calculations_search_placeholder">नावाने शोधा</string>
+    <string name="save_calculation_title">ही गणना सेव्ह करा</string>
+    <string name="save_calculation_name_placeholder">उदा. निवृत्ती योजना v2</string>
+    <string name="save_success_toast">सेव्ह झाले!</string>
+    <string name="my_investments_add_button">गुंतवणूक जोडा</string>
+    <string name="my_investments_add_menu_title">तुम्हाला काय जोडायचे आहे?</string>
 </resources>

@@ -21,8 +21,12 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -41,7 +45,8 @@ import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.EpfResult
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.SaveCompletedEffect
+import com.financeplanner.app.ui.common.SaveInvestmentSheet
 import com.financeplanner.app.ui.common.FieldHelpIcon
 import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
@@ -69,6 +74,8 @@ fun EpfScreen(
         }
     }
 
+    SaveCompletedEffect(state.saveCompleted, viewModel::onSaveCompletedHandled, onBack)
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -92,23 +99,52 @@ fun EpfScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            AmountOutlinedTextField(
-                value = state.basicMonthlySalary, onValueChange = viewModel::onSalaryChange,
-                label = { Text(stringResource(R.string.epf_label_salary)) },
-                modifier = Modifier.fillMaxWidth()
-            )
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                OutlinedTextField(
-                    value = state.employeeContributionPercent, onValueChange = viewModel::onEmployeeContributionChange,
-                    label = { Text(stringResource(R.string.epf_label_employee_pct)) },
-                    modifier = Modifier.weight(1f), singleLine = true
+            SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                val modes = listOf(
+                    EpfContributionMode.FROM_SALARY to R.string.epf_contribution_mode_from_salary,
+                    EpfContributionMode.FLAT_AMOUNT to R.string.epf_contribution_mode_flat_amount
                 )
-                OutlinedTextField(
-                    value = state.employerContributionPercent, onValueChange = viewModel::onEmployerContributionChange,
-                    label = { Text(stringResource(R.string.epf_label_employer_pct)) },
-                    modifier = Modifier.weight(1f), singleLine = true
-                )
+                modes.forEachIndexed { index, (mode, labelRes) ->
+                    SegmentedButton(
+                        selected = state.contributionMode == mode,
+                        onClick = { viewModel.onContributionModeChange(mode) },
+                        shape = SegmentedButtonDefaults.itemShape(index = index, count = modes.size)
+                    ) {
+                        Text(stringResource(labelRes))
+                    }
+                }
             }
+            if (state.contributionMode == EpfContributionMode.FLAT_AMOUNT) {
+                AmountOutlinedTextField(
+                    value = state.flatMonthlyContribution, onValueChange = viewModel::onFlatMonthlyContributionChange,
+                    label = { Text(stringResource(R.string.epf_label_flat_monthly_contribution)) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            } else {
+                AmountOutlinedTextField(
+                    value = state.basicMonthlySalary, onValueChange = viewModel::onSalaryChange,
+                    label = { Text(stringResource(R.string.epf_label_salary)) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(
+                        value = state.employeeContributionPercent, onValueChange = viewModel::onEmployeeContributionChange,
+                        label = { Text(stringResource(R.string.epf_label_employee_pct)) },
+                        modifier = Modifier.weight(1f), singleLine = true
+                    )
+                    OutlinedTextField(
+                        value = state.employerContributionPercent, onValueChange = viewModel::onEmployerContributionChange,
+                        label = { Text(stringResource(R.string.epf_label_employer_pct)) },
+                        modifier = Modifier.weight(1f), singleLine = true
+                    )
+                }
+            }
+            AmountOutlinedTextField(
+                value = state.existingBalance, onValueChange = viewModel::onExistingBalanceChange,
+                label = { Text(stringResource(R.string.label_existing_balance)) },
+                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = { FieldHelpIcon(stringResource(R.string.help_existing_balance)) }
+            )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedTextField(
                     value = state.durationYears, onValueChange = viewModel::onDurationChange,
@@ -138,19 +174,24 @@ fun EpfScreen(
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
 
-            Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.sip_button_calculate))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = viewModel::calculate, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_calculate))
+                }
+                OutlinedButton(onClick = viewModel::onSaveDirectClicked, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
 
-    if (state.result != null) {
+    if (state.result != null && state.showResultSheet) {
         ModalBottomSheet(
             onDismissRequest = ::dismissResultSheet,
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { EpfResultCard(it, state) }
@@ -170,12 +211,19 @@ fun EpfScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
     }
 
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
+    if (state.showSaveSheet) {
+        SaveInvestmentSheet(
+            onDismiss = viewModel::onSaveSheetDismissed,
+            onSave = { name, inst, notes, _ -> viewModel.onSaveConfirmed(name, inst, notes) },
+            initialCustomName = state.customName,
+            initialInstitutionName = state.institutionName,
+            initialNotes = state.notes
+        )
     }
 }
 
@@ -186,15 +234,25 @@ private fun EpfResultCard(result: EpfResult, state: EpfUiState) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         val narrative = buildString {
             append(
-                stringResource(
-                    R.string.epf_result_narrative,
-                    formatAmountWithWords(state.basicMonthlySalary.toDoubleOrNull() ?: 0.0, currencyFormat),
-                    state.employeeContributionPercent,
-                    state.employerContributionPercent,
-                    state.durationYears,
-                    state.expectedReturnPercent,
-                    formatAmountWithWords(result.maturityValue, currencyFormat)
-                )
+                if (state.contributionMode == EpfContributionMode.FLAT_AMOUNT) {
+                    stringResource(
+                        R.string.epf_result_narrative_flat,
+                        formatAmountWithWords(state.flatMonthlyContribution.toDoubleOrNull() ?: 0.0, currencyFormat),
+                        state.durationYears,
+                        state.expectedReturnPercent,
+                        formatAmountWithWords(result.maturityValue, currencyFormat)
+                    )
+                } else {
+                    stringResource(
+                        R.string.epf_result_narrative,
+                        formatAmountWithWords(state.basicMonthlySalary.toDoubleOrNull() ?: 0.0, currencyFormat),
+                        state.employeeContributionPercent,
+                        state.employerContributionPercent,
+                        state.durationYears,
+                        state.expectedReturnPercent,
+                        formatAmountWithWords(result.maturityValue, currencyFormat)
+                    )
+                }
             )
             result.inflationAdjustedValue?.let {
                 append(stringResource(R.string.narrative_inflation_addendum, formatAmountWithWords(it, currencyFormat)))

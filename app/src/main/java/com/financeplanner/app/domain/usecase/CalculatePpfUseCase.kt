@@ -11,8 +11,12 @@ class CalculatePpfUseCase @Inject constructor() {
             yearlyAmount = input.yearlyContribution,
             annualRatePercent = input.interestRatePercent,
             years = input.durationYears
+        ) + FinanceMath.lumpsumFutureValue(
+            principal = input.existingBalance,
+            annualReturnPercent = input.interestRatePercent,
+            years = input.durationYears
         )
-        val totalContributed = input.yearlyContribution * input.durationYears
+        val totalContributed = input.yearlyContribution * input.durationYears + input.existingBalance
         val inflationAdjustedValue = input.inflationPercent?.let { inflation ->
             FinanceMath.inflationAdjustedValue(
                 futureValue = maturityValue,

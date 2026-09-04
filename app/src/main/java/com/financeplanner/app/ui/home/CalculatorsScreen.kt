@@ -1,5 +1,6 @@
 package com.financeplanner.app.ui.home
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyRow
@@ -32,7 +33,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,71 +51,31 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financeplanner.app.R
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.DefaultRatesSetupSheet
-import com.financeplanner.app.ui.common.LocalDataPopup
-import com.financeplanner.app.ui.common.MAX_LOCAL_DATA_POPUP_SHOWN_COUNT
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
-import com.financeplanner.app.ui.common.TourOverlay
 import kotlinx.coroutines.launch
 
 /**
- * Dashboard listing all 14 calculators as per-category carousels (see
- * CalculatorCatalog for the category groupings) rather than one big grid.
- * Every card is tappable and navigable. First launch shows the app tour
- * (see TourOverlay), then — once that's dismissed or finished — a one-time
- * sheet to collect default inflation/return rates (see DefaultRatesSetupSheet)
- * that every calculator prefills from. The disclaimer banner is pinned at
- * the bottom.
+ * Tab 2 of the bottom nav: the full calculator catalog, grouped into
+ * per-category carousels (see CalculatorCatalog). This used to be the whole
+ * Home screen; first-launch flows (local-data popup, name capture, default
+ * rates) now live on DashboardScreen since that's the actual start tab.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
+fun CalculatorsScreen(
     onNavigateToCalculator: (String) -> Unit,
     settingsViewModel: AppSettingsViewModel = hiltViewModel()
 ) {
     val preferences by settingsViewModel.preferences.collectAsState()
-    val hasLoadedPreferences by settingsViewModel.hasLoadedPreferences.collectAsState()
     var showSettingsSheet by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
     val notAvailableMessage = stringResource(R.string.calc_not_available_yet)
 
-    // App tour temporarily hidden at startup (not removed — flip this back to
-    // true to re-enable). Default-rates setup still shows regardless, since
-    // it's a separate first-launch feature.
-    val isAppTourEnabled = false
-
-    var showTour by remember { mutableStateOf(false) }
-    var showDefaultRatesSetup by remember { mutableStateOf(false) }
-    var showLocalDataPopup by remember { mutableStateOf(false) }
-
-    fun proceedPastLocalDataPopup() {
-        if (isAppTourEnabled && !preferences.hasSeenAppTour) {
-            showTour = true
-            settingsViewModel.logAppTourShown()
-        } else if (!preferences.hasSetDefaultRates) {
-            showDefaultRatesSetup = true
-        }
-    }
-
-    LaunchedEffect(hasLoadedPreferences) {
-        // Gated on hasLoadedPreferences (not just preferences.hasSeenAppTour)
-        // so this doesn't fire on the synthetic "not seen" default that
-        // `preferences` starts with before the real DataStore value loads —
-        // otherwise the tour would flash/reshow on every launch.
-        if (hasLoadedPreferences) {
-            if (preferences.localDataPopupShownCount < MAX_LOCAL_DATA_POPUP_SHOWN_COUNT) {
-                showLocalDataPopup = true
-            } else {
-                proceedPastLocalDataPopup()
-            }
-        }
-    }
-
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
+                title = { Text(stringResource(R.string.calculators_tab_title)) },
                 actions = {
                     IconButton(onClick = { showSettingsSheet = true }) {
                         Icon(
@@ -128,29 +88,28 @@ fun HomeScreen(
         },
         snackbarHost = { SnackbarHost(snackbarHostState) { data -> Snackbar(snackbarData = data) } }
     ) { padding ->
-        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            Column(
-                modifier = Modifier
-                    .weight(1f, fill = true)
-                    .verticalScroll(rememberScrollState())
-            ) {
-                CalculatorCatalog.itemsByCategory.forEach { (category, catalogItems) ->
-                    if (catalogItems.isNotEmpty()) {
-                        CategorySection(
-                            titleRes = category.titleRes,
-                            catalogItems = catalogItems,
-                            onItemClick = { item ->
-                                if (item.route != null) {
-                                    onNavigateToCalculator(item.route)
-                                } else {
-                                    coroutineScope.launch { snackbarHostState.showSnackbar(notAvailableMessage) }
-                                }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .verticalScroll(rememberScrollState())
+                .padding(bottom = 16.dp)
+        ) {
+            CalculatorCatalog.itemsByCategory.forEach { (category, catalogItems) ->
+                if (catalogItems.isNotEmpty()) {
+                    CategorySection(
+                        titleRes = category.titleRes,
+                        catalogItems = catalogItems,
+                        onItemClick = { item ->
+                            if (item.route != null) {
+                                onNavigateToCalculator(item.route)
+                            } else {
+                                coroutineScope.launch { snackbarHostState.showSnackbar(notAvailableMessage) }
                             }
-                        )
-                    }
+                        }
+                    )
                 }
             }
-            DisclaimerBanner()
         }
     }
 
@@ -163,39 +122,8 @@ fun HomeScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
-        )
-    }
-
-    if (showLocalDataPopup) {
-        LocalDataPopup(
-            shownCount = preferences.localDataPopupShownCount,
-            onDismiss = {
-                showLocalDataPopup = false
-                settingsViewModel.onLocalDataPopupShown()
-                proceedPastLocalDataPopup()
-            }
-        )
-    }
-
-    if (showTour) {
-        TourOverlay(onFinished = {
-            showTour = false
-            settingsViewModel.setHasSeenAppTour(true)
-            if (!preferences.hasSetDefaultRates) showDefaultRatesSetup = true
-        })
-    }
-
-    if (showDefaultRatesSetup) {
-        DefaultRatesSetupSheet(
-            initialInflationPercent = preferences.defaultInflationPercent,
-            initialExpectedReturnPercent = preferences.defaultExpectedReturnPercent,
-            onSave = { inflation, expectedReturn ->
-                settingsViewModel.setDefaultInflationPercent(inflation)
-                settingsViewModel.setDefaultExpectedReturnPercent(expectedReturn)
-                settingsViewModel.setHasSetDefaultRates(true)
-                showDefaultRatesSetup = false
-            }
         )
     }
 }
@@ -210,7 +138,7 @@ private fun CategorySection(
         text = stringResource(titleRes),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 6.dp)
+        modifier = Modifier.padding(start = 16.dp, top = 28.dp, bottom = 6.dp)
     )
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
@@ -223,28 +151,10 @@ private fun CategorySection(
 }
 
 @Composable
-private fun DisclaimerBanner() {
-    Text(
-        text = stringResource(R.string.disclaimer_banner),
-        style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        textAlign = TextAlign.Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(8.dp)
-    )
-}
-
-@Composable
 private fun CalculatorCard(item: CalculatorCatalogItem, onClick: () -> Unit) {
     val isAvailable = item.route != null
     val contentAlpha = if (isAvailable) 1f else 0.5f
 
-    // Fixed neutral card color (not derived from the theme's primary tint,
-    // unlike the page background) so the card reads as a distinct light/dark
-    // "island" regardless of which preset is active, rather than blending
-    // into a same-hue background.
     val isDarkBackground = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val cardColor = if (isDarkBackground) Color(0xFF2A2A2A) else Color.White
     val onCardColor = if (isDarkBackground) Color.White else Color.Black
@@ -255,7 +165,8 @@ private fun CalculatorCard(item: CalculatorCatalogItem, onClick: () -> Unit) {
             .height(100.dp)
             .clickable(onClick = onClick),
         colors = CardDefaults.cardColors(containerColor = cardColor),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
         shape = MaterialTheme.shapes.medium
     ) {
         Column(

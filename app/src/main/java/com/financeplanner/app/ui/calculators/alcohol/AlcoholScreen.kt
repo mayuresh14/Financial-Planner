@@ -42,7 +42,6 @@ import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.AlcoholResult
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
 import com.financeplanner.app.ui.common.FieldHelpIcon
 import com.financeplanner.app.ui.common.NarrativeResultCard
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
@@ -114,16 +113,10 @@ fun AlcoholScreen(
                 OutlinedTextField(
                     value = state.expectedReturnPercent, onValueChange = viewModel::onReturnChange,
                     label = { Text(stringResource(R.string.sip_label_expected_return)) },
-                    modifier = Modifier.width(140.dp), singleLine = true
+                    modifier = Modifier.width(200.dp), singleLine = true,
+                    trailingIcon = { FieldHelpIcon(stringResource(R.string.help_lifestyle_savings_return)) }
                 )
             }
-
-            OutlinedTextField(
-                value = state.inflationPercent, onValueChange = viewModel::onInflationChange,
-                label = { Text(stringResource(R.string.sip_label_inflation)) },
-                modifier = Modifier.fillMaxWidth(), singleLine = true,
-                trailingIcon = { FieldHelpIcon(stringResource(R.string.help_inflation_rate)) }
-            )
 
             state.error?.let { error ->
                 val message = when (error) {
@@ -145,13 +138,10 @@ fun AlcoholScreen(
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { AlcoholResultCard(it, state) }
-                Button(onClick = viewModel::onSaveClicked, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.sip_button_save))
-                }
             }
         }
     }
@@ -165,12 +155,9 @@ fun AlcoholScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
-    }
-
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
     }
 }
 
@@ -192,9 +179,6 @@ private fun AlcoholResultCard(result: AlcoholResult, state: AlcoholUiState) {
                     formatAmountWithWords(result.investedValue, currencyFormat)
                 )
             )
-            result.inflationAdjustedValue?.let {
-                append(stringResource(R.string.narrative_inflation_addendum, formatAmountWithWords(it, currencyFormat)))
-            }
         }
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -210,13 +194,6 @@ private fun AlcoholResultCard(result: AlcoholResult, state: AlcoholUiState) {
                 )
                 HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 ResultRow(stringResource(R.string.alcohol_result_invested_value), currencyFormat.format(result.investedValue))
-
-                result.inflationAdjustedValue?.let { adjusted ->
-                    ResultRow(
-                        stringResource(R.string.sip_result_inflation_adjusted),
-                        currencyFormat.format(adjusted)
-                    )
-                }
             }
         }
 

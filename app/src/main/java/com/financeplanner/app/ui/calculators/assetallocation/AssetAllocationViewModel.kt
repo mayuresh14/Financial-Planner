@@ -23,8 +23,7 @@ data class AssetAllocationUiState(
     val aggressiveness: AggressivenessLevel = AggressivenessLevel.MODERATE,
     val includeCrypto: Boolean = false,
     val result: AssetAllocationResult? = null,
-    val error: AssetAllocationValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: AssetAllocationValidationError? = null
 )
 
 @HiltViewModel
@@ -55,15 +54,6 @@ class AssetAllocationViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

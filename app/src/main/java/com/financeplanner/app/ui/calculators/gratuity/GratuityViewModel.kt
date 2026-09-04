@@ -20,8 +20,7 @@ data class GratuityUiState(
     val lastDrawnMonthlySalary: String = "",
     val yearsOfService: String = "",
     val result: GratuityResult? = null,
-    val error: GratuityValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: GratuityValidationError? = null
 )
 
 @HiltViewModel
@@ -46,15 +45,6 @@ class GratuityViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {

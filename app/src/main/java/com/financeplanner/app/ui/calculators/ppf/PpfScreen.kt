@@ -22,8 +22,12 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -42,9 +46,10 @@ import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.PpfResult
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
 import com.financeplanner.app.ui.common.FieldHelpIcon
 import com.financeplanner.app.ui.common.NarrativeResultCard
+import com.financeplanner.app.ui.common.SaveCompletedEffect
+import com.financeplanner.app.ui.common.SaveInvestmentSheet
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
 import com.financeplanner.app.ui.common.formatAmountWithWords
 import kotlinx.coroutines.launch
@@ -70,6 +75,8 @@ fun PpfScreen(
         }
     }
 
+    SaveCompletedEffect(state.saveCompleted, viewModel::onSaveCompletedHandled, onBack)
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -93,10 +100,39 @@ fun PpfScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
+            SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                val frequencies = listOf(
+                    PpfContributionFrequency.YEARLY to R.string.ppf_contribution_frequency_yearly,
+                    PpfContributionFrequency.MONTHLY to R.string.ppf_contribution_frequency_monthly
+                )
+                frequencies.forEachIndexed { index, (frequency, labelRes) ->
+                    SegmentedButton(
+                        selected = state.contributionFrequency == frequency,
+                        onClick = { viewModel.onContributionFrequencyChange(frequency) },
+                        shape = SegmentedButtonDefaults.itemShape(index = index, count = frequencies.size)
+                    ) {
+                        Text(stringResource(labelRes))
+                    }
+                }
+            }
+            if (state.contributionFrequency == PpfContributionFrequency.MONTHLY) {
+                AmountOutlinedTextField(
+                    value = state.monthlyContribution, onValueChange = viewModel::onMonthlyContributionChange,
+                    label = { Text(stringResource(R.string.ppf_label_monthly_contribution)) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            } else {
+                AmountOutlinedTextField(
+                    value = state.yearlyContribution, onValueChange = viewModel::onYearlyContributionChange,
+                    label = { Text(stringResource(R.string.ppf_label_yearly_contribution)) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
             AmountOutlinedTextField(
-                value = state.yearlyContribution, onValueChange = viewModel::onYearlyContributionChange,
-                label = { Text(stringResource(R.string.ppf_label_yearly_contribution)) },
-                modifier = Modifier.fillMaxWidth()
+                value = state.existingBalance, onValueChange = viewModel::onExistingBalanceChange,
+                label = { Text(stringResource(R.string.label_existing_balance)) },
+                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = { FieldHelpIcon(stringResource(R.string.help_existing_balance)) }
             )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedTextField(
@@ -127,19 +163,24 @@ fun PpfScreen(
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
 
-            Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.sip_button_calculate))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = viewModel::calculate, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_calculate))
+                }
+                OutlinedButton(onClick = viewModel::onSaveDirectClicked, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
 
-    if (state.result != null) {
+    if (state.result != null && state.showResultSheet) {
         ModalBottomSheet(
             onDismissRequest = ::dismissResultSheet,
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { PpfResultCard(it, state) }
@@ -159,12 +200,19 @@ fun PpfScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
     }
 
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
+    if (state.showSaveSheet) {
+        SaveInvestmentSheet(
+            onDismiss = viewModel::onSaveSheetDismissed,
+            onSave = { name, inst, notes, _ -> viewModel.onSaveConfirmed(name, inst, notes) },
+            initialCustomName = state.customName,
+            initialInstitutionName = state.institutionName,
+            initialNotes = state.notes
+        )
     }
 }
 
@@ -177,7 +225,7 @@ private fun PpfResultCard(result: PpfResult, state: PpfUiState) {
             append(
                 stringResource(
                     R.string.ppf_result_narrative,
-                    formatAmountWithWords(state.yearlyContribution.toDoubleOrNull() ?: 0.0, currencyFormat),
+                    formatAmountWithWords(state.effectiveYearlyContribution ?: 0.0, currencyFormat),
                     state.durationYears,
                     state.interestRatePercent,
                     formatAmountWithWords(result.maturityValue, currencyFormat),

@@ -22,6 +22,7 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -42,11 +43,14 @@ import com.financeplanner.app.R
 import com.financeplanner.app.domain.model.FdResult
 import com.financeplanner.app.ui.common.AmountOutlinedTextField
 import com.financeplanner.app.ui.common.AppSettingsViewModel
-import com.financeplanner.app.ui.common.ComingSoonSheet
+import com.financeplanner.app.ui.common.DatePickerField
 import com.financeplanner.app.ui.common.FieldHelpIcon
 import com.financeplanner.app.ui.common.NarrativeResultCard
+import com.financeplanner.app.ui.common.SaveCompletedEffect
+import com.financeplanner.app.ui.common.SaveInvestmentSheet
 import com.financeplanner.app.ui.common.ThemeLanguageSheet
 import com.financeplanner.app.ui.common.formatAmountWithWords
+import com.financeplanner.app.ui.common.formatDate
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
@@ -69,6 +73,8 @@ fun FdScreen(
             if (!resultSheetState.isVisible) viewModel.onResultDismissed()
         }
     }
+
+    SaveCompletedEffect(state.saveCompleted, viewModel::onSaveCompletedHandled, onBack)
 
     Scaffold(
         topBar = {
@@ -119,6 +125,19 @@ fun FdScreen(
                 trailingIcon = { FieldHelpIcon(stringResource(R.string.help_inflation_rate)) }
             )
 
+            DatePickerField(
+                label = stringResource(R.string.label_start_date),
+                selectedDateMillis = state.startDateMillis,
+                onDateSelected = viewModel::onStartDateChange
+            )
+            state.endDateMillis?.let { endDate ->
+                Text(
+                    text = "${stringResource(R.string.label_end_date)}: ${formatDate(endDate)}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
             state.error?.let { error ->
                 val message = when (error) {
                     is FdValidationError.InvalidInput -> stringResource(R.string.fd_error_invalid_input)
@@ -127,19 +146,24 @@ fun FdScreen(
                 Text(text = message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             }
 
-            Button(onClick = viewModel::calculate, modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.sip_button_calculate))
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = viewModel::calculate, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_calculate))
+                }
+                OutlinedButton(onClick = viewModel::onSaveDirectClicked, modifier = Modifier.weight(1f)) {
+                    Text(stringResource(R.string.sip_button_save))
+                }
             }
         }
     }
 
-    if (state.result != null) {
+    if (state.result != null && state.showResultSheet) {
         ModalBottomSheet(
             onDismissRequest = ::dismissResultSheet,
             sheetState = resultSheetState
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp).verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 state.result?.let { FdResultCard(it, state) }
@@ -159,12 +183,19 @@ fun FdScreen(
             onLanguageChange = settingsViewModel::setLanguage,
             onDefaultInflationChange = settingsViewModel::setDefaultInflationPercent,
             onDefaultExpectedReturnChange = settingsViewModel::setDefaultExpectedReturnPercent,
+            onUserNameChange = settingsViewModel::setUserName,
             onDismiss = { showSettingsSheet = false }
         )
     }
 
-    if (state.showComingSoonSheet) {
-        ComingSoonSheet(onDismiss = viewModel::onComingSoonDismissed)
+    if (state.showSaveSheet) {
+        SaveInvestmentSheet(
+            onDismiss = viewModel::onSaveSheetDismissed,
+            onSave = { name, inst, notes, _ -> viewModel.onSaveConfirmed(name, inst, notes) },
+            initialCustomName = state.customName,
+            initialInstitutionName = state.institutionName,
+            initialNotes = state.notes
+        )
     }
 }
 

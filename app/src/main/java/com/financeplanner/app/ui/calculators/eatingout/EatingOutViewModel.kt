@@ -25,10 +25,8 @@ data class EatingOutUiState(
     val homeCookingMonthlySpend: String = "",
     val years: String = "",
     val expectedReturnPercent: String = "",
-    val inflationPercent: String = "",
     val result: EatingOutResult? = null,
-    val error: EatingOutValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: EatingOutValidationError? = null
 )
 
 @HiltViewModel
@@ -46,8 +44,7 @@ class EatingOutViewModel @Inject constructor(
         viewModelScope.launch {
             val prefs = preferencesDataStore.preferencesFlow.first()
             _uiState.value = _uiState.value.copy(
-                expectedReturnPercent = prefs.defaultExpectedReturnPercent.toString(),
-                inflationPercent = prefs.defaultInflationPercent.toString()
+                expectedReturnPercent = prefs.defaultExpectedReturnPercent.toString()
             )
         }
     }
@@ -64,21 +61,9 @@ class EatingOutViewModel @Inject constructor(
     fun onReturnChange(value: String) {
         _uiState.value = _uiState.value.copy(expectedReturnPercent = value, error = null)
     }
-    fun onInflationChange(value: String) {
-        _uiState.value = _uiState.value.copy(inflationPercent = value, error = null)
-    }
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {
@@ -88,7 +73,6 @@ class EatingOutViewModel @Inject constructor(
         val homeCookingSpend = state.homeCookingMonthlySpend.toDoubleOrNull()
         val years = state.years.toIntOrNull()
         val expectedReturn = state.expectedReturnPercent.toDoubleOrNull()
-        val inflation = state.inflationPercent.toDoubleOrNull()
 
         if (eatingOutSpend == null || homeCookingSpend == null || years == null || expectedReturn == null) {
             _uiState.value = state.copy(error = EatingOutValidationError.InvalidInput, result = null)
@@ -100,8 +84,7 @@ class EatingOutViewModel @Inject constructor(
                     eatingOutMonthlySpend = eatingOutSpend,
                     homeCookingMonthlySpend = homeCookingSpend,
                     years = years,
-                    expectedReturnPercent = expectedReturn,
-                    inflationPercent = inflation
+                    expectedReturnPercent = expectedReturn
                 )
             )
             _uiState.value = state.copy(result = result, error = null)

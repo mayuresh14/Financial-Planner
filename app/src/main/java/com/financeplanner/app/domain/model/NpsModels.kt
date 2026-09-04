@@ -5,7 +5,10 @@ data class NpsInput(
     val currentAge: Int,
     val expectedReturnPercent: Double,
     val annuityPercent: Double = 40.0, // % of corpus used to buy annuity; configurable, not hardcoded — PFRDA rules shift over time
-    val inflationPercent: Double? = null
+    val inflationPercent: Double? = null,
+    /** Balance already in the account before this projection starts — for someone tracking
+     * an account they opened before using this app, not one starting from zero. */
+    val existingBalance: Double = 0.0
 ) {
     init {
         require(monthlyContribution > 0) { "Monthly contribution must be positive" }
@@ -13,6 +16,7 @@ data class NpsInput(
         require(expectedReturnPercent >= 0) { "Expected return cannot be negative" }
         require(annuityPercent in 40.0..100.0) { "Minimum 40% of NPS corpus must go towards annuity per current rules" }
         inflationPercent?.let { require(it >= 0) { "Inflation percent cannot be negative" } }
+        require(existingBalance >= 0) { "Existing balance cannot be negative" }
     }
 }
 

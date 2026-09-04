@@ -25,8 +25,7 @@ data class TenureUiState(
     val expectedReturnPercent: String = "12",
     val targetAmount: String = "",
     val result: TenureResult? = null,
-    val error: TenureValidationError? = null,
-    val showComingSoonSheet: Boolean = false
+    val error: TenureValidationError? = null
 )
 
 @HiltViewModel
@@ -59,15 +58,6 @@ class TenureViewModel @Inject constructor(
 
     fun onResultDismissed() {
         _uiState.value = _uiState.value.copy(result = null)
-    }
-
-    fun onSaveClicked() {
-        analytics.logSaveTapped(CALCULATOR_NAME)
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = true)
-    }
-
-    fun onComingSoonDismissed() {
-        _uiState.value = _uiState.value.copy(showComingSoonSheet = false)
     }
 
     fun calculate() {
