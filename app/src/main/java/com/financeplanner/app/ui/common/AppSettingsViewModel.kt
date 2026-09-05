@@ -58,11 +58,17 @@ class AppSettingsViewModel @Inject constructor(
                 val randomized = ThemePreset.random(exclude = initial.themePreset)
                 preferencesDataStore.setThemePreset(randomized)
             }
-            // Re-sync the scheduled work every launch, not just when the toggle changes —
+            // Re-sync the scheduled work every launch, not just when a toggle changes —
             // enqueueUniquePeriodicWork with UPDATE is idempotent/cheap, and this covers the
             // case where the app was reinstalled/updated and WorkManager's own record was lost.
-            if (initial.maturityRemindersEnabled) reminderScheduler.schedule() else reminderScheduler.cancel()
+            syncScheduler(initial.maturityRemindersEnabled, initial.monthlyReminderEnabled)
         }
+    }
+
+    /** The same daily worker serves both reminder types (see MaturityReminderWorker), so it
+     * only needs to run — and only needs cancelling — when neither is wanted. */
+    private fun syncScheduler(maturityRemindersEnabled: Boolean, monthlyReminderEnabled: Boolean) {
+        if (maturityRemindersEnabled || monthlyReminderEnabled) reminderScheduler.schedule() else reminderScheduler.cancel()
     }
 
     fun setThemeMode(mode: ThemeMode) {
@@ -161,7 +167,14 @@ class AppSettingsViewModel @Inject constructor(
     fun setMaturityRemindersEnabled(enabled: Boolean) {
         analytics.logSettingChanged(SETTING_MATURITY_REMINDERS, enabled.toString())
         viewModelScope.launch { preferencesDataStore.setMaturityRemindersEnabled(enabled) }
-        if (enabled) reminderScheduler.schedule() else reminderScheduler.cancel()
+        syncScheduler(enabled, preferences.value.monthlyReminderEnabled)
+    }
+
+    /** Same permission-confirmed-first contract as [setMaturityRemindersEnabled]. */
+    fun setMonthlyReminderEnabled(enabled: Boolean) {
+        analytics.logSettingChanged(SETTING_MONTHLY_REMINDER, enabled.toString())
+        viewModelScope.launch { preferencesDataStore.setMonthlyReminderEnabled(enabled) }
+        syncScheduler(preferences.value.maturityRemindersEnabled, enabled)
     }
 
     /** Marks that the OS permission prompt has actually been shown at least once — used to
@@ -183,5 +196,6 @@ class AppSettingsViewModel @Inject constructor(
         const val SETTING_DEFAULT_INFLATION = "default_inflation_percent"
         const val SETTING_DEFAULT_EXPECTED_RETURN = "default_expected_return_percent"
         const val SETTING_MATURITY_REMINDERS = "maturity_reminders_enabled"
+        const val SETTING_MONTHLY_REMINDER = "monthly_reminder_enabled"
     }
 }

@@ -49,6 +49,9 @@ import com.financeplanner.app.domain.model.AppLanguage
 import com.financeplanner.app.domain.model.ThemeMode
 import com.financeplanner.app.domain.model.ThemePreset
 
+/** Which reminder toggle is currently waiting on a POST_NOTIFICATIONS result. */
+private enum class ReminderToggle { MATURITY, MONTHLY }
+
 /**
  * Reusable settings sheet: theme mode (Light/Dark/System), curated theme
  * preset chips + "Randomize" action, and language selector. Every calculator
@@ -78,12 +81,21 @@ fun ThemeLanguageSheet(
     val settingsViewModel: AppSettingsViewModel = hiltViewModel()
     val context = LocalContext.current
     var showPermissionBlockedDialog by remember { mutableStateOf(false) }
+    // Which toggle's own switch triggered the in-flight permission request — both reminder
+    // types share the one POST_NOTIFICATIONS permission, but only the toggle actually being
+    // switched on should flip when the result comes back, not both.
+    var pendingPermissionToggle by remember { mutableStateOf<ReminderToggle?>(null) }
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
         settingsViewModel.setHasRequestedNotificationPermission(true)
         settingsViewModel.setHasShownMaturityReminderIntro(true)
-        settingsViewModel.setMaturityRemindersEnabled(granted)
+        when (pendingPermissionToggle) {
+            ReminderToggle.MATURITY -> settingsViewModel.setMaturityRemindersEnabled(granted)
+            ReminderToggle.MONTHLY -> settingsViewModel.setMonthlyReminderEnabled(granted)
+            null -> Unit
+        }
+        pendingPermissionToggle = null
     }
 
     if (showPermissionBlockedDialog) {
@@ -186,8 +198,10 @@ fun ThemeLanguageSheet(
                             // BLOCKED can't ask again, so guide to system Settings instead.
                             when (notificationPermissionState(context, preferences.hasRequestedNotificationPermission)) {
                                 NotificationPermissionState.GRANTED -> settingsViewModel.setMaturityRemindersEnabled(true)
-                                NotificationPermissionState.CAN_PROMPT ->
+                                NotificationPermissionState.CAN_PROMPT -> {
+                                    pendingPermissionToggle = ReminderToggle.MATURITY
                                     notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                }
                                 NotificationPermissionState.BLOCKED -> showPermissionBlockedDialog = true
                             }
                         }
@@ -199,7 +213,7 @@ fun ThemeLanguageSheet(
             // reopens the sheet — no lifecycle observer needed for that case. In practice this
             // should be rare/transient since MainActivity's launch-time check already turns the
             // setting off the moment it detects a revoked-and-blocked permission.
-            val notificationsBlocked = preferences.maturityRemindersEnabled &&
+            val notificationsBlocked = (preferences.maturityRemindersEnabled || preferences.monthlyReminderEnabled) &&
                 notificationPermissionState(context, preferences.hasRequestedNotificationPermission) != NotificationPermissionState.GRANTED
             if (notificationsBlocked) {
                 Text(
@@ -211,6 +225,7 @@ fun ThemeLanguageSheet(
                         .clickable { openAppNotificationSettings(context) }
                 )
             }
+
             HorizontalDivider()
 
             // Section 3: Appearance — theme mode, color, and language, all

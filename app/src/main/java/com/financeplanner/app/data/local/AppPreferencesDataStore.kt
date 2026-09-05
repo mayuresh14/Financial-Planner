@@ -42,6 +42,7 @@ class AppPreferencesDataStore @Inject constructor(
         val MATURITY_REMINDERS_ENABLED = booleanPreferencesKey("maturity_reminders_enabled")
         val HAS_REQUESTED_NOTIFICATION_PERMISSION = booleanPreferencesKey("has_requested_notification_permission")
         val HAS_SHOWN_MATURITY_REMINDER_INTRO = booleanPreferencesKey("has_shown_maturity_reminder_intro")
+        val MONTHLY_REMINDER_ENABLED = booleanPreferencesKey("monthly_reminder_enabled")
     }
 
     val preferencesFlow: Flow<AppDisplayPreferences> = dataStore.data.map { prefs ->
@@ -69,7 +70,8 @@ class AppPreferencesDataStore @Inject constructor(
                 ?: InvestmentsViewMode.LIST,
             maturityRemindersEnabled = prefs[Keys.MATURITY_REMINDERS_ENABLED] ?: false,
             hasRequestedNotificationPermission = prefs[Keys.HAS_REQUESTED_NOTIFICATION_PERMISSION] ?: false,
-            hasShownMaturityReminderIntro = prefs[Keys.HAS_SHOWN_MATURITY_REMINDER_INTRO] ?: false
+            hasShownMaturityReminderIntro = prefs[Keys.HAS_SHOWN_MATURITY_REMINDER_INTRO] ?: false,
+            monthlyReminderEnabled = prefs[Keys.MONTHLY_REMINDER_ENABLED] ?: true
         )
     }
 
@@ -134,6 +136,10 @@ class AppPreferencesDataStore @Inject constructor(
 
     suspend fun setHasShownMaturityReminderIntro(value: Boolean) {
         dataStore.edit { it[Keys.HAS_SHOWN_MATURITY_REMINDER_INTRO] = value }
+    }
+
+    suspend fun setMonthlyReminderEnabled(value: Boolean) {
+        dataStore.edit { it[Keys.MONTHLY_REMINDER_ENABLED] = value }
     }
 
     /**

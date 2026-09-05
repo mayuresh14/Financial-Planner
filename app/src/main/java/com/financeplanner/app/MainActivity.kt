@@ -65,14 +65,16 @@ class MainActivity : AppCompatActivity() {
             var showBlockedDialog by remember { mutableStateOf(false) }
 
             // Shared by every path that actually invokes the OS prompt (intro "Turn On", and
-            // the launch-time "permission was revoked, re-enable?" dialog) — granted flips the
-            // feature on, denied flips it off, so the switch always reflects reality.
+            // the launch-time "permission was revoked, re-enable?" dialog) — granted flips both
+            // reminder types on, denied flips both off, so the switches always reflect reality.
+            // Both share the one POST_NOTIFICATIONS permission, so there's no separate ask per type.
             val permissionLauncher = rememberLauncherForActivityResult(
                 ActivityResultContracts.RequestPermission()
             ) { granted ->
                 settingsViewModel.setHasRequestedNotificationPermission(true)
                 settingsViewModel.setHasShownMaturityReminderIntro(true)
                 settingsViewModel.setMaturityRemindersEnabled(granted)
+                settingsViewModel.setMonthlyReminderEnabled(granted)
             }
 
             LaunchedEffect(hasLoadedPreferences) {
@@ -80,9 +82,10 @@ class MainActivity : AppCompatActivity() {
 
                 if (!preferences.hasShownMaturityReminderIntro) {
                     // First launch ever. Below Android 13 there's no runtime permission to ask
-                    // for at all, so just turn the feature on directly.
+                    // for at all, so just turn both reminder types on directly.
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
                         settingsViewModel.setMaturityRemindersEnabled(true)
+                        settingsViewModel.setMonthlyReminderEnabled(true)
                         settingsViewModel.setHasShownMaturityReminderIntro(true)
                     } else {
                         showIntroDialog = true
@@ -90,14 +93,16 @@ class MainActivity : AppCompatActivity() {
                     return@LaunchedEffect
                 }
 
-                // Not first launch: if reminders were left on, re-verify the permission still
-                // holds — it may have been revoked from system Settings since the last launch.
-                if (preferences.maturityRemindersEnabled) {
+                // Not first launch: if either reminder type was left on, re-verify the
+                // permission still holds — it may have been revoked from system Settings.
+                val remindersWanted = preferences.maturityRemindersEnabled || preferences.monthlyReminderEnabled
+                if (remindersWanted) {
                     when (notificationPermissionState(context, preferences.hasRequestedNotificationPermission)) {
                         NotificationPermissionState.GRANTED -> Unit
                         NotificationPermissionState.CAN_PROMPT -> showRevokedDialog = true
                         NotificationPermissionState.BLOCKED -> {
                             settingsViewModel.setMaturityRemindersEnabled(false)
+                            settingsViewModel.setMonthlyReminderEnabled(false)
                             showBlockedDialog = true
                         }
                     }
@@ -113,6 +118,7 @@ class MainActivity : AppCompatActivity() {
                     onNotNow = {
                         showIntroDialog = false
                         settingsViewModel.setMaturityRemindersEnabled(false)
+                        settingsViewModel.setMonthlyReminderEnabled(false)
                         settingsViewModel.setHasShownMaturityReminderIntro(true)
                     }
                 )
@@ -126,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                     onTurnOff = {
                         showRevokedDialog = false
                         settingsViewModel.setMaturityRemindersEnabled(false)
+                        settingsViewModel.setMonthlyReminderEnabled(false)
                     }
                 )
             }

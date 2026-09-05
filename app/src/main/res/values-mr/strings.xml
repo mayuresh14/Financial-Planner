@@ -389,6 +389,16 @@
     <string name="maturity_reminder_body_today">%1$s आज परिपक्व होत आहे</string>
     <string name="maturity_reminder_body_upcoming">%1$s %2$d दिवसांत परिपक्व होईल</string>
     <string name="settings_maturity_reminders_blocked_hint">सिस्टम सेटिंग्जमध्ये सूचना अवरोधित आहेत — दुरुस्त करण्यासाठी टॅप करा</string>
+    <string name="settings_monthly_reminder_title">मासिक पैसे तपासणी</string>
+    <string name="settings_monthly_reminder_description">पगारानंतर तुमच्या गुंतवणुकीचा आढावा घेण्यासाठी दर महिन्याच्या 1 तारखेला एक स्मरणपत्र</string>
+    <string name="monthly_reminder_channel_name">मासिक पैसे तपासणी</string>
+    <string name="monthly_reminder_channel_description">दर महिन्याच्या 1 तारखेला तुमच्या गुंतवणुकीचा आढावा घेण्यासाठी एक स्मरणपत्र</string>
+    <string name="monthly_reminder_title">MoneyMint</string>
+    <string name="monthly_reminder_body_1">पगाराचा दिवस! हा महिना सत्कारणी लावण्यासाठी तुमच्या गुंतवणुकीचा आढावा घ्या.</string>
+    <string name="monthly_reminder_body_2">नवीन महिना, नवीन संधी — खर्च करण्यापूर्वी तुमचा पोर्टफोलिओ तपासा.</string>
+    <string name="monthly_reminder_body_3">पगाराचे स्मरणपत्र: आधी स्वतःच्या भविष्यासाठी बचत करा. आजच तुमच्या गुंतवणुकीचा आढावा घ्या.</string>
+    <string name="monthly_reminder_body_4">आज 1 तारीख आहे! या महिन्याची बचत कुठे जाईल याचे नियोजन करण्याची चांगली वेळ.</string>
+    <string name="monthly_reminder_body_5">नवीन महिना सुरू — तुमची गुंतवणूक आणि उद्दिष्टे तपासण्यासाठी 2 मिनिटे द्या.</string>
     <string name="notification_permission_denied_title">सूचना अवरोधित आहेत</string>
     <string name="notification_permission_denied_message">MoneyMint साठी सूचना बंद असल्याने परिपक्वता स्मरणपत्रे मिळणार नाहीत. तुम्ही ती सिस्टम सेटिंग्जमध्ये सक्षम करू शकता.</string>
     <string name="notification_permission_denied_open_settings">सेटिंग्ज उघडा</string>
@@ -397,8 +407,8 @@
     <string name="notification_permission_revoked_title">सूचना बंद केल्या गेल्या</string>
     <string name="notification_permission_revoked_message">परिपक्वता स्मरणपत्रे चालू आहेत, पण सूचना परवानगी बंद केली गेली आहे. स्मरणपत्रे मिळत राहण्यासाठी ती पुन्हा चालू करायची?</string>
     <string name="notification_permission_revoked_enable">सक्षम करा</string>
-    <string name="maturity_reminder_intro_title">परिपक्वता स्मरणपत्रे हवी आहेत?</string>
-    <string name="maturity_reminder_intro_message">आम्ही तुमची जतन केलेली FD किंवा RD परिपक्व होण्याच्या 7 दिवस आधी आणि त्या दिवशी तुम्हाला सूचित करू शकतो.</string>
+    <string name="maturity_reminder_intro_title">स्मरणपत्रे चालू करायची?</string>
+    <string name="maturity_reminder_intro_message">आम्ही तुमची जतन केलेली FD किंवा RD परिपक्व होण्याच्या 7 दिवस आधी आणि त्या दिवशी तुम्हाला सूचित करू शकतो — तसेच तुमच्या पैशांचा आढावा घेण्यासाठी दर महिन्याच्या 1 तारखेला एक स्मरणपत्रही.</string>
     <string name="maturity_reminder_intro_turn_on">चालू करा</string>
     <string name="maturity_reminder_intro_not_now">गरज नाही</string>
     <string name="settings_your_name_title">तुमचे नाव</string>

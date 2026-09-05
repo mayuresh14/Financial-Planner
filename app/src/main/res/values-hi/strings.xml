@@ -389,6 +389,16 @@
     <string name="maturity_reminder_body_today">%1$s आज परिपक्व हो रहा है</string>
     <string name="maturity_reminder_body_upcoming">%1$s %2$d दिनों में परिपक्व होगा</string>
     <string name="settings_maturity_reminders_blocked_hint">सिस्टम सेटिंग्स में सूचनाएं अवरुद्ध हैं — ठीक करने के लिए टैप करें</string>
+    <string name="settings_monthly_reminder_title">मासिक धन समीक्षा</string>
+    <string name="settings_monthly_reminder_description">वेतन मिलने के बाद अपने निवेश की समीक्षा करने के लिए हर महीने की 1 तारीख को एक याद दिलाना</string>
+    <string name="monthly_reminder_channel_name">मासिक धन समीक्षा</string>
+    <string name="monthly_reminder_channel_description">हर महीने की 1 तारीख को अपने निवेश की समीक्षा करने के लिए एक याद दिलाना</string>
+    <string name="monthly_reminder_title">MoneyMint</string>
+    <string name="monthly_reminder_body_1">वेतन का दिन! इस महीने को सफल बनाने के लिए अपने निवेश की समीक्षा करने के लिए एक मिनट निकालें।</string>
+    <string name="monthly_reminder_body_2">नया महीना, नया अवसर — खर्च करने से पहले अपने पोर्टफोलियो की जांच करें।</string>
+    <string name="monthly_reminder_body_3">वेतन का रिमाइंडर: पहले अपने भविष्य को भुगतान करें। आज ही अपने निवेश की समीक्षा करें।</string>
+    <string name="monthly_reminder_body_4">आज 1 तारीख है! यह योजना बनाने का अच्छा समय है कि इस महीने की बचत कहाँ जाए।</string>
+    <string name="monthly_reminder_body_5">नया महीना शुरू — अपने निवेश और लक्ष्यों की जांच के लिए 2 मिनट निकालें।</string>
     <string name="notification_permission_denied_title">सूचनाएं अवरुद्ध हैं</string>
     <string name="notification_permission_denied_message">MoneyMint के लिए सूचनाएं बंद होने के कारण परिपक्वता रिमाइंडर नहीं मिलेंगे। आप उन्हें सिस्टम सेटिंग्स में सक्षम कर सकते हैं।</string>
     <string name="notification_permission_denied_open_settings">सेटिंग्स खोलें</string>
@@ -397,8 +407,8 @@
     <string name="notification_permission_revoked_title">सूचनाएं बंद कर दी गईं</string>
     <string name="notification_permission_revoked_message">परिपक्वता रिमाइंडर चालू हैं, लेकिन सूचना अनुमति बंद कर दी गई थी। रिमाइंडर पाते रहने के लिए इसे फिर से चालू करें?</string>
     <string name="notification_permission_revoked_enable">सक्षम करें</string>
-    <string name="maturity_reminder_intro_title">परिपक्वता रिमाइंडर चाहिए?</string>
-    <string name="maturity_reminder_intro_message">हम आपकी सहेजी गई FD या RD के परिपक्व होने से 7 दिन पहले और उस दिन आपको सूचित कर सकते हैं।</string>
+    <string name="maturity_reminder_intro_title">रिमाइंडर चालू करें?</string>
+    <string name="maturity_reminder_intro_message">हम आपकी सहेजी गई FD या RD के परिपक्व होने से 7 दिन पहले और उस दिन आपको सूचित कर सकते हैं — साथ ही अपने पैसों की जांच के लिए हर महीने की 1 तारीख को एक याद दिलाना भी।</string>
     <string name="maturity_reminder_intro_turn_on">चालू करें</string>
     <string name="maturity_reminder_intro_not_now">जरूरत नहीं</string>
     <string name="settings_your_name_title">आपका नाम</string>

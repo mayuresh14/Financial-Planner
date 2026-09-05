@@ -417,6 +417,16 @@
     <string name="maturity_reminder_body_today">%1$s matures today</string>
     <string name="maturity_reminder_body_upcoming">%1$s matures in %2$d days</string>
     <string name="settings_maturity_reminders_blocked_hint">Notifications are blocked in system settings — tap to fix</string>
+    <string name="settings_monthly_reminder_title">Monthly money check-in</string>
+    <string name="settings_monthly_reminder_description">A nudge on the 1st of every month to review your investments after payday</string>
+    <string name="monthly_reminder_channel_name">Monthly money check-in</string>
+    <string name="monthly_reminder_channel_description">A nudge on the 1st of every month to review your investments</string>
+    <string name="monthly_reminder_title">MoneyMint</string>
+    <string name="monthly_reminder_body_1">Salary day! Take a minute to review your investments and make this month count.</string>
+    <string name="monthly_reminder_body_2">New month, new opportunity — check your portfolio before you spend.</string>
+    <string name="monthly_reminder_body_3">Payday reminder: pay your future self first. Review your investments today.</string>
+    <string name="monthly_reminder_body_4">It\'s the 1st! A good moment to plan where this month\'s savings go.</string>
+    <string name="monthly_reminder_body_5">Fresh month ahead — take 2 minutes to check your investments and goals.</string>
     <string name="notification_permission_denied_title">Notifications blocked</string>
     <string name="notification_permission_denied_message">Maturity reminders won\'t arrive because notifications are turned off for MoneyMint. You can enable them in system settings.</string>
     <string name="notification_permission_denied_open_settings">Open Settings</string>
@@ -425,8 +435,8 @@
     <string name="notification_permission_revoked_title">Notifications turned off</string>
     <string name="notification_permission_revoked_message">Maturity reminders are on, but notification permission was turned off. Turn it back on to keep getting reminders?</string>
     <string name="notification_permission_revoked_enable">Enable</string>
-    <string name="maturity_reminder_intro_title">Get maturity reminders?</string>
-    <string name="maturity_reminder_intro_message">We can notify you 7 days before, and on the day, a saved FD or RD matures.</string>
+    <string name="maturity_reminder_intro_title">Enable reminders?</string>
+    <string name="maturity_reminder_intro_message">We can notify you 7 days before, and on the day, a saved FD or RD matures — plus a monthly nudge on the 1st to check in on your money.</string>
     <string name="maturity_reminder_intro_turn_on">Turn on</string>
     <string name="maturity_reminder_intro_not_now">Not needed</string>
     <string name="settings_your_name_title">Your Name</string>

@@ -57,5 +57,8 @@ data class AppDisplayPreferences(
     val hasRequestedNotificationPermission: Boolean = false,
     /** True once the one-time "enable maturity reminders?" launch dialog has been shown and
      * answered (Turn On or Not now) — gates that dialog to first launch only. */
-    val hasShownMaturityReminderIntro: Boolean = false
+    val hasShownMaturityReminderIntro: Boolean = false,
+    /** A 1st-of-the-month "review your money" nudge — independent of [maturityRemindersEnabled]
+     * (which is about specific FD/RD dates), sharing the same POST_NOTIFICATIONS permission. */
+    val monthlyReminderEnabled: Boolean = true
 )

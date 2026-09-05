@@ -389,6 +389,16 @@
     <string name="maturity_reminder_body_today">%1$s இன்று முதிர்கிறது</string>
     <string name="maturity_reminder_body_upcoming">%1$s %2$d நாட்களில் முதிர்கிறது</string>
     <string name="settings_maturity_reminders_blocked_hint">கணினி அமைப்புகளில் அறிவிப்புகள் தடுக்கப்பட்டுள்ளன — சரிசெய்ய தட்டவும்</string>
+    <string name="settings_monthly_reminder_title">மாதாந்திர பண சரிபார்ப்பு</string>
+    <string name="settings_monthly_reminder_description">சம்பளத்திற்குப் பிறகு உங்கள் முதலீடுகளை மதிப்பாய்வு செய்ய ஒவ்வொரு மாதமும் 1ஆம் தேதி ஒரு நினைவூட்டல்</string>
+    <string name="monthly_reminder_channel_name">மாதாந்திர பண சரிபார்ப்பு</string>
+    <string name="monthly_reminder_channel_description">ஒவ்வொரு மாதமும் 1ஆம் தேதி உங்கள் முதலீடுகளை மதிப்பாய்வு செய்ய ஒரு நினைவூட்டல்</string>
+    <string name="monthly_reminder_title">MoneyMint</string>
+    <string name="monthly_reminder_body_1">சம்பள நாள்! இந்த மாதத்தை பயனுள்ளதாக்க உங்கள் முதலீடுகளை மதிப்பாய்வு செய்ய ஒரு நிமிடம் எடுத்துக் கொள்ளுங்கள்.</string>
+    <string name="monthly_reminder_body_2">புதிய மாதம், புதிய வாய்ப்பு — செலவு செய்வதற்கு முன் உங்கள் போர்ட்ஃபோலியோவைச் சரிபார்க்கவும்.</string>
+    <string name="monthly_reminder_body_3">சம்பள நினைவூட்டல்: முதலில் உங்கள் எதிர்காலத்திற்கு பணம் செலுத்துங்கள். இன்றே உங்கள் முதலீடுகளை மதிப்பாய்வு செய்யுங்கள்.</string>
+    <string name="monthly_reminder_body_4">இன்று 1ஆம் தேதி! இந்த மாத சேமிப்பு எங்கு செல்ல வேண்டும் என்று திட்டமிட நல்ல தருணம்.</string>
+    <string name="monthly_reminder_body_5">புதிய மாதம் தொடங்குகிறது — உங்கள் முதலீடுகள் மற்றும் இலக்குகளைச் சரிபார்க்க 2 நிமிடங்கள் எடுத்துக் கொள்ளுங்கள்.</string>
     <string name="notification_permission_denied_title">அறிவிப்புகள் தடுக்கப்பட்டுள்ளன</string>
     <string name="notification_permission_denied_message">MoneyMint க்கான அறிவிப்புகள் முடக்கப்பட்டிருப்பதால் முதிர்வு நினைவூட்டல்கள் வராது. கணினி அமைப்புகளில் அவற்றை இயக்கலாம்.</string>
     <string name="notification_permission_denied_open_settings">அமைப்புகளைத் திற</string>
@@ -397,8 +407,8 @@
     <string name="notification_permission_revoked_title">அறிவிப்புகள் அணைக்கப்பட்டன</string>
     <string name="notification_permission_revoked_message">முதிர்வு நினைவூட்டல்கள் இயக்கத்தில் உள்ளன, ஆனால் அறிவிப்பு அனுமதி அணைக்கப்பட்டது. நினைவூட்டல்களைத் தொடர்ந்து பெற அதை மீண்டும் இயக்கவா?</string>
     <string name="notification_permission_revoked_enable">இயக்கு</string>
-    <string name="maturity_reminder_intro_title">முதிர்வு நினைவூட்டல்கள் வேண்டுமா?</string>
-    <string name="maturity_reminder_intro_message">சேமிக்கப்பட்ட FD அல்லது RD முதிர்வதற்கு 7 நாட்களுக்கு முன்பும், அன்றைய தினமும் உங்களுக்கு அறிவிக்க முடியும்.</string>
+    <string name="maturity_reminder_intro_title">நினைவூட்டல்களை இயக்கவா?</string>
+    <string name="maturity_reminder_intro_message">சேமிக்கப்பட்ட FD அல்லது RD முதிர்வதற்கு 7 நாட்களுக்கு முன்பும், அன்றைய தினமும் உங்களுக்கு அறிவிக்க முடியும் — மேலும் உங்கள் பணத்தைச் சரிபார்க்க ஒவ்வொரு மாதமும் 1ஆம் தேதி ஒரு நினைவூட்டலும்.</string>
     <string name="maturity_reminder_intro_turn_on">இயக்கு</string>
     <string name="maturity_reminder_intro_not_now">தேவையில்லை</string>
     <string name="settings_your_name_title">உங்கள் பெயர்</string>
