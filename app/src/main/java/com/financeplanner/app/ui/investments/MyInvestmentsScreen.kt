@@ -140,6 +140,7 @@ fun MyInvestmentsScreen(
                         )
                     }
                     IconButton(onClick = {
+                        viewModel.onExportTriggered()
                         coroutineScope.launch {
                             val shareIntent = exportViewModel.buildExportShareIntent()
                             if (shareIntent != null) {
@@ -162,7 +163,10 @@ fun MyInvestmentsScreen(
             // rather than a saturated tone) barely stands out against a white background —
             // full-strength primary instead so it's unmistakable.
             FloatingActionButton(
-                onClick = { showAddMenu = true },
+                onClick = {
+                    viewModel.onAddInvestmentMenuOpened()
+                    showAddMenu = true
+                },
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary
             ) {
@@ -217,6 +221,7 @@ fun MyInvestmentsScreen(
                         rows = state.typeSummaryRows,
                         items = state.filteredItems,
                         onItemClick = { viewModel.onItemClicked(it) },
+                        onSectionToggled = { type, expanded -> viewModel.onSummarySectionToggled(type, expanded) },
                         modifier = Modifier.fillMaxSize()
                     )
                 }
@@ -321,6 +326,7 @@ fun MyInvestmentsScreen(
             onDismiss = viewModel::onDetailDismissed,
             onDeleteClick = { viewModel.onDeleteRequested(item) },
             onEditClick = {
+                viewModel.onEditRequested(item)
                 viewModel.onDetailDismissed()
                 onEditInvestment(editRouteFor(item.type, item.id))
             }
@@ -363,6 +369,7 @@ fun MyInvestmentsScreen(
             onDismiss = { showAddMenu = false },
             onSelect = { route ->
                 showAddMenu = false
+                viewModel.onAddInvestmentTypeSelected(route)
                 onAddInvestment(route)
             }
         )
@@ -515,6 +522,7 @@ private fun InvestmentsSummaryView(
     rows: List<TypeSummaryRow>,
     items: List<SavedInvestment>,
     onItemClick: (SavedInvestment) -> Unit,
+    onSectionToggled: (SavedInvestmentType, Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var expandedTypes by remember { mutableStateOf(setOf<SavedInvestmentType>()) }
@@ -537,7 +545,9 @@ private fun InvestmentsSummaryView(
                         row = row,
                         expanded = expanded,
                         onClick = {
+                            val nowExpanded = !expanded
                             expandedTypes = if (expanded) expandedTypes - row.type else expandedTypes + row.type
+                            onSectionToggled(row.type, nowExpanded)
                         },
                         modifier = Modifier.animateItem(placementSpec = tween(300))
                     )

@@ -10,6 +10,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.financeplanner.app.MainActivity
 import com.financeplanner.app.R
+import com.financeplanner.app.data.analytics.AppAnalytics
 import com.financeplanner.app.domain.model.SavedInvestment
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.text.NumberFormat
@@ -19,7 +20,8 @@ import javax.inject.Inject
 /** Builds and fires the "FD/RD maturing soon" local notification — one channel, one
  * notification per saved item per milestone (7 days out, and on the day itself). */
 class MaturityReminderNotifier @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val analytics: AppAnalytics
 ) {
     private val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     private val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN")).apply { maximumFractionDigits = 0 }
@@ -61,7 +63,8 @@ class MaturityReminderNotifier @Inject constructor(
             Intent(context, MainActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 .putExtra(MainActivity.EXTRA_OPEN_INVESTMENTS_TAB, true)
-                .putExtra(MainActivity.EXTRA_INVESTMENT_ID, item.id),
+                .putExtra(MainActivity.EXTRA_INVESTMENT_ID, item.id)
+                .putExtra(MainActivity.EXTRA_REMINDER_TYPE, REMINDER_TYPE_MATURITY),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
@@ -79,6 +82,7 @@ class MaturityReminderNotifier @Inject constructor(
         // same item don't overwrite each other, and different items never collide.
         val notificationId = (item.id * 10 + if (daysUntilMaturity <= 0) 0 else 1).toInt()
         runCatching { notificationManager.notify(notificationId, notification) }
+            .onSuccess { analytics.logReminderNotificationShown(REMINDER_TYPE_MATURITY) }
     }
 
     /** The 1st-of-month "review your money" nudge — [body] is one of several rotating texts
@@ -94,7 +98,9 @@ class MaturityReminderNotifier @Inject constructor(
         val contentIntent = PendingIntent.getActivity(
             context,
             MONTHLY_REMINDER_REQUEST_CODE,
-            Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
+            Intent(context, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .putExtra(MainActivity.EXTRA_REMINDER_TYPE, REMINDER_TYPE_MONTHLY),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
@@ -109,6 +115,7 @@ class MaturityReminderNotifier @Inject constructor(
             .build()
 
         runCatching { notificationManager.notify(MONTHLY_REMINDER_NOTIFICATION_ID, notification) }
+            .onSuccess { analytics.logReminderNotificationShown(REMINDER_TYPE_MONTHLY) }
     }
 
     private companion object {
@@ -117,5 +124,7 @@ class MaturityReminderNotifier @Inject constructor(
         // Fixed, distinct from per-item ids (item.id * 10 + 0/1) which are always >= 0.
         const val MONTHLY_REMINDER_NOTIFICATION_ID = -1000
         const val MONTHLY_REMINDER_REQUEST_CODE = -1000
+        const val REMINDER_TYPE_MATURITY = "maturity"
+        const val REMINDER_TYPE_MONTHLY = "monthly"
     }
 }

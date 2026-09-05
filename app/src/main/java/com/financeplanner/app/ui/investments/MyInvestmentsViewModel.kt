@@ -2,6 +2,7 @@ package com.financeplanner.app.ui.investments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financeplanner.app.data.analytics.AppAnalytics
 import com.financeplanner.app.data.local.AppPreferencesDataStore
 import com.financeplanner.app.data.repository.SavedInvestmentRepository
 import com.financeplanner.app.domain.model.AssetCategory
@@ -84,6 +85,7 @@ data class MyInvestmentsUiState(
 class MyInvestmentsViewModel @Inject constructor(
     private val repository: SavedInvestmentRepository,
     private val preferencesDataStore: AppPreferencesDataStore,
+    private val analytics: AppAnalytics,
     pendingInvestmentsFilterNavigator: PendingInvestmentsFilterNavigator,
     pendingInvestmentDetailNavigator: PendingInvestmentDetailNavigator
 ) : ViewModel() {
@@ -113,6 +115,8 @@ class MyInvestmentsViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), MyInvestmentsUiState())
 
     init {
+        analytics.logScreenOpened(SCREEN_NAME)
+
         // A Home dashboard pie-chart slice tap asked to land here pre-filtered — replace
         // whichever dimension it named with just that one selection and clear the other
         // dimension + any leftover search text, so the result is unambiguous.
@@ -143,11 +147,16 @@ class MyInvestmentsViewModel @Inject constructor(
     }
 
     fun onSearchQueryChange(query: String) {
+        // Logged only on the blank->non-blank transition, not every keystroke.
+        if (query.isNotBlank() && _searchQuery.value.isBlank()) {
+            analytics.logSearchUsed(SCREEN_NAME)
+        }
         _searchQuery.value = query
     }
 
     fun onViewModeToggled() {
         val next = if (uiState.value.viewMode == InvestmentsViewMode.LIST) InvestmentsViewMode.SUMMARY else InvestmentsViewMode.LIST
+        analytics.logInvestmentsViewModeToggled(next.name)
         viewModelScope.launch { preferencesDataStore.setInvestmentsViewMode(next) }
     }
 
@@ -156,6 +165,7 @@ class MyInvestmentsViewModel @Inject constructor(
         _typeFilters.value = if (type == null) {
             emptySet()
         } else {
+            analytics.logFilterApplied(SCREEN_NAME, type.name)
             _typeFilters.value.let { current -> if (type in current) current - type else current + type }
         }
     }
@@ -165,16 +175,23 @@ class MyInvestmentsViewModel @Inject constructor(
         _assetCategoryFilters.value = if (category == null) {
             emptySet()
         } else {
+            analytics.logFilterApplied(SCREEN_NAME, category.name)
             _assetCategoryFilters.value.let { current -> if (category in current) current - category else current + category }
         }
     }
 
     fun onItemClicked(item: SavedInvestment) {
+        analytics.logSavedItemOpened(SCREEN_NAME, item.type.name)
         _selectedItem.value = item
     }
 
     fun onDetailDismissed() {
         _selectedItem.value = null
+    }
+
+    /** Called right before navigating to the edit route, so it's logged exactly once per edit. */
+    fun onEditRequested(item: SavedInvestment) {
+        analytics.logSavedItemEdited(SCREEN_NAME, item.type.name)
     }
 
     fun onDeleteRequested(item: SavedInvestment) {
@@ -187,10 +204,31 @@ class MyInvestmentsViewModel @Inject constructor(
 
     fun onDeleteConfirmed() {
         val item = _pendingDelete.value ?: return
+        analytics.logSavedItemDeleted(SCREEN_NAME, item.type.name)
         viewModelScope.launch {
             repository.delete(item)
         }
         _pendingDelete.value = null
         _selectedItem.value = null
+    }
+
+    fun onAddInvestmentMenuOpened() {
+        analytics.logAddInvestmentMenuOpened()
+    }
+
+    fun onAddInvestmentTypeSelected(route: String) {
+        analytics.logAddInvestmentTypeSelected(route)
+    }
+
+    fun onSummarySectionToggled(type: SavedInvestmentType, expanded: Boolean) {
+        analytics.logSummarySectionToggled(type.name, expanded)
+    }
+
+    fun onExportTriggered() {
+        analytics.logExportTriggered()
+    }
+
+    private companion object {
+        const val SCREEN_NAME = "investments"
     }
 }

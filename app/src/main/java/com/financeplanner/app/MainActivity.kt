@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.financeplanner.app.data.analytics.AppAnalytics
 import com.financeplanner.app.ui.common.AppSettingsViewModel
 import com.financeplanner.app.ui.common.MaturityReminderIntroDialog
 import com.financeplanner.app.ui.common.NotificationPermissionBlockedDialog
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject lateinit var pendingTabNavigator: PendingTabNavigator
     @Inject lateinit var pendingInvestmentDetailNavigator: PendingInvestmentDetailNavigator
+    @Inject lateinit var analytics: AppAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -175,6 +177,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleNotificationIntent(intent: Intent?) {
+        intent?.getStringExtra(EXTRA_REMINDER_TYPE)?.let { analytics.logReminderNotificationTapped(it) }
+
         if (intent?.getBooleanExtra(EXTRA_OPEN_INVESTMENTS_TAB, false) == true) {
             pendingTabNavigator.requestTab(TabRoutes.INVESTMENTS)
             val investmentId = intent.getLongExtra(EXTRA_INVESTMENT_ID, NO_INVESTMENT_ID)
@@ -187,6 +191,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_OPEN_INVESTMENTS_TAB = "open_investments_tab"
         const val EXTRA_INVESTMENT_ID = "investment_id"
+        const val EXTRA_REMINDER_TYPE = "reminder_type"
         private const val NO_INVESTMENT_ID = Long.MIN_VALUE
     }
 }

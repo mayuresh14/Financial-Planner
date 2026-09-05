@@ -2,6 +2,7 @@ package com.financeplanner.app.ui.calculations
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financeplanner.app.data.analytics.AppAnalytics
 import com.financeplanner.app.data.repository.SavedCalculationRepository
 import com.financeplanner.app.domain.model.SavedCalculation
 import com.financeplanner.app.domain.model.SavedCalculationType
@@ -31,7 +32,8 @@ data class SavedCalculationsUiState(
 
 @HiltViewModel
 class SavedCalculationsViewModel @Inject constructor(
-    private val repository: SavedCalculationRepository
+    private val repository: SavedCalculationRepository,
+    private val analytics: AppAnalytics
 ) : ViewModel() {
 
     private val _selectedItem = MutableStateFlow<SavedCalculation?>(null)
@@ -51,20 +53,34 @@ class SavedCalculationsViewModel @Inject constructor(
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), SavedCalculationsUiState())
 
+    init {
+        analytics.logScreenOpened(SCREEN_NAME)
+    }
+
     fun onSearchQueryChange(query: String) {
+        if (query.isNotBlank() && _searchQuery.value.isBlank()) {
+            analytics.logSearchUsed(SCREEN_NAME)
+        }
         _searchQuery.value = query
     }
 
     fun onTypeFilterChange(type: SavedCalculationType?) {
+        if (type != null) analytics.logFilterApplied(SCREEN_NAME, type.name)
         _typeFilter.value = type
     }
 
     fun onItemClicked(item: SavedCalculation) {
+        analytics.logSavedItemOpened(SCREEN_NAME, item.type.name)
         _selectedItem.value = item
     }
 
     fun onDetailDismissed() {
         _selectedItem.value = null
+    }
+
+    /** Called right before navigating to the edit route, so it's logged exactly once per edit. */
+    fun onEditRequested(item: SavedCalculation) {
+        analytics.logSavedItemEdited(SCREEN_NAME, item.type.name)
     }
 
     fun onDeleteRequested(item: SavedCalculation) {
@@ -77,8 +93,13 @@ class SavedCalculationsViewModel @Inject constructor(
 
     fun onDeleteConfirmed() {
         val item = _pendingDelete.value ?: return
+        analytics.logSavedItemDeleted(SCREEN_NAME, item.type.name)
         viewModelScope.launch { repository.delete(item) }
         _pendingDelete.value = null
         _selectedItem.value = null
+    }
+
+    private companion object {
+        const val SCREEN_NAME = "calculations"
     }
 }

@@ -231,6 +231,7 @@ class SipViewModel @Inject constructor(
     }
 
     fun onSaveTargetChosen(target: SaveTarget) {
+        analytics.logSaveTargetChosen(CALCULATOR_NAME, target.name)
         _uiState.value = _uiState.value.copy(saveTarget = target, showSaveTargetChooser = false, showSaveSheet = true)
     }
 

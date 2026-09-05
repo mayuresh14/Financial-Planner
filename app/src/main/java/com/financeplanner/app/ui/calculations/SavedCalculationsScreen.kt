@@ -174,6 +174,7 @@ fun SavedCalculationsScreen(
             onDismiss = viewModel::onDetailDismissed,
             onDeleteClick = { viewModel.onDeleteRequested(item) },
             onEditClick = {
+                viewModel.onEditRequested(item)
                 viewModel.onDetailDismissed()
                 onEditCalculation(Routes.editRoute(routeBaseFor(item.type), item.id))
             }
