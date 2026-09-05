@@ -17,7 +17,7 @@ android {
         applicationId = "com.financeplanner.moneymint"
         minSdk = 26          // Android 8.0 — covers ~95%+ of active Indian Android devices
         targetSdk = 36
-        versionCode = 3
+        versionCode = 4
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
